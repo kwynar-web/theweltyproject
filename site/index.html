@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Welty Family &mdash; Research Journal</title>
+<!--welty-seo:start-->
+<meta name="description" content="A living, openly-sourced genealogy of the Welty (Wäldi/Welde) family of Edenkoben in the Palatinate — traced by DNA and primary records from c. 1680 to today.">
+<meta name="author" content="The Welty Project">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#7a1f1f">
+<link rel="canonical" href="https://theweltyproject.com/">
+
+<link rel="icon" href="/favicon-v8.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon-v8.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32-v8.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16-v8.png">
+<link rel="apple-touch-icon" href="/apple-touch-v8.png">
+<link rel="manifest" href="/site-v8.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+SC:wght@500;600;700&display=swap" rel="stylesheet">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Welty Project">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="The Welty Project — A Living Genealogy Journal">
+<meta property="og:description" content="A living, openly-sourced genealogy of the Welty (Wäldi/Welde) family of Edenkoben in the Palatinate — traced by DNA and primary records from c. 1680 to today.">
+<meta property="og:url" content="https://theweltyproject.com/">
+<meta property="og:image" content="https://theweltyproject.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Welty Project — the Edenkoben family crest">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Welty Project — A Living Genealogy Journal">
+<meta name="twitter:description" content="A living, openly-sourced genealogy of the Welty (Wäldi/Welde) family of Edenkoben in the Palatinate — traced by DNA and primary records from c. 1680 to today.">
+<meta name="twitter:image" content="https://theweltyproject.com/og-image.png">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"The Welty Project","alternateName":"The Welty Family Research Journal","url":"https://theweltyproject.com/","inLanguage":"en","description":"A living, openly-sourced genealogy of the Welty (Wäldi/Welde) family of Edenkoben in the Palatinate — traced by DNA and primary records from c. 1680 to today."}
+</script>
+<!--welty-seo:end-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+SC:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1a17;
+    --parchment: #f5efe2;
+    --parchment-deep: #ede4cf;
+    --card: #fbf7ec;
+    --gold: #b8912f;
+    --gold-bright: #d4af37;
+    --crimson: #7a1f1f;
+    --navy: #1e2a4a;
+    --rule: #cbb98d;
+    --muted: #6e6353;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'EB Garamond', Georgia, serif;
+    background: var(--parchment);
+    background-image: radial-gradient(ellipse at 50% -10%, #fdf9ee 0%, var(--parchment) 55%, var(--parchment-deep) 100%);
+    color: var(--ink);
+    margin: 0;
+    font-size: 19px;
+    line-height: 1.55;
+  }
+  main { max-width: 880px; margin: 0 auto; padding: 0 20px 60px; }
+
+  /* ---------- HERO ---------- */
+  header.hero {
+    text-align: center;
+    padding: 16px 16px 14px;
+    background: linear-gradient(180deg, var(--navy) 0%, #16203a 100%);
+    color: #efe6cf;
+    border-bottom: 3px solid var(--gold);
+    box-shadow: 0 2px 12px rgba(20,25,45,.3);
+  }
+  .crest-row {
+    display: flex; align-items: center; justify-content: center;
+    gap: clamp(14px, 4vw, 40px);
+    flex-wrap: wrap;
+  }
+  .crest { text-align: center; }
+  .crest img {
+    width: 58px; height: auto;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,.45));
+  }
+  .crest .place {
+    font-family: 'Cormorant SC', serif;
+    font-size: .8rem; font-weight: 600; letter-spacing: .06em;
+    color: var(--gold-bright); margin-top: 2px;
+  }
+  .hero-title h1 {
+    font-family: 'Cormorant SC', serif;
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+    font-weight: 700; letter-spacing: .04em;
+    margin: 0; line-height: 1.1;
+    color: #f3ead2;
+    text-shadow: 0 2px 8px rgba(0,0,0,.5);
+  }
+  .hero-rule {
+    width: 180px; margin: 8px auto 0; border: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+  }
+  .hero-tag { font-size: .85rem; color: #b6ab8d; font-style: italic; margin-top: 5px; }
+
+  /* ---------- ORNAMENT ---------- */
+  .fleuron { text-align: center; color: var(--gold); font-size: 1.5rem; margin: 34px 0 6px; letter-spacing: .5em; }
+
+  /* ---------- JOURNAL NOTE ---------- */
+  .journal-note {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--gold);
+    border-radius: 5px;
+    padding: 10px 16px;
+    margin: 0 0 16px;
+    text-align: left;
+    font-size: .88rem;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .journal-note b { font-family: 'Cormorant SC', serif; letter-spacing: .04em; color: var(--crimson); font-size: .98rem; }
+  .journal-note .quote { font-style: italic; color: var(--muted); margin: 3px 0 2px; }
+  .journal-note .stamp { font-size: .8rem; color: var(--crimson); font-weight: 600; }
+
+  /* ---------- SECTION HEADS ---------- */
+  h2.section {
+    font-family: 'Cormorant SC', serif;
+    font-size: 1.9rem; font-weight: 700; letter-spacing: .08em;
+    color: var(--navy); text-align: center;
+    margin: 44px 0 4px;
+  }
+  h2.section + .sub { text-align: center; font-style: italic; color: var(--muted); margin: 0 0 24px; font-size: 1rem; }
+
+  /* ---------- FINDS FEED ---------- */
+  .feed { margin-top: 6px; }
+  .feed-day { margin-bottom: 18px; }
+  .feed-day .date {
+    font-family: 'Cormorant SC', serif;
+    font-weight: 700; font-size: 1.1rem; letter-spacing: .07em;
+    color: var(--crimson);
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 6px;
+  }
+  .feed-day .date::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--rule), transparent); }
+  .find {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    padding: 6px 13px;
+    margin-bottom: 5px;
+    box-shadow: 0 1px 3px rgba(90,70,30,.06);
+    border-left: 3px solid var(--gold);
+    font-size: .9rem;
+    line-height: 1.4;
+  }
+  .find.big { border-left-color: var(--crimson); }
+  .find .kicker {
+    font-family: 'Cormorant SC', serif;
+    font-weight: 700; letter-spacing: .04em; font-size: .98rem;
+    color: var(--navy);
+    display: inline;
+  }
+  .find.big .kicker { color: var(--crimson); }
+  .find .kicker::after { content: " \2014 "; color: var(--gold); }
+  .find p { margin: 0; display: inline; color: #3c3529; }
+
+  /* ---------- CARDS ---------- */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 12px; }
+  a.card {
+    display: block; background: var(--card);
+    border: 1px solid var(--rule); border-top: 4px solid var(--gold);
+    border-radius: 8px; padding: 20px 24px;
+    text-decoration: none; color: var(--ink);
+    box-shadow: 0 2px 8px rgba(90,70,30,.10);
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+  a.card:hover, a.card:focus {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(90,70,30,.18);
+    border-top-color: var(--crimson);
+  }
+  a.card .title {
+    font-family: 'Cormorant SC', serif;
+    font-size: 1.35rem; font-weight: 700; letter-spacing: .04em;
+    color: var(--navy); margin-bottom: 4px;
+  }
+  a.card .desc { font-size: .98rem; color: #55493a; line-height: 1.45; }
+
+  footer {
+    text-align: center; font-size: .9rem; color: var(--muted);
+    margin-top: 52px; padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    line-height: 1.7;
+  }
+  footer .arms-note { font-style: italic; font-size: .84rem; }
+  .contact-card { max-width: 520px; margin: 40px auto 0; padding: 16px 22px; text-align: center;
+    background: var(--card); border: 1px solid var(--rule); border-radius: 10px; box-shadow: 0 1px 4px rgba(60,45,20,.06); }
+  .contact-card b { font-family: 'Cormorant SC', serif; color: var(--crimson); letter-spacing: .03em; font-size: 1.05rem; display: block; margin-bottom: 5px; }
+  .contact-card a { color: var(--crimson); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .contact-card a:hover { color: var(--ink); }
+</style>
+</head>
+<body>
+<!--welty-hdr:start-->
+<style>
+.wsite-hdr{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  padding:11px 22px;background:#faf5e9;border-bottom:2px solid #b8912f;
+  font-family:'EB Garamond',Georgia,'Times New Roman',serif;box-shadow:0 1px 5px rgba(60,45,20,.09);}
+.wsite-hdr *{box-sizing:border-box}
+.wsite-brand{display:flex;align-items:center;gap:11px;text-decoration:none;border:0}
+.wsite-brand img{width:34px;height:40px;display:block}
+.wsite-word{font-family:'Cormorant SC','EB Garamond',Georgia,serif;font-weight:700;font-size:1.3rem;
+  letter-spacing:.5px;color:#1c1a17;line-height:1.05}
+.wsite-word small{display:block;font-family:'EB Garamond',Georgia,serif;font-weight:400;font-size:.6rem;
+  letter-spacing:2.5px;text-transform:uppercase;color:#8a7a52;margin-top:3px}
+.wsite-nav{display:flex;gap:5px;flex-wrap:wrap}
+.wsite-nav a{text-decoration:none;color:#5a4f3c;font-size:1.02rem;padding:6px 14px;border-radius:5px;
+  border:1px solid transparent;transition:.15s}
+.wsite-nav a:hover{background:#f0e6cf;color:#1c1a17}
+.wsite-nav a[aria-current=page]{color:#7a1f1f;border-color:#cbb98d;background:#fffdf6;font-weight:600}
+@media(max-width:520px){.wsite-word{font-size:1.1rem}.wsite-nav a{padding:5px 10px;font-size:.94rem}}
+</style>
+<header class="wsite-hdr">
+  <a class="wsite-brand" href="index.html">
+    <img src="favicon.svg" alt="Welty family crest">
+    <span class="wsite-word">The Welty Family<small>Research Journal</small></span>
+  </a>
+  <nav class="wsite-nav"><a href="index.html" aria-current="page">Journal</a><a href="all-families.html">Family Tree</a><a href="timeline.html">Timeline</a><a href="family-papers.html">Family Papers</a></nav>
+</header>
+<!--welty-hdr:end-->
+
+<style>
+  .journey{background:linear-gradient(180deg,#fdf9ee 0%,var(--parchment) 100%);
+    padding:26px 16px 28px;text-align:center;}
+  .journey h1{font-family:'Cormorant SC',Georgia,serif;font-size:clamp(1.7rem,4.5vw,2.35rem);
+    font-weight:700;letter-spacing:.05em;color:var(--navy);margin:0 0 18px;line-height:1.05;}
+  .jstrip{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+    gap:4px;margin:0 auto;max-width:900px;}
+  .jstop{display:flex;align-items:center;justify-content:center;text-decoration:none;
+    padding:6px;border-radius:8px;transition:background .15s,transform .15s;}
+  .jstop:hover{background:rgba(184,145,47,.14);transform:translateY(-3px);}
+  .jshield,.jcrest{height:82px;width:auto;display:block;filter:drop-shadow(0 2px 5px rgba(60,45,20,.28));}
+  .jsep{width:7px;height:7px;background:var(--gold);transform:rotate(45deg);border-radius:1px;opacity:.7;flex:0 0 auto;}
+  @media(max-width:560px){.jshield,.jcrest{height:63px;}}
+</style>
+<section class="journey">
+  <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">The Welty Family</h1>
+  <div class="jstrip">
+
+    <a class="jstop" href="timeline.html#york" title="Pennsylvania — York &amp; Fayette Co">
+      <svg class="jshield" viewBox="0 0 100 122" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Pennsylvania">
+        <defs><clipPath id="jc-pa"><path d="M8 6 H92 V56 C92 90 72 108 50 117 C28 108 8 90 8 56 Z"/></clipPath></defs>
+        <image href="https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Pennsylvania.svg?width=600" xlink:href="https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Pennsylvania.svg?width=600" x="-73.53" y="-17.79" width="247.06" height="158.57" preserveAspectRatio="none" clip-path="url(#jc-pa)"/>
+        <path d="M14 12 H86 V55 C86 85 68 101 50 109 C32 101 14 85 14 55 Z" fill="none" stroke="#d4af37" stroke-width="1" opacity=".55"/>
+        <path d="M8 6 H92 V56 C92 90 72 108 50 117 C28 108 8 90 8 56 Z" fill="none" stroke="#b8912f" stroke-width="3.5"/>
+      </svg>
+    </a>
+    <span class="jsep"></span>
+
+    <a class="jstop" href="timeline.html#ohio" title="Ohio — Tuscarawas to Defiance">
+      <svg class="jshield" viewBox="0 0 100 122" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Ohio">
+        <defs><clipPath id="jc-oh"><path d="M8 6 H92 V56 C92 90 72 108 50 117 C28 108 8 90 8 56 Z"/></clipPath></defs>
+        <image href="https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Ohio.svg?width=600" xlink:href="https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Ohio.svg?width=600" x="8" y="-0.17" width="200" height="123.33" preserveAspectRatio="none" clip-path="url(#jc-oh)"/>
+        <path d="M14 12 H86 V55 C86 85 68 101 50 109 C32 101 14 85 14 55 Z" fill="none" stroke="#d4af37" stroke-width="1" opacity=".55"/>
+        <path d="M8 6 H92 V56 C92 90 72 108 50 117 C28 108 8 90 8 56 Z" fill="none" stroke="#b8912f" stroke-width="3.5"/>
+      </svg>
+    </a>
+    <span class="jsep"></span>
+
+    <a class="jstop" href="timeline.html#pfalz" title="Bischheim, Palatinate">
+      <img class="jcrest" src="crest-bischheim.svg" alt="Arms of Bischheim">
+    </a>
+    <span class="jsep"></span>
+
+    <a class="jstop" href="timeline.html#pfalz" title="Edenkoben, Palatinate">
+      <img class="jcrest" src="crest-edenkoben.svg" alt="Arms of Edenkoben">
+    </a>
+    <span class="jsep"></span>
+
+    <a class="jstop" href="timeline.html#ohio" title="Illinois — Mount Vernon">
+      <svg class="jshield" viewBox="0 0 100 122" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Illinois">
+        <defs><clipPath id="jc-il"><path d="M8 6 H92 V56 C92 90 72 108 50 117 C28 108 8 90 8 56 Z"/></clipPath></defs>
+        <image href="https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Illinois.svg?width=600" xlink:href="https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Illinois.svg?width=600" x="-45.45" y="-13.5" width="190.91" height="150" preserveAspectRatio="none" clip-path="url(#jc-il)"/>
+        <path d="M14 12 H86 V55 C86 85 68 101 50 109 C32 101 14 85 14 55 Z" fill="none" stroke="#d4af37" stroke-width="1" opacity=".55"/>
+        <path d="M8 6 H92 V56 C92 90 72 108 50 117 C28 108 8 90 8 56 Z" fill="none" stroke="#b8912f" stroke-width="3.5"/>
+      </svg>
+    </a>
+    <span class="jsep"></span>
+
+    <a class="jstop" href="timeline.html#michigan" title="Michigan — Owosso">
+      <svg class="jshield" viewBox="0 0 100 122" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="Michigan">
+        <defs><clipPath id="jc-mi"><path d="M8 6 H92 V56 C92 90 72 108 50 117 C28 108 8 90 8 56 Z"/></clipPath></defs>
+        <image href="https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Michigan.svg?width=600" xlink:href="https://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Michigan.svg?width=600" x="-66.67" y="-17.79" width="233.33" height="158.57" preserveAspectRatio="none" clip-path="url(#jc-mi)"/>
+        <path d="M14 12 H86 V55 C86 85 68 101 50 109 C32 101 14 85 14 55 Z" fill="none" stroke="#d4af37" stroke-width="1" opacity=".55"/>
+        <path d="M8 6 H92 V56 C92 90 72 108 50 117 C28 108 8 90 8 56 Z" fill="none" stroke="#b8912f" stroke-width="3.5"/>
+      </svg>
+    </a>
+
+  </div>
+</section>
+
+<main>
+
+  <h2 class="section">The Records</h2>
+  <p class="sub">Click any item to view it; use your browser&rsquo;s Back button to return.</p>
+
+  <div class="cards">
+    <a class="card" href="all-families.html">
+      <div class="title">Family Tree &mdash; All Families</div>
+      <div class="desc">The complete interactive tree &mdash; the German (Edenkoben) family and the separate Swiss line.</div>
+    </a>
+    <a class="card" href="timeline.html">
+      <div class="title">The Family, Place by Place</div>
+      <div class="desc">Maps and a timeline of Welty locations &mdash; a chapter for every place the family lived. Click a pin to jump to its story.</div>
+    </a>
+  </div>
+
+  <div class="fleuron">&#10086; &#10086; &#10086;</div>
+
+  <h2 class="section">Recent Finds</h2>
+  <p class="sub">A running journal of discoveries, newest first. Red entries changed the tree.</p>
+
+  <div class="feed">
+
+    <div class="feed-day">
+      <div class="date">4 July 2026 &mdash; morning</div>
+
+      <div class="find big">
+        <div class="kicker">The &ldquo;son who stayed behind&rdquo; never stayed</div>
+        <p>A tradition held that one Edenkoben son &mdash; <b>Johannes W&auml;ldi, baptized 1713</b> &mdash; remained in Germany while his brothers crossed, leaving a European branch of the family. Tested and set aside: every Edenkoben Reformed marriage from 1709 to 1757 was read entry-by-entry with <b>no W&auml;ldi groom</b>, and the confirmation lists are too broken in his years to place him. There is no stay-behind line to chase &mdash; the whole family went to Pennsylvania. One genuine gain fell out of the same sweep: a 1726 confirmation entry spelled &ldquo;W&uuml;ldy&rdquo; adds another cousin to the German generation.</p>
+      </div>
+
+      <div class="find big">
+        <div class="kicker">The family&rsquo;s 1740 ship legend, laid to rest for good</div>
+        <p>Grandmother&rsquo;s own hand-written note names the crossing: the <i>Richard and Mary</i>, out of Cowes, carrying &ldquo;Jacob, Michael &amp; Hans Jury Welty&rdquo; in <b>1740</b>. Two things now settle it. There was no <i>Richard and Mary</i> voyage in 1740 &mdash; the ship, the port and the &ldquo;30 September&rdquo; all match the real crossing of <b>30 September 1754</b>, the year simply mis-copied down the generations. And a full sweep of Strassburger&rsquo;s published Pennsylvania passenger lists turns up <b>zero</b> Welty, Welti or Weldy in the entire volume &mdash; no three-surname trio on any 1754 list. The conclusion is clean: the three brothers&rsquo; names were <b>grafted onto a real ship</b> by a later hand. The note is a treasure; its date and its passengers are legend.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Grandmother&rsquo;s photographs open three new leads</div>
+        <p>Five snapshots from the family&rsquo;s own papers each carry a thread. Together they give a name for <b>Michael&rsquo;s burial place</b> &mdash; &ldquo;Crooked Run / Welty&rsquo;s Graveyard,&rdquo; matching the 1897 letter&rsquo;s &ldquo;Uncle Jake&rsquo;s farm&rdquo; &mdash; a location for <b>Henry&rsquo;s grave</b> about ten miles north of Massillon, and a correction that sends <b>Michael Jr.</b> not to Ohio but to <b>Owen / Clay Co., Indiana</b>. Each is now its own line of inquiry.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">A myth ledger, to keep the legends honest</div>
+        <p>The internet&rsquo;s Welty lore was swept into one running ledger, each story paired with the fact that answers it: a Gettysburg &ldquo;Swedish Welde,&rdquo; a pair of eighteenth-century immigrant claims that belong to other families, a &ldquo;Welty&rsquo;s Mill&rdquo; whiskey tale, the commercial coat-of-arms sellers, and an Ellis Island story that is really an 1851 arrival. Ten decoys logged with their counter-facts &mdash; and, notably, <b>no</b> &ldquo;three brothers&rdquo; or stowaway tale exists in any of it; that one appears to be the family&rsquo;s own.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">A new page: the family&rsquo;s own papers</div>
+        <p>The <b>Marian Welty Family Archive</b> is now up as its own page &mdash; the hand-drawn lineage charts, the 1897 letter, the family registers and record copies, shown as-is with corrections noted beneath each. More of Marian&rsquo;s collection will be added as it is re-photographed.</p>
+      </div>
+
+    </div>
+
+    <div class="feed-day">
+      <div class="date">3 July 2026 &mdash; evening</div>
+
+      <div class="find big">
+        <div class="kicker">Two of Michael&rsquo;s children, recovered from the silent years</div>
+        <p>Michael&rsquo;s family had a five-year blank between his 1784 marriage and his next recorded child. Two baptisms at Quickel&rsquo;s (Conewago) church &mdash; his wife Christina&rsquo;s home congregation &mdash; close part of it: a daughter Catharina, born March 1785, and a son Johannes, born March 1786, both naming Michael and Christina as parents. Neither appears in the family&rsquo;s 1815 and later estate papers, so both almost certainly died young &mdash; the documented shape of the old family tradition that several of Michael&rsquo;s children were lost in infancy. Two names return to the record.</p>
+      </div>
+
+      <div class="find big">
+        <div class="kicker">Jacob Welday&rsquo;s ten children come into view</div>
+        <p>A published Ohio genealogy lays out the full household of <b>Jacob Welday Sr.</b> &mdash; the candidate immigrant-brother whose descendant&rsquo;s DNA (a 12-for-12 Y-match) ties this family to ours &mdash; naming <b>ten children</b>, all born in Pennsylvania before the family crossed the Ohio River at Mingo Junction and split into the &ldquo;Welday&rdquo; and &ldquo;Welty&rdquo; spellings. One caution is logged in plain sight: the book gives him a wife, &ldquo;Anna Maria Wild,&rdquo; that looks lifted from a <i>different</i>, unrelated Welty who married a woman of that exact name in the same year &mdash; a classic shared-name graft. So the marriage is held at arm&rsquo;s length while the child-list, anchored by a well-documented son, is carried as evidence with the flag attached. The book&rsquo;s &ldquo;Swiss from Lancaster&rdquo; origin tale is set aside; the DNA is what does the real work.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">The Quickel&rsquo;s register, opened by a side door</div>
+        <p>The Conewago (Quickel&rsquo;s) baptismal register had been the wall behind several questions, its microfilm locked behind a library-only tier. The same register turns out to sit on a second archive, home-viewable &mdash; the way around the lock. Beyond Michael&rsquo;s two children above, it confirmed two sons of the Manchester Philip (<b>Johan Paul, 1794</b>, and <b>Johan Georg, 1797</b>) exactly where an older list had placed them, while three other entries on that list proved <i>absent</i> here and must have been baptized elsewhere. A lead that had sat blocked for weeks is retired.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Georg Wolfgang&rsquo;s baptism gets its true date</div>
+        <p>The Edenkoben register, read directly, dates Georg Wolfgang&rsquo;s baptism to <b>29 September 1716</b> &mdash; the entry just below his fixes the month beyond doubt. The &ldquo;26 August 1716&rdquo; birth date copied across online trees has <b>no support in the register</b> and is set aside as index-lore. His death year remains the open question.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">The Dover daughters lean toward Philip Jacob</div>
+        <p>The sister-pair found earlier at Dover firmed up. Naming custom now points to <b>Philip Jacob</b> as their father: his wife was an Elizabeth and his mother an Anna Catharina, matching daughters <b>Elizabeth</b> and <b>Catharina</b>, whereas George Wolfgang&rsquo;s known daughters carry an entirely different set of names. It stays a hypothesis &mdash; no record yet states the parentage outright &mdash; but the three candidate sisters are upgraded from a bare guess to a naming-corroborated set that leans one way.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">John of Dover leaves no will &mdash; and that closes a door cleanly</div>
+        <p>A full-text sweep of York County records, 1783&ndash;1815, turns up John of Dover only as a taxpayer &mdash; no will, no estate administration, no orphans&rsquo;-court file naming a wife or children. The free-record avenue for his family is therefore a <b>closable negative</b>: he is documented as a Dover taxable and by his 1783 marriage, and nothing more is coming from that quarter. What remains are image-only and on-site records.</p>
+      </div>
+
+    </div>
+
+    <div class="feed-day">
+      <div class="date">3 July 2026 &mdash; afternoon</div>
+
+      <div class="find big">
+        <div class="kicker">The &ldquo;gone to Ohio by 1800&rdquo; story is retired &mdash; Michael was in Somerset County</div>
+        <p>All four southwestern-Pennsylvania county census schedules for 1800 &mdash; Westmoreland, Somerset, Fayette and Bedford &mdash; were read image by image (no name index exists for them), and <b>Michael appears in none</b>. That blank had long been read as proof he had already left for Ohio. A 1797 deed overturns it: it records <b>&ldquo;Michael Weldy, of Somerset Township, Somerset County, Yeoman&rdquo;</b> buying a Donegal Township (Westmoreland) tract from Daniel Prosser &mdash; so in 1797 he was a settled Pennsylvania farmer, holding land beside the Weltytown kin while living one county east. The 1800 gap is an enumeration miss in Somerset Township, <i>not</i> a departure; his move west now dates to about <b>1807</b>.</p>
+      </div>
+
+      <div class="find big">
+        <div class="kicker">Henry&rsquo;s missing Fayette years, recovered</div>
+        <p>Henry Welty (b. 1790, m. Mary Byerly 1812) had a two-decade blank on the Pennsylvania side before the family reached Ohio. Ellis&rsquo;s 1882 <i>History of Fayette County</i> fills it: Henry sat on the <b>Connellsville borough council in 1818, 1819, 1824 and 1827</b>, and appears on the 1823 township tax list &mdash; a settled tradesman-townsman, and the only Henry Welty in the entire county history. The competing &ldquo;Ligonier&rdquo; reading turns out to be a later <i>Indiana</i> namesake and is set aside; the family&rsquo;s Fayette chapter is anchored for the first time.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">The daughters get their first real look &mdash; a Welty sister-pair at Dover</div>
+        <p>Until now the Welty daughters were only names in a marriage cluster. A transcription of the Strayer&rsquo;s / Salem Reformed baptisms at Dover puts two of them in the same records: <b>Christine Welty</b> stands as sponsor at her sister <b>Elizabeth (Welty) Gauf</b>&rsquo;s child&rsquo;s baptism in 1782, then marries Peter Messerle in 1784 &mdash; an internally consistent sister-pair at the family&rsquo;s home church, the strongest daughter evidence yet. Which father they belong to &mdash; the Edenkoben line&rsquo;s Philip Jacob, or the Manchester founder, whose household shared the same church &mdash; is left deliberately open, and the pair is logged as a hypothesis.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Philip Jacob&rsquo;s town lots leave the family &mdash; and Elizabeth stays invisible</div>
+        <p>Philip Jacob&rsquo;s house and two town lots at Dover were traced forward from his last tax returns of 1787&ndash;88. By 1789&ndash;94 no Welty appears on the Dover rolls, the 1790 census and 1793 county lists show no Welty household or widow there, and the property passed to a non-Welty buyer around 1788&ndash;90. The hoped-for first trace of his wife <b>Elizabeth</b> &mdash; as a widow holding the lot &mdash; does not materialize; that leg is closed negative. His death still brackets to about 1788&ndash;90.</p>
+      </div>
+
+    </div>
+
+    <div class="feed-day">
+      <div class="date">3 July 2026 &mdash; morning</div>
+
+      <div class="find big">
+        <div class="kicker">The uncle&rsquo;s four children found &mdash; and the Manchester founder&rsquo;s son, on the same page</div>
+        <p>The Edenkoben Reformed baptism book (1739&ndash;1771) is now swept image-by-image. It yields the four children of <b>John Jacob Welde &times; Anna Catharina Croissant</b> &mdash; Anna Elisabetha (1740), Maria Margaretha (1744), <b>Johann Nicolaus</b> (1746) and Anna Barbara (1748), all of an age to have crossed on the Snow <i>Ketty</i> in 1752. And on the 14 June 1750 leaf sits <b>Johann Jacob, son of Georg Wolfgang Welde</b> &mdash; the Manchester branch&rsquo;s founding son &mdash; with <b>Jacob Welde &amp; Anna Catharina standing as his godparents</b>. The two Welde households sponsor each other: the kinship between the uncle&rsquo;s line and the Manchester line is now welded on primary paper.</p>
+      </div>
+
+      <div class="find big">
+        <div class="kicker">The Manchester branch grows a generation</div>
+        <p>John Jacob&rsquo;s son <b>Philip Jacob Welty (b. 1780) &times; Catharina Knaub</b> is filled out to nine children &mdash; seven new great-grandchildren added to the Manchester (I1) branch of the tree &mdash; and John Jacob&rsquo;s own five proven children get firmed birth years. Three further sons floated by descendant trees are flagged unconfirmed, and the unreliable WikiTree conflation (Welty-342) is marked so it can&rsquo;t contaminate the line.</p>
+      </div>
+
+      <div class="find big">
+        <div class="kicker">Michael&rsquo;s Chester baptism hunt reaches the end of the road</div>
+        <p>Every remaining venue is now exhausted. Brownback&rsquo;s has <i>no</i> pre-1832 register (its early records are East Vincent&rsquo;s, already negative); Fluck&rsquo;s 1891 church history confirms East Vincent is the <b>only</b> northern-Chester German Reformed register surviving into 1754&ndash;60; the &ldquo;New Hanover&rdquo; cluster&rsquo;s book is identified as New Hanover <i>Lutheran</i> and its 1756&ndash;59 baptisms were paged one by one &mdash; no Welde. And the 29-year blank finally closed: the complete Chester County proprietary tax lists 1765&ndash;1785 were swept at full OCR coverage &mdash; not one Welty, no Philip. Michael&rsquo;s ~1757 baptism remains unlocated; the search now widens beyond Chester.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Philip Jacob married in Pennsylvania, not Germany</div>
+        <p>Every Edenkoben Reformed marriage from 1739 to Philip&rsquo;s August 1750 crossing was read entry-by-entry: <b>no Philip Jacob Welde wedding</b>. He married Elizabeth on the Pennsylvania side, ~1751&ndash;56 &mdash; redirecting the hunt to the German Reformed churches that served fresh Philadelphia arrivals (First Reformed Lancaster, the Goshenhoppen circuit).</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">The Edenkoben register, finished</div>
+        <p>The baptism book was read to its last leaf (&ldquo;FINIS,&rdquo; 1771): zero further W&auml;ldi or Welde after 1752. That closes the hunt for late-born children of the vanished uncle <b>Hans Philipp W&auml;ldi</b> &mdash; he leaves no trace in the register &mdash; and means the Edenkoben Reformed baptisms are now 100% swept.</p>
+      </div>
+
+    </div>
+
+    <div class="feed-day">
+      <div class="date">2 July 2026 &mdash; night</div>
+
+      <div class="find big">
+        <div class="kicker">John Jacob&rsquo;s wedding found &mdash; and it names the ship</div>
+        <p>Image-verified in the Edenkoben Reformed register (Bild 79): <b>John Jacob Welde &times; Anna Catharina Croissant, 5 February 1738</b>. That marriage welds the Snow <i>Ketty</i>&rsquo;s self-signed &ldquo;Jacob Welde&rdquo; (Philadelphia, 16 Oct 1752) to the Edenkoben household &mdash; the uncle&rsquo;s crossing is solved.</p>
+      </div>
+
+      <div class="find big">
+        <div class="kicker">The migration card-file delivers</div>
+        <p>The Palatine emigrant card-file (IPGV Migrationskartei) carries a card for Jakob Welde of <b>Edenkoben</b>: wife <b>Anna Catharina Croissant</b>, and a child recorded at <b>Nantmeal, Chester County, 1773</b> &mdash; the uncle documented in Michael&rsquo;s own birth county. The Croissant in-law chain (1741/1749/1752 crossings, Pennsylvania alias &ldquo;Crassan&rdquo;) came with it, image-checked; and a Peter W&auml;lti, Switzerland &rarr; Bolanderhof, surfaces as a candidate bridge between the Swiss cradle and the Palatinate. A Krebs abstract separately documents Anna Catharina&rsquo;s own emigration (~1756).</p>
+      </div>
+
+      <div class="find big">
+        <div class="kicker">Eudora Welty joins the Swiss family</div>
+        <p>The novelist&rsquo;s line is solved: <b>Eudora Welty (b. 1909, Jackson MS)</b> descends from the separate Swiss (I2b) family via a newly-traced John Welty b. 1765 branch through Fairfield and Hocking Cos., Ohio. Five generations added to the roster and the tree.</p>
+      </div>
+
+      <div class="find big">
+        <div class="kicker">1790, Bedford: a household of four &mdash; two answers in one row</div>
+        <p>The census schedule reads <b>&ldquo;Welty, Micael: 1 male 16+, 2 boys, 1 female.&rdquo;</b> Philip (b. May 1789) is one boy and Henry wasn&rsquo;t born yet &mdash; so the <b>second boy</b> is the first record-grade support for one of the tradition-only elder sons (John b. 1786 or Jacob b. 1788). And with only <b>one</b> woman in the house &mdash; and no female-headed Welty household anywhere in Pennsylvania in 1790 &mdash; grandmother Elizabeth was most likely dead by census day, within a year or two of Philip Jacob.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">The hunt for Elizabeth opens</div>
+        <p>Philip Jacob&rsquo;s wife &mdash; &ldquo;Elizabeth, m. 1754,&rdquo; known only from a cousin&rsquo;s pedigree &mdash; got her own research front (six new leads). First sweeps: every published Philadelphia marriage corpus (licenses, Gloria Dei, 1st Reformed) is <b>negative</b>, pointing the wedding to Chester Co.; a Chester in-law sweep found no father&rsquo;s will but flushed out two flags &mdash; a &ldquo;Weldy&rdquo; taxpayer who proved to be Welsh (<i>Obedia Wieldy</i> of Haverford, decoy, killed same day) and a keeper: a 1804 Hagerstown MD will naming <b>son-in-law Jacob Weldy</b> &mdash; a documented Weldy family at Hagerstown, right where the 1897 letter&rsquo;s legend put a &ldquo;brother.&rdquo;</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">The Northampton Philip is fenced off</div>
+        <p>The flagged &ldquo;Philip Welty&rdquo; entries at Bethlehem (1772) and Moore Twp (1781) &mdash; the one man who could have rewritten Philip Jacob&rsquo;s blank years &mdash; are a <b>persistent Moore Township farmer</b> (40 ac in 1785, 60 ac in 1786, same neighbors both years, image-read) living there through the exact years Philip Jacob heads the Dover tax rolls. Two simultaneous households, two men: decoy, fenced.</p>
+      </div>
+
+    </div>
+
+    <div class="feed-day">
+      <div class="date">2 July 2026 &mdash; evening</div>
+
+      <div class="find big">
+        <div class="kicker">The 1825 land patent wasn&rsquo;t Michael&rsquo;s</div>
+        <p>How the Crooked Run farm was really acquired: <b>Abraham Forney</b> entered the two estate quarters in 1817&ndash;18 (patents image-verified &mdash; the clerk genuinely wrote &ldquo;Fawney&rdquo;) and sold his interest to Michael, exactly as the 1884 county history says. The 1825 &ldquo;Michael Welty&rdquo; patent long pinned to Michael Sr is structurally excluded (its cash act postdates his death) and re-reads as <b>Michael Jr.&rsquo;s</b> own quarter.</p>
+      </div>
+
+      <div class="find big">
+        <div class="kicker">East Vincent is dead &mdash; Brownback&rsquo;s is the last venue standing</div>
+        <p>Michael&rsquo;s baptism hunt narrowed hard: the East Vincent IGI batches cover the register&rsquo;s entire 1733&ndash;1880 run with <b>zero Welty variants</b>, and Falckner Swamp (New Hanover) Reformed &mdash; Leydich&rsquo;s own book &mdash; is negative too. The &ldquo;New Hanover Welte cluster&rdquo; appears in <i>neither</i> New Hanover book; its source is unidentified.</p>
+      </div>
+
+      <div class="find big">
+        <div class="kicker">The bride was from Neckargem&uuml;nd &mdash; and the rival theory died the same day</div>
+        <p>A full re-read of the 1709 marriage entry shows Anna Catharina&rsquo;s late father was a farmer <i>zu Neckargem&uuml;nd</i> (near Heidelberg) &mdash; the &ldquo;von Steinbach&rdquo; misparse theory is dead. The Kraichgau rival reading for the apex&rsquo;s hometown was then tested and killed: zero W&auml;ldi in Neckarbischofsheim&rsquo;s burials 1684&ndash;1712, zero Durchsteinbach in Neckargem&uuml;nd&rsquo;s. The apex tilts back to <b>Donnersberg-Bischheim</b>. Kirchheimbolanden&rsquo;s book is also now 100% swept: no W&auml;ldi family.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">A widow candidate in Section 11</div>
+        <p>GLO bycatch: a female <b>&ldquo;Catharine Walta&rdquo;</b> patented 80 acres in the estate farm&rsquo;s own section in 1833 (&ldquo;to HER heirs,&rdquo; image-verified), with no 1830 household of her own &mdash; a fit for Michael&rsquo;s widow Catharine living in a child&rsquo;s household and buying land beside her dower third.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Philip Jacob&rsquo;s death gets a fork</div>
+        <p>Jacob Welday&rsquo;s 1800 Somerset household holds an unexplained <b>second man 45+</b> &mdash; the first record-grade datum compatible with an aged Philip Jacob having gone west with his sons instead of dying ~1789 in Dover. Killer test: the 1810 follow-through. The same read pushes Jacob&rsquo;s own birth to <b>before 1755</b> (the old &ldquo;b.1759&rdquo; came from a 1946 query).</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Fold3 comes back empty &mdash; and that&rsquo;s informative</div>
+        <p>A sweep of every federal Rev-War collection finds <b>no Michael and no Jacob Welty</b> among the 13 exact-surname hits &mdash; consistent with York Co militia service living outside the federal rolls. The unpublished DAR GRC company roster remains the only known service paper for the pair.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Three &ldquo;Welly&rdquo; heads in Fayette, 1800</div>
+        <p>A new cluster: <b>John Welly</b> of Bullskin Twp &mdash; adjacent to Donegal, ~10 mi from Michael&rsquo;s 1797&ndash;1807 residence &mdash; is a live candidate for brother John of Dover tracking west; Joseph + Peter Welly of Springhill Twp are unsorted.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">The candidate sisters join the tree</div>
+        <p>The Trinity York sibling-set &mdash; Elizabeth (&times;Gauf 1775), Christina (&times;Messerle 1784), Catharina (&times;Boehm 1785), plus John&rsquo;s 1783 Ilgenfritz marriage &mdash; is now on the family tree as clearly-flagged hypotheses under Philip Jacob. Two date audits opened alongside: Michael&rsquo;s &ldquo;9 Sep 1815&rdquo; death vs. an administration docket opened 7 Sep, and Philip Jacob&rsquo;s death bracket now carries the 1800 fork above.</p>
+      </div>
+
+    </div>
+
+    <div class="feed-day">
+      <div class="date">2 July 2026</div>
+
+      <div class="find big">
+        <div class="kicker">The Newberry &ldquo;Welty, Phillip&rdquo; unmasked</div>
+        <p>The 1790 Newberry Twp census entry that threatened Philip Jacob&rsquo;s d.&nbsp;~1789 death bracket is <b>Philip Jacob Wild</b> (b.&nbsp;1759) &mdash; the &ldquo;third Philip Jacob&rdquo; who married Anna Maria Wild at Trinity in 1780. The 1779 Newberry tax list has zero Weltys. Our Philip Jacob&rsquo;s death bracket stands.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">1783 Dover: Philip 100 &amp; Jacob 100, side by side</div>
+        <p>A full-text sweep of PA Archives vol. 21 surfaced a new 1783 Dover tax pairing &mdash; &ldquo;Weldy Phillip 100&rdquo; adjacent to &ldquo;Weldy Jacob 100&rdquo; (and 1781 prints two Philip entries). Fresh support for the farm-partition and brother readings.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Hoover&rsquo;s &ldquo;John Welty of Dover&rdquo; was a misread</div>
+        <p>The 1925 Ruthrauff book&rsquo;s claim fails: the complete 1779 Dover tax list has <b>no John Welty</b> &mdash; the book misread the adjacent line &ldquo;Wilte, John.&rdquo; The real John of Dover (1786&ndash;88) is untouched, but 1790 shows <b>two</b> Johns in the future-Adams-Co grouping, and the Adams Weltys trace to Washington Co MD &mdash; so the Straban leg is now in doubt.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">A confirmation day masquerading as baptisms</div>
+        <p>20 May 1753 turns out to be a Lutheran <b>confirmation</b> day &mdash; the Ancestry entries carrying that date as a &ldquo;baptism&rdquo; are confirmations of older children, and are now treated as suspect.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">One tax sweep sorts all three families</div>
+        <p>The vol.&nbsp;21 hit-map cleanly separates the lines: a continuous &ldquo;Welty, Jacob&nbsp;100&rdquo; in <b>Manchester</b> Twp 1779&ndash;82 (Manchester family), the <b>Manheim</b> Twp cluster of John + Peter verified (Swiss family), and the <b>Dover</b> Weldys (German family). The Taneytown/Emmitsburg MD Weltys &mdash; Catholic, from Eppingen not Edenkoben &mdash; are confirmed a separate family entirely.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Full audit of the research log</div>
+        <p>All 20 sheets audited: numbering collisions fixed, the ghost 10-May wedding date purged everywhere, four new leads opened (highest-payoff: the New Hanover register test), and the trees regenerated.</p>
+      </div>
+
+      <div class="find big">
+        <div class="kicker">Michael&rsquo;s wedding date pinned &mdash; 18 May 1784</div>
+        <p>The Hinke typescript of the Trinity Reformed (York) register gives Michael Welty &times; Christina Ruthrauff verbatim as <b>18 May 1784</b>. The long-circulated &ldquo;10 May 1785 double wedding&rdquo; date is a ghost &mdash; killed.</p>
+      </div>
+
+      <div class="find big">
+        <div class="kicker">Christina&rsquo;s parents identified</div>
+        <p>A 1943 genealogical query and its answer name her parents: <b>Johannes &amp; Anna Barbara (Hoffman) Ruthrauff of Newberry Twp</b>, and show Christina died before 1814 &mdash; which means Michael&rsquo;s two marriages split earlier than assumed.</p>
+      </div>
+
+      <div class="find big">
+        <div class="kicker">Michael&rsquo;s grave slab geolocated</div>
+        <p>Hoover&rsquo;s 1925 county history (ch. XIX) preserves an 1897 family letter in full: grave slab at the <b>Pleasant Hill Schoolhouse, Blicktown</b> (Tuscarawas Co.) &mdash; now geolocated. Same letter carries &ldquo;wedded without consent,&rdquo; the 10&nbsp;+&nbsp;7&nbsp;=&nbsp;17 children count, and a claim that Michael&rsquo;s father settled at Gettysburg &mdash; <b>legend, rejected</b>: his father is Philip Jacob of Dover (Edenkoben line); the Gettysburg lore likely borrowed from the separate Taneytown/Emmitsburg MD Welty family (D12).</p>
+      </div>
+
+      <div class="find big">
+        <div class="kicker">Edenkoben namesake excluded</div>
+        <p>Full sweep of the Edenkoben Reformed baptismal register (all 133 images): <b>no Michael W&auml;lti</b>. Michael&rsquo;s namesake must come from the Pennsylvania side &mdash; a Chester Co. godfather or his mother Elizabeth&rsquo;s kin. Bycatch: two new siblings in the Edenkoben generation (Johannes bp. 1713, Anna Barbara bp. 1714) and a new uncle, Hans Philipp W&auml;ldi (b. ~1693).</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">A second ship candidate: the Snow <i>Ketty</i>, 1752</div>
+        <p>&ldquo;Jacob Welde&rdquo; and &ldquo;Ge&ouml;rg Welde,&rdquo; both self-signed (facsimile-checked), arrived Philadelphia 16 Oct 1752 &mdash; now competing with the <i>Janet</i> (1751) for George Wolfgang&rsquo;s crossing. Philip crossed <b>alone</b> on the <i>Royal Union</i> (&ldquo;Phipps Welde&rdquo;).</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Eight Welty marriages at Trinity York, 1775&ndash;85</div>
+        <p>The register holds a tight cluster &mdash; likely a sibling set. New sisters surfaced: Christina &times; Messerle (1784), Catharina &times; Boehm (1785), plus Johannes &times; Ilgenfritz (1783).</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Michael &amp; Jacob in the same militia company</div>
+        <p>An unpublished DAR GRC typescript roster (2nd Battalion, York Co., ~1780s) lists <b>both Michael and Jacob Welty in one company</b> &mdash; strong brother evidence. Photocopy ordered.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">The farm partition fingerprint</div>
+        <p>Dover Twp tax lists, 1782: Philip&rsquo;s 100 acres shrinks to 80, a new adjacent &ldquo;Jacob&nbsp;80&rdquo; appears, alongside Michael&rsquo;s 44 &mdash; the classic signature of a father dividing land among sons.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Levi Welty named Cripple Creek, Colorado</div>
+        <p>Levi (1825&ndash;1902), a probable grandson of Michael, is credited with naming <b>Cripple Creek</b>. His son Alonzo ran a $100k livery business there.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Weltytown founder resolved</div>
+        <p>The founder of Weltytown was <b>John Henry Welty b. 1764</b> (wife Eva Catherine Stoner) &mdash; not our Michael, who is clean-negative in all three Ruff volumes 1782&ndash;1820.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Bischheim&rsquo;s pastor was a Walth</div>
+        <p>The village pastor from 1681 was <b>Johann Jacob Walth</b> &mdash; the apex surname is also the pastor&rsquo;s family. A kinship hypothesis is open.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Swiss line fully mapped</div>
+        <p>The separate Swiss (I2b) family&rsquo;s spine now runs York &rarr; Frederick MD (1766) &rarr; Rowan NC (1773) &rarr; KY &rarr; Missouri. All &ldquo;Swiss origin&rdquo; grafts onto the German line trace to Bishop Abraham of Dover Twp, Tuscarawas &mdash; Michael&rsquo;s own township. Mystery of the bad grafts: solved.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Family B welded together</div>
+        <p>A new FTDNA match between two living relatives connects the Manchester (I1) family&rsquo;s two halves internally, and a living cousina living cousin&rsquo;srsquo;s Big&nbsp;Y-700 order is confirmed by the project admin.</p>
+      </div>
+
+    </div>
+
+    <div class="feed-day">
+      <div class="date">1 July 2026</div>
+
+      <div class="find big">
+        <div class="kicker">Pivot: solve <i>all</i> the American Weltys</div>
+        <p>The project now tracks all three founding lines in parallel &mdash; the German family (ours, R1b), the Manchester family (I1), and the Swiss family (I2b) &mdash; so decoys get sorted instead of deleted.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Our line is Reformed, not Lutheran</div>
+        <p>Subscribed to Archion and found the correct register: Edenkoben Band 2 (Reformed), baptisms 1696&ndash;1738 &mdash; holding both John Jacob (bp. 1710) and Philip Jacob (bp. 1719).</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Dr. S.F. Welty of Hicksville: close kin</div>
+        <p>FindAGrave proves his father William (b. 1816) was a son of Henry &amp; Mary Byerly &mdash; making the Hicksville benefactor Henry&rsquo;s grandson. William&rsquo;s three pre-1905 children also grave-confirmed.</p>
+      </div>
+
+      <div class="find">
+        <div class="kicker">Brian Hamman&rsquo;s tree swept</div>
+        <p>All ~33 patrilineage pages reviewed: Hans Jacob Waldi (b. ~1691, Edenkoben) named as father of John Jacob b. 1710 &mdash; and three different &ldquo;Philip Jacob Weltys&rdquo; at Dover cleanly split by haplogroup.</p>
+      </div>
+
+    </div>
+
+    <div class="feed-day">
+      <div class="date">28&ndash;29 June 2026</div>
+
+      <div class="find">
+        <div class="kicker">The Y-DNA project confirms the branch</div>
+        <p>Brian Hamman, admin of the Welty Y-DNA project, confirmed the Edenkoben branch map and sent the STR chart. A living cousinA living cousin&rsquo;srsquo;s Y-67 kit traces to George b. 1823 &mdash; the direct line &mdash; making his Big&nbsp;Y upgrade the keystone test.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="contact-card">
+    <b>Questions or comments?</b>
+    <a id="welty-mail" href="#">get in touch</a>
+  </div>
+
+  <footer>
+    <div class="journal-note">
+      <b>The live research journal of a Welty</b>
+      <div class="quote">&ldquo;This is a log of the research I am doing while AI is still cheap. I don&rsquo;t want to poison any waters with what might be inaccurate, so posting it here and letting people pick through it seems like the best idea.&rdquo;</div>
+      <div class="stamp">Last updated: 4 July 2026, 7:00 AM EDT</div>
+    </div>
+    Welty family history research
+    <div class="arms-note">Arms shown are the municipal coats of arms of Bischheim (Donnersbergkreis) and Edenkoben, Rheinland-Pfalz &mdash; the ancestral villages, not personal family arms. Images via Wikimedia Commons.</div>
+  </footer>
+
+</main>
+<script>(function(){var u="outreach",d="theweltyproject.com",a=document.getElementById("welty-mail");if(a){a.href="mailto:"+u+"@"+d+"?subject=The%20Welty%20Project";a.textContent=u+"@"+d;}})();</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+# OS / editor junk
+.DS_Store
+.fuse_hidden*
+__pycache__/
+*.pyc
+
+# Private research data — NEVER commit these.
+# The generator scripts read from a private research log that is not
+# part of this repository. Keep all of it out of version control.
+*.xlsx
+*.xls
+/data/
+/private/
+
+# Contains living relatives' real names, birth years, DNA kit numbers.
+# NOT used by the site generator. Must never be published.
+scripts/seed_roster.py

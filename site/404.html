@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found — The Welty Project</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#7a1f1f">
+<link rel="icon" href="/favicon-v8.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon-v8.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32-v8.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16-v8.png">
+<link rel="apple-touch-icon" href="/apple-touch-v8.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+SC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c1a17; --parchment:#f5efe2; --parchment-deep:#ede4cf;
+    --gold:#b8912f; --gold-bright:#d4af37; --crimson:#7a1f1f;
+    --rule:#cbb98d; --muted:#6e6353;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(180deg,var(--parchment),var(--parchment-deep));
+    color:var(--ink); font-family:'EB Garamond',Georgia,serif; text-align:center;
+    padding:40px 20px;
+  }
+  .card{max-width:560px}
+  img.crest{width:150px; height:auto; filter:drop-shadow(0 4px 10px rgba(60,45,20,.25)); margin-bottom:18px}
+  .code{
+    font-family:'Cormorant SC','EB Garamond',serif; letter-spacing:6px;
+    color:var(--gold); font-size:.95rem; font-weight:600; margin-bottom:6px;
+  }
+  h1{font-family:'Cormorant SC',serif; font-size:2.1rem; margin:0 0 10px; color:var(--crimson)}
+  p{font-size:1.12rem; line-height:1.55; color:var(--muted); margin:0 auto 26px; max-width:44ch}
+  .rule{width:120px; height:2px; background:var(--gold-bright); margin:0 auto 22px; opacity:.8}
+  .btns{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+  a.btn{
+    display:inline-block; text-decoration:none; font-size:1rem;
+    padding:10px 20px; border-radius:6px; border:1px solid var(--gold);
+    color:var(--ink); background:var(--parchment); transition:.15s;
+  }
+  a.btn:hover{background:var(--gold-bright); border-color:var(--gold-bright)}
+  a.btn.primary{background:var(--crimson); color:#f7efe0; border-color:var(--crimson)}
+  a.btn.primary:hover{background:#8f2626}
+</style>
+</head>
+<body>
+  <div class="card">
+    <img class="crest" src="/favicon.svg" alt="The Welty family crest">
+    <div class="code">ERROR 404</div>
+    <h1>This branch of the tree is missing</h1>
+    <div class="rule"></div>
+    <p>The page you were looking for could not be found. It may have been moved, renamed, or never existed.</p>
+    <div class="btns">
+      <a class="btn primary" href="/">Return to the journal</a>
+      <a class="btn" href="/all-families.html">The family tree</a>
+      <a class="btn" href="/timeline.html">The timeline</a>
+    </div>
+  </div>
+</body>
+</html>
