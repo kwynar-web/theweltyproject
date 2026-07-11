@@ -41,6 +41,10 @@ def _fmt_link(url, text):
 def _fmt_segment(seg):
     # 1) drop internal lead codes like [P40], [M10/M18], [FB3/FB9], [SR1-SR3/FB21]
     seg = re.sub(r'\s*\[[^\]]*\]', '', seg).strip(' ;,')
+    # 1a) drop internal event references ("ev.7965", "(ev.7965)") — the roster's
+    #     private event-row pointers that were leaking into Proof/Source lines.
+    seg = re.sub(r'\(\s*ev\.?\s*\d+\s*\)', '', seg)
+    seg = re.sub(r'[;,]?\s*\bev\.?\s*\d+\b', '', seg)
     # 1b) also drop PARENTHETICAL lead codes that leak into proof/source cells:
     #     "(P75)", "(P75, H/W caveat)", "(D7)". Only the parenthetical form is
     #     stripped so real citations that look code-like (e.g. census microfilm
@@ -195,6 +199,118 @@ def pub_dna_label(s):
     return s
 
 
+# ============================ PUBLIC NOTES ORGANIZER ============================
+# The roster Notes field is the internal research DIARY: it carries family
+# codenames (Family A/B), roster node-IDs (B-george, E-...), research-session
+# dates ("2 Jul 2026"), and process-status narration (UPGRADED, MERGED, "the
+# compiler decision", "own-eyes read"). scrub_notes_public() (above) only removed
+# lead codes, so the tree still published that diary voice as a wall of text.
+# This organizer breaks the note at its real diary joints into a few clean,
+# reader-facing paragraphs and strips the internal artifacts — while KEEPING every
+# record citation (reg/img/ark/kit/coll/WikiTree/FindAGrave), which notes_to_html()
+# then renders as clean links. Runs at publish time only; the roster is untouched.
+_N_MONTH = r'(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?'
+_N_DATE  = r'\d{1,2}\s+' + _N_MONTH + r'\s+20\d\d'      # a research-session date
+_N_NODE  = r'[BEA]-[a-z][A-Za-z0-9]*'                   # roster PersonID token
+_N_CAPS  = (r'UPGRADED|DEMOTED|MERGED|RESOLVED|PLACED|CONFIRMATION\s+FOUND|CONFIRMED|'
+            r'CHILD-?LIST\s+VALIDATED|VALIDATED|IMAGE-?VERIF(?:Y|IED)|IMAGE-?READ|'
+            r'RE-?VERIFIED|SHIP|SWEEP|DEATH\s+FORK')
+_N_LEADS = r'Reg\s+\d|Marriage\s+found|Descendant\s+line|Loc\s+tentative'
+_N_JOINT = re.compile(r'\s+—\s+(?=\(?\s*(?:' + _N_DATE + r'|' + _N_CAPS + r'|' + _N_LEADS + r')\b)')
+_N_HEADER = re.compile(
+    r'^\s*(?:'
+    r'(?:' + _N_CAPS + r')\b[^:.—]{0,80}?:'
+    r'|(?:' + _N_CAPS + r')\b[^.—]{0,40}?[→>][^.—]{0,20}?(?=\s|$)'
+    r'|\(?\s*' + _N_DATE + r'[^):.—]*\)?\s*[:,]?'
+    r')\s*', re.I)
+
+def _n_deartifact(s):
+    # fix hyphen artifacts left by earlier lead-code stripping ("with-Philip")
+    s = re.sub(r'\b(with|is|to|as|vs|of|by|for|than|and|the|our|his|her)-(?=[A-Z])', r'\1 ', s)
+    s = re.sub(r'\b(the|not|now|a|an|his|her|our|their)-(?=[a-z])', r'\1 ', s)
+    return s
+
+def _n_strip_internal(s):
+    s = str(s)
+    s = re.sub(r'\(\s*Family\s*[AB]\s+head\s*\)', '', s, flags=re.I)   # "(Family B head)"
+    s = re.sub(r'\bFamily\s*B\b', 'the Manchester branch', s)
+    s = re.sub(r'\bFamily\s*A\b', 'the Swiss line', s)
+    s = re.sub(r'\bFamily\s*C\b', '', s)
+    s = re.sub(r'[,;]?\s*\(?\s*(?:see|cf\.?|per|retired dup|dup|under|vs\.?)\s+' + _N_NODE + r'\)?', '', s, flags=re.I)
+    s = re.sub(r'\(\s*' + _N_NODE + r'\s*\)', '', s)
+    s = re.sub(r'\b' + _N_NODE + r'\b', '', s)
+    s = re.sub(r'\(\s*the compiler decision\s*\)', '', s, flags=re.I)
+    s = re.sub(r'\bthe compiler decision\b', '', s, flags=re.I)
+    s = re.sub(r'\(\s*(?:our|my) reading\s*\)', '', s, flags=re.I)
+    s = re.sub(r'\bown-eyes read\b', '', s, flags=re.I)
+    s = re.sub(r'\b(?:the compiler|Claude/Chrome)[^),.]*?(?:Archion|FamilySearch|FS)\s+(?:login|sign-?in)\b', '', s, flags=re.I)
+    s = re.sub(r'\bthis (?:row|node) is now the PRIMARY identity[;,.]?', '', s, flags=re.I)
+    s = re.sub(r'[;,]?\s*demoted to tentative-duplicate\b', '', s, flags=re.I)
+    s = re.sub(r'\bCAVEAT UNCHANGED\b\s*:?', 'Caveat:', s)
+    s = re.sub(r'\bKwyn\d+\b', '', s)
+    s = re.sub(r'\(\s*' + _N_DATE + r'[^)]*\)', '', s)   # "(2 Jul 2026, …)"
+    s = re.sub(r'\b' + _N_DATE + r'\b', '', s)
+    s = re.sub(r'\b20\d\d\b', '', s)                     # leftover bare "2026"
+    s = _n_deartifact(s)
+    s = re.sub(r'\bour\b', 'the', s)                     # soften internal first person
+    return s
+
+def _n_tidy(seg):
+    seg = re.sub(r'\(\s*[/=;:,.]*\s*\)', '', seg)
+    seg = re.sub(r'\[\s*\]', '', seg)
+    seg = re.sub(r'\s{2,}', ' ', seg)
+    seg = re.sub(r'\bSee\.\s*', '', seg)
+    seg = re.sub(r'\s*\.(\s*\.)+', '.', seg)
+    seg = re.sub(r'\(\s*;?\s*', '(', seg)
+    seg = re.sub(r'[,;:]\s*\)', ')', seg)      # orphaned comma/semicolon before ) left when a stripped date was the paren's tail
+    seg = re.sub(r'\(\s*[,;:]\s*', '(', seg)   # ...or the paren's head
+    seg = re.sub(r'\s+([;,.)])', r'\1', seg)
+    seg = re.sub(r'^[\s;,:.—>-]+', '', seg)
+    seg = re.sub(r'[\s;,:—>-]+$', '', seg)
+    return seg.strip()
+
+def clean_note_segments(raw):
+    """Split one roster Notes cell into cleaned, reader-facing paragraphs."""
+    if not raw:
+        return []
+    s = re.sub(r'\s*\|\|\s*', ' — ', str(raw))     # normalize internal joints
+    s = scrub_display(s)                            # strip lead codes (P75/FB19/TL-34/"see FB19")
+    # Yearless working-addendum stamps ("— 4 Jul :", "— 4 Jul (addendum):") are
+    # internal session markers. The year-form dates are handled by _N_HEADER /
+    # _n_strip_internal, but these carry no year and slipped through. Convert to a
+    # sentence break + capitalize the next word so the addendum publishes clean.
+    s = re.sub(r'[\s.]*—\s*\d{1,2}\s+' + _N_MONTH + r'(?:\s*\([^)]*\))?\s*:\s*(\w)',
+               lambda m: '. ' + m.group(1).upper(), s)
+    s = re.sub(r'\bResearch placeholder\.?\s*', '', s, flags=re.I)  # internal status label
+    out = []
+    for chunk in _N_JOINT.split(s):                # split on RAW (markers intact)
+        chunk = _N_HEADER.sub('', chunk.strip())   # strip leading dated/caps header
+        chunk = _n_strip_internal(chunk)           # remove residual internal cruft
+        chunk = _n_tidy(chunk)
+        if len(re.sub(r'[^A-Za-z0-9]', '', chunk)) < 3:
+            continue
+        if chunk[-1] not in '.!?':
+            chunk += '.'
+        out.append(chunk)
+    return out
+
+def _n_linkify_ark(seg):
+    # bare "ark 3:1:3QHV-V382" -> FamilySearch record link (the "FS ark" form is
+    # handled inside _fmt_segment; this catches the un-prefixed form in notes)
+    return re.sub(r'\bark\s+(\d:\d:[0-9A-Za-z-]+)',
+        lambda m: f'<a href="https://www.familysearch.org/ark:/61903/{m.group(1)}"'
+                  f' target="_blank" rel="noopener">FamilySearch record</a>', seg)
+
+def notes_to_plain(raw):
+    """Cleaned notes as plain text (used for the search index)."""
+    return ' '.join(clean_note_segments(raw))
+
+def notes_to_html(raw):
+    """Cleaned notes as organized HTML paragraphs with linked citations."""
+    segs = clean_note_segments(raw)
+    return '<br>'.join('&bull;&nbsp;' + _n_linkify_ark(_fmt_segment(s)) for s in segs)
+
+
 # ---------------------------- LIVING-PERSON PRIVACY ----------------------------
 # Genealogy standard: never publish the given name, dates, places, spouse, notes,
 # or DNA-kit numbers of a living individual. We keep only the birth SURNAME plus a
@@ -208,6 +324,22 @@ CURRENT_YEAR = 2026
 # rule can't catch them, so they are listed explicitly. (Standard: an unconfirmed-
 # death DNA tester is treated as living.) Remove an ID here if proven deceased.
 KNOWN_LIVING = {"B-merleSMGF"}   # Merle William Welty — SMGF-tested descendant
+
+# ---------------------------- UNPROVEN PARENT LINK ----------------------------
+# Nodes whose descent from the parent above is NOT yet proven. The person is
+# solidly documented in their own right, but the *link* to their father rests on
+# indirect evidence (the Y-DNA pedigree) rather than a direct record. These render
+# with a dashed incoming edge + a "Father link unproven" badge + a one-line note,
+# so the tree tells its own crux story instead of painting the rung solid green.
+# The node's own Proof badge is left untouched (the person stays "proven"); only
+# the edge to the parent is flagged. (6 Jul 2026)
+#   E-michael : Crooked Run Michael -> Dover Philip Jacob. Michael himself is
+#     proven (1815 intestate admin, York Co militia, 18 May 1784 First Trinity
+#     marriage); his descent from Philip Jacob is the direct line's one open rung.
+#     It rests on the Y-DNA pedigree plus his still-unlocated ~1757 baptism. DNA
+#     confirms the R1b Edenkoben branch; it cannot by itself prove Philip Jacob
+#     specifically (vs. another Edenkoben R1b man) was the father.
+LINK_UNPROVEN = {"E-michael"}
 
 def _year_in(s):
     m = re.search(r'\b(1[5-9]\d\d|20\d\d)\b', s or '')
@@ -369,16 +501,11 @@ def main():
     for fam in roots_by_fam:
         roots_by_fam[fam].sort(key=sort_key)
 
-    # ---------- GRAFT (2 Jul 2026: single placement of the Manchester branch) ----------
-    # One large German family (Kwyn's call): the Manchester (I1) branch renders exactly
-    # once, under the Eden household node E-georgwolfgang-disp. B-george is the retired
-    # duplicate of that node; its descendant subtree is re-parented onto Georg Wolfgang
-    # so the whole Wäldi household reads in line. The B- rows stay the single source of
-    # truth — this re-parents them, it does not duplicate any roster row.
-    GRAFT = {"E-georgwolfgang-disp": "B-george"}
-    for host, src in GRAFT.items():
-        if host in by_id and src in by_id and not by_id[host]["children"]:
-            by_id[host]["children"] = list(by_id[src]["children"])
+    # ---------- Manchester branch placement (merged 4 Jul 2026) ----------
+    # The Manchester (I1) branch hangs directly off Georg Wolfgang
+    # (E-georgwolfgang-disp), his documented father-node in the Wäldi household.
+    # The old duplicate root B-george was merged into that node in the roster, so
+    # no render-time graft is needed — the children point straight at him.
 
     # Fold the Manchester branch into the Edenkoben (German) family for display:
     # the public tree shows just two families — Edenkoben and Swiss. The Manchester
@@ -394,7 +521,10 @@ def main():
             "id": p["PersonID"], "fam": p["Family"], "gen": p["GenNum"],
             "name": p["Name"], "birth": p["Birth"], "death": p["Death"],
             "place": p["Place"], "spouse": p["Spouse"], "proof": p["Proof"],
-            "dna": pub_dna_label(p["DNAkit"]), "direct": p["Direct"], "notes": scrub_notes_public(p["Notes"]),
+            "dna": pub_dna_label(p["DNAkit"]), "direct": p["Direct"],
+            "linkunproven": (p["PersonID"] in LINK_UNPROVEN),
+            "notes": notes_to_plain(p["Notes"]),          # plain text -> search index
+            "notes_html": notes_to_html(p["Notes"]),      # organized, linked -> display
             "proof_html": format_source_html(p["ProofRec"]),
             "source_html": format_source_html(p["Source"]),
             "kids": kids,
@@ -410,8 +540,7 @@ def main():
           ", ".join(_idmap.keys())))
 
     counts = {f[0]: sum(1 for p in people if p["Family"] == f[0]) for f in FAMILIES}
-    counts["Manch"] = max(0, counts["Manch"] - 1)   # B-george = retired duplicate of E-georgwolfgang-disp
-    total = len(people) - 1
+    total = len(people)
 
     # ---------- 1) ALL-FAMILIES payload (everyone, full tree) ----------
     payload_all = {
@@ -449,7 +578,7 @@ def main():
 
     # ---------- 1c) GERMAN-LINES by-generation grid (with proof record + source per person) ----------
     OUT_GEN_DE = "Welty Family Tree - By Generation (German).html"
-    gpeople = [p for p in people if p["Family"] in german_fams and p["PersonID"] != "B-george"]
+    gpeople = [p for p in people if p["Family"] in german_fams]
     render_gen_german(OUT_GEN_DE, gpeople, by_id, counts)
     print(f"wrote {OUT_GEN_DE}  ({len(gpeople)} people, generation grid with proofs)")
 
@@ -658,6 +787,12 @@ TEMPLATE = r"""<!DOCTYPE html>
   .person.disputed{border-style:dashed;border-width:1.5px;border-color:var(--disputed);background:#f7f3ef}
   .person.disputed .name{color:var(--disputed)}
   .node.disputed>.row>.tog{border-style:dashed}
+  /* unproven PARENT link (person is proven; the edge to the father is not) */
+  .t-linksoft{background:#8d6e63}
+  .person.linksoft{border-left:3px dashed var(--disputed)}
+  .node.linksoft>.row>.tog{border-style:dashed;border-color:var(--disputed)}
+  .linknote{font-size:10.5px;color:var(--disputed);margin-top:4px;font-style:italic;
+    border-top:1px dotted var(--line);padding-top:3px;line-height:1.35}
   .meta{color:var(--muted);font-size:11.5px;margin-top:2px}
   .meta b{color:#5a4632}
   .notes{font-size:11px;color:var(--muted);font-style:italic;margin-top:2px}
@@ -713,6 +848,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   <span style="color:var(--direct);font-weight:600">Red = the proven direct paternal Welty line</span>
   <span><span class="tag t-kit">Kit</span> living Y-DNA kit owner</span>
   <span><span class="tag t-disputed">Disputed link ⁉</span> same household, different Y-DNA (non-paternity)</span>
+  <span><span class="tag t-linksoft">Father link unproven ⁉</span> the person is proven; their descent from the parent above is not</span>
 </div>
 
 <details class="sourcekey">
@@ -766,21 +902,25 @@ function nodeHTML(id,famKey){
   const p=P[id]; const kids=p.kids||[];
   let cls='person'; if(p.direct==='yes') cls+=' direct'; if(p.direct==='kit') cls+=' kit';
   if((p.proof||'').toLowerCase()==='disputed') cls+=' disputed';
+  if(p.linkunproven) cls+=' linksoft';
   let badges=proofTag(p.proof);
   if(p.dna) badges+=`<span class="tag ${p.direct==='kit'?'t-kit':'t-dna'}">${esc(p.dna)}</span>`;
   if(p.direct==='yes') badges+='<span class="tag t-direct">Direct line</span>';
+  if(p.linkunproven) badges+='<span class="tag t-linksoft">Father link unproven ⁉</span>';
   const g=genLabel(p.gen, p.fam);
   const genchip=g?`<span class="genchip">${g}</span>`:'';
   const meta=metaLine(p);
   const kc=kids.length?`<span class="kidcount">(${kids.length})</span>`:'';
-  let h=`<div class="node${(p.proof||'').toLowerCase()==='disputed'?' disputed':''}" data-id="${id}" data-fam="${p.fam}" data-gen="${p.gen===null?'':p.gen}" data-direct="${p.direct||''}">`;
+  let h=`<div class="node${(p.proof||'').toLowerCase()==='disputed'?' disputed':''}${p.linkunproven?' linksoft':''}" data-id="${id}" data-fam="${p.fam}" data-gen="${p.gen===null?'':p.gen}" data-direct="${p.direct||''}">`;
   h+=`<div class="row">`;
   h+=`<div class="tog${kids.length?'':' leaf'}">${kids.length?'▸':''}</div>`;
   h+=`<div class="${cls}"><div class="top"><span class="name">${esc(p.name)}</span>${genchip}${badges}${kc}</div>`;
   if(meta) h+=`<div class="meta">${meta}</div>`;
-  if(p.notes) h+=`<div class="notes">${esc(p.notes)}</div>`;
+  if(p.notes_html) h+=`<div class="notes">${p.notes_html}</div>`;
+  else if(p.notes) h+=`<div class="notes">${esc(p.notes)}</div>`;
   if(p.proof_html) h+=`<div class="prf"><b>Proof:</b> ${p.proof_html}</div>`;
   if(p.source_html) h+=`<div class="src"><b>Source:</b> ${p.source_html}</div>`;
+  if(p.linkunproven) h+=`<div class="linknote">&#8265; Descent from the father above rests on the Y-DNA pedigree, not a direct record &mdash; the direct line&rsquo;s one open rung. DNA confirms the R1b Edenkoben branch; a baptism or naming record would confirm the father.</div>`;
   h+=`</div></div>`;
   if(kids.length){ h+=`<div class="kids">`+kids.map(k=>nodeHTML(k,famKey)).join('')+`</div>`; }
   h+=`</div>`;

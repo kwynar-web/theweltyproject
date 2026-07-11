@@ -17,6 +17,28 @@ No personal names appear on the page (the direct line is labelled generically).
 Run:  python3 generate_people_map.py
 """
 import openpyxl, json, os, shutil
+import re
+
+# Strip internal lead/source codes (P60, TL-34, M141, FB15 …) from the display
+# fields before they ship in the embedded people JSON. Mirrors scrub_display() in
+# generate_chart.py, plus em-dash + "verify CODE" cleanup for annotated fields.
+_DISPLAY_CODE = r'(?:P|M|D|FB|FA|SR|US|H|FT|PS|DL|TL)-?\d+[a-z]?'
+def scrub_display(s):
+    if not s:
+        return s
+    s = str(s)
+    s = re.sub(r'\s*\[[^\]]*\]', '', s)                                   # [..] codes
+    s = re.sub(r',?\s*\b(?:see|verify|recheck|confirm|check|cf\.?|per)\s+' + _DISPLAY_CODE + r'\b', '', s, flags=re.I)
+    s = re.sub(r'[;,]?\s*(?:—\s*)?\b' + _DISPLAY_CODE + r'\b', '', s)  # standalone codes (incl leading em-dash)
+    s = re.sub(r'\s*—\s*([;,)])', r'\1', s)                           # "7 Sep — ;" -> "7 Sep;"
+    s = re.sub(r'\(\s*—\s*', '(', s)
+    s = re.sub(r'\(\s*[;:,]\s*', '(', s)
+    s = re.sub(r'[;:,]\s*\)', ')', s)
+    s = re.sub(r'\(\s*\)', '', s)
+    s = re.sub(r'\s+([;,.)])', r'\1', s)
+    s = re.sub(r'\(\s+', '(', s)
+    s = re.sub(r'\s{2,}', ' ', s)
+    return s.strip().strip(' ,;—')
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
@@ -191,8 +213,8 @@ def build():
             skipped.append(pid); continue
         entry = {
             "id": pid, "name": p["name"], "gen": p["gen"], "branch": branch_of(pid, people),
-            "proof": p["proof"], "birth": p["birth"], "death": p["death"],
-            "spouse": p["spouse"], "place": p["place"], "dna": p["dna"],
+            "proof": p["proof"], "birth": scrub_display(p["birth"]), "death": scrub_display(p["death"]),
+            "spouse": scrub_display(p["spouse"]), "place": scrub_display(p["place"]), "dna": p["dna"],
             "inherited": (not p["place"]), "direct": pid in DIRECT_IDS,
         }
         cont = NODES[n][3]

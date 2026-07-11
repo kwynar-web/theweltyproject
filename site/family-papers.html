@@ -168,7 +168,7 @@
 <body>
 <!--welty-hdr:start-->
 <style>
-.wsite-hdr{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+.wsite-hdr{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
   padding:11px 22px;background:#faf5e9;border-bottom:2px solid #b8912f;
   font-family:'EB Garamond',Georgia,'Times New Roman',serif;box-shadow:0 1px 5px rgba(60,45,20,.09);}
 .wsite-hdr *{box-sizing:border-box}
@@ -178,11 +178,16 @@
   letter-spacing:.5px;color:#1c1a17;line-height:1.05}
 .wsite-word small{display:block;font-family:'EB Garamond',Georgia,serif;font-weight:400;font-size:.6rem;
   letter-spacing:2.5px;text-transform:uppercase;color:#8a7a52;margin-top:3px}
-.wsite-nav{display:flex;gap:5px;flex-wrap:wrap}
+.wsite-nav{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
 .wsite-nav a{text-decoration:none;color:#5a4f3c;font-size:1.02rem;padding:6px 14px;border-radius:5px;
   border:1px solid transparent;transition:.15s}
 .wsite-nav a:hover{background:#f0e6cf;color:#1c1a17}
 .wsite-nav a[aria-current=page]{color:#7a1f1f;border-color:#cbb98d;background:#fffdf6;font-weight:600}
+.wsite-lang{display:inline-flex;margin-left:8px;border:1px solid #cbb98d;border-radius:5px;overflow:hidden}
+.wsite-lang a{padding:6px 11px;font-size:.9rem;color:#7a6a4a;text-decoration:none;border:0;letter-spacing:.6px;border-radius:0}
+.wsite-lang a:hover{background:#f0e6cf;color:#1c1a17}
+.wsite-lang a+a{border-left:1px solid #cbb98d}
+.wsite-lang a[aria-current=true]{background:#7a1f1f;color:#fff;font-weight:600}
 @media(max-width:520px){.wsite-word{font-size:1.1rem}.wsite-nav a{padding:5px 10px;font-size:.94rem}}
 </style>
 <header class="wsite-hdr">
@@ -342,11 +347,6 @@
 
   </div>
 
-  <footer>
-    <div style="font-style:italic;margin-bottom:8px;">More of Marian&rsquo;s collection will be added here as it is photographed and catalogued.</div>
-    Welty family history research
-    <div class="arms-note">Family papers shown by courtesy of the family&rsquo;s own archive. Traditions preserved on these documents are noted where later research has revised them.</div>
-  </footer>
 
 </main>
 
@@ -400,14 +400,34 @@
 </script>
 <!--welty-ftr:start-->
 <style>
-.wsite-ftr{margin-top:42px;padding:22px 20px;border-top:1px solid #cbb98d;text-align:center;
-  font-family:'EB Garamond',Georgia,'Times New Roman',serif;color:#6e6353;background:#faf6ec;font-size:1rem}
+.wsite-ftr{margin-top:42px;padding:26px 20px 30px;border-top:1px solid #cbb98d;text-align:center;
+  font-family:'EB Garamond',Georgia,'Times New Roman',serif;color:#6e6353;background:#faf6ec;
+  font-size:1rem;line-height:1.6;font-style:normal;letter-spacing:normal}
 .wsite-ftr a{color:#7a1f1f;font-weight:600;text-decoration:none;border-bottom:1px solid #cbb98d}
 .wsite-ftr a:hover{color:#1c1a17}
+.wsite-note{max-width:680px;margin:0 auto 14px;font-size:.95rem;color:#55493a}
+.wsite-note b{font-family:'Cormorant SC',Georgia,serif;color:#7a1f1f;letter-spacing:.03em;
+  display:block;margin-bottom:4px;font-size:1.05rem}
+.wsite-note .q{display:block;font-style:italic;margin:2px 0}
+.wsite-note .upd{display:block;font-size:.84rem;margin-top:5px}
+.wsite-note .repos{display:block;font-size:.84rem;margin-top:6px}
+.wsite-contact{margin:8px 0 2px}
+.wsite-oss{max-width:680px;margin:16px auto 0;padding-top:13px;border-top:1px solid #e3d6b3;
+  font-size:.8rem;line-height:1.6;color:#8a7d68}
+.wsite-oss a{font-weight:600}
 </style>
-<footer class="wsite-ftr">Questions or comments? <a id="wsite-mail" href="#">get in touch</a>
-<script>(function(){var u="outreach",d="theweltyproject.com",a=document.getElementById("wsite-mail");if(a){a.href="mailto:"+u+"@"+d+"?subject=The%20Welty%20Project";a.textContent=u+"@"+d;}})();</script>
+<footer class="wsite-ftr"><div class="wsite-note"><span class="q">More of Marian&rsquo;s collection will be added here as it is photographed and catalogued.</span><span>Family papers shown by courtesy of the family&rsquo;s own archive; traditions preserved on these documents are noted where later research has revised them.</span></div>
+<div class="wsite-contact">Questions or comments? <a id="wsite-mail" href="#">get in touch</a></div>
+<div class="wsite-oss">Open source &mdash; the site&rsquo;s code is licensed <a href="https://github.com/kwynar-web/theweltyproject/blob/main/LICENSE" target="_blank" rel="noopener">AGPL-3.0</a> and its content <a href="https://github.com/kwynar-web/theweltyproject/blob/main/LICENSE-CONTENT" target="_blank" rel="noopener">CC0&nbsp;1.0</a>; the full source lives <a href="https://github.com/kwynar-web/theweltyproject" target="_blank" rel="noopener">on GitHub</a>.<br>Free to keep, always &mdash; never sold or gated. The research is public domain (CC0) so anyone can copy, correct, or build on it, and the code stays open (AGPL-3.0).<br>Set in EB&nbsp;Garamond &amp; Cormorant&nbsp;SC via Google Fonts (SIL Open Font License). Municipal arms of Bischheim &amp; Edenkoben and the U.S. state flags are <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> files &mdash; the ancestral villages&rsquo; civic arms, not personal family arms.</div>
 </footer>
+<script>(function(){var u="outreach",d="theweltyproject.com",a=document.getElementById("wsite-mail");if(a){a.href="mailto:"+u+"@"+d+"?subject=The%20Welty%20Project";a.textContent=u+"@"+d;}})();</script>
 <!--welty-ftr:end-->
+<style>
+#toTop{position:fixed;right:18px;bottom:18px;z-index:60;width:46px;height:46px;border-radius:50%;border:1px solid #b8912f;background:#1e2a4a;color:#f3ead2;font-size:1.25rem;line-height:1;cursor:pointer;box-shadow:0 3px 12px rgba(20,25,45,.32);opacity:0;pointer-events:none;transition:opacity .2s,transform .15s;display:flex;align-items:center;justify-content:center}
+#toTop.show{opacity:1;pointer-events:auto}
+#toTop:hover{background:#16203a;transform:translateY(-2px)}
+</style>
+<button id="toTop" type="button" aria-label="Back to top" title="Back to top">&#8593;</button>
+<script>(function(){var b=document.getElementById('toTop');if(!b)return;function s(){if(window.pageYOffset>600)b.classList.add('show');else b.classList.remove('show');}window.addEventListener('scroll',s,{passive:true});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});s();})();</script>
 </body>
 </html>

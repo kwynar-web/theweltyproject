@@ -17,20 +17,65 @@ CONTACT_JS = ('<script>(function(){var u="outreach",d="theweltyproject.com",'
               'a=document.getElementById("wsite-mail");if(a){a.href="mailto:"+u+"@"+d+'
               '"?subject=The%20Welty%20Project";a.textContent=u+"@"+d;}})();</script>')
 
-# shared contact footer (index.html has its own footer + contact card, so it is skipped)
-FOOTER_ON = ("all-families.html", "timeline.html", "family-papers.html")
+# One consistent footer is injected on EVERY page (4 Jul 2026). Structure is identical
+# everywhere and always in the same spot, right before </body>:
+#   1. a page-specific NOTE (the only part that varies; set per page in PAGES["note"])
+#   2. the shared contact line
+#   3. the shared open-source attribution block (licence + repo + third-party credits)
+# Because inject_seo now owns the WHOLE footer, each page's HTML must NOT carry its own
+# hand-written <footer>; if one is re-added it will double up. The map credit
+# (Leaflet + OpenStreetMap) is added only where PAGES["maps"] is true, since OSM
+# requires attribution wherever its tiles appear.
+REPO = "https://github.com/kwynar-web/theweltyproject"
 
-def footer():
-    return FSTART + """
+FOOTER_CSS = """
 <style>
-.wsite-ftr{margin-top:42px;padding:22px 20px;border-top:1px solid #cbb98d;text-align:center;
-  font-family:'EB Garamond',Georgia,'Times New Roman',serif;color:#6e6353;background:#faf6ec;font-size:1rem}
+.wsite-ftr{margin-top:42px;padding:26px 20px 30px;border-top:1px solid #cbb98d;text-align:center;
+  font-family:'EB Garamond',Georgia,'Times New Roman',serif;color:#6e6353;background:#faf6ec;
+  font-size:1rem;line-height:1.6;font-style:normal;letter-spacing:normal}
 .wsite-ftr a{color:#7a1f1f;font-weight:600;text-decoration:none;border-bottom:1px solid #cbb98d}
 .wsite-ftr a:hover{color:#1c1a17}
-</style>
-<footer class="wsite-ftr">Questions or comments? <a id="wsite-mail" href="#">get in touch</a>
-""" + CONTACT_JS + """
+.wsite-note{max-width:680px;margin:0 auto 14px;font-size:.95rem;color:#55493a}
+.wsite-note b{font-family:'Cormorant SC',Georgia,serif;color:#7a1f1f;letter-spacing:.03em;
+  display:block;margin-bottom:4px;font-size:1.05rem}
+.wsite-note .q{display:block;font-style:italic;margin:2px 0}
+.wsite-note .upd{display:block;font-size:.84rem;margin-top:5px}
+.wsite-note .repos{display:block;font-size:.84rem;margin-top:6px}
+.wsite-contact{margin:8px 0 2px}
+.wsite-oss{max-width:680px;margin:16px auto 0;padding-top:13px;border-top:1px solid #e3d6b3;
+  font-size:.8rem;line-height:1.6;color:#8a7d68}
+.wsite-oss a{font-weight:600}
+</style>"""
+
+MAP_CREDIT = (' Maps &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" '
+              'rel="noopener">OpenStreetMap</a> contributors, rendered with '
+              '<a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a> '
+              '(BSD-2-Clause).')
+
+def oss_block(maps=False):
+    return ('<div class="wsite-oss">'
+        'Open source &mdash; the site&rsquo;s code is licensed '
+        '<a href="%s/blob/main/LICENSE" target="_blank" rel="noopener">AGPL-3.0</a> '
+        'and its content <a href="%s/blob/main/LICENSE-CONTENT" target="_blank" rel="noopener">CC0&nbsp;1.0</a>; '
+        'the full source lives <a href="%s" target="_blank" rel="noopener">on GitHub</a>.<br>'
+        'Free to keep, always &mdash; never sold or gated. The research is public domain (CC0) '
+        'so anyone can copy, correct, or build on it, and the code stays open (AGPL-3.0).<br>'
+        'Set in EB&nbsp;Garamond &amp; Cormorant&nbsp;SC via Google Fonts (SIL Open Font License).'
+        '%s'
+        ' Municipal arms of Bischheim &amp; Edenkoben and the U.S. state flags are '
+        '<a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> '
+        'files &mdash; the ancestral villages&rsquo; civic arms, not personal family arms.'
+        '</div>' % (REPO, REPO, REPO, MAP_CREDIT if maps else ""))
+
+def footer(cfg):
+    note = cfg.get("note", "")
+    note_html = ('<div class="wsite-note">%s</div>' % note) if note else ""
+    return FSTART + FOOTER_CSS + """
+<footer class="wsite-ftr">""" + note_html + """
+<div class="wsite-contact">Questions or comments? <a id="wsite-mail" href="#">get in touch</a></div>
+""" + oss_block(cfg.get("maps", False)) + """
 </footer>
+""" + CONTACT_JS + """
 """ + FEND
 
 # ---- shared site header + nav (self-contained; scoped .wsite-* classes) --------
@@ -85,6 +130,11 @@ PAGES = {
              "Edenkoben in the Palatinate — traced by DNA and primary records from "
              "c. 1680 to today.",
         jsonld=True,
+        note='<b>The live research journal of a Welty.</b>'
+             '<span class="q">&ldquo;This is a log of the research I am doing while AI is still '
+             'cheap. I don&rsquo;t want to poison any waters with what might be inaccurate, so '
+             'posting it here and letting people pick through it seems like the best idea.&rdquo;</span>'
+             '<span class="upd">Last updated 4 July 2026, 10:30&nbsp;AM EDT.</span>',
     ),
     "all-families.html": dict(
         nav="all",
@@ -94,6 +144,9 @@ PAGES = {
              "family of the Palatinate and the genuinely separate Swiss Emmental "
              "Wälti — built from primary records and Y-DNA.",
         jsonld=False,
+        note='The complete interactive Welty tree &mdash; the German Edenkoben family of the '
+             'Palatinate and the genuinely separate Swiss W&auml;lti line, built from primary '
+             'records and Y-DNA.',
     ),
     "timeline.html": dict(
         nav="timeline",
@@ -103,6 +156,17 @@ PAGES = {
              "Edenkoben in the Palatinate across the Atlantic to Pennsylvania, "
              "Ohio and beyond.",
         jsonld=False,
+        maps=True,
+        note='<b>Ten generations, two continents, one river valley to another.</b>'
+             '<span class="upd">Compiled from the Welty Ancestry Research Log &mdash; '
+             'last updated 4 July 2026.</span>'
+             '<span class="repos">Key repositories: '
+             '<a href="https://www.archion.de" target="_blank" rel="noopener">Archion</a> &middot; '
+             '<a href="https://www.familysearch.org/search/full-text" target="_blank" rel="noopener">FamilySearch full-text</a> &middot; '
+             '<a href="https://www.familytreedna.com/public/Welty" target="_blank" rel="noopener">FTDNA Welty project</a> &middot; '
+             '<a href="http://www.brian-hamman.com/WeltyYDNAprojectResults.htm" target="_blank" rel="noopener">Hamman patrilineages</a> &middot; '
+             '<a href="https://www.yorkcountyarchives.org/" target="_blank" rel="noopener">York County Archives</a> &middot; '
+             '<a href="https://services.dar.org/Public/DAR_Research/search_adb/" target="_blank" rel="noopener">DAR GRC</a></span>',
     ),
     "family-papers.html": dict(
         nav="papers",
@@ -112,6 +176,11 @@ PAGES = {
              "typed family genealogy, and record copies from the Welty family's own "
              "papers.",
         jsonld=False,
+        note='<span class="q">More of Marian&rsquo;s collection will be added here as it is '
+             'photographed and catalogued.</span>'
+             '<span>Family papers shown by courtesy of the family&rsquo;s own archive; '
+             'traditions preserved on these documents are noted where later research has '
+             'revised them.</span>',
     ),
 }
 
@@ -209,13 +278,12 @@ def main():
         else:
             print("no <body> in", fn)
 
-        # --- shared contact footer, right before </body> (skip index: it has its own) ---
+        # --- shared footer, right before </body> (every page; index included) ---
         t = re.sub(re.escape(FSTART) + r".*?" + re.escape(FEND) + r"\n?", "", t, flags=re.S)
-        if fn in FOOTER_ON:
-            mc = re.search(r"</body>", t)
-            if mc:
-                k = mc.start()
-                t = t[:k] + footer() + "\n" + t[k:]
+        mc = re.search(r"</body>", t)
+        if mc:
+            k = mc.start()
+            t = t[:k] + footer(cfg) + "\n" + t[k:]
 
         open(fn, "w", encoding="utf-8").write(t)
         print("injected:", fn)
