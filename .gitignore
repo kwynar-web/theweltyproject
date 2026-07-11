@@ -4,6 +4,10 @@
 __pycache__/
 *.pyc
 
+# Build scratch from build_records.py (mount forbids unlink; keep them uncommitted)
+site/records/full/_tmp*
+site/records/full/_probe*
+
 # Private research data — NEVER commit these.
 # The generator scripts read from a private research log that is not
 # part of this repository. Keep all of it out of version control.

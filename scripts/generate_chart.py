@@ -11,12 +11,26 @@ RETIRED (kept in code, not called): the old 3-family 'By Generation' grid
 (render_gen_grid) and the German-Lines graphical node-and-line chart
 (render_graph) — Kwyn prefers the proof-annotated By-Generation grid (1 Jul 2026).
 """
-import json, html, re, openpyxl
+import json, html, re, os, openpyxl
 
 XLSX    = "Welty Ancestry Research Log.xlsx"
 SHEET   = "People Roster (chart source)"
 OUT_ALL = "Welty Family Tree - All Families.html"
 OUT_GEN = "Welty Family Tree - By Generation.html"
+
+# Record-image chips: built by build_records.py -> site/records/records.json.
+# Maps PersonID -> [ {slug, caption, repo, url, confidence}, ... ]. Optional:
+# if the file is absent (e.g. a fresh clone before build_records runs), the tree
+# renders exactly as before with no chips.
+_RECORDS_JSON = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                             "..", "site", "records", "records.json")
+def _load_records():
+    try:
+        with open(_RECORDS_JSON, encoding="utf-8") as fh:
+            return json.load(fh).get("by_person", {})
+    except (FileNotFoundError, ValueError):
+        return {}
+RECORDS_BY_PERSON = _load_records()
 
 COLS = ["PersonID","Family","Gen","Name","Sex","Birth","Death","Place",
         "Spouse","FatherID","Proof","DNAkit","Direct","Notes","ProofRec","Source"]
@@ -108,9 +122,18 @@ def _fmt_segment(seg):
     seg = re.sub(r'\bGAMEO\b',
         lambda m: stash(_fmt_link('https://gameo.org',
                                   'GAMEO (Global Anabaptist Mennonite Encyclopedia Online)')), seg)
-    seg = re.sub(r'\barchive\.org\s+([a-z0-9]+)',
-        lambda m: stash('archive.org ' +
-                        _fmt_link(f'https://archive.org/details/{m.group(1)}', m.group(1))), seg)
+    # archive.org item IDs: capture the FULL identifier (may contain _ . - and
+    # upper-case, e.g. 'bub_gb_5doyAQAAMAAJ') — the old [a-z0-9]+ truncated at the
+    # first underscore, producing dead links like /details/bub. Only linkify tokens
+    # that look like real IA identifiers (contain a digit); this leaves descriptive
+    # prose such as 'archive.org viewer' as plain text instead of a bogus link.
+    def _ia_link(m):
+        tok = m.group(1).rstrip('.,);:')
+        if not re.search(r'\d', tok):          # 'viewer', 'stream' etc. -> not an ID
+            return m.group(0)
+        return stash('archive.org ' +
+                     _fmt_link(f'https://archive.org/details/{tok}', tok))
+    seg = re.sub(r'\barchive\.org\s+([A-Za-z0-9][A-Za-z0-9_.-]*)', _ia_link, seg)
     seg = re.sub(r'\bbrian-hamman\.com/(\S+)',
         lambda m: stash(_fmt_link(f'https://brian-hamman.com/{m.group(1)}',
                                   'brian-hamman.com/' + m.group(1))), seg)
@@ -527,6 +550,9 @@ def main():
             "notes_html": notes_to_html(p["Notes"]),      # organized, linked -> display
             "proof_html": format_source_html(p["ProofRec"]),
             "source_html": format_source_html(p["Source"]),
+            # record-image chips, but never for living people (privacy)
+            "records": ([] if str(p.get("Proof","")).lower()=="living"
+                        else RECORDS_BY_PERSON.get(p["PersonID"], [])),
             "kids": kids,
         }
 
@@ -809,10 +835,32 @@ TEMPLATE = r"""<!DOCTYPE html>
 
   .foot{margin-top:26px;font-size:12px;color:var(--muted)}
   .foot b{color:#5a4632}
+/*RECORDS-CSS-START*/
+  .reclabel{font-size:11.5px;color:var(--muted);margin:6px 0 3px}
+  .reclabel b{color:#5a4632;font-weight:600}
+  .recstrip{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 2px}
+  .recchip{width:54px;height:54px;padding:0;border:1px solid var(--line);border-radius:6px;
+    overflow:hidden;background:#efe7d3;line-height:0;cursor:zoom-in;
+    box-shadow:0 1px 3px rgba(90,70,30,.18);transition:transform .12s ease,box-shadow .12s ease,border-color .12s}
+  .recchip:hover,.recchip:focus{transform:translateY(-1px);border-color:#b8912f;
+    box-shadow:0 3px 9px rgba(90,70,30,.32);outline:none}
+  .recchip img{width:100%;height:100%;object-fit:cover;display:block}
+  #reclb{position:fixed;inset:0;z-index:200;display:none;background:rgba(20,16,10,.87);
+    align-items:center;justify-content:center;flex-direction:column;padding:24px}
+  #reclb.open{display:flex}
+  #reclb img{max-width:94vw;max-height:80vh;object-fit:contain;border:3px solid #f6f1e7;
+    box-shadow:0 6px 34px rgba(0,0,0,.55)}
+  #reclb .cap{color:#f6f1e7;max-width:900px;margin-top:12px;font-size:14px;text-align:center;line-height:1.45}
+  #reclb .cap a{color:#ffd777}
+  #reclb .x{position:absolute;top:12px;right:20px;background:none;border:0;color:#f6f1e7;
+    font-size:32px;line-height:1;cursor:pointer}
+  @media(max-width:640px){.recchip{width:46px;height:46px}}
+/*RECORDS-CSS-END*/
   @media print{
     body{background:#fff;padding:0}.controls{display:none}
     .kids{display:block !important}.tog{display:none}
     .person{box-shadow:none}.node{break-inside:avoid}
+    .recstrip,.reclabel{display:none}
   }
 </style>
 </head>
@@ -898,6 +946,23 @@ function metaLine(p){
   return bits.join(' · ');
 }
 
+/*RECORDS-JS-START*/
+function recStrip(recs){
+  let s=`<div class="reclabel">&#128247; <b>Record image${recs.length>1?'s':''}</b> · ${recs.length} &mdash; primary manuscript${recs.length>1?'s':''}, click to enlarge</div><div class="recstrip">`;
+  s+=recs.map(r=>`<button type="button" class="recchip" data-slug="${r.slug}" data-cap="${esc(r.caption)}" data-url="${r.url||''}" data-repo="${esc(r.repo||'')}" onclick="recOpen(this)" aria-label="Open record image: ${esc(r.caption)}"><img loading="lazy" src="records/thumb/${r.slug}.jpg" alt="${esc(r.caption)}"></button>`).join('');
+  return s+`</div>`;
+}
+function recOpen(btn){
+  const lb=document.getElementById('reclb');
+  const img=lb.querySelector('img'), cap=lb.querySelector('.cap');
+  img.src='records/full/'+btn.dataset.slug+'.jpg';
+  let c=esc(btn.dataset.cap||'');
+  if(btn.dataset.url) c+=` <a href="${btn.dataset.url}" target="_blank" rel="noopener">&mdash; view at ${esc(btn.dataset.repo)||'source'}</a>`;
+  cap.innerHTML=c; lb.classList.add('open'); document.body.style.overflow='hidden';
+}
+function recClose(){const lb=document.getElementById('reclb');lb.classList.remove('open');lb.querySelector('img').src='';document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')recClose();});
+/*RECORDS-JS-END*/
 function nodeHTML(id,famKey){
   const p=P[id]; const kids=p.kids||[];
   let cls='person'; if(p.direct==='yes') cls+=' direct'; if(p.direct==='kit') cls+=' kit';
@@ -920,6 +985,7 @@ function nodeHTML(id,famKey){
   else if(p.notes) h+=`<div class="notes">${esc(p.notes)}</div>`;
   if(p.proof_html) h+=`<div class="prf"><b>Proof:</b> ${p.proof_html}</div>`;
   if(p.source_html) h+=`<div class="src"><b>Source:</b> ${p.source_html}</div>`;
+  if(p.records&&p.records.length) h+=recStrip(p.records); /*RECORDS-RENDER*/
   if(p.linkunproven) h+=`<div class="linknote">&#8265; Descent from the father above rests on the Y-DNA pedigree, not a direct record &mdash; the direct line&rsquo;s one open rung. DNA confirms the R1b Edenkoben branch; a baptism or naming record would confirm the father.</div>`;
   h+=`</div></div>`;
   if(kids.length){ h+=`<div class="kids">`+kids.map(k=>nodeHTML(k,famKey)).join('')+`</div>`; }
@@ -1026,6 +1092,7 @@ function applyFilter(){
 }
 applyFilter();
 </script>
+<!--RECORDS-LB-START--><div id="reclb" onclick="if(event.target.id==='reclb')recClose()"><button type="button" class="x" onclick="recClose()" aria-label="Close">&times;</button><img alt="Record image"><div class="cap"></div></div><!--RECORDS-LB-END-->
 </body>
 </html>
 """
