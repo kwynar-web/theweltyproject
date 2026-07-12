@@ -48,6 +48,10 @@ M = {
    (["E-johnjacob1710"], "John Jacob Welde's baptism, 1710, Edenkoben Reformed — parents Hanß Jacob Wäldy & Anna Catharina (Bild 52).", "high"),
  "FB19 — Georg Wolfgang Wälti baptism 29 Sep 1716 (Archion reg 54930 Edenkoben2 Bild 66).pdf":
    (["E-georgwolfgang-disp"], "Georg Wolfgang Wälti's baptism, 29 Sep 1716, Edenkoben Reformed — father Hanß Jacob Wälti & Anna Catharina (Bild 66).", "high"),
+ "P53 — Johannes Wälti baptism 2 Feb 1713 (Archion reg 54930 Edenkoben2 Bild 58).pdf":
+   (["E-johannes1713"], "Johannes Wälti's baptism, 2 Feb 1713, Edenkoben Reformed — father Hanß Jacob Wäldi 'Müller' & Anna Catharina (Bild 58).", "high"),
+ "P53 — Anna Barbara Wälti baptism Aug 1714 (Archion reg 54930 Edenkoben2 Bild 60).pdf":
+   (["E-annabarbara1714"], "Anna Barbara Wälti's baptism, Aug 1714, Edenkoben Reformed — father Hanß Jacob Wäldi & Anna Catharina (Bild 60).", "high"),
  "FB57 — Georg Wolffgang Welde marriage entry (Archion reg 54927 Edenkoben Taufen Bild 56).pdf":
    (["E-georgwolfgang-disp"], "Georg Wolfgang Welde's marriage entry, Edenkoben Reformed (Bild 56).", "high"),
  "FB57 — Georg Wolffgang Welde entry (Archion reg 54927 Edenkoben Taufen Bild 62).pdf":
@@ -166,6 +170,9 @@ KEEP_ON_TREE = {
  "P40 — Philip Jacob Wälti baptism 7 May 1719 (Archion reg 54930 Edenkoben2 Bild 71).pdf",                                # baptism — the parentage proof
  "P41 — John Jacob Welde baptism 1710 (Archion reg 54930 Edenkoben2 Bild 52).pdf",                                        # baptism
  "FB19 — Georg Wolfgang Wälti baptism 29 Sep 1716 (Archion reg 54930 Edenkoben2 Bild 66).pdf",                            # baptism
+ "P53 — Johannes Wälti baptism 2 Feb 1713 (Archion reg 54930 Edenkoben2 Bild 58).pdf",                                    # baptism
+ "P53 — Anna Barbara Wälti baptism Aug 1714 (Archion reg 54930 Edenkoben2 Bild 60).pdf",                                  # baptism
+ "TL55 - Welty Black Book pg3 (John Jacob 1710 x Christina Broff family register; FS memory 9VSM-X8K, uploader genehisthome).png",  # family register in his own hand
  "P74 + FB56 — Joh Jacob Welde x Anna Catharina Croissant marriage (Archion reg 54933 Edenkoben4 Bild 79).pdf",           # marriage
  "FB57 — Georg Wolffgang Welde marriage entry (Archion reg 54927 Edenkoben Taufen Bild 56).pdf",                          # marriage
  "FB57 — Georg Wolffgang Welde entry (Archion reg 54927 Edenkoben Taufen Bild 62).pdf",                                   # 1750 baptism of Johan Jacob

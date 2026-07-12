@@ -136,6 +136,58 @@
       "caption": "Marriage of Joh. Jacob Welde and Anna Catharina Croissant, Edenkoben Reformed (Bild 79)."
      }
     ]
+   },
+   {
+    "slug": "tl55-welty-black-book-pg3",
+    "caption": "The 'Welty Black Book' family-register page for John Jacob Welde (b.1710). Note: the 'Broff' wife-name it carries is a debunked name-match.",
+    "repo": null,
+    "url": null,
+    "confidence": "med",
+    "logids": [
+     "TL55"
+    ],
+    "pages": [
+     {
+      "slug": "tl55-welty-black-book-pg3",
+      "caption": "The 'Welty Black Book' family-register page for John Jacob Welde (b.1710). Note: the 'Broff' wife-name it carries is a debunked name-match."
+     }
+    ]
+   }
+  ],
+  "E-annabarbara1714": [
+   {
+    "slug": "p53-anna-barbara-w-lti-baptism-aug-1714",
+    "caption": "Anna Barbara Wälti's baptism, Aug 1714, Edenkoben Reformed — father Hanß Jacob Wäldi & Anna Catharina (Bild 60).",
+    "repo": "Archion",
+    "url": "https://www.archion.de/de/viewer/churchRegister/54930",
+    "confidence": "high",
+    "logids": [
+     "P53"
+    ],
+    "pages": [
+     {
+      "slug": "p53-anna-barbara-w-lti-baptism-aug-1714",
+      "caption": "Anna Barbara Wälti's baptism, Aug 1714, Edenkoben Reformed — father Hanß Jacob Wäldi & Anna Catharina (Bild 60)."
+     }
+    ]
+   }
+  ],
+  "E-johannes1713": [
+   {
+    "slug": "p53-johannes-w-lti-baptism-2-feb-1713",
+    "caption": "Johannes Wälti's baptism, 2 Feb 1713, Edenkoben Reformed — father Hanß Jacob Wäldi 'Müller' & Anna Catharina (Bild 58).",
+    "repo": "Archion",
+    "url": "https://www.archion.de/de/viewer/churchRegister/54930",
+    "confidence": "high",
+    "logids": [
+     "P53"
+    ],
+    "pages": [
+     {
+      "slug": "p53-johannes-w-lti-baptism-2-feb-1713",
+      "caption": "Johannes Wälti's baptism, 2 Feb 1713, Edenkoben Reformed — father Hanß Jacob Wäldi 'Müller' & Anna Catharina (Bild 58)."
+     }
+    ]
    }
   ],
   "E-jjc-annaelis1740": [
@@ -691,17 +743,6 @@
    "file": "P6 — Philip Welty of Newberry to Jacob Bare 1797, D7 firewall (FamilySearch York Deed Bks img200).png"
   },
   {
-   "slug": "tl55-welty-black-book-pg3",
-   "caption": "The 'Welty Black Book' family-register page for John Jacob Welde (b.1710). Note: the 'Broff' wife-name it carries is a debunked name-match.",
-   "logids": [
-    "TL55"
-   ],
-   "repo": null,
-   "url": null,
-   "confidence": "med",
-   "file": "TL55 - Welty Black Book pg3 (John Jacob 1710 x Christina Broff family register; FS memory 9VSM-X8K, uploader genehisthome).png"
-  },
-  {
    "slug": "us19-obediah-weldy-decoy-chester-tax-1768-71",
    "caption": "DECOY — Obediah Weldy, Chester Co. tax 1768–71; not the line.",
    "logids": [
@@ -714,10 +755,10 @@
   }
  ],
  "_meta": {
-  "total_files": 54,
-  "chips": 17,
-  "images_on_people": 17,
-  "evidence_only": 37,
+  "total_files": 56,
+  "chips": 20,
+  "images_on_people": 20,
+  "evidence_only": 36,
   "unmapped": []
  }
 }
