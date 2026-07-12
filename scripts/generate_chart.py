@@ -741,6 +741,10 @@ TEMPLATE = r"""<!DOCTYPE html>
     --proven:#2e7d32; --documented:#1565c0; --hypo:#b26a00; --lore:#8e24aa;
     --living:#00695c; --direct:#b71c1c; --disputed:#6d4c41;
     --eden:#b71c1c; --manch:#3a4a5e; --swiss:#5e3a5e; --md:#2f6f4f;
+    --eden-mid:#dd8b84; --eden-soft:#fbe8e6;
+    --manch-mid:#7d93ad; --manch-soft:#e8eef6;
+    --swiss-mid:#a878a8; --swiss-soft:#f3eaf3;
+    --md-mid:#67a785; --md-soft:#e6f3ec;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
@@ -757,10 +761,16 @@ TEMPLATE = r"""<!DOCTYPE html>
   .controls .grp{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
   .search{font:inherit;font-size:14px;padding:7px 12px;border:1px solid var(--line);
     border-radius:8px;min-width:230px;background:var(--card);color:var(--ink)}
-  .chk{font-size:13px;display:inline-flex;gap:5px;align-items:center;cursor:pointer;
-    padding:4px 10px;border:1px solid var(--line);border-radius:20px;background:var(--card);user-select:none}
+  .chk{font-size:13px;display:inline-flex;gap:6px;align-items:center;cursor:pointer;
+    padding:4px 11px 4px 9px;border:1.5px solid var(--line);border-radius:20px;background:var(--card);
+    user-select:none;font-weight:600}
+  /* colored dot swatch so each family reads at a glance in the control bar */
+  .chk::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--line);flex:0 0 auto}
   .chk input{accent-color:#7a6a4a}
-  .chk.eden{border-color:#e0a9a2} .chk.manch{border-color:#a9bbd0} .chk.swiss{border-color:#c3a6c3} .chk.md{border-color:#a6c6b3}
+  .chk.eden{border-color:var(--eden-mid);color:var(--eden)} .chk.eden::before{background:var(--eden)} .chk.eden input{accent-color:var(--eden)}
+  .chk.manch{border-color:var(--manch-mid);color:var(--manch)} .chk.manch::before{background:var(--manch)} .chk.manch input{accent-color:var(--manch)}
+  .chk.swiss{border-color:var(--swiss-mid);color:var(--swiss)} .chk.swiss::before{background:var(--swiss)} .chk.swiss input{accent-color:var(--swiss)}
+  .chk.md{border-color:var(--md-mid);color:var(--md)} .chk.md::before{background:var(--md)} .chk.md input{accent-color:var(--md)}
   select.gen{font:inherit;font-size:13px;padding:6px 9px;border:1px solid var(--line);border-radius:8px;background:var(--card)}
   .btn{font:inherit;font-size:13px;padding:6px 12px;border:1px solid var(--line);
     border-radius:8px;background:var(--card);cursor:pointer;color:#4a4238}
@@ -789,19 +799,43 @@ TEMPLATE = r"""<!DOCTYPE html>
   .sourcekey a{color:#1565c0;text-decoration:none;border-bottom:1px dotted #9db8de}
   .sourcekey a:hover{background:#eef3fb}
 
-  /* family blocks */
-  .fam{margin-top:20px;border-radius:12px;border:1px solid var(--line);overflow:hidden}
-  .fam.eden{border-color:#e6b7b1} .fam.manch{border-color:#b9c6d6} .fam.swiss{border-color:#cdb6cd} .fam.Md,.fam.md{border-color:#b0d0bd}
-  .famhd{padding:12px 16px}
-  .fam.eden .famhd{background:#fff1ef} .fam.manch .famhd{background:#eef2f7} .fam.swiss .famhd{background:#f5eef5} .fam.Md .famhd,.fam.md .famhd{background:#eef6f1}
-  .famhd h2{margin:0;font-size:19px}
-  .fam.eden h2{color:var(--eden)} .fam.manch h2{color:var(--manch)} .fam.swiss h2{color:var(--swiss)} .fam.Md h2,.fam.md h2{color:var(--md)}
+  /* family blocks — each line gets its own color so the four families read
+     apart at a glance: a bold accent bar on top, a saturated border, a tinted
+     gradient header, and colored connector lines/toggles down the whole tree. */
+  .fam{margin-top:26px;border-radius:12px;border:1px solid var(--line);
+    border-top:5px solid var(--line);overflow:hidden;box-shadow:0 2px 12px rgba(90,70,30,.10)}
+  .fam.eden{border-color:var(--eden-mid);border-top-color:var(--eden)}
+  .fam.manch{border-color:var(--manch-mid);border-top-color:var(--manch)}
+  .fam.swiss{border-color:var(--swiss-mid);border-top-color:var(--swiss)}
+  .fam.md{border-color:var(--md-mid);border-top-color:var(--md)}
+  .famhd{padding:13px 16px 12px;border-bottom:2px solid var(--line)}
+  .fam.eden .famhd{background:linear-gradient(180deg,var(--eden-soft),var(--card));border-bottom-color:var(--eden-mid)}
+  .fam.manch .famhd{background:linear-gradient(180deg,var(--manch-soft),var(--card));border-bottom-color:var(--manch-mid)}
+  .fam.swiss .famhd{background:linear-gradient(180deg,var(--swiss-soft),var(--card));border-bottom-color:var(--swiss-mid)}
+  .fam.md .famhd{background:linear-gradient(180deg,var(--md-soft),var(--card));border-bottom-color:var(--md-mid)}
+  .famhd h2{margin:0;font-size:19px;letter-spacing:.2px}
+  .fam.eden h2{color:var(--eden)} .fam.manch h2{color:var(--manch)} .fam.swiss h2{color:var(--swiss)} .fam.md h2{color:var(--md)}
   .hap{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
     padding:2px 8px;border-radius:20px;margin-left:8px;vertical-align:middle;color:#fff}
-  .hap.eden{background:var(--eden)} .hap.manch{background:var(--manch)} .hap.swiss{background:var(--swiss)} .hap.Md,.hap.md{background:var(--md)}
+  .hap.eden{background:var(--eden)} .hap.manch{background:var(--manch)} .hap.swiss{background:var(--swiss)} .hap.md{background:var(--md)}
   .famdesc{font-size:12.5px;color:#5a564f;margin-top:5px;max-width:1000px}
   .famct{font-size:11.5px;color:var(--muted);margin-top:3px}
   .tree{padding:10px 16px 16px}
+  /* family-colored tree structure: connector lines, toggles, and a soft left
+     accent stripe on each person card (inset shadow so it never fights the
+     disputed / unproven-link border states) */
+  .fam.eden .kids{border-left-color:var(--eden-mid)}
+  .fam.manch .kids{border-left-color:var(--manch-mid)}
+  .fam.swiss .kids{border-left-color:var(--swiss-mid)}
+  .fam.md .kids{border-left-color:var(--md-mid)}
+  .fam.eden .tog{border-color:var(--eden-mid);color:var(--eden)}
+  .fam.manch .tog{border-color:var(--manch-mid);color:var(--manch)}
+  .fam.swiss .tog{border-color:var(--swiss-mid);color:var(--swiss)}
+  .fam.md .tog{border-color:var(--md-mid);color:var(--md)}
+  .fam.eden .person{box-shadow:inset 3px 0 0 var(--eden-mid)}
+  .fam.manch .person{box-shadow:inset 3px 0 0 var(--manch-mid)}
+  .fam.swiss .person{box-shadow:inset 3px 0 0 var(--swiss-mid)}
+  .fam.md .person{box-shadow:inset 3px 0 0 var(--md-mid)}
 
   /* nodes */
   .node{margin:4px 0}
@@ -1031,9 +1065,9 @@ function nodeHTML(id,famKey){
 const chart=document.getElementById('chart');
 DATA.families.forEach(f=>{
   const div=document.createElement('div');
-  div.className='fam '+f.key; div.dataset.fam=f.key;
+  div.className='fam '+f.key.toLowerCase(); div.dataset.fam=f.key;
   const ct=(f.roots||[]).length;
-  div.innerHTML=`<div class="famhd"><h2>${f.title}<span class="hap ${f.key}">Y-DNA ${f.hap}</span></h2>`+
+  div.innerHTML=`<div class="famhd"><h2>${f.title}<span class="hap ${f.key.toLowerCase()}">Y-DNA ${f.hap}</span></h2>`+
                 `<div class="famdesc">${f.desc}</div></div>`+
                 `<div class="tree">`+ (f.roots||[]).map(r=>nodeHTML(r,f.key)).join('') +`</div>`;
   chart.appendChild(div);
@@ -1141,6 +1175,10 @@ GEN_TEMPLATE = r"""<!DOCTYPE html>
     --proven:#2e7d32; --documented:#1565c0; --hypo:#b26a00; --lore:#8e24aa;
     --living:#00695c; --direct:#b71c1c; --disputed:#6d4c41;
     --eden:#b71c1c; --manch:#3a4a5e; --swiss:#5e3a5e; --md:#2f6f4f;
+    --eden-mid:#dd8b84; --eden-soft:#fbe8e6;
+    --manch-mid:#7d93ad; --manch-soft:#e8eef6;
+    --swiss-mid:#a878a8; --swiss-soft:#f3eaf3;
+    --md-mid:#67a785; --md-soft:#e6f3ec;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
