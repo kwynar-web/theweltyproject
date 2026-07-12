@@ -40,7 +40,7 @@ FAMILIES = [
      "One German family: the Wäldi/Welty household of Edenkoben (Palatinate). Immigrant brothers Philip Jacob (1750, our R1b spine), John Jacob (Weltytown line) and Georg Wolfgang — whose Manchester branch carries an I1 Y-line (a paternity break inside the family, not a separate clan) and appears under his node below.", True),
     ("Manch", "Manchester branch", "I1",
      "The Manchester branch of the German family (Dover / Manchester Twp, York Co PA) — I1 Y-line via a paternity break at/above Georg Wolfgang. Shares the names Philip Jacob / Henry / Catherine — the main source of the old confusion.", False),
-    ("Swiss", "Family 3 · Swiss Emmental", "I2b",
+    ("Swiss", "Swiss Emmental Wälti", "I2b",
      "The Swiss Emmental line — the Rüderswil / Emmental Wälti of the “Welty Family Chronicle” (Bacon 2002); source of the “Weltys are Swiss” story.", False),
 ]
 
