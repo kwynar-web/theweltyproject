@@ -291,51 +291,6 @@
   }
   a.card .desc { font-size: .98rem; color: #55493a; line-height: 1.45; }
 
-  /* ---------- LEDE (one-line hook under the crest strip) ---------- */
-  .lede {
-    max-width: 720px; margin: 26px auto 2px; text-align: center;
-    font-family: 'EB Garamond', Georgia, serif; font-style: italic;
-    font-size: 1.14rem; line-height: 1.5; color: #4a4234;
-  }
-  .lede b { font-style: normal; font-weight: 600; color: var(--crimson); }
-
-  /* ---------- PORTAL CARDS (promoted navigation) ---------- */
-  .portal-label {
-    text-align: center; font-family: 'Cormorant SC', serif;
-    font-size: .82rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase;
-    color: var(--gold); margin: 22px 0 12px;
-  }
-  .cards.portals { grid-template-columns: repeat(auto-fit, minmax(184px, 1fr)); gap: 11px; margin-top: 0; }
-  .cards.portals a.card {
-    padding: 12px 15px 11px;
-    display: flex; flex-direction: column;
-    background: linear-gradient(180deg, #fdfaf1 0%, #f6f0e1 100%);
-    border-top-width: 3px; border-radius: 7px;
-  }
-  .cards.portals .eyebrow {
-    font-family: 'EB Garamond', Georgia, serif;
-    font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
-    color: var(--gold); font-weight: 700; margin-bottom: 3px;
-  }
-  .cards.portals .title { margin-bottom: 3px; font-size: 1.08rem; }
-  .cards.portals .desc { flex: 1 1 auto; font-size: .82rem; line-height: 1.34; }
-  .cards.portals .go {
-    margin-top: 9px; font-family: 'Cormorant SC', serif; font-weight: 700;
-    letter-spacing: .04em; font-size: .82rem; color: var(--crimson);
-    display: inline-flex; align-items: center; gap: 6px;
-  }
-  .cards.portals .go .arrow { transition: transform .15s ease; }
-  .cards.portals a.card:hover .go .arrow,
-  .cards.portals a.card:focus .go .arrow { transform: translateX(5px); }
-
-  /* ---------- MERGED INTRO PANEL (short version + open question) ---------- */
-  .thesis .subhead {
-    font-family: 'Cormorant SC', serif;
-    font-size: 1.22rem; font-weight: 700; letter-spacing: .04em;
-    color: var(--crimson); margin: 15px 0 8px;
-    padding-top: 13px; border-top: 1px solid var(--rule);
-  }
-
   footer {
     text-align: center; font-size: .9rem; color: var(--muted);
     margin-top: 52px; padding-top: 20px;
@@ -520,39 +475,32 @@
 
 <main>
 
-  <p class="lede">A living, openly-sourced genealogy of one <b>Welty</b> family &mdash; traced by DNA and original church records from a Reformed household in <b>Edenkoben</b>, in the German Palatinate, c.&nbsp;1680 to today.</p>
-
-  <div class="portal-label">Explore</div>
-  <div class="cards portals">
-    <a class="card" href="all-families.html">
-      <div class="eyebrow">The tree</div>
-      <div class="title">Family Tree</div>
-      <div class="desc">The full interactive tree of the Edenkoben Welty line.</div>
-      <span class="go">Open the tree <span class="arrow">&rarr;</span></span>
-    </a>
-    <a class="card" href="timeline.html">
-      <div class="eyebrow">The journey</div>
-      <div class="title">Place by Place</div>
-      <div class="desc">Maps and a timeline &mdash; Bischheim to Michigan.</div>
-      <span class="go">Follow the map <span class="arrow">&rarr;</span></span>
-    </a>
-    <a class="card" href="family-papers.html">
-      <div class="eyebrow">The archive</div>
-      <div class="title">Family Papers</div>
-      <div class="desc">The Marian Welty archive &mdash; charts, genealogy, records.</div>
-      <span class="go">Browse the papers <span class="arrow">&rarr;</span></span>
-    </a>
-  </div>
-
   <section class="thesis">
     <div class="thesis-head">The short version</div>
-    <p>The name <b>Welty</b> &mdash; also spelled Weldy, W&auml;lti, or Welde &mdash; arose independently in more than one corner of the German- and Swiss-speaking world. Which family a given Welty belongs to can only be settled by its own records and DNA. Ours leads to a Reformed household in <b>Edenkoben</b>: reading the original <b>1709 marriage register</b>, the proven tree now reaches back to <b>Johann Georg W&auml;ldi</b>, a citizen of <b>Bischheim</b> who had died by 1707 &mdash; on the page, in the church books, not just in family lore.</p>
-    <p>Untangling it took work. Several Welty families settled the same York County, Pennsylvania townships and reused the same first names, blurring their trees for two centuries. <b>Y-DNA</b> is what finally separates them &mdash; our <b>R1b</b> Edenkoben line from the <b>I1</b> Manchester branch and the <b>I2b</b> Swiss Emmental family. This site follows only ours, and shows its work. &nbsp;<a href="timeline.html#pfalz">Trace the origin &rarr;</a></p>
-
-    <div class="subhead">The one open question</div>
-    <p>The direct male line runs unbroken from the 1719 immigrant down to today &mdash; except for a <b>single unproven rung</b>. Was <b>Crooked Run Michael Welty</b> (b.&nbsp;~1757) the son of <b>Dover Philip Jacob Welty</b>? Michael himself is proven &mdash; his 1784 marriage, militia service and 1815 estate are all on record &mdash; but every widely-shared online tree simply <i>draws</i> that parent link as settled. This one won&rsquo;t, because the proof isn&rsquo;t there yet.</p>
-    <p class="thesis-tail">DNA takes us only halfway: a pending <b>Big-Y&nbsp;700</b> confirms Michael&rsquo;s line is <b>R1b Edenkoben</b> &mdash; but so is his uncle <b>John Jacob</b>, whom some trees name as the father instead. Same DNA line, two candidate fathers; only a record can tell them apart. &nbsp;<a href="all-families.html">See it marked on the tree &rarr;</a></p>
+    <p>Where does the name <b>Welty</b> come from? There isn&rsquo;t a single answer. Spelled Welty, Weldy, W&auml;lti or Welde, it arose independently in more than one corner of the German- and Swiss-speaking world &mdash; some Weltys descend from the Swiss <b>W&auml;lti</b> of the Emmental (the root of the old &lsquo;we&rsquo;re Swiss&rsquo; story), others from families that were <b>German</b> all along. Which one a given family belongs to can only be settled by its own record trail and DNA. Ours leads to a specific Reformed household in <b>Edenkoben</b>, in the German Palatinate: reading the original <b>1709 Edenkoben marriage register</b>, the proven tree now reaches back a full generation to <b>Johann Georg W&auml;ldi</b>, a citizen (<i>B&uuml;rger</i>) of <b>Bischheim</b> who had died by 1707. That origin isn&rsquo;t a family story anymore &mdash; it&rsquo;s on the page, in the church books, image by image.</p>
+    <p class="thesis-tail">Why untangling it took real work: by coincidence, more than one Welty family &mdash; a German line and a Swiss one among them &mdash; settled the same few townships of York County, Pennsylvania and reused the same first names, so for two centuries their trees have been blurred into one. <b>Y-DNA</b> is what finally separates them: our <b>R1b</b> Edenkoben line from the <b>I1</b> Manchester branch and the <b>I2b</b> Swiss Emmental family. Same surname, more than one father &mdash; this site follows only ours, and shows its work. &nbsp;<a href="timeline.html#pfalz">Trace the origin &rarr;</a></p>
   </section>
+
+  <section class="crux">
+    <div class="crux-head">The one open question</div>
+    <p>The direct male line runs unbroken from the 1719 Palatinate immigrant down to today &mdash; except for a <b>single unproven rung</b>. Was <b>Crooked Run Michael Welty</b> (b.&nbsp;~1757) the son of <b>Dover Philip Jacob Welty</b>? Michael himself is proven &mdash; his 1784 marriage, militia service and 1815 estate are all on record &mdash; but every widely-shared online tree simply <i>draws</i> that parent link as settled. This one won&rsquo;t, because the proof isn&rsquo;t there yet.</p>
+    <p>It is really two questions. First: is <b>any</b> child of Philip Jacob named as his in an actual record? Right now, none is &mdash; his whole set of likely sons and daughters rests on tax lists, marriage registers and naming patterns, with no document that states the parentage. Second: does Michael belong to that group? Answer either one in writing and the rung begins to close.</p>
+    <p class="crux-tail">DNA can only take us halfway. A pending <b>Big-Y&nbsp;700</b> test confirms Michael&rsquo;s line is <b>R1b Edenkoben</b> &mdash; but so is his uncle <b>John Jacob</b>, the very man some online trees name as Michael&rsquo;s father instead. Same DNA line, two candidate fathers; only a record can tell them apart. &nbsp;<a href="all-families.html">See it marked on the tree &rarr;</a></p>
+  </section>
+
+  <h2 class="section">The Records</h2>
+  <p class="sub">Click any item to view it; use your browser&rsquo;s Back button to return.</p>
+
+  <div class="cards">
+    <a class="card" href="all-families.html">
+      <div class="title">Family Tree &mdash; All Families</div>
+      <div class="desc">The complete interactive tree &mdash; the German (Edenkoben) Welty line, shown alongside the other large American Welty households we track to keep the Palatine lines sorted.</div>
+    </a>
+    <a class="card" href="timeline.html">
+      <div class="title">The Family, Place by Place</div>
+      <div class="desc">Maps and a timeline of Welty locations &mdash; a chapter for every place the family lived. Click a pin to jump to its story.</div>
+    </a>
+  </div>
 
   <div class="dna-call">
     <div class="dna-head">Are you a Welty man? Help map the family.</div>

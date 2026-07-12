@@ -42,6 +42,8 @@ FAMILIES = [
      "The Manchester branch of the German family (Dover / Manchester Twp, York Co PA) — I1 Y-line via a paternity break at/above Georg Wolfgang. Shares the names Philip Jacob / Henry / Catherine — the main source of the old confusion.", False),
     ("Swiss", "Swiss Emmental Wälti", "I2b",
      "The Swiss Emmental line — the Rüderswil / Emmental Wälti of the “Welty Family Chronicle” (Bacon 2002); source of the “Weltys are Swiss” story.", False),
+    ("Md", "Maryland · Taneytown / Emmitsburg", "untested",
+     "A genuinely separate, Roman-Catholic Welty family from Eppingen in Baden (Kraichgau) — <b>not</b> the Edenkoben line. The immigrant John Welty (b.1722) crossed on the ship <i>Neptune</i> in 1751, lived in York Co PA, then settled the Piney Creek / Taneytown district of Maryland and died near Emmitsburg at 94. Because Emmitsburg sits ~10 miles south of Gettysburg, this well-documented clan is the best real-world seed of the family lore's “Gettysburg / Maryland brother.” No Y-DNA sample exists for the line.", False),
 ]
 
 # ============================ CITATION FORMATTER ============================
@@ -346,7 +348,10 @@ CURRENT_YEAR = 2026
 # participants whose kits are actively compared in the project. The "born <100yr"
 # rule can't catch them, so they are listed explicitly. (Standard: an unconfirmed-
 # death DNA tester is treated as living.) Remove an ID here if proven deceased.
-KNOWN_LIVING = {"B-merleSMGF"}   # Merle William Welty — SMGF-tested descendant
+KNOWN_LIVING = set()   # (was {"B-merleSMGF"}) Merle William Welty PROVEN DECEASED
+# 12 Jul 2026: Merle William Welty is publicly memorialized 1925-2012 (FindAGrave
+# #7483539 child-link; named as Miller Wayne's son in the Troy Daily News obit,
+# 2 Mar 1978) — de-redacted per this block's own "remove if proven deceased" rule.
 
 # ---------------------------- UNPROVEN PARENT LINK ----------------------------
 # Nodes whose descent from the parent above is NOT yet proven. The person is
@@ -585,20 +590,23 @@ def main():
         '<div class="grp">'
         '<label class="chk eden"><input type="checkbox" data-fam="Eden" checked> Edenkoben</label>'
         '<label class="chk swiss"><input type="checkbox" data-fam="Swiss" checked> Swiss</label>'
+        '<label class="chk md"><input type="checkbox" data-fam="Md" checked> Maryland</label>'
         '</div>')
-    german = total - counts.get('Swiss', 0)
+    german = total - counts.get('Swiss', 0) - counts.get('Md', 0)
     render(OUT_ALL, payload_all,
            h1="The Welty Families &mdash; interactive tree",
            sub=("Every documented Welty, in one place: the <b>Edenkoben</b> German family &mdash; "
                 "the Wäldi household of the Palatinate, including the branch whose I1 Y-line marks a "
                 "paternity break inside the family (shown under Georg Wolfgang) &mdash; and the "
-                "genuinely separate <b>Swiss Emmental</b> family. Click a &#9656; to expand a person's "
+                "genuinely separate <b>Swiss Emmental</b> family, and the separate Roman-Catholic "
+                "<b>Maryland</b> family of Taneytown / Emmitsburg (the real-world seed of the "
+                "“Gettysburg brother” lore). Click a &#9656; to expand a person's "
                 "children; use the search and filters to find anyone. Built automatically from the "
                 f"<b>People Roster</b> sheet of the research log. <b>{total}</b> people tracked so far."),
            fam_controls=fam_controls,
            count_label=(f"{total} people · Edenkoben (German) family {german} · "
-                        f"Swiss {counts.get('Swiss',0)}"))
-    print(f"wrote {OUT_ALL}  ({total} people: Edenkoben {german}, Swiss {counts.get('Swiss',0)})")
+                        f"Swiss {counts.get('Swiss',0)} · Maryland {counts.get('Md',0)}"))
+    print(f"wrote {OUT_ALL}  ({total} people: Edenkoben {german}, Swiss {counts.get('Swiss',0)}, Maryland {counts.get('Md',0)})")
 
     # ---------- 1b) GERMAN-LINES graphical chart — RETIRED 1 Jul 2026 (Kwyn prefers the
     # By-Generation grid). render_graph()/GRAPH_TEMPLATE kept below but no longer called.
@@ -732,7 +740,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     --ink:#1c1a17; --muted:#6b6459; --line:#c9bfae; --bg:#f6f1e7; --card:#fffdf8;
     --proven:#2e7d32; --documented:#1565c0; --hypo:#b26a00; --lore:#8e24aa;
     --living:#00695c; --direct:#b71c1c; --disputed:#6d4c41;
-    --eden:#b71c1c; --manch:#3a4a5e; --swiss:#5e3a5e;
+    --eden:#b71c1c; --manch:#3a4a5e; --swiss:#5e3a5e; --md:#2f6f4f;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
@@ -752,7 +760,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .chk{font-size:13px;display:inline-flex;gap:5px;align-items:center;cursor:pointer;
     padding:4px 10px;border:1px solid var(--line);border-radius:20px;background:var(--card);user-select:none}
   .chk input{accent-color:#7a6a4a}
-  .chk.eden{border-color:#e0a9a2} .chk.manch{border-color:#a9bbd0} .chk.swiss{border-color:#c3a6c3}
+  .chk.eden{border-color:#e0a9a2} .chk.manch{border-color:#a9bbd0} .chk.swiss{border-color:#c3a6c3} .chk.md{border-color:#a6c6b3}
   select.gen{font:inherit;font-size:13px;padding:6px 9px;border:1px solid var(--line);border-radius:8px;background:var(--card)}
   .btn{font:inherit;font-size:13px;padding:6px 12px;border:1px solid var(--line);
     border-radius:8px;background:var(--card);cursor:pointer;color:#4a4238}
@@ -783,14 +791,14 @@ TEMPLATE = r"""<!DOCTYPE html>
 
   /* family blocks */
   .fam{margin-top:20px;border-radius:12px;border:1px solid var(--line);overflow:hidden}
-  .fam.eden{border-color:#e6b7b1} .fam.manch{border-color:#b9c6d6} .fam.swiss{border-color:#cdb6cd}
+  .fam.eden{border-color:#e6b7b1} .fam.manch{border-color:#b9c6d6} .fam.swiss{border-color:#cdb6cd} .fam.Md,.fam.md{border-color:#b0d0bd}
   .famhd{padding:12px 16px}
-  .fam.eden .famhd{background:#fff1ef} .fam.manch .famhd{background:#eef2f7} .fam.swiss .famhd{background:#f5eef5}
+  .fam.eden .famhd{background:#fff1ef} .fam.manch .famhd{background:#eef2f7} .fam.swiss .famhd{background:#f5eef5} .fam.Md .famhd,.fam.md .famhd{background:#eef6f1}
   .famhd h2{margin:0;font-size:19px}
-  .fam.eden h2{color:var(--eden)} .fam.manch h2{color:var(--manch)} .fam.swiss h2{color:var(--swiss)}
+  .fam.eden h2{color:var(--eden)} .fam.manch h2{color:var(--manch)} .fam.swiss h2{color:var(--swiss)} .fam.Md h2,.fam.md h2{color:var(--md)}
   .hap{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
     padding:2px 8px;border-radius:20px;margin-left:8px;vertical-align:middle;color:#fff}
-  .hap.eden{background:var(--eden)} .hap.manch{background:var(--manch)} .hap.swiss{background:var(--swiss)}
+  .hap.eden{background:var(--eden)} .hap.manch{background:var(--manch)} .hap.swiss{background:var(--swiss)} .hap.Md,.hap.md{background:var(--md)}
   .famdesc{font-size:12.5px;color:#5a564f;margin-top:5px;max-width:1000px}
   .famct{font-size:11.5px;color:var(--muted);margin-top:3px}
   .tree{padding:10px 16px 16px}
@@ -1132,7 +1140,7 @@ GEN_TEMPLATE = r"""<!DOCTYPE html>
     --ink:#1c1a17; --muted:#6b6459; --line:#c9bfae; --bg:#f6f1e7; --card:#fffdf8;
     --proven:#2e7d32; --documented:#1565c0; --hypo:#b26a00; --lore:#8e24aa;
     --living:#00695c; --direct:#b71c1c; --disputed:#6d4c41;
-    --eden:#b71c1c; --manch:#3a4a5e; --swiss:#5e3a5e;
+    --eden:#b71c1c; --manch:#3a4a5e; --swiss:#5e3a5e; --md:#2f6f4f;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
