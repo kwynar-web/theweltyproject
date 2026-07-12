@@ -484,6 +484,50 @@
     ]
    }
   ],
+  "E-henry": [
+   {
+    "slug": "h17-henry-welty-estate-inventory-widows-allowance-mary-welty-executrix",
+    "caption": "Henry Welty's estate — the appraisement/inventory and the widow's allowance (left page). 'Personally came Mary Welty, Executrix of the last will and testament of Henry Welty, deceased' (sworn 23 Feb 1843); the appraisers set off a year's support for the widow and children (Dec 1842); an included note names son William Welty. Death/probate proof, Stark Co. Ohio Common Pleas. FamilySearch, Ohio Probate Records — Stark, Administration Records 1841–43, img 202 (ark 3QS7-99Q2-FNZW).",
+    "repo": null,
+    "url": null,
+    "confidence": "high",
+    "logids": [],
+    "pages": [
+     {
+      "slug": "h17-henry-welty-estate-inventory-widows-allowance-mary-welty-executrix",
+      "caption": "Henry Welty's estate — the appraisement/inventory and the widow's allowance (left page). 'Personally came Mary Welty, Executrix of the last will and testament of Henry Welty, deceased' (sworn 23 Feb 1843); the appraisers set off a year's support for the widow and children (Dec 1842); an included note names son William Welty. Death/probate proof, Stark Co. Ohio Common Pleas. FamilySearch, Ohio Probate Records — Stark, Administration Records 1841–43, img 202 (ark 3QS7-99Q2-FNZW)."
+     }
+    ]
+   },
+   {
+    "slug": "h18-henry-welty-estate-partition-case-224-heirs-named-stark-co-oh-comm",
+    "caption": "Partition of Henry Welty's real estate among his heirs — Stark Co. Ohio Common Pleas case #224, 'In Partition': William Welty (petitioner) v. George Welty, Henry Welty, David Welty, Nancy Welty (intermarried with John Stansbury), Susan Welty (intermarried with Walter Carr) & Jeremiah Grant; petition filed 23 Aug 1850, amicably settled 7 May 1851. Names six of Henry's children as heirs. FamilySearch, Stark Co. Appearance Dockets 1849–52, img 262 (ark 3QHV-V3D4-MSSQ).",
+    "repo": null,
+    "url": null,
+    "confidence": "high",
+    "logids": [],
+    "pages": [
+     {
+      "slug": "h18-henry-welty-estate-partition-case-224-heirs-named-stark-co-oh-comm",
+      "caption": "Partition of Henry Welty's real estate among his heirs — Stark Co. Ohio Common Pleas case #224, 'In Partition': William Welty (petitioner) v. George Welty, Henry Welty, David Welty, Nancy Welty (intermarried with John Stansbury), Susan Welty (intermarried with Walter Carr) & Jeremiah Grant; petition filed 23 Aug 1850, amicably settled 7 May 1851. Names six of Henry's children as heirs. FamilySearch, Stark Co. Appearance Dockets 1849–52, img 262 (ark 3QHV-V3D4-MSSQ)."
+     }
+    ]
+   },
+   {
+    "slug": "h3-henry-welty-mary-byerly-family-register",
+    "caption": "The Henry Welty & Mary Byerly family register — a typed transcript of the family's Bible-style record, held in the family. Henry Welty b. 30 Oct 1790; m. Mary Byerly (b. 3 Jun 1789) on 16 Jan 1812; the births of all nine children (Catherine 1813, John 1814, William 1816, Mary 1818, Susanna 1821, George 1823, Nancy 1826, Henry Jr. 1828, David 1831); the Dowell and Otis marriages; and the family deaths — Mary (dau.) 1822, Catherine Dowell 1840, Henry himself 8 Oct 1842, wife Mary 1848, son George 1890. The keystone record for the direct-line Gen-5 household.",
+    "repo": null,
+    "url": null,
+    "confidence": "high",
+    "logids": [],
+    "pages": [
+     {
+      "slug": "h3-henry-welty-mary-byerly-family-register",
+      "caption": "The Henry Welty & Mary Byerly family register — a typed transcript of the family's Bible-style record, held in the family. Henry Welty b. 30 Oct 1790; m. Mary Byerly (b. 3 Jun 1789) on 16 Jan 1812; the births of all nine children (Catherine 1813, John 1814, William 1816, Mary 1818, Susanna 1821, George 1823, Nancy 1826, Henry Jr. 1828, David 1831); the Dowell and Otis marriages; and the family deaths — Mary (dau.) 1822, Catherine Dowell 1840, Henry himself 8 Oct 1842, wife Mary 1848, son George 1890. The keystone record for the direct-line Gen-5 household."
+     }
+    ]
+   }
+  ],
   "E-elizabethgauf": [
    {
     "slug": "p111-p112-george-gauff-guardianships-elizabeth-margaret",
@@ -984,9 +1028,9 @@
   }
  ],
  "_meta": {
-  "total_files": 68,
-  "chips": 34,
-  "images_on_people": 35,
+  "total_files": 71,
+  "chips": 37,
+  "images_on_people": 38,
   "evidence_only": 35,
   "unmapped": []
  }
