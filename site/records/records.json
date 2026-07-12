@@ -530,10 +530,6 @@
      {
       "slug": "m28-michael-welty-pa-rev-war-militia-pay-certificate-12706-york-p1",
       "caption": "Michael Welty's Revolutionary War militia pay certificate — 'WELTY, MICHAEL, County York, Unit Militia, Certificate 12,706, Total £10.10.0', issued 26 Oct 1786 under the Militia Loan of 1784–85 (Comptroller General records). Back-pay for his York County militia service; the Rank field is blank, refuting the family 'Lieutenant' tradition. PA Revolutionary War Military Abstract Card File (PA Historical & Museum Commission)."
-     },
-     {
-      "slug": "m28-michael-welty-pa-rev-war-militia-pay-certificate-12706-york-p2",
-      "caption": "Michael Welty's militia pay certificate #12,706 — second card scan (PA Rev War Military Abstract Card File, PHMC)."
      }
     ]
    },
@@ -1506,9 +1502,9 @@
   }
  ],
  "_meta": {
-  "total_files": 77,
+  "total_files": 76,
   "chips": 67,
-  "images_on_people": 68,
+  "images_on_people": 67,
   "evidence_only": 35,
   "unmapped": []
  }

@@ -109,8 +109,6 @@ M = {
    (["E-michael"], "'Welty, Michael, private' on the Revolutionary War Continental Line Depreciation Pay roll (PA Archives 5th ser. Vol. IV, p.481).", "high"),
  "M28 — Michael Welty PA Rev War militia pay certificate 12706 York (Fold3 img 712667347 PHMC) p1.jpg":
    (["E-michael"], "Michael Welty's Revolutionary War militia pay certificate — 'WELTY, MICHAEL, County York, Unit Militia, Certificate 12,706, Total £10.10.0', issued 26 Oct 1786 under the Militia Loan of 1784–85 (Comptroller General records). Back-pay for his York County militia service; the Rank field is blank, refuting the family 'Lieutenant' tradition. PA Revolutionary War Military Abstract Card File (PA Historical & Museum Commission).", "high"),
- "M28 — Michael Welty PA Rev War militia pay certificate 12706 York (Fold3 img 712667352 PHMC) p2.jpg":
-   (["E-michael"], "Michael Welty's militia pay certificate #12,706 — second card scan (PA Rev War Military Abstract Card File, PHMC).", "high"),
  "H3 — Henry Welty & Mary Byerly family register (births marriages deaths, typed) (Welty family document IMG_1043).jpeg":
    (["E-henry","E-catherine1813","E-john1814","E-william1816","E-mary1818","E-susanna1821","E-george1823","E-nancy","E-henryjr","E-david1831"],
     "The Henry Welty & Mary Byerly family register — a typed transcript of the family's Bible-style record, held in the family. Henry Welty b. 30 Oct 1790; m. Mary Byerly (b. 3 Jun 1789) on 16 Jan 1812; the births of all nine children (Catherine 1813, John 1814, William 1816, Mary 1818, Susanna 1821, George 1823, Nancy 1826, Henry Jr. 1828, David 1831); the Dowell and Otis marriages; and the family deaths — Mary (dau.) 1822, Catherine Dowell 1840, Henry himself 8 Oct 1842, wife Mary 1848, son George 1890. The keystone record for the direct-line Gen-5 household.", "high"),
@@ -228,7 +226,6 @@ KEEP_ON_TREE = {
  "M20 — Michael Welty 1828 partition, heirs named (FamilySearch Tuscarawas Court Recs img96).png",                        # partition
  "M159 — Michael Welty Continental Line Depreciation Pay p481 (archive.org 5thpennsylvaniaarch04harruoft leaf486).jpg",   # Rev War depreciation pay
  "M28 — Michael Welty PA Rev War militia pay certificate 12706 York (Fold3 img 712667347 PHMC) p1.jpg",                   # Rev War militia pay certificate (PHMC abstract card)
- "M28 — Michael Welty PA Rev War militia pay certificate 12706 York (Fold3 img 712667352 PHMC) p2.jpg",                   # same certificate, 2nd card scan
  "H3 — Henry Welty & Mary Byerly family register (births marriages deaths, typed) (Welty family document IMG_1043).jpeg",  # Gen-5 keystone: marriage + 9 kids + deaths (family document)
  "H17 — Henry Welty estate inventory + widows allowance, Mary Welty executrix, Stark Co OH 1842-43 (FamilySearch Probate Admin Recs 1841-43 img202, ark 3QS7-99Q2-FNZW).jpg",  # Gen-5 death/probate: estate inventory + widow's allowance
  "H18 — Henry Welty estate partition case 224, heirs named, Stark Co OH Common Pleas 1850-51 (FamilySearch Appearance Dockets 1849-52 img262).jpg",  # Gen-5 heirs: partition names 6 children
