@@ -67,7 +67,7 @@ M = {
  "P74 + FB56 — Joh Jacob Welde x Anna Catharina Croissant marriage (Archion reg 54933 Edenkoben4 Bild 79).pdf":
    (["E-johnjacob1710"], "Marriage of Joh. Jacob Welde and Anna Catharina Croissant, Edenkoben Reformed (Bild 79).", "high"),
  "P64 — Edenkoben marriage register, bride's father read in full (Archion reg 54933 Edenkoben4 Bild 63).pdf":
-   (["E-johnjacob1710"], "Edenkoben marriage register — the bride's father read in full (Bild 63).", "med"),
+   (["E-hansjacobwaldi","E-johanngeorgwaldi"], "Marriage of Hanß Jacob Wäldi 'der Müller', Sept 1709, Edenkoben Reformed — son of the late Joh. Georg Wäldi, former citizen of Bischheim, to Anna Catharina Durchsteinbach [P42/P64] (Bild 63). Same record: Hans Jacob's marriage and the sole life-mention of his father Johann Georg.", "high"),
  "P80 — Hanß Jacob Croissant x A.M. Müllerin marriage (Archion reg 54933 Edenkoben4 Bild 66).pdf":
    (["E-johnjacob1710"], "Marriage of Hanß Jacob Croissant & A. M. Müllerin — the Croissant in-laws (Bild 66).", "med"),
  "P116 — Doll x Neu marriage (Archion reg 54933 Edenkoben4 Bild 93).pdf":
@@ -106,6 +106,10 @@ M = {
    (["E-michael"], "1828 partition of Michael Welty's estate, Tuscarawas Co. OH — the heirs named.", "high"),
  "M159 — Michael Welty Continental Line Depreciation Pay p481 (archive.org 5thpennsylvaniaarch04harruoft leaf486).jpg":
    (["E-michael"], "'Welty, Michael, private' on the Revolutionary War Continental Line Depreciation Pay roll (PA Archives 5th ser. Vol. IV, p.481).", "high"),
+ "M28 — Michael Welty PA Rev War militia pay certificate 12706 York (Fold3 img 712667347 PHMC) p1.jpg":
+   (["E-michael"], "Michael Welty's Revolutionary War militia pay certificate — 'WELTY, MICHAEL, County York, Unit Militia, Certificate 12,706, Total £10.10.0', issued 26 Oct 1786 under the Militia Loan of 1784–85 (Comptroller General records). Back-pay for his York County militia service; the Rank field is blank, refuting the family 'Lieutenant' tradition. PA Revolutionary War Military Abstract Card File (PA Historical & Museum Commission).", "high"),
+ "M28 — Michael Welty PA Rev War militia pay certificate 12706 York (Fold3 img 712667352 PHMC) p2.jpg":
+   (["E-michael"], "Michael Welty's militia pay certificate #12,706 — second card scan (PA Rev War Military Abstract Card File, PHMC).", "high"),
  "M97 — Daniel Prosser to Michael Weldy Donegal deed 1797 (FamilySearch Westmoreland Deed Bks img156).png":
    ([], "REVIEW — Daniel Prosser to Michael Weldy, Donegal Twp deed 1797 (Westmoreland Co.).", "review"),
  "P110 — OC docket general index W-section Books D-K (zero Welty) (FamilySearch ark 3QSQ-G99B-VG4K).jpg":
@@ -156,6 +160,29 @@ M = {
    (["E-johnjacob1710"], "The 'Welty Black Book' family-register page for John Jacob Welde (b.1710). Note: the 'Broff' wife-name it carries is a debunked name-match.", "med"),
  "US19 — Obediah Weldy decoy, Chester tax 1768-71 (FamilySearch img109).png":
    ([], "DECOY — Obediah Weldy, Chester Co. tax 1768–71; not the line.", "high"),
+ # --- Session 12 Jul 2026: Gen 1-4 photo pass (BMD keys) -------------------
+ "M18 — Michael Weldy estate inventory, deceased Sept 1815 (FamilySearch Tuscarawas Admin Recs 1810-39 film 005870723 img19, ark 3QS7-99Q2-XJTK).jpg":
+   (["E-michael"], "Estate inventory of Michael Weldy, deceased Sept 1815, Tuscarawas Co. OH — the appraisement of his goods and property; a death-bracketing record (FamilySearch, Administration Records 1810–39, img 19).", "high"),
+ "FB20 — Georg Wolfgang Weldy x Anna Maria Keibel marriage 7 Jan 1750 (Archion reg 54933 Edenkoben4 Bild 89).pdf":
+   (["E-georgwolfgang-disp"], "Marriage of Georg Wolfgang Weldy & Anna Maria Keibel of Deggelsheim, 7 Jan 1750, Edenkoben Reformed — the primary marriage record, entered under the '1750' year heading (Bild 89).", "high"),
+ "M4 — Michael Welty x Christina Ruthrauff marriage 18 May 1784 citation (Ancestry coll4946 ev7965).png":
+   (["E-michael"], "Marriage of Michael Welty & Christina Ruthrauff (recorded 'Christine Rohtrauf'), 18 May 1784, First Reformed (Trinity) Church, York — the corrected date superseding the pedigree's '10 May'. Register transcription (Ancestry coll. 4946, event 7965); citation card.", "high"),
+ "P160 — John Henry Welty burial citation, d 4 Jun 1841 (FindAGrave 32007221 St Clair Cem Greensburg).png":
+   (["E-johnhenry1764"], "Burial of Johan Heinrich 'Henry' Welty Sr. (b. 4 Nov 1764, d. 4 Jun 1841), Saint Clair Cemetery, Greensburg, Westmoreland Co. PA; wife Eva Catherine Steiner. Find a Grave memorial 32007221; citation card (contributor headstone photo not reproduced).", "med"),
+ "P126 — Philip Welty & wife Elisabet sponsor 1786 citation (FS-DL 892477 img29 Strayers).png":
+   (["E-philipjacob"], "Philip Welty & his wife Elisabet stand sponsors at Daniel Glaser's baptism, 9 Nov 1786, Strayer's (Salem) Reformed, Dover Twp — the only primary record naming Philip's wife Elisabet. Young/Byrnes transcription (FS-DL 892477, img 29); citation card.", "high"),
+ # --- York daughters' marriages, Trinity York (Ancestry coll.4946) ---------
+ "M68 — Elizabeth Welty x George Gauf marriage 26 Mar 1775 citation (Ancestry coll4946 ev7751).png":
+   (["E-elizabethgauf"], "Marriage of Elizabeth Welty & George Gauf, 26 Mar 1775, First Reformed (Trinity) Church, York — recorded 'Welty Gauf'. Register transcription (Ancestry coll. 4946, event 7751); citation card.", "high"),
+ "M72 — Christina Welty x Peter Messerle marriage 13 Apr 1784 citation (Ancestry coll4946 ev7962).png":
+   (["E-christinamesserle"], "Marriage of Christina Welty & Peter Messerle, 13 Apr 1784, First Reformed (Trinity) Church, York. Register transcription (Ancestry coll. 4946, event 7962); citation card.", "high"),
+ "US16 — Catharine Welty x Jacob Boehm marriage 10 May 1785 citation (Ancestry coll4946 ev7987).png":
+   (["E-catharinaboehm"], "Marriage of Catharine Welty & Jacob Boehm, 10 May 1785, First Reformed (Trinity) Church, York — part of the 10 May 1785 double Welty wedding (the likely origin of the ghost '10 May' date once mis-copied onto Michael's 1784 marriage). Register transcription (Ancestry coll. 4946, event 7987); citation card.", "high"),
+ # --- Edenkoben confirmation lists (Archion reg 54930) ---------------------
+ "P54 — Hans Philipp Waldi confirmation Ostern 1707 (Archion reg 54930 Edenkoben2 Bild 127).pdf":
+   (["E-hansphilipp1693","E-johanngeorgwaldi"], "Confirmation of Hanß Philipp Wäldi, Easter 1707, Edenkoben Reformed — entered as 'Hanß Philipps Wäldin, 14, des weiland Hanß Görg Wäldins zu Bischheim nachgel. Sohn': a second independent record naming the late Johann Georg Wäldi of Bischheim as father (Bild 127).", "high"),
+ "P55 — Johann Jacob Waldy confirmation Ostern 1726 (Archion reg 54930 Edenkoben2 Bild 131).pdf":
+   (["E-johnjacob1710"], "Confirmation of Johann Jacob Wäldy, Easter 1726, Edenkoben Reformed — the 6th boy in the Anno-1726 Knaben list; same spelling as his 1710 baptism, a second Edenkoben primary record for him (Bild 131).", "high"),
 }
 
 # ---------------------------------------------------------------------------
@@ -179,6 +206,8 @@ KEEP_ON_TREE = {
  "P75 — Anna Elisabetha Welde baptism 31 Jan 1740 (Archion reg 54927 Edenkoben Taufen Bild 11).pdf",                      # baptism
  "M20 — Michael Welty 1828 partition, heirs named (FamilySearch Tuscarawas Court Recs img96).png",                        # partition
  "M159 — Michael Welty Continental Line Depreciation Pay p481 (archive.org 5thpennsylvaniaarch04harruoft leaf486).jpg",   # Rev War depreciation pay
+ "M28 — Michael Welty PA Rev War militia pay certificate 12706 York (Fold3 img 712667347 PHMC) p1.jpg",                   # Rev War militia pay certificate (PHMC abstract card)
+ "M28 — Michael Welty PA Rev War militia pay certificate 12706 York (Fold3 img 712667352 PHMC) p2.jpg",                   # same certificate, 2nd card scan
  "P111+P112 — George Gauff guardianships - Elizabeth + Margaret (FamilySearch ark 3QSQ-G99B-2W6X).jpg",                   # guardianship names her line
  "P38 — Jacob Welday Sr 10 children, First Families of Ohio (FamilySearch fullText img1327).png",                         # names his children
  "P13 + P147 — York Co 1780 tax return p203 (Welty Widow + Philip Welty + George Welty) (archive.org 3rdPAarch v21 leaf221).jpg",  # names Philip; resolves the 1780 Widow
@@ -187,6 +216,17 @@ KEEP_ON_TREE = {
  "P75 — Welde child baptism (Archion reg 54927 Edenkoben Taufen Bild 28).pdf",                                            # baptism — Maria Margretha 1744
  "P75 — Welde child baptism 1745-46 (Archion reg 54927 Edenkoben Taufen Bild 32).pdf",                                   # baptism — Johann Nicolaus 1746
  "P75 — Welde child baptism (Archion reg 54927 Edenkoben Taufen Bild 43).pdf",                                           # baptism — Anna Barbara 1748
+ "P64 — Edenkoben marriage register, bride's father read in full (Archion reg 54933 Edenkoben4 Bild 63).pdf",            # Hans Jacob's 1709 marriage + sole life-mention of father Joh. Georg
+ "M18 — Michael Weldy estate inventory, deceased Sept 1815 (FamilySearch Tuscarawas Admin Recs 1810-39 film 005870723 img19, ark 3QS7-99Q2-XJTK).jpg",  # death-bracket: estate inventory
+ "FB20 — Georg Wolfgang Weldy x Anna Maria Keibel marriage 7 Jan 1750 (Archion reg 54933 Edenkoben4 Bild 89).pdf",       # marriage
+ "M4 — Michael Welty x Christina Ruthrauff marriage 18 May 1784 citation (Ancestry coll4946 ev7965).png",                # marriage (citation card)
+ "P160 — John Henry Welty burial citation, d 4 Jun 1841 (FindAGrave 32007221 St Clair Cem Greensburg).png",              # burial (citation card)
+ "P126 — Philip Welty & wife Elisabet sponsor 1786 citation (FS-DL 892477 img29 Strayers).png",                         # names wife Elisabet (citation card)
+ "M68 — Elizabeth Welty x George Gauf marriage 26 Mar 1775 citation (Ancestry coll4946 ev7751).png",                     # daughter marriage (citation card)
+ "M72 — Christina Welty x Peter Messerle marriage 13 Apr 1784 citation (Ancestry coll4946 ev7962).png",                  # daughter marriage (citation card)
+ "US16 — Catharine Welty x Jacob Boehm marriage 10 May 1785 citation (Ancestry coll4946 ev7987).png",                    # daughter marriage (citation card)
+ "P54 — Hans Philipp Waldi confirmation Ostern 1707 (Archion reg 54930 Edenkoben2 Bild 127).pdf",                        # confirmation (names father Johann Georg)
+ "P55 — Johann Jacob Waldy confirmation Ostern 1726 (Archion reg 54930 Edenkoben2 Bild 131).pdf",                        # confirmation
 }
 
 def slugify(base):

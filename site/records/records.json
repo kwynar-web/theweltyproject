@@ -18,6 +18,22 @@
     ]
    },
    {
+    "slug": "fb20-georg-wolfgang-weldy-x-anna-maria-keibel-marriage-7-jan-1750",
+    "caption": "Marriage of Georg Wolfgang Weldy & Anna Maria Keibel of Deggelsheim, 7 Jan 1750, Edenkoben Reformed — the primary marriage record, entered under the '1750' year heading (Bild 89).",
+    "repo": "Archion",
+    "url": "https://www.archion.de/en/viewer/churchRegister/54933",
+    "confidence": "high",
+    "logids": [
+     "FB20"
+    ],
+    "pages": [
+     {
+      "slug": "fb20-georg-wolfgang-weldy-x-anna-maria-keibel-marriage-7-jan-1750",
+      "caption": "Marriage of Georg Wolfgang Weldy & Anna Maria Keibel of Deggelsheim, 7 Jan 1750, Edenkoben Reformed — the primary marriage record, entered under the '1750' year heading (Bild 89)."
+     }
+    ]
+   },
+   {
     "slug": "fb57-georg-wolffgang-welde-marriage-entry",
     "caption": "Georg Wolfgang Welde's marriage entry, Edenkoben Reformed (Bild 56).",
     "repo": "Archion",
@@ -101,6 +117,22 @@
       "caption": "Philip Jacob Welty's arrival — 'Phipps Welde' on the Royal Union oath list, Philadelphia 1750 (Strassburger, Pennsylvania German Pioneers, p.433)."
      }
     ]
+   },
+   {
+    "slug": "p126-philip-welty-wife-elisabet-sponsor-1786-citation",
+    "caption": "Philip Welty & his wife Elisabet stand sponsors at Daniel Glaser's baptism, 9 Nov 1786, Strayer's (Salem) Reformed, Dover Twp — the only primary record naming Philip's wife Elisabet. Young/Byrnes transcription (FS-DL 892477, img 29); citation card.",
+    "repo": "FamilySearch",
+    "url": "https://www.familysearch.org/library/books/records/item/892477",
+    "confidence": "high",
+    "logids": [
+     "P126"
+    ],
+    "pages": [
+     {
+      "slug": "p126-philip-welty-wife-elisabet-sponsor-1786-citation",
+      "caption": "Philip Welty & his wife Elisabet stand sponsors at Daniel Glaser's baptism, 9 Nov 1786, Strayer's (Salem) Reformed, Dover Twp — the only primary record naming Philip's wife Elisabet. Young/Byrnes transcription (FS-DL 892477, img 29); citation card."
+     }
+    ]
    }
   ],
   "E-johnjacob1710": [
@@ -117,6 +149,22 @@
      {
       "slug": "p41-john-jacob-welde-baptism-1710",
       "caption": "John Jacob Welde's baptism, 1710, Edenkoben Reformed — parents Hanß Jacob Wäldy & Anna Catharina (Bild 52)."
+     }
+    ]
+   },
+   {
+    "slug": "p55-johann-jacob-waldy-confirmation-ostern-1726",
+    "caption": "Confirmation of Johann Jacob Wäldy, Easter 1726, Edenkoben Reformed — the 6th boy in the Anno-1726 Knaben list; same spelling as his 1710 baptism, a second Edenkoben primary record for him (Bild 131).",
+    "repo": "Archion",
+    "url": "https://www.archion.de/en/viewer/churchRegister/54930",
+    "confidence": "high",
+    "logids": [
+     "P55"
+    ],
+    "pages": [
+     {
+      "slug": "p55-johann-jacob-waldy-confirmation-ostern-1726",
+      "caption": "Confirmation of Johann Jacob Wäldy, Easter 1726, Edenkoben Reformed — the 6th boy in the Anno-1726 Knaben list; same spelling as his 1710 baptism, a second Edenkoben primary record for him (Bild 131)."
      }
     ]
    },
@@ -186,6 +234,76 @@
      {
       "slug": "p53-johannes-w-lti-baptism-2-feb-1713",
       "caption": "Johannes Wälti's baptism, 2 Feb 1713, Edenkoben Reformed — father Hanß Jacob Wäldi 'Müller' & Anna Catharina (Bild 58)."
+     }
+    ]
+   }
+  ],
+  "E-hansphilipp1693": [
+   {
+    "slug": "p54-hans-philipp-waldi-confirmation-ostern-1707",
+    "caption": "Confirmation of Hanß Philipp Wäldi, Easter 1707, Edenkoben Reformed — entered as 'Hanß Philipps Wäldin, 14, des weiland Hanß Görg Wäldins zu Bischheim nachgel. Sohn': a second independent record naming the late Johann Georg Wäldi of Bischheim as father (Bild 127).",
+    "repo": "Archion",
+    "url": "https://www.archion.de/en/viewer/churchRegister/54930",
+    "confidence": "high",
+    "logids": [
+     "P54"
+    ],
+    "pages": [
+     {
+      "slug": "p54-hans-philipp-waldi-confirmation-ostern-1707",
+      "caption": "Confirmation of Hanß Philipp Wäldi, Easter 1707, Edenkoben Reformed — entered as 'Hanß Philipps Wäldin, 14, des weiland Hanß Görg Wäldins zu Bischheim nachgel. Sohn': a second independent record naming the late Johann Georg Wäldi of Bischheim as father (Bild 127)."
+     }
+    ]
+   }
+  ],
+  "E-johanngeorgwaldi": [
+   {
+    "slug": "p54-hans-philipp-waldi-confirmation-ostern-1707",
+    "caption": "Confirmation of Hanß Philipp Wäldi, Easter 1707, Edenkoben Reformed — entered as 'Hanß Philipps Wäldin, 14, des weiland Hanß Görg Wäldins zu Bischheim nachgel. Sohn': a second independent record naming the late Johann Georg Wäldi of Bischheim as father (Bild 127).",
+    "repo": "Archion",
+    "url": "https://www.archion.de/en/viewer/churchRegister/54930",
+    "confidence": "high",
+    "logids": [
+     "P54"
+    ],
+    "pages": [
+     {
+      "slug": "p54-hans-philipp-waldi-confirmation-ostern-1707",
+      "caption": "Confirmation of Hanß Philipp Wäldi, Easter 1707, Edenkoben Reformed — entered as 'Hanß Philipps Wäldin, 14, des weiland Hanß Görg Wäldins zu Bischheim nachgel. Sohn': a second independent record naming the late Johann Georg Wäldi of Bischheim as father (Bild 127)."
+     }
+    ]
+   },
+   {
+    "slug": "p64-edenkoben-marriage-register-bride-s-father-read-in-full",
+    "caption": "Marriage of Hanß Jacob Wäldi 'der Müller', Sept 1709, Edenkoben Reformed — son of the late Joh. Georg Wäldi, former citizen of Bischheim, to Anna Catharina Durchsteinbach [P42/P64] (Bild 63). Same record: Hans Jacob's marriage and the sole life-mention of his father Johann Georg.",
+    "repo": "Archion",
+    "url": "https://www.archion.de/en/viewer/churchRegister/54933",
+    "confidence": "high",
+    "logids": [
+     "P64"
+    ],
+    "pages": [
+     {
+      "slug": "p64-edenkoben-marriage-register-bride-s-father-read-in-full",
+      "caption": "Marriage of Hanß Jacob Wäldi 'der Müller', Sept 1709, Edenkoben Reformed — son of the late Joh. Georg Wäldi, former citizen of Bischheim, to Anna Catharina Durchsteinbach [P42/P64] (Bild 63). Same record: Hans Jacob's marriage and the sole life-mention of his father Johann Georg."
+     }
+    ]
+   }
+  ],
+  "E-hansjacobwaldi": [
+   {
+    "slug": "p64-edenkoben-marriage-register-bride-s-father-read-in-full",
+    "caption": "Marriage of Hanß Jacob Wäldi 'der Müller', Sept 1709, Edenkoben Reformed — son of the late Joh. Georg Wäldi, former citizen of Bischheim, to Anna Catharina Durchsteinbach [P42/P64] (Bild 63). Same record: Hans Jacob's marriage and the sole life-mention of his father Johann Georg.",
+    "repo": "Archion",
+    "url": "https://www.archion.de/en/viewer/churchRegister/54933",
+    "confidence": "high",
+    "logids": [
+     "P64"
+    ],
+    "pages": [
+     {
+      "slug": "p64-edenkoben-marriage-register-bride-s-father-read-in-full",
+      "caption": "Marriage of Hanß Jacob Wäldi 'der Müller', Sept 1709, Edenkoben Reformed — son of the late Joh. Georg Wäldi, former citizen of Bischheim, to Anna Catharina Durchsteinbach [P42/P64] (Bild 63). Same record: Hans Jacob's marriage and the sole life-mention of his father Johann Georg."
      }
     ]
    }
@@ -280,6 +398,22 @@
     ]
    },
    {
+    "slug": "m18-michael-weldy-estate-inventory-deceased-sept-1815",
+    "caption": "Estate inventory of Michael Weldy, deceased Sept 1815, Tuscarawas Co. OH — the appraisement of his goods and property; a death-bracketing record (FamilySearch, Administration Records 1810–39, img 19).",
+    "repo": "FamilySearch",
+    "url": "https://www.familysearch.org/ark:/61903/3:1:3QS7-99Q2-XJTK",
+    "confidence": "high",
+    "logids": [
+     "M18"
+    ],
+    "pages": [
+     {
+      "slug": "m18-michael-weldy-estate-inventory-deceased-sept-1815",
+      "caption": "Estate inventory of Michael Weldy, deceased Sept 1815, Tuscarawas Co. OH — the appraisement of his goods and property; a death-bracketing record (FamilySearch, Administration Records 1810–39, img 19)."
+     }
+    ]
+   },
+   {
     "slug": "m20-michael-welty-1828-partition-heirs-named",
     "caption": "1828 partition of Michael Welty's estate, Tuscarawas Co. OH — the heirs named.",
     "repo": "FamilySearch",
@@ -292,6 +426,42 @@
      {
       "slug": "m20-michael-welty-1828-partition-heirs-named",
       "caption": "1828 partition of Michael Welty's estate, Tuscarawas Co. OH — the heirs named."
+     }
+    ]
+   },
+   {
+    "slug": "m28-michael-welty-pa-rev-war-militia-pay-certificate-12706-york-p1",
+    "caption": "Michael Welty's Revolutionary War militia pay certificate — 'WELTY, MICHAEL, County York, Unit Militia, Certificate 12,706, Total £10.10.0', issued 26 Oct 1786 under the Militia Loan of 1784–85 (Comptroller General records). Back-pay for his York County militia service; the Rank field is blank, refuting the family 'Lieutenant' tradition. PA Revolutionary War Military Abstract Card File (PA Historical & Museum Commission).",
+    "repo": "Fold3 (PA Historical & Museum Commission — PA Revolutionary War Military Abstract Card File / US, Pennsylvania Veterans Card Files 1775-1916)",
+    "url": "https://www.fold3.com/image/712667347/welty-michael-page-1-us-pennsylvania-veterans-card-files-1775-1916",
+    "confidence": "high",
+    "logids": [
+     "M28"
+    ],
+    "pages": [
+     {
+      "slug": "m28-michael-welty-pa-rev-war-militia-pay-certificate-12706-york-p1",
+      "caption": "Michael Welty's Revolutionary War militia pay certificate — 'WELTY, MICHAEL, County York, Unit Militia, Certificate 12,706, Total £10.10.0', issued 26 Oct 1786 under the Militia Loan of 1784–85 (Comptroller General records). Back-pay for his York County militia service; the Rank field is blank, refuting the family 'Lieutenant' tradition. PA Revolutionary War Military Abstract Card File (PA Historical & Museum Commission)."
+     },
+     {
+      "slug": "m28-michael-welty-pa-rev-war-militia-pay-certificate-12706-york-p2",
+      "caption": "Michael Welty's militia pay certificate #12,706 — second card scan (PA Rev War Military Abstract Card File, PHMC)."
+     }
+    ]
+   },
+   {
+    "slug": "m4-michael-welty-x-christina-ruthrauff-marriage-18-may-1784-citation",
+    "caption": "Marriage of Michael Welty & Christina Ruthrauff (recorded 'Christine Rohtrauf'), 18 May 1784, First Reformed (Trinity) Church, York — the corrected date superseding the pedigree's '10 May'. Register transcription (Ancestry coll. 4946, event 7965); citation card.",
+    "repo": "Ancestry",
+    "url": "https://www.ancestry.com/search/collections/4946?f-F00027F3=7965",
+    "confidence": "high",
+    "logids": [
+     "M4"
+    ],
+    "pages": [
+     {
+      "slug": "m4-michael-welty-x-christina-ruthrauff-marriage-18-may-1784-citation",
+      "caption": "Marriage of Michael Welty & Christina Ruthrauff (recorded 'Christine Rohtrauf'), 18 May 1784, First Reformed (Trinity) Church, York — the corrected date superseding the pedigree's '10 May'. Register transcription (Ancestry coll. 4946, event 7965); citation card."
      }
     ]
    }
@@ -331,6 +501,22 @@
       "caption": "George Gauf guardianships — daughters Elizabeth & Margaret."
      }
     ]
+   },
+   {
+    "slug": "m68-elizabeth-welty-x-george-gauf-marriage-26-mar-1775-citation",
+    "caption": "Marriage of Elizabeth Welty & George Gauf, 26 Mar 1775, First Reformed (Trinity) Church, York — recorded 'Welty Gauf'. Register transcription (Ancestry coll. 4946, event 7751); citation card.",
+    "repo": "Ancestry",
+    "url": "https://www.ancestry.com/search/collections/4946?f-F00027F3=7751",
+    "confidence": "high",
+    "logids": [
+     "M68"
+    ],
+    "pages": [
+     {
+      "slug": "m68-elizabeth-welty-x-george-gauf-marriage-26-mar-1775-citation",
+      "caption": "Marriage of Elizabeth Welty & George Gauf, 26 Mar 1775, First Reformed (Trinity) Church, York — recorded 'Welty Gauf'. Register transcription (Ancestry coll. 4946, event 7751); citation card."
+     }
+    ]
    }
   ],
   "E-jacobsr": [
@@ -350,6 +536,60 @@
      }
     ]
    }
+  ],
+  "E-christinamesserle": [
+   {
+    "slug": "m72-christina-welty-x-peter-messerle-marriage-13-apr-1784-citation",
+    "caption": "Marriage of Christina Welty & Peter Messerle, 13 Apr 1784, First Reformed (Trinity) Church, York. Register transcription (Ancestry coll. 4946, event 7962); citation card.",
+    "repo": "Ancestry",
+    "url": "https://www.ancestry.com/search/collections/4946?f-F00027F3=7962",
+    "confidence": "high",
+    "logids": [
+     "M72"
+    ],
+    "pages": [
+     {
+      "slug": "m72-christina-welty-x-peter-messerle-marriage-13-apr-1784-citation",
+      "caption": "Marriage of Christina Welty & Peter Messerle, 13 Apr 1784, First Reformed (Trinity) Church, York. Register transcription (Ancestry coll. 4946, event 7962); citation card."
+     }
+    ]
+   }
+  ],
+  "E-johnhenry1764": [
+   {
+    "slug": "p160-john-henry-welty-burial-citation-d-4-jun-1841",
+    "caption": "Burial of Johan Heinrich 'Henry' Welty Sr. (b. 4 Nov 1764, d. 4 Jun 1841), Saint Clair Cemetery, Greensburg, Westmoreland Co. PA; wife Eva Catherine Steiner. Find a Grave memorial 32007221; citation card (contributor headstone photo not reproduced).",
+    "repo": "Find a Grave",
+    "url": "https://www.findagrave.com/memorial/32007221",
+    "confidence": "med",
+    "logids": [
+     "P160"
+    ],
+    "pages": [
+     {
+      "slug": "p160-john-henry-welty-burial-citation-d-4-jun-1841",
+      "caption": "Burial of Johan Heinrich 'Henry' Welty Sr. (b. 4 Nov 1764, d. 4 Jun 1841), Saint Clair Cemetery, Greensburg, Westmoreland Co. PA; wife Eva Catherine Steiner. Find a Grave memorial 32007221; citation card (contributor headstone photo not reproduced)."
+     }
+    ]
+   }
+  ],
+  "E-catharinaboehm": [
+   {
+    "slug": "us16-catharine-welty-x-jacob-boehm-marriage-10-may-1785-citation",
+    "caption": "Marriage of Catharine Welty & Jacob Boehm, 10 May 1785, First Reformed (Trinity) Church, York — part of the 10 May 1785 double Welty wedding (the likely origin of the ghost '10 May' date once mis-copied onto Michael's 1784 marriage). Register transcription (Ancestry coll. 4946, event 7987); citation card.",
+    "repo": "Ancestry",
+    "url": "https://www.ancestry.com/search/collections/4946?f-F00027F3=7987",
+    "confidence": "high",
+    "logids": [
+     "US16"
+    ],
+    "pages": [
+     {
+      "slug": "us16-catharine-welty-x-jacob-boehm-marriage-10-may-1785-citation",
+      "caption": "Marriage of Catharine Welty & Jacob Boehm, 10 May 1785, First Reformed (Trinity) Church, York — part of the 10 May 1785 double Welty wedding (the likely origin of the ghost '10 May' date once mis-copied onto Michael's 1784 marriage). Register transcription (Ancestry coll. 4946, event 7987); citation card."
+     }
+    ]
+   }
   ]
  },
  "_evidence": [
@@ -363,17 +603,6 @@
    "url": "https://www.archion.de/p/15c24d6ce9/",
    "confidence": "high",
    "file": "P116 — Doll x Neu marriage (Archion reg 54933 Edenkoben4 Bild 93).pdf"
-  },
-  {
-   "slug": "p64-edenkoben-marriage-register-bride-s-father-read-in-full",
-   "caption": "Edenkoben marriage register — the bride's father read in full (Bild 63).",
-   "logids": [
-    "P64"
-   ],
-   "repo": "Archion",
-   "url": "https://www.archion.de/en/viewer/churchRegister/54933",
-   "confidence": "med",
-   "file": "P64 — Edenkoben marriage register, bride's father read in full (Archion reg 54933 Edenkoben4 Bild 63).pdf"
   },
   {
    "slug": "p80-han-jacob-croissant-x-a-m-m-llerin-marriage",
@@ -755,10 +984,10 @@
   }
  ],
  "_meta": {
-  "total_files": 56,
-  "chips": 20,
-  "images_on_people": 20,
-  "evidence_only": 36,
+  "total_files": 68,
+  "chips": 34,
+  "images_on_people": 35,
+  "evidence_only": 35,
   "unmapped": []
  }
 }
