@@ -44,8 +44,10 @@ FAMILIES = [
      "The Swiss Emmental line — the Rüderswil / Emmental Wälti of the “Welty Family Chronicle” (Bacon 2002); source of the “Weltys are Swiss” story.", False),
     ("Md", "Maryland · Taneytown / Emmitsburg", "untested",
      "A genuinely separate, Roman-Catholic Welty family from Eppingen in Baden (Kraichgau) — <b>not</b> the Edenkoben line. The immigrant John Welty (b.1722) crossed on the ship <i>Neptune</i> in 1751, lived in York Co PA, then settled the Piney Creek / Taneytown district of Maryland and died near Emmitsburg at 94. Because Emmitsburg sits ~10 miles south of Gettysburg, this well-documented clan is the best real-world seed of the family lore's “Gettysburg / Maryland brother.” No Y-DNA sample exists for the line.", False),
-    ("R1a", "York · John Welty, the Continental soldier", "R1a",
-     "A fourth, unrelated York patriline — Y-DNA <b>R1a (R-M198)</b>, which cannot share a paternal ancestor with our R1b Edenkoben line, the Manchester I1 branch, or the Swiss I2b Wälti. Its progenitor, <b>John (Nicolaus) Welty Sr.</b> (b.~1744 in the Palatinate), was a German-born Continental Army soldier — German Regiment, enlisted at Baltimore in 1778 (<b>DAR Patriot A203144</b>, pension S39882). In 1783 he married Margaret Ilgenfritz, a Dover girl and thus one of the Edenkoben family's own neighbours, at First Trinity Reformed in York — the same register and decade as our own Michael — then followed the Great Wagon Road to Shenandoah Co, Virginia and on to Greene Co, Tennessee. His son George (b.1797 VA) and grandson Peter Hughes Welty (b.1827 TN) carry the line down to a living FTDNA tester (kit #43635). He stands here as the clearest case of the wider truth: the colonial York Weltys were <i>several</i> unrelated families who lived door to door, worshipped together, and assumed a shared bloodline the DNA does not confirm.", False),
+    ("R1a", "Greene County, TN · John Welty", "R1a",
+     "A separate, unrelated York patriline — Y-DNA <b>R1a (R-M198)</b>, which cannot share a paternal ancestor with our R1b Edenkoben line, the Manchester I1 branch, or the Swiss I2b Wälti. Its progenitor, <b>John (Nicolaus) Welty Sr.</b> (b.~1744 in the Palatinate), was a German-born Continental Army soldier — German Regiment, enlisted at Baltimore in 1778 (<b>DAR Patriot A203144</b>, pension S39882). In 1783 he married Margaret Ilgenfritz, a Dover girl and thus one of the Edenkoben family's own neighbours, at First Trinity Reformed in York — the same register and decade as our own Michael — then followed the Great Wagon Road to Shenandoah Co, Virginia and on to Greene Co, Tennessee. His son George (b.1797 VA) and grandson Peter Hughes Welty (b.1827 TN) carry the line down to a living FTDNA tester (kit #43635). He stands here as the clearest case of the wider truth: the colonial York Weltys were <i>several</i> unrelated families who lived door to door, worshipped together, and assumed a shared bloodline the DNA does not confirm.", False),
+    ("Yrk", "York, PA · George Welty", "R1b",
+     "A York County Welty line carried by FTDNA kit <b>#19175</b> — a <i>different</i> R1b subclade (R-L151) from our Edenkoben cluster, with no common ancestor in a genealogical timeframe. Just the two Pennsylvania members are shown — <b>George Welty</b> (b.~1797, Conewago) and his son <b>John</b> (b.1827, York Co) — before the family left for Ohio and Michigan. Above George is a brick wall: the record that would name his parents is John's baptism in Quickel's Conewago register, still access-locked. One of the several York Welty families that get tangled together in the county records.", False),
 ]
 
 # ============================ CITATION FORMATTER ============================
@@ -593,9 +595,10 @@ def main():
         '<label class="chk eden"><input type="checkbox" data-fam="Eden" checked> Edenkoben</label>'
         '<label class="chk swiss"><input type="checkbox" data-fam="Swiss" checked> Swiss</label>'
         '<label class="chk md"><input type="checkbox" data-fam="Md" checked> Maryland</label>'
-        '<label class="chk r1a"><input type="checkbox" data-fam="R1a" checked> York R1a</label>'
+        '<label class="chk r1a"><input type="checkbox" data-fam="R1a" checked> Greene Co</label>'
+        '<label class="chk yrk"><input type="checkbox" data-fam="Yrk" checked> York (George)</label>'
         '</div>')
-    german = total - counts.get('Swiss', 0) - counts.get('Md', 0) - counts.get('R1a', 0)
+    german = total - counts.get('Swiss', 0) - counts.get('Md', 0) - counts.get('R1a', 0) - counts.get('Yrk', 0)
     render(OUT_ALL, payload_all,
            h1="The Welty Families &mdash; interactive tree",
            sub=("Every documented Welty, in one place: the <b>Edenkoben</b> German family &mdash; "
@@ -609,8 +612,8 @@ def main():
            fam_controls=fam_controls,
            count_label=(f"{total} people · Edenkoben (German) family {german} · "
                         f"Swiss {counts.get('Swiss',0)} · Maryland {counts.get('Md',0)} · "
-                        f"York R1a {counts.get('R1a',0)}"))
-    print(f"wrote {OUT_ALL}  ({total} people: Edenkoben {german}, Swiss {counts.get('Swiss',0)}, Maryland {counts.get('Md',0)}, York R1a {counts.get('R1a',0)})")
+                        f"Greene Co {counts.get('R1a',0)} · York (George) {counts.get('Yrk',0)}"))
+    print(f"wrote {OUT_ALL}  ({total} people: Edenkoben {german}, Swiss {counts.get('Swiss',0)}, Maryland {counts.get('Md',0)}, Greene Co {counts.get('R1a',0)}, York-George {counts.get('Yrk',0)})")
 
     # ---------- 1b) GERMAN-LINES graphical chart — RETIRED 1 Jul 2026 (Kwyn prefers the
     # By-Generation grid). render_graph()/GRAPH_TEMPLATE kept below but no longer called.
@@ -750,6 +753,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     --swiss-mid:#a878a8; --swiss-soft:#f3eaf3;
     --md-mid:#67a785; --md-soft:#e6f3ec;
     --r1a-mid:#c9a24e; --r1a-soft:#f5ecd6;
+    --yrk:#0f6b6b; --yrk-mid:#4fa3a3; --yrk-soft:#dcefef;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
@@ -777,6 +781,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .chk.swiss{border-color:var(--swiss-mid);color:var(--swiss)} .chk.swiss::before{background:var(--swiss)} .chk.swiss input{accent-color:var(--swiss)}
   .chk.md{border-color:var(--md-mid);color:var(--md)} .chk.md::before{background:var(--md)} .chk.md input{accent-color:var(--md)}
   .chk.r1a{border-color:var(--r1a-mid);color:var(--r1a)} .chk.r1a::before{background:var(--r1a)} .chk.r1a input{accent-color:var(--r1a)}
+  .chk.yrk{border-color:var(--yrk-mid);color:var(--yrk)} .chk.yrk::before{background:var(--yrk)} .chk.yrk input{accent-color:var(--yrk)}
   select.gen{font:inherit;font-size:13px;padding:6px 9px;border:1px solid var(--line);border-radius:8px;background:var(--card)}
   .btn{font:inherit;font-size:13px;padding:6px 12px;border:1px solid var(--line);
     border-radius:8px;background:var(--card);cursor:pointer;color:#4a4238}
@@ -815,17 +820,19 @@ TEMPLATE = r"""<!DOCTYPE html>
   .fam.swiss{border-color:var(--swiss-mid);border-top-color:var(--swiss)}
   .fam.md{border-color:var(--md-mid);border-top-color:var(--md)}
   .fam.r1a{border-color:var(--r1a-mid);border-top-color:var(--r1a)}
+  .fam.yrk{border-color:var(--yrk-mid);border-top-color:var(--yrk)}
   .famhd{padding:13px 16px 12px;border-bottom:2px solid var(--line)}
   .fam.eden .famhd{background:linear-gradient(180deg,var(--eden-soft),var(--card));border-bottom-color:var(--eden-mid)}
   .fam.manch .famhd{background:linear-gradient(180deg,var(--manch-soft),var(--card));border-bottom-color:var(--manch-mid)}
   .fam.swiss .famhd{background:linear-gradient(180deg,var(--swiss-soft),var(--card));border-bottom-color:var(--swiss-mid)}
   .fam.md .famhd{background:linear-gradient(180deg,var(--md-soft),var(--card));border-bottom-color:var(--md-mid)}
   .fam.r1a .famhd{background:linear-gradient(180deg,var(--r1a-soft),var(--card));border-bottom-color:var(--r1a-mid)}
+  .fam.yrk .famhd{background:linear-gradient(180deg,var(--yrk-soft),var(--card));border-bottom-color:var(--yrk-mid)}
   .famhd h2{margin:0;font-size:19px;letter-spacing:.2px}
-  .fam.eden h2{color:var(--eden)} .fam.manch h2{color:var(--manch)} .fam.swiss h2{color:var(--swiss)} .fam.md h2{color:var(--md)} .fam.r1a h2{color:var(--r1a)}
+  .fam.eden h2{color:var(--eden)} .fam.manch h2{color:var(--manch)} .fam.swiss h2{color:var(--swiss)} .fam.md h2{color:var(--md)} .fam.r1a h2{color:var(--r1a)} .fam.yrk h2{color:var(--yrk)}
   .hap{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
     padding:2px 8px;border-radius:20px;margin-left:8px;vertical-align:middle;color:#fff}
-  .hap.eden{background:var(--eden)} .hap.manch{background:var(--manch)} .hap.swiss{background:var(--swiss)} .hap.md{background:var(--md)} .hap.r1a{background:var(--r1a)}
+  .hap.eden{background:var(--eden)} .hap.manch{background:var(--manch)} .hap.swiss{background:var(--swiss)} .hap.md{background:var(--md)} .hap.r1a{background:var(--r1a)} .hap.yrk{background:var(--yrk)}
   .famdesc{font-size:12.5px;color:#5a564f;margin-top:5px;max-width:1000px}
   .famct{font-size:11.5px;color:var(--muted);margin-top:3px}
   .tree{padding:10px 16px 16px}
@@ -837,16 +844,19 @@ TEMPLATE = r"""<!DOCTYPE html>
   .fam.swiss .kids{border-left-color:var(--swiss-mid)}
   .fam.md .kids{border-left-color:var(--md-mid)}
   .fam.r1a .kids{border-left-color:var(--r1a-mid)}
+  .fam.yrk .kids{border-left-color:var(--yrk-mid)}
   .fam.eden .tog{border-color:var(--eden-mid);color:var(--eden)}
   .fam.manch .tog{border-color:var(--manch-mid);color:var(--manch)}
   .fam.swiss .tog{border-color:var(--swiss-mid);color:var(--swiss)}
   .fam.md .tog{border-color:var(--md-mid);color:var(--md)}
   .fam.r1a .tog{border-color:var(--r1a-mid);color:var(--r1a)}
+  .fam.yrk .tog{border-color:var(--yrk-mid);color:var(--yrk)}
   .fam.eden .person{box-shadow:inset 3px 0 0 var(--eden-mid)}
   .fam.manch .person{box-shadow:inset 3px 0 0 var(--manch-mid)}
   .fam.swiss .person{box-shadow:inset 3px 0 0 var(--swiss-mid)}
   .fam.md .person{box-shadow:inset 3px 0 0 var(--md-mid)}
   .fam.r1a .person{box-shadow:inset 3px 0 0 var(--r1a-mid)}
+  .fam.yrk .person{box-shadow:inset 3px 0 0 var(--yrk-mid)}
 
   /* nodes */
   .node{margin:4px 0}
@@ -970,7 +980,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     <a href="https://www.familysearch.org" target="_blank" rel="noopener">FamilySearch</a> (church &amp; court records, Full-Text Search, Digital Library; <i>free account</i>) ·
     <a href="https://www.ancestry.com" target="_blank" rel="noopener">Ancestry</a> (PA tax, exoneration &amp; church collections; <i>subscription</i>) ·
     <a href="https://www.findagrave.com" target="_blank" rel="noopener">FindAGrave</a> (memorials &amp; cemeteries) ·
-    <a href="https://brian-hamman.com" target="_blank" rel="noopener">Welty Y-DNA project</a> (Brian Hamman, admin; FTDNA patrilineage evidence) ·
+    <a href="https://www.familytreedna.com/groups/welty" target="_blank" rel="noopener">Welty Y-DNA project</a> (FTDNA; patrilineage evidence) ·
     plus published works (Strassburger &amp; Hinke <i>Pennsylvania German Pioneers</i>; Bowen; Beers), <a href="https://archive.org" target="_blank" rel="noopener">archive.org</a> book scans, <a href="https://gameo.org" target="_blank" rel="noopener">GAMEO</a>, <a href="https://www.wikitree.com" target="_blank" rel="noopener">WikiTree</a>, and the compiler's family papers.</p>
   </div>
 </details>
@@ -1191,6 +1201,7 @@ GEN_TEMPLATE = r"""<!DOCTYPE html>
     --swiss-mid:#a878a8; --swiss-soft:#f3eaf3;
     --md-mid:#67a785; --md-soft:#e6f3ec;
     --r1a-mid:#c9a24e; --r1a-soft:#f5ecd6;
+    --yrk:#0f6b6b; --yrk-mid:#4fa3a3; --yrk-soft:#dcefef;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
