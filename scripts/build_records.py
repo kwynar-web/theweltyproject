@@ -45,7 +45,7 @@ M = {
  "FB57 — Georg Wolffgang Welde marriage entry (Archion reg 54927 Edenkoben Taufen Bild 56).pdf":
    (["E-georgwolfgang-disp"], "Georg Wolfgang Welde's marriage entry, Edenkoben Reformed (Bild 56).", "high"),
  "FB57 — Georg Wolffgang Welde entry (Archion reg 54927 Edenkoben Taufen Bild 62).pdf":
-   (["B-johanjacob","E-georgwolfgang-disp"], "The 14 Jun 1750 Edenkoben baptism naming Georg Wolfgang Welde as father (Bild 62).", "high"),
+   (["B-johanjacob"], "The 14 Jun 1750 Edenkoben baptism naming Georg Wolfgang Welde as father (Bild 62).", "high"),
  "P75 — Anna Elisabetha Welde baptism 31 Jan 1740 (Archion reg 54927 Edenkoben Taufen Bild 11).pdf":
    (["E-jjc-annaelis1740"], "Anna Elisabetha Welde's baptism, 31 Jan 1740, Edenkoben Reformed (Bild 11).", "high"),
  "P75 — Welde child baptism (Archion reg 54927 Edenkoben Taufen Bild 28).pdf":
@@ -97,9 +97,9 @@ M = {
  "P110 — OC docket general index W-section Books D-K (zero Welty) (FamilySearch ark 3QSQ-G99B-VG4K).jpg":
    ([], "Negative sweep — Orphans' Court docket index, W-section, Books D–K: zero Welty.", "high"),
  "P111 — Gauff settlement motion (want of notice to guardians) (FamilySearch ark 3QS7-L99B-278P).jpg":
-   (["E-gauf-christineeliz","E-elizabethgauf"], "Gauf estate settlement motion (want of notice to guardians).", "high"),
+   (["E-elizabethgauf"], "Gauf estate settlement motion (want of notice to guardians).", "high"),
  "P111+P112 — George Gauff guardianships - Elizabeth + Margaret (FamilySearch ark 3QSQ-G99B-2W6X).jpg":
-   (["E-elizabethgauf","E-gauf-christineeliz"], "George Gauf guardianships — daughters Elizabeth & Margaret.", "high"),
+   (["E-elizabethgauf"], "George Gauf guardianships — daughters Elizabeth & Margaret.", "high"),
  "P111+P112 — OC docket general index G-section (Gauff lines) (FamilySearch ark 3QS7-L99B-VLVJ).jpg":
    (["E-elizabethgauf"], "Orphans' Court docket index, G-section — the Gauff lines.", "med"),
  "P112 — George Gauf admin account - Jacob Nigle + Catharine (FamilySearch ark 3QS7-L99B-2731).jpg":
@@ -107,7 +107,7 @@ M = {
  "P113 — Letters of administration memo - Catharine Gauff + Jacob Weigel (FamilySearch ark 3QS7-L99B-KZR3).jpg":
    (["E-elizabethgauf"], "Letters of administration — Catharine Gauff + Jacob Weigel.", "med"),
  "P114 — Jacob Lower guardianship account for Elizabeth Goff (FamilySearch ark 3QS7-L99B-2796).jpg":
-   (["E-gauf-christineeliz","E-elizabethgauf"], "Jacob Lower's guardianship account for Elizabeth Goff (Gauf).", "med"),
+   (["E-elizabethgauf"], "Jacob Lower's guardianship account for Elizabeth Goff (Gauf).", "med"),
  "P120 — QS continuance p142 Catharine bound 40 pounds (FamilySearch ark 3Q9M-CSVF-LTZL).jpg":
    (["E-elizabethgauf"], "Quarter Sessions continuance p.142 — Catharine bound £40 (Gauf matter).", "med"),
  "P120 — QS disposition case No.10 State v Catharine Gauff (FamilySearch ark 3Q9M-CSVF-LTNX).jpg":
@@ -142,6 +142,26 @@ M = {
    (["E-johnjacob1710"], "The 'Welty Black Book' family-register page for John Jacob Welde (b.1710). Note: the 'Broff' wife-name it carries is a debunked name-match.", "med"),
  "US19 — Obediah Weldy decoy, Chester tax 1768-71 (FamilySearch img109).png":
    ([], "DECOY — Obediah Weldy, Chester Co. tax 1768–71; not the line.", "high"),
+}
+
+# ---------------------------------------------------------------------------
+# VITAL-ONLY POLICY (Kwyn, 11 Jul 2026): a record earns a chip on a person only
+# if it's a vital event FOR THEM (baptism/birth, marriage, death/burial, will,
+# partition/guardianship) or the keystone record that NAMES them where little
+# else does. Everything else — in-laws, elder-Gauf & Catharine court records,
+# adjoining-owner warrants, negative/calibration pages, and second views of a
+# fact already shown — stays in the Record Images backlog as evidence-only.
+# To promote a record onto a person, add its filename here.
+KEEP_ON_TREE = {
+ "P74 + FB56 — Joh Jacob Welde x Anna Catharina Croissant marriage (Archion reg 54933 Edenkoben4 Bild 79).pdf",           # marriage
+ "FB57 — Georg Wolffgang Welde marriage entry (Archion reg 54927 Edenkoben Taufen Bild 56).pdf",                          # marriage
+ "FB57 — Georg Wolffgang Welde entry (Archion reg 54927 Edenkoben Taufen Bild 62).pdf",                                   # 1750 baptism of Johan Jacob
+ "P75 — Anna Elisabetha Welde baptism 31 Jan 1740 (Archion reg 54927 Edenkoben Taufen Bild 11).pdf",                      # baptism
+ "M20 — Michael Welty 1828 partition, heirs named (FamilySearch Tuscarawas Court Recs img96).png",                        # partition
+ "P111+P112 — George Gauff guardianships - Elizabeth + Margaret (FamilySearch ark 3QSQ-G99B-2W6X).jpg",                   # guardianship names her line
+ "P38 — Jacob Welday Sr 10 children, First Families of Ohio (FamilySearch fullText img1327).png",                         # names his children
+ "P13 + P147 — York Co 1780 tax return p203 (Welty Widow + Philip Welty + George Welty) (archive.org 3rdPAarch v21 leaf221).jpg",  # names Philip; resolves the 1780 Widow
+ "FB37 — Henry Welty x Coleman Manchester deed 1839 (FamilySearch York Deed Bks 1819-45 img76).png",                      # keystone deed naming this Henry
 }
 
 def slugify(base):
@@ -201,26 +221,52 @@ def main():
     files=sorted(f for f in glob.glob(os.path.join(RECDIR,"**","*"), recursive=True)
                  if os.path.isfile(f) and f.lower().endswith((".jpg",".jpeg",".png",".pdf")))
     slugmap=unique_slugs([f for f in files if os.path.basename(f) in M])
-    by_person={}; evidence=[]; rows_out=[]; unmapped=[]
+    by_person={}; flat_by_person={}; evidence=[]; rows_out=[]; unmapped=[]
     for f in files:
         base=os.path.basename(f)
         if base not in M:
             unmapped.append(base); continue
         persons, caption, conf = M[base]
+        if base not in KEEP_ON_TREE:      # vital-only policy: demote to evidence
+            persons = []
         logids=re.findall(r'(?:P|M|D|FB|FA|US)\d+|TL-?\d+', base)
         slug=slugmap[f]
         img=to_jpg(f, slug)
         resized(img, FULL_MAX).save(os.path.join(OUTF,slug+".jpg"),"JPEG",quality=82)
         resized(img, THUMB_MAX).save(os.path.join(OUTT,slug+".jpg"),"JPEG",quality=80)
         repo,url = urls.get(logids[0], (None,None)) if logids else (None,None)
-        rec={"slug":slug,"caption":caption,"logids":logids,"repo":repo,"url":url,"confidence":conf}
+        plid = logids[0] if logids else slug   # grouping key: pages of one document share a log-ID
+        rec={"slug":slug,"caption":caption,"logids":logids,"repo":repo,"url":url,
+             "confidence":conf,"_plid":plid}
         rows_out.append((base, ";".join(persons), ";".join(logids), caption, "yes" if persons else "no", conf, repo or "", url or ""))
         if persons:
-            for p in persons: by_person.setdefault(p,[]).append(rec)
+            for p in persons: flat_by_person.setdefault(p,[]).append(rec)
         else:
-            evidence.append({**rec,"file":base})
+            evidence.append({k:v for k,v in rec.items() if k!="_plid"} | {"file":base})
+
+    # Collapse multiple pages of ONE document (same primary log-ID) into a single
+    # chip per person, so the tree shows one thumbnail per record instead of a row
+    # of near-identical manuscript pages. The extra pages ride along in `pages[]`
+    # and the lightbox pages through them.
+    for pid, recs in flat_by_person.items():
+        groups={}
+        for r in recs:
+            groups.setdefault(r["_plid"], []).append(r)
+        out_list=[]
+        for k, items in groups.items():
+            items=sorted(items, key=lambda r:r["slug"])
+            head=items[0]
+            out_list.append({
+                "slug":head["slug"], "caption":head["caption"],
+                "repo":head["repo"], "url":head["url"],
+                "confidence":head["confidence"], "logids":head["logids"],
+                "pages":[{"slug":r["slug"],"caption":r["caption"]} for r in items],
+            })
+        by_person[pid]=out_list
+    chips=sum(len(v) for v in by_person.values())
+    imgs_on_people=sum(len(g["pages"]) for v in by_person.values() for g in v)
     out={"by_person":by_person,"_evidence":evidence,
-         "_meta":{"total_files":len(files),"attached":sum(len(v) for v in by_person.values()),
+         "_meta":{"total_files":len(files),"chips":chips,"images_on_people":imgs_on_people,
                   "evidence_only":len(evidence),"unmapped":unmapped}}
     with open(os.path.join(SITE,"records","records.json"),"w",encoding="utf-8") as fh:
         json.dump(out, fh, ensure_ascii=False, indent=1)
@@ -232,7 +278,7 @@ def main():
     for row in sorted(rows_out): ws.append(list(row))
     wb.save(MANXL)
     print(f"files={len(files)} mapped={len(rows_out)} unmapped={unmapped}")
-    print(f"attached_chips={out['_meta']['attached']} people={len(by_person)} evidence_only={len(evidence)}")
+    print(f"chips={chips} (from {imgs_on_people} images) on {len(by_person)} people; evidence_only={len(evidence)}")
 
 if __name__=="__main__":
     main()

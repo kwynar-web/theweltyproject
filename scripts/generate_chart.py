@@ -839,12 +839,22 @@ TEMPLATE = r"""<!DOCTYPE html>
   .reclabel{font-size:11.5px;color:var(--muted);margin:6px 0 3px}
   .reclabel b{color:#5a4632;font-weight:600}
   .recstrip{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 2px}
-  .recchip{width:54px;height:54px;padding:0;border:1px solid var(--line);border-radius:6px;
+  .recchip{position:relative;width:54px;height:54px;padding:0;border:1px solid var(--line);border-radius:6px;
     overflow:hidden;background:#efe7d3;line-height:0;cursor:zoom-in;
     box-shadow:0 1px 3px rgba(90,70,30,.18);transition:transform .12s ease,box-shadow .12s ease,border-color .12s}
   .recchip:hover,.recchip:focus{transform:translateY(-1px);border-color:#b8912f;
     box-shadow:0 3px 9px rgba(90,70,30,.32);outline:none}
   .recchip img{width:100%;height:100%;object-fit:cover;display:block}
+  .recn{position:absolute;top:2px;right:2px;min-width:15px;height:15px;padding:0 3px;
+    background:rgba(122,31,31,.92);color:#fff;font:600 10px/15px system-ui,sans-serif;
+    text-align:center;border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.35)}
+  #reclb .recprev,#reclb .recnext{position:absolute;top:50%;transform:translateY(-50%);
+    background:rgba(0,0,0,.35);border:0;color:#f6f1e7;font-size:40px;line-height:1;
+    width:54px;height:80px;cursor:pointer;border-radius:6px}
+  #reclb .recprev{left:12px} #reclb .recnext{right:12px}
+  #reclb .recprev:hover,#reclb .recnext:hover{background:rgba(0,0,0,.6)}
+  .recpg{display:inline-block;background:rgba(255,255,255,.15);border:1px solid #ffd777;
+    color:#ffd777;font-size:12px;padding:1px 7px;border-radius:10px;margin-right:6px}
   #reclb{position:fixed;inset:0;z-index:200;display:none;background:rgba(20,16,10,.87);
     align-items:center;justify-content:center;flex-direction:column;padding:24px}
   #reclb.open{display:flex}
@@ -947,21 +957,44 @@ function metaLine(p){
 }
 
 /*RECORDS-JS-START*/
-function recStrip(recs){
-  let s=`<div class="reclabel">&#128247; <b>Record image${recs.length>1?'s':''}</b> · ${recs.length} &mdash; primary manuscript${recs.length>1?'s':''}, click to enlarge</div><div class="recstrip">`;
-  s+=recs.map(r=>`<button type="button" class="recchip" data-slug="${r.slug}" data-cap="${esc(r.caption)}" data-url="${r.url||''}" data-repo="${esc(r.repo||'')}" onclick="recOpen(this)" aria-label="Open record image: ${esc(r.caption)}"><img loading="lazy" src="records/thumb/${r.slug}.jpg" alt="${esc(r.caption)}"></button>`).join('');
+// Each entry in `groups` is ONE document (a record) that may have several page
+// images; the chip shows one thumbnail with a page-count badge, and the lightbox
+// pages through them. `groups` is p.records from the manifest.
+function recStrip(groups){
+  let s=`<div class="reclabel">&#128247; <b>Record${groups.length>1?'s':''}</b> · ${groups.length} &mdash; primary manuscript${groups.length>1?'s':''}, click to enlarge</div><div class="recstrip">`;
+  s+=groups.map((g,i)=>{
+    const n=g.pages.length;
+    const badge=n>1?`<span class="recn" title="${n} pages">${n}</span>`:'';
+    const payload=encodeURIComponent(JSON.stringify({pages:g.pages,url:g.url||'',repo:g.repo||''}));
+    return `<button type="button" class="recchip" data-rec="${payload}" onclick="recOpen(this)" aria-label="Open record: ${esc(g.caption)}"><img loading="lazy" src="records/thumb/${g.slug}.jpg" alt="${esc(g.caption)}">${badge}</button>`;
+  }).join('');
   return s+`</div>`;
 }
 function recOpen(btn){
-  const lb=document.getElementById('reclb');
-  const img=lb.querySelector('img'), cap=lb.querySelector('.cap');
-  img.src='records/full/'+btn.dataset.slug+'.jpg';
-  let c=esc(btn.dataset.cap||'');
-  if(btn.dataset.url) c+=` <a href="${btn.dataset.url}" target="_blank" rel="noopener">&mdash; view at ${esc(btn.dataset.repo)||'source'}</a>`;
-  cap.innerHTML=c; lb.classList.add('open'); document.body.style.overflow='hidden';
+  const c=JSON.parse(decodeURIComponent(btn.dataset.rec));
+  window._recCtx={pages:c.pages,url:c.url,repo:c.repo,i:0};
+  recShow(); const lb=document.getElementById('reclb');
+  lb.classList.add('open'); document.body.style.overflow='hidden';
 }
-function recClose(){const lb=document.getElementById('reclb');lb.classList.remove('open');lb.querySelector('img').src='';document.body.style.overflow='';}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')recClose();});
+function recShow(){
+  const c=window._recCtx; if(!c) return;
+  const lb=document.getElementById('reclb'), p=c.pages[c.i], multi=c.pages.length>1;
+  lb.querySelector('img').src='records/full/'+p.slug+'.jpg';
+  let cap=(multi?`<span class="recpg">Page ${c.i+1} / ${c.pages.length}</span> `:'')+esc(p.caption);
+  if(c.url) cap+=` <a href="${c.url}" target="_blank" rel="noopener">&mdash; view at ${esc(c.repo)||'source'}</a>`;
+  lb.querySelector('.cap').innerHTML=cap;
+  lb.querySelector('.recprev').style.display=multi?'':'none';
+  lb.querySelector('.recnext').style.display=multi?'':'none';
+}
+function recStep(d,ev){ if(ev) ev.stopPropagation(); const c=window._recCtx; if(!c) return;
+  c.i=(c.i+d+c.pages.length)%c.pages.length; recShow(); }
+function recClose(){const lb=document.getElementById('reclb');lb.classList.remove('open');lb.querySelector('img').src='';document.body.style.overflow='';window._recCtx=null;}
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('reclb')||!document.getElementById('reclb').classList.contains('open'))return;
+  if(e.key==='Escape')recClose();
+  else if(e.key==='ArrowRight')recStep(1);
+  else if(e.key==='ArrowLeft')recStep(-1);
+});
 /*RECORDS-JS-END*/
 function nodeHTML(id,famKey){
   const p=P[id]; const kids=p.kids||[];
@@ -1092,7 +1125,7 @@ function applyFilter(){
 }
 applyFilter();
 </script>
-<!--RECORDS-LB-START--><div id="reclb" onclick="if(event.target.id==='reclb')recClose()"><button type="button" class="x" onclick="recClose()" aria-label="Close">&times;</button><img alt="Record image"><div class="cap"></div></div><!--RECORDS-LB-END-->
+<!--RECORDS-LB-START--><div id="reclb" onclick="if(event.target.id==='reclb')recClose()"><button type="button" class="x" onclick="recClose()" aria-label="Close">&times;</button><button type="button" class="recprev" onclick="recStep(-1,event)" aria-label="Previous page">&#8249;</button><img alt="Record image"><button type="button" class="recnext" onclick="recStep(1,event)" aria-label="Next page">&#8250;</button><div class="cap"></div></div><!--RECORDS-LB-END-->
 </body>
 </html>
 """
