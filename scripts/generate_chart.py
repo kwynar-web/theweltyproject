@@ -930,7 +930,6 @@ TEMPLATE = r"""<!DOCTYPE html>
 <div id="chart"></div>
 
 <div class="foot">
-  <p><b>Why three families and not one:</b> the surname Welty (Welti / W&auml;lti / Weldy) arose independently in several German- and Swiss-speaking places, and by chance three of those families settled the same few townships of York County, Pennsylvania and reused the same given names. Y-DNA is the only clean separator &mdash; <b>R1b</b> = Edenkoben, <b>I1</b> = Manchester, <b>I2b</b> = Swiss Emmental. Same name, three different fathers.</p>
   <p style="margin-top:10px;color:#9a9384">Auto-generated from <b>Welty Ancestry Research Log.xlsx</b> &rarr; sheet &ldquo;People Roster (chart source)&rdquo; via generate_chart.py. Edit the sheet and re-run to update.</p>
 </div>
 </div>
