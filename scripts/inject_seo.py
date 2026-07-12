@@ -11,6 +11,26 @@ DOMAIN = "https://theweltyproject.com"
 START, END = "<!--welty-seo:start-->", "<!--welty-seo:end-->"
 HSTART, HEND = "<!--welty-hdr:start-->", "<!--welty-hdr:end-->"
 FSTART, FEND = "<!--welty-ftr:start-->", "<!--welty-ftr:end-->"
+ASTART, AEND = "<!--welty-analytics:start-->", "<!--welty-analytics:end-->"
+
+# --- Cloudflare Web Analytics ---------------------------------------------
+# Privacy-friendly, cookieless page-view stats for theweltyproject.com.
+# To ACTIVATE: sign in at https://dash.cloudflare.com -> Analytics & Logs ->
+# Web Analytics -> Add a site (theweltyproject.com). Cloudflare shows a snippet
+# containing a token like '{"token":"abc123..."}'. Paste ONLY that token string
+# below, then re-run this script and push. While the token is empty the block is
+# injected as an inert HTML comment (no beacon loads), so the site is unaffected.
+CF_BEACON_TOKEN = ""  # <-- paste your Cloudflare Web Analytics token here
+
+def analytics_block():
+    if not CF_BEACON_TOKEN:
+        return (ASTART +
+                "<!-- Cloudflare Web Analytics: paste token in inject_seo.py "
+                "(CF_BEACON_TOKEN) to activate -->" + AEND)
+    return (ASTART +
+            "<script defer src=\"https://static.cloudflareinsights.com/beacon.min.js\" "
+            "data-cf-beacon='{\"token\": \"%s\"}'></script>" % CF_BEACON_TOKEN +
+            AEND)
 
 # obfuscated contact address (assembled in JS so scrapers don't harvest the raw string)
 CONTACT_JS = ('<script>(function(){var u="outreach",d="theweltyproject.com",'
@@ -269,6 +289,13 @@ def main():
         i = m.end()
         t = t[:i] + "\n" + block(cfg) + t[i:]
 
+        # --- Cloudflare Web Analytics beacon in <head>, right after the SEO block ---
+        t = re.sub(re.escape(ASTART) + r".*?" + re.escape(AEND) + r"\n?", "", t, flags=re.S)
+        me = re.search(re.escape(END), t)
+        if me:
+            e = me.end()
+            t = t[:e] + "\n" + analytics_block() + t[e:]
+
         # --- shared header, right after <body ...> ---
         t = re.sub(re.escape(HSTART) + r".*?" + re.escape(HEND) + r"\n?", "", t, flags=re.S)
         mb = re.search(r"<body[^>]*>", t)
@@ -287,6 +314,22 @@ def main():
 
         open(fn, "w", encoding="utf-8").write(t)
         print("injected:", fn)
+
+    # Pages outside PAGES that should still get the analytics beacon (no SEO/
+    # header/footer changes) — e.g. the static 404 page.
+    for fn in ("404.html",):
+        try:
+            t = open(fn, encoding="utf-8").read()
+        except FileNotFoundError:
+            print("skip (not found):", fn); continue
+        t = re.sub(re.escape(ASTART) + r".*?" + re.escape(AEND) + r"\n?", "", t, flags=re.S)
+        mt = re.search(r"</title>", t)
+        if not mt:
+            print("no <title> in", fn); continue
+        i = mt.end()
+        t = t[:i] + "\n" + analytics_block() + t[i:]
+        open(fn, "w", encoding="utf-8").write(t)
+        print("analytics injected:", fn)
 
 if __name__ == "__main__":
     main()

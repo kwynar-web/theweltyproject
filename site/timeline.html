@@ -38,6 +38,7 @@
 <meta name="twitter:description" content="A place-by-place history of the Welty family — from Bischheim and Edenkoben in the Palatinate across the Atlantic to Pennsylvania, Ohio and beyond.">
 <meta name="twitter:image" content="https://theweltyproject.com/og-image.png">
 <!--welty-seo:end-->
+<!--welty-analytics:start--><!-- Cloudflare Web Analytics: paste token in inject_seo.py (CF_BEACON_TOKEN) to activate --><!--welty-analytics:end-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
   :root {
@@ -161,7 +162,7 @@
 <body>
 <!--welty-hdr:start-->
 <style>
-.wsite-hdr{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+.wsite-hdr{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
   padding:11px 22px;background:#faf5e9;border-bottom:2px solid #b8912f;
   font-family:'EB Garamond',Georgia,'Times New Roman',serif;box-shadow:0 1px 5px rgba(60,45,20,.09);}
 .wsite-hdr *{box-sizing:border-box}
@@ -171,7 +172,7 @@
   letter-spacing:.5px;color:#1c1a17;line-height:1.05}
 .wsite-word small{display:block;font-family:'EB Garamond',Georgia,serif;font-weight:400;font-size:.6rem;
   letter-spacing:2.5px;text-transform:uppercase;color:#8a7a52;margin-top:3px}
-.wsite-nav{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.wsite-nav{display:flex;gap:5px;flex-wrap:wrap}
 .wsite-nav a{text-decoration:none;color:#5a4f3c;font-size:1.02rem;padding:6px 14px;border-radius:5px;
   border:1px solid transparent;transition:.15s}
 .wsite-nav a:hover{background:#f0e6cf;color:#1c1a17}
@@ -479,6 +480,13 @@
   <footer>Ten generations, two continents, one river valley to another.<br>Compiled from the Welty Ancestry Research Log &mdash; last updated 2 July 2026, 8:45 PM EDT.<br>Key repositories: <a href="https://www.archion.de" target="_blank">Archion</a> &middot; <a href="https://www.familysearch.org/search/full-text" target="_blank">FamilySearch full-text</a> &middot; <a href="https://www.familytreedna.com/public/Welty" target="_blank">FTDNA Welty project</a> &middot; <a href="http://www.brian-hamman.com/WeltyYDNAprojectResults.htm" target="_blank">Hamman patrilineages</a> &middot; <a href="https://www.yorkcountyarchives.org/" target="_blank">York County Archives</a> &middot; <a href="https://services.dar.org/Public/DAR_Research/search_adb/" target="_blank">DAR GRC</a></footer>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+#toTop{position:fixed;right:18px;bottom:18px;z-index:60;width:46px;height:46px;border-radius:50%;border:1px solid #b8912f;background:#1e2a4a;color:#f3ead2;font-size:1.25rem;line-height:1;cursor:pointer;box-shadow:0 3px 12px rgba(20,25,45,.32);opacity:0;pointer-events:none;transition:opacity .2s,transform .15s;display:flex;align-items:center;justify-content:center}
+#toTop.show{opacity:1;pointer-events:auto}
+#toTop:hover{background:#16203a;transform:translateY(-2px)}
+</style>
+<button id="toTop" type="button" aria-label="Back to top" title="Back to top">&#8593;</button>
+<script>(function(){var b=document.getElementById('toTop');if(!b)return;function s(){if(window.pageYOffset>600)b.classList.add('show');else b.classList.remove('show');}window.addEventListener('scroll',s,{passive:true});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});s();})();</script>
 <!--welty-ftr:start-->
 <style>
 .wsite-ftr{margin-top:42px;padding:26px 20px 30px;border-top:1px solid #cbb98d;text-align:center;
@@ -503,12 +511,5 @@
 </footer>
 <script>(function(){var u="outreach",d="theweltyproject.com",a=document.getElementById("wsite-mail");if(a){a.href="mailto:"+u+"@"+d+"?subject=The%20Welty%20Project";a.textContent=u+"@"+d;}})();</script>
 <!--welty-ftr:end-->
-<style>
-#toTop{position:fixed;right:18px;bottom:18px;z-index:60;width:46px;height:46px;border-radius:50%;border:1px solid #b8912f;background:#1e2a4a;color:#f3ead2;font-size:1.25rem;line-height:1;cursor:pointer;box-shadow:0 3px 12px rgba(20,25,45,.32);opacity:0;pointer-events:none;transition:opacity .2s,transform .15s;display:flex;align-items:center;justify-content:center}
-#toTop.show{opacity:1;pointer-events:auto}
-#toTop:hover{background:#16203a;transform:translateY(-2px)}
-</style>
-<button id="toTop" type="button" aria-label="Back to top" title="Back to top">&#8593;</button>
-<script>(function(){var b=document.getElementById('toTop');if(!b)return;function s(){if(window.pageYOffset>600)b.classList.add('show');else b.classList.remove('show');}window.addEventListener('scroll',s,{passive:true});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});s();})();</script>
 </body>
 </html>
