@@ -356,13 +356,15 @@ KNOWN_LIVING = {"B-merleSMGF"}   # Merle William Welty — SMGF-tested descendan
 # so the tree tells its own crux story instead of painting the rung solid green.
 # The node's own Proof badge is left untouched (the person stays "proven"); only
 # the edge to the parent is flagged. (6 Jul 2026)
-#   E-michael : Crooked Run Michael -> Dover Philip Jacob. Michael himself is
-#     proven (1815 intestate admin, York Co militia, 18 May 1784 First Trinity
-#     marriage); his descent from Philip Jacob is the direct line's one open rung.
-#     It rests on the Y-DNA pedigree plus his still-unlocated ~1757 baptism. DNA
-#     confirms the R1b Edenkoben branch; it cannot by itself prove Philip Jacob
-#     specifically (vs. another Edenkoben R1b man) was the father.
-LINK_UNPROVEN = {"E-michael"}
+#   Policy (12 Jul 2026): ALL of Dover Philip Jacob's children render with an
+#   unproven parent-link (dashed) until a PRIMARY record names the father. Each
+#   child is solidly documented in their own right, but none of their descents
+#   from Philip Jacob rests on a direct record yet — Michael's on the Y-DNA
+#   pedigree + an unlocated ~1757 baptism; the others (Jacob Sr., John of Dover,
+#   and the three Trinity-York daughters) on circumstantial/naming evidence. Add
+#   any newly-found child of Philip Jacob here until their parentage is proven.
+LINK_UNPROVEN = {"E-michael", "E-jacobsr", "E-johndover",
+                 "E-elizabethgauf", "E-christinamesserle", "E-catharinaboehm"}
 
 def _year_in(s):
     m = re.search(r'\b(1[5-9]\d\d|20\d\d)\b', s or '')
@@ -765,7 +767,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .t-proven{background:var(--proven)} .t-documented{background:var(--documented)}
   .t-hypo{background:var(--hypo)} .t-lore{background:var(--lore)}
   .t-living{background:var(--living)} .t-dna{background:#37474f} .t-dnaped{background:#5d4037}
-  .t-direct{background:var(--direct)} .t-kit{background:#b8860b} .t-disputed{background:var(--disputed)}
+  .t-disputed{background:var(--disputed)}
   .genchip{display:inline-block;font-size:10px;font-weight:700;color:#4a4238;background:#eae2d2;
     border-radius:20px;padding:1px 7px;letter-spacing:.3px}
 
@@ -806,10 +808,6 @@ TEMPLATE = r"""<!DOCTYPE html>
     padding:6px 11px;margin:1px 0}
   .person .top{display:flex;flex-wrap:wrap;gap:5px;align-items:baseline}
   .name{font-weight:700;font-size:14.5px}
-  .person.direct{border-color:var(--direct);border-width:1.5px;background:#fffaf8}
-  .person.direct .name{color:var(--direct)}
-  .person.kit{border-color:#b8860b;border-width:2px;background:#fffbe9;box-shadow:0 0 0 3px #f0dd9e}
-  .person.kit .name{color:#8a6100}
   .person.disputed{border-style:dashed;border-width:1.5px;border-color:var(--disputed);background:#f7f3ef}
   .person.disputed .name{color:var(--disputed)}
   .node.disputed>.row>.tog{border-style:dashed}
@@ -886,7 +884,6 @@ TEMPLATE = r"""<!DOCTYPE html>
   __FAMCONTROLS__
   <div class="grp">
     <select id="gen" class="gen"><option value="">All generations</option></select>
-    <button id="directBtn" class="btn">Direct line only</button>
   </div>
   <div class="grp">
     <button id="expandAll" class="btn">Expand all</button>
@@ -903,8 +900,6 @@ TEMPLATE = r"""<!DOCTYPE html>
   <span><span class="tag t-lore">Lore</span></span>
   <span><span class="tag t-living">Living</span></span>
   <span><span class="tag t-dna">DNA</span> Y-line tester</span>
-  <span style="color:var(--direct);font-weight:600">Red = the proven direct paternal Welty line</span>
-  <span><span class="tag t-kit">Kit</span> living Y-DNA kit owner</span>
   <span><span class="tag t-disputed">Disputed link ⁉</span> same household, different Y-DNA (non-paternity)</span>
   <span><span class="tag t-linksoft">Father link unproven ⁉</span> the person is proven; their descent from the parent above is not</span>
 </div>
@@ -997,12 +992,11 @@ document.addEventListener('keydown',e=>{
 /*RECORDS-JS-END*/
 function nodeHTML(id,famKey){
   const p=P[id]; const kids=p.kids||[];
-  let cls='person'; if(p.direct==='yes') cls+=' direct'; if(p.direct==='kit') cls+=' kit';
+  let cls='person';
   if((p.proof||'').toLowerCase()==='disputed') cls+=' disputed';
   if(p.linkunproven) cls+=' linksoft';
   let badges=proofTag(p.proof);
-  if(p.dna) badges+=`<span class="tag ${p.direct==='kit'?'t-kit':'t-dna'}">${esc(p.dna)}</span>`;
-  if(p.direct==='yes') badges+='<span class="tag t-direct">Direct line</span>';
+  if(p.dna) badges+=`<span class="tag t-dna">${esc(p.dna)}</span>`;
   if(p.linkunproven) badges+='<span class="tag t-linksoft">Father link unproven ⁉</span>';
   const g=genLabel(p.gen, p.fam);
   const genchip=g?`<span class="genchip">${g}</span>`:'';
@@ -1018,7 +1012,7 @@ function nodeHTML(id,famKey){
   if(p.proof_html) h+=`<div class="prf"><b>Proof:</b> ${p.proof_html}</div>`;
   if(p.source_html) h+=`<div class="src"><b>Source:</b> ${p.source_html}</div>`;
   if(p.records&&p.records.length) h+=recStrip(p.records); /*RECORDS-RENDER*/
-  if(p.linkunproven) h+=`<div class="linknote">&#8265; Descent from the father above rests on the Y-DNA pedigree, not a direct record &mdash; the direct line&rsquo;s one open rung. DNA confirms the R1b Edenkoben branch; a baptism or naming record would confirm the father.</div>`;
+  if(p.linkunproven) h+=`<div class="linknote">&#8265; Descent from the father above is not yet proven by a primary record naming the parent &mdash; it rests on indirect evidence (Y-DNA and/or circumstantial records). A baptism or record naming the father would confirm it.</div>`;
   h+=`</div></div>`;
   if(kids.length){ h+=`<div class="kids">`+kids.map(k=>nodeHTML(k,famKey)).join('')+`</div>`; }
   h+=`</div>`;
@@ -1053,19 +1047,17 @@ function openAll(v){allNodes().forEach(n=>{ if(n.querySelector(':scope>.kids')) 
 document.getElementById('expandAll').onclick=()=>openAll(true);
 document.getElementById('collapseAll').onclick=()=>openAll(false);
 
-// default: open the ancestors of every direct-line node
-function openToDirect(){
-  allNodes().forEach(n=>{ if(n.dataset.direct==='yes'||n.dataset.direct==='kit'){
-    let a=n; while(a){ if(a.classList.contains('node')) setOpen(a,true); a=a.parentElement.closest('.node'); }
-  }});
+// default: open the top two generations of every family (neutral overview)
+function openDefault(){
+  document.querySelectorAll('.fam>.tree>.node').forEach(root=>{
+    setOpen(root,true);
+    root.querySelectorAll(':scope>.kids>.node').forEach(n=>setOpen(n,true));
+  });
 }
-openToDirect();
+openDefault();
 
 // filtering
 const q=document.getElementById('q');
-const directBtn=document.getElementById('directBtn');
-let directOnly=false;
-directBtn.onclick=()=>{directOnly=!directOnly;directBtn.classList.toggle('on',directOnly);applyFilter();};
 const famChecks=[...document.querySelectorAll('.chk input')];
 famChecks.forEach(c=>c.addEventListener('change',applyFilter));
 genSel.addEventListener('change',applyFilter);
@@ -1101,7 +1093,6 @@ function applyFilter(){
   function visit(node){
     const p=P[node.dataset.id];
     let selfMatch = matchText(p,term)
-      && (!directOnly || p.direct==='yes' || p.direct==='kit')
       && (genv==='' || String(p.gen)===genv);
     let childVisible=false;
     const kidNodes=[...node.querySelectorAll(':scope>.kids>.node')];
@@ -1109,7 +1100,7 @@ function applyFilter(){
     const visible = selfMatch || childVisible;
     node.classList.toggle('hidden',!visible);
     if(visible){ shown++; highlight(node,term);
-      if(childVisible && (term||directOnly||genv)) setOpen(node,true);
+      if(childVisible && (term||genv)) setOpen(node,true);
     }
     return visible;
   }
@@ -1117,10 +1108,10 @@ function applyFilter(){
     if(!famOn[f.key])return;
     [...document.querySelectorAll('.fam.'+f.key+'>.tree>.node')].forEach(visit);
   });
-  const active = term||directOnly||genv;
+  const active = term||genv;
   document.getElementById('count').textContent =
     active ? (shown+' shown') : ('__COUNTLABEL__');
-  if(!active) openToDirect();
+  if(!active) openDefault();
 }
 applyFilter();
 </script>
