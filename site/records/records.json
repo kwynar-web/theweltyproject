@@ -1,5 +1,39 @@
 {
  "by_person": {
+  "E-georgwolfgang-disp": [
+   {
+    "slug": "fb19-georg-wolfgang-w-lti-baptism-29-sep-1716",
+    "caption": "Georg Wolfgang Wälti's baptism, 29 Sep 1716, Edenkoben Reformed — father Hanß Jacob Wälti & Anna Catharina (Bild 66).",
+    "repo": "Archion",
+    "url": "https://www.archion.de/de/viewer/churchRegister/54930",
+    "confidence": "high",
+    "logids": [
+     "FB19"
+    ],
+    "pages": [
+     {
+      "slug": "fb19-georg-wolfgang-w-lti-baptism-29-sep-1716",
+      "caption": "Georg Wolfgang Wälti's baptism, 29 Sep 1716, Edenkoben Reformed — father Hanß Jacob Wälti & Anna Catharina (Bild 66)."
+     }
+    ]
+   },
+   {
+    "slug": "fb57-georg-wolffgang-welde-marriage-entry",
+    "caption": "Georg Wolfgang Welde's marriage entry, Edenkoben Reformed (Bild 56).",
+    "repo": "Archion",
+    "url": "https://www.archion.de/de/viewer/churchRegister/54927",
+    "confidence": "high",
+    "logids": [
+     "FB57"
+    ],
+    "pages": [
+     {
+      "slug": "fb57-georg-wolffgang-welde-marriage-entry",
+      "caption": "Georg Wolfgang Welde's marriage entry, Edenkoben Reformed (Bild 56)."
+     }
+    ]
+   }
+  ],
   "B-johanjacob": [
    {
     "slug": "fb57-georg-wolffgang-welde-entry",
@@ -18,25 +52,74 @@
     ]
    }
   ],
-  "E-georgwolfgang-disp": [
+  "E-philipjacob": [
    {
-    "slug": "fb57-georg-wolffgang-welde-marriage-entry",
-    "caption": "Georg Wolfgang Welde's marriage entry, Edenkoben Reformed (Bild 56).",
+    "slug": "p40-philip-jacob-w-lti-baptism-7-may-1719",
+    "caption": "Philip Jacob Welty's baptism, 7 May 1719, Edenkoben Reformed — 'Jacob Wälti & Anna Catharina', the record that proves his parentage (Bild 71).",
     "repo": "Archion",
-    "url": "https://www.archion.de/de/viewer/churchRegister/54927",
+    "url": "https://www.archion.de/de/viewer/churchRegister/54930",
     "confidence": "high",
     "logids": [
-     "FB57"
+     "P40"
     ],
     "pages": [
      {
-      "slug": "fb57-georg-wolffgang-welde-marriage-entry",
-      "caption": "Georg Wolfgang Welde's marriage entry, Edenkoben Reformed (Bild 56)."
+      "slug": "p40-philip-jacob-w-lti-baptism-7-may-1719",
+      "caption": "Philip Jacob Welty's baptism, 7 May 1719, Edenkoben Reformed — 'Jacob Wälti & Anna Catharina', the record that proves his parentage (Bild 71)."
+     }
+    ]
+   },
+   {
+    "slug": "p13-p147-york-co-1780-tax-return-p203",
+    "caption": "York Co. 1780 tax return — Welty Widow, Philip Welty and George Welty (PA Arch. 3rd ser. v21, p.203).",
+    "repo": "Archive.org",
+    "url": "https://archive.org/details/3rdpennsylvaniaarch21harruoft || http://files.usgwar",
+    "confidence": "high",
+    "logids": [
+     "P13",
+     "P147"
+    ],
+    "pages": [
+     {
+      "slug": "p13-p147-york-co-1780-tax-return-p203",
+      "caption": "York Co. 1780 tax return — Welty Widow, Philip Welty and George Welty (PA Arch. 3rd ser. v21, p.203)."
+     }
+    ]
+   },
+   {
+    "slug": "p2-philip-jacob-welde-signature-royal-union-1750-p433",
+    "caption": "Philip Jacob Welty's arrival — 'Phipps Welde' on the Royal Union oath list, Philadelphia 1750 (Strassburger, Pennsylvania German Pioneers, p.433).",
+    "repo": "Archive.org",
+    "url": "https://archive.org/details/pennsylvaniagerm42stra/page/433/mode/1up",
+    "confidence": "high",
+    "logids": [
+     "P2"
+    ],
+    "pages": [
+     {
+      "slug": "p2-philip-jacob-welde-signature-royal-union-1750-p433",
+      "caption": "Philip Jacob Welty's arrival — 'Phipps Welde' on the Royal Union oath list, Philadelphia 1750 (Strassburger, Pennsylvania German Pioneers, p.433)."
      }
     ]
    }
   ],
   "E-johnjacob1710": [
+   {
+    "slug": "p41-john-jacob-welde-baptism-1710",
+    "caption": "John Jacob Welde's baptism, 1710, Edenkoben Reformed — parents Hanß Jacob Wäldy & Anna Catharina (Bild 52).",
+    "repo": "Archion",
+    "url": "https://www.archion.de/de/viewer/churchRegister/54930",
+    "confidence": "high",
+    "logids": [
+     "P41"
+    ],
+    "pages": [
+     {
+      "slug": "p41-john-jacob-welde-baptism-1710",
+      "caption": "John Jacob Welde's baptism, 1710, Edenkoben Reformed — parents Hanß Jacob Wäldy & Anna Catharina (Bild 52)."
+     }
+    ]
+   },
    {
     "slug": "p74-fb56-joh-jacob-welde-x-anna-catharina-croissant-marriage",
     "caption": "Marriage of Joh. Jacob Welde and Anna Catharina Croissant, Edenkoben Reformed (Bild 79).",
@@ -73,21 +156,90 @@
     ]
    }
   ],
-  "E-philipjacob": [
+  "E-jjc-mariamarg1744": [
    {
-    "slug": "p13-p147-york-co-1780-tax-return-p203",
-    "caption": "York Co. 1780 tax return — Welty Widow, Philip Welty and George Welty (PA Arch. 3rd ser. v21, p.203).",
-    "repo": "Archive.org",
-    "url": "https://archive.org/details/3rdpennsylvaniaarch21harruoft || http://files.usgwar",
-    "confidence": "high",
+    "slug": "p75-welde-child-baptism",
+    "caption": "Maria Margretha Welde's baptism, 29 Sep 1744, Edenkoben Reformed (Bild 28).",
+    "repo": "Archion",
+    "url": "https://www.archion.de/de/viewer/churchRegister/54927",
+    "confidence": "med",
     "logids": [
-     "P13",
-     "P147"
+     "P75"
     ],
     "pages": [
      {
-      "slug": "p13-p147-york-co-1780-tax-return-p203",
-      "caption": "York Co. 1780 tax return — Welty Widow, Philip Welty and George Welty (PA Arch. 3rd ser. v21, p.203)."
+      "slug": "p75-welde-child-baptism",
+      "caption": "Maria Margretha Welde's baptism, 29 Sep 1744, Edenkoben Reformed (Bild 28)."
+     }
+    ]
+   }
+  ],
+  "E-jjc-annabarb1748": [
+   {
+    "slug": "p75-welde-child-baptism-2",
+    "caption": "Anna Barbara Welde's baptism, 4 Feb 1748, Edenkoben Reformed (Bild 43).",
+    "repo": "Archion",
+    "url": "https://www.archion.de/de/viewer/churchRegister/54927",
+    "confidence": "med",
+    "logids": [
+     "P75"
+    ],
+    "pages": [
+     {
+      "slug": "p75-welde-child-baptism-2",
+      "caption": "Anna Barbara Welde's baptism, 4 Feb 1748, Edenkoben Reformed (Bild 43)."
+     }
+    ]
+   }
+  ],
+  "E-jjc-johnicolaus1746": [
+   {
+    "slug": "p75-welde-child-baptism-1745-46",
+    "caption": "Johann Nicolaus Welde's baptism, 16 Jan 1746, Edenkoben Reformed (Bild 32).",
+    "repo": "Archion",
+    "url": "https://www.archion.de/de/viewer/churchRegister/54927",
+    "confidence": "med",
+    "logids": [
+     "P75"
+    ],
+    "pages": [
+     {
+      "slug": "p75-welde-child-baptism-1745-46",
+      "caption": "Johann Nicolaus Welde's baptism, 16 Jan 1746, Edenkoben Reformed (Bild 32)."
+     }
+    ]
+   }
+  ],
+  "E-michael": [
+   {
+    "slug": "m159-michael-welty-continental-line-depreciation-pay-p481",
+    "caption": "'Welty, Michael, private' on the Revolutionary War Continental Line Depreciation Pay roll (PA Archives 5th ser. Vol. IV, p.481).",
+    "repo": "Archive.org",
+    "url": "https://archive.org/details/5thpennsylvaniaarch04harruoft/page/481",
+    "confidence": "high",
+    "logids": [
+     "M159"
+    ],
+    "pages": [
+     {
+      "slug": "m159-michael-welty-continental-line-depreciation-pay-p481",
+      "caption": "'Welty, Michael, private' on the Revolutionary War Continental Line Depreciation Pay roll (PA Archives 5th ser. Vol. IV, p.481)."
+     }
+    ]
+   },
+   {
+    "slug": "m20-michael-welty-1828-partition-heirs-named",
+    "caption": "1828 partition of Michael Welty's estate, Tuscarawas Co. OH — the heirs named.",
+    "repo": "FamilySearch",
+    "url": "https://www.familysearch.org/ark:/61903/3:1:3QHV-V382-H18S?view=fullText",
+    "confidence": "high",
+    "logids": [
+     "M20"
+    ],
+    "pages": [
+     {
+      "slug": "m20-michael-welty-1828-partition-heirs-named",
+      "caption": "1828 partition of Michael Welty's estate, Tuscarawas Co. OH — the heirs named."
      }
     ]
    }
@@ -106,24 +258,6 @@
      {
       "slug": "fb37-henry-welty-x-coleman-manchester-deed-1839",
       "caption": "Henry Welty & Coleman, Manchester Twp deed, 1839 (York Deed Bks 1819–45, img 76)."
-     }
-    ]
-   }
-  ],
-  "E-michael": [
-   {
-    "slug": "m20-michael-welty-1828-partition-heirs-named",
-    "caption": "1828 partition of Michael Welty's estate, Tuscarawas Co. OH — the heirs named.",
-    "repo": "FamilySearch",
-    "url": "https://www.familysearch.org/ark:/61903/3:1:3QHV-V382-H18S?view=fullText",
-    "confidence": "high",
-    "logids": [
-     "M20"
-    ],
-    "pages": [
-     {
-      "slug": "m20-michael-welty-1828-partition-heirs-named",
-      "caption": "1828 partition of Michael Welty's estate, Tuscarawas Co. OH — the heirs named."
      }
     ]
    }
@@ -188,39 +322,6 @@
    "url": "https://www.archion.de/en/viewer/churchRegister/54933",
    "confidence": "med",
    "file": "P64 — Edenkoben marriage register, bride's father read in full (Archion reg 54933 Edenkoben4 Bild 63).pdf"
-  },
-  {
-   "slug": "p75-welde-child-baptism",
-   "caption": "Baptism of a Welde child of John Jacob Welde (b.1710), Edenkoben Reformed (Bild 28).",
-   "logids": [
-    "P75"
-   ],
-   "repo": "Archion",
-   "url": "https://www.archion.de/de/viewer/churchRegister/54927",
-   "confidence": "med",
-   "file": "P75 — Welde child baptism (Archion reg 54927 Edenkoben Taufen Bild 28).pdf"
-  },
-  {
-   "slug": "p75-welde-child-baptism-2",
-   "caption": "Baptism of a Welde child of John Jacob Welde (b.1710), Edenkoben Reformed (Bild 43).",
-   "logids": [
-    "P75"
-   ],
-   "repo": "Archion",
-   "url": "https://www.archion.de/de/viewer/churchRegister/54927",
-   "confidence": "med",
-   "file": "P75 — Welde child baptism (Archion reg 54927 Edenkoben Taufen Bild 43).pdf"
-  },
-  {
-   "slug": "p75-welde-child-baptism-1745-46",
-   "caption": "Baptism of a Welde child, 1745–46, Edenkoben Reformed (Bild 32).",
-   "logids": [
-    "P75"
-   ],
-   "repo": "Archion",
-   "url": "https://www.archion.de/de/viewer/churchRegister/54927",
-   "confidence": "med",
-   "file": "P75 — Welde child baptism 1745-46 (Archion reg 54927 Edenkoben Taufen Bild 32).pdf"
   },
   {
    "slug": "p80-han-jacob-croissant-x-a-m-m-llerin-marriage",
@@ -613,10 +714,10 @@
   }
  ],
  "_meta": {
-  "total_files": 49,
-  "chips": 9,
-  "images_on_people": 9,
-  "evidence_only": 40,
+  "total_files": 54,
+  "chips": 17,
+  "images_on_people": 17,
+  "evidence_only": 37,
   "unmapped": []
  }
 }

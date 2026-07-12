@@ -42,6 +42,12 @@ FULL_MAX, THUMB_MAX = 1600, 360
 # ---------------------------------------------------------------------------
 M = {
  # --- Edenkoben Reformed registers (Archion) ------------------------------
+ "P40 — Philip Jacob Wälti baptism 7 May 1719 (Archion reg 54930 Edenkoben2 Bild 71).pdf":
+   (["E-philipjacob"], "Philip Jacob Welty's baptism, 7 May 1719, Edenkoben Reformed — 'Jacob Wälti & Anna Catharina', the record that proves his parentage (Bild 71).", "high"),
+ "P41 — John Jacob Welde baptism 1710 (Archion reg 54930 Edenkoben2 Bild 52).pdf":
+   (["E-johnjacob1710"], "John Jacob Welde's baptism, 1710, Edenkoben Reformed — parents Hanß Jacob Wäldy & Anna Catharina (Bild 52).", "high"),
+ "FB19 — Georg Wolfgang Wälti baptism 29 Sep 1716 (Archion reg 54930 Edenkoben2 Bild 66).pdf":
+   (["E-georgwolfgang-disp"], "Georg Wolfgang Wälti's baptism, 29 Sep 1716, Edenkoben Reformed — father Hanß Jacob Wälti & Anna Catharina (Bild 66).", "high"),
  "FB57 — Georg Wolffgang Welde marriage entry (Archion reg 54927 Edenkoben Taufen Bild 56).pdf":
    (["E-georgwolfgang-disp"], "Georg Wolfgang Welde's marriage entry, Edenkoben Reformed (Bild 56).", "high"),
  "FB57 — Georg Wolffgang Welde entry (Archion reg 54927 Edenkoben Taufen Bild 62).pdf":
@@ -49,11 +55,11 @@ M = {
  "P75 — Anna Elisabetha Welde baptism 31 Jan 1740 (Archion reg 54927 Edenkoben Taufen Bild 11).pdf":
    (["E-jjc-annaelis1740"], "Anna Elisabetha Welde's baptism, 31 Jan 1740, Edenkoben Reformed (Bild 11).", "high"),
  "P75 — Welde child baptism (Archion reg 54927 Edenkoben Taufen Bild 28).pdf":
-   (["E-johnjacob1710"], "Baptism of a Welde child of John Jacob Welde (b.1710), Edenkoben Reformed (Bild 28).", "med"),
+   (["E-jjc-mariamarg1744"], "Maria Margretha Welde's baptism, 29 Sep 1744, Edenkoben Reformed (Bild 28).", "med"),
  "P75 — Welde child baptism 1745-46 (Archion reg 54927 Edenkoben Taufen Bild 32).pdf":
-   (["E-johnjacob1710"], "Baptism of a Welde child, 1745–46, Edenkoben Reformed (Bild 32).", "med"),
+   (["E-jjc-johnicolaus1746"], "Johann Nicolaus Welde's baptism, 16 Jan 1746, Edenkoben Reformed (Bild 32).", "med"),
  "P75 — Welde child baptism (Archion reg 54927 Edenkoben Taufen Bild 43).pdf":
-   (["E-johnjacob1710"], "Baptism of a Welde child of John Jacob Welde (b.1710), Edenkoben Reformed (Bild 43).", "med"),
+   (["E-jjc-annabarb1748"], "Anna Barbara Welde's baptism, 4 Feb 1748, Edenkoben Reformed (Bild 43).", "med"),
  "P74 + FB56 — Joh Jacob Welde x Anna Catharina Croissant marriage (Archion reg 54933 Edenkoben4 Bild 79).pdf":
    (["E-johnjacob1710"], "Marriage of Joh. Jacob Welde and Anna Catharina Croissant, Edenkoben Reformed (Bild 79).", "high"),
  "P64 — Edenkoben marriage register, bride's father read in full (Archion reg 54933 Edenkoben4 Bild 63).pdf":
@@ -69,6 +75,8 @@ M = {
    ([], "DECOY — a Philip Welty, 40 ac Northampton Co. 1785; ruled out, not the Dover Philip.", "high"),
  "P13 + P147 — York Co 1780 tax return p203 (Welty Widow + Philip Welty + George Welty) (archive.org 3rdPAarch v21 leaf221).jpg":
    (["E-philipjacob"], "York Co. 1780 tax return — Welty Widow, Philip Welty and George Welty (PA Arch. 3rd ser. v21, p.203).", "high"),
+ "P2 — Philip Jacob Welde signature, Royal Union 1750 p433 (archive.org pennsylvaniagerm42stra leaf516).jpg":
+   (["E-philipjacob"], "Philip Jacob Welty's arrival — 'Phipps Welde' on the Royal Union oath list, Philadelphia 1750 (Strassburger, Pennsylvania German Pioneers, p.433).", "high"),
  "P70 — Lydia 1749 shiplist p420 (List 142C start, Ship Lydia) (archive.org pennsylvaniagerm42stra leaf502).jpg":
    (["E-johnjacob1710"], "Ship Lydia 1749 passenger list, p.420 — the Croissant in-law crossing (List 142C).", "med"),
  "P70 — Lydia 1749 shiplist p421 (Johan Jacob Messer) (archive.org pennsylvaniagerm42stra leaf503).jpg":
@@ -92,6 +100,8 @@ M = {
    ([], "REVIEW — Daniel Welty × Louisa Whaling, 5 Apr 1839, Tuscarawas Co. OH; which Daniel to confirm.", "review"),
  "M20 — Michael Welty 1828 partition, heirs named (FamilySearch Tuscarawas Court Recs img96).png":
    (["E-michael"], "1828 partition of Michael Welty's estate, Tuscarawas Co. OH — the heirs named.", "high"),
+ "M159 — Michael Welty Continental Line Depreciation Pay p481 (archive.org 5thpennsylvaniaarch04harruoft leaf486).jpg":
+   (["E-michael"], "'Welty, Michael, private' on the Revolutionary War Continental Line Depreciation Pay roll (PA Archives 5th ser. Vol. IV, p.481).", "high"),
  "M97 — Daniel Prosser to Michael Weldy Donegal deed 1797 (FamilySearch Westmoreland Deed Bks img156).png":
    ([], "REVIEW — Daniel Prosser to Michael Weldy, Donegal Twp deed 1797 (Westmoreland Co.).", "review"),
  "P110 — OC docket general index W-section Books D-K (zero Welty) (FamilySearch ark 3QSQ-G99B-VG4K).jpg":
@@ -153,15 +163,23 @@ M = {
 # fact already shown — stays in the Record Images backlog as evidence-only.
 # To promote a record onto a person, add its filename here.
 KEEP_ON_TREE = {
+ "P40 — Philip Jacob Wälti baptism 7 May 1719 (Archion reg 54930 Edenkoben2 Bild 71).pdf",                                # baptism — the parentage proof
+ "P41 — John Jacob Welde baptism 1710 (Archion reg 54930 Edenkoben2 Bild 52).pdf",                                        # baptism
+ "FB19 — Georg Wolfgang Wälti baptism 29 Sep 1716 (Archion reg 54930 Edenkoben2 Bild 66).pdf",                            # baptism
  "P74 + FB56 — Joh Jacob Welde x Anna Catharina Croissant marriage (Archion reg 54933 Edenkoben4 Bild 79).pdf",           # marriage
  "FB57 — Georg Wolffgang Welde marriage entry (Archion reg 54927 Edenkoben Taufen Bild 56).pdf",                          # marriage
  "FB57 — Georg Wolffgang Welde entry (Archion reg 54927 Edenkoben Taufen Bild 62).pdf",                                   # 1750 baptism of Johan Jacob
  "P75 — Anna Elisabetha Welde baptism 31 Jan 1740 (Archion reg 54927 Edenkoben Taufen Bild 11).pdf",                      # baptism
  "M20 — Michael Welty 1828 partition, heirs named (FamilySearch Tuscarawas Court Recs img96).png",                        # partition
+ "M159 — Michael Welty Continental Line Depreciation Pay p481 (archive.org 5thpennsylvaniaarch04harruoft leaf486).jpg",   # Rev War depreciation pay
  "P111+P112 — George Gauff guardianships - Elizabeth + Margaret (FamilySearch ark 3QSQ-G99B-2W6X).jpg",                   # guardianship names her line
  "P38 — Jacob Welday Sr 10 children, First Families of Ohio (FamilySearch fullText img1327).png",                         # names his children
  "P13 + P147 — York Co 1780 tax return p203 (Welty Widow + Philip Welty + George Welty) (archive.org 3rdPAarch v21 leaf221).jpg",  # names Philip; resolves the 1780 Widow
+ "P2 — Philip Jacob Welde signature, Royal Union 1750 p433 (archive.org pennsylvaniagerm42stra leaf516).jpg",                    # immigration oath — Phipps Welde 1750
  "FB37 — Henry Welty x Coleman Manchester deed 1839 (FamilySearch York Deed Bks 1819-45 img76).png",                      # keystone deed naming this Henry
+ "P75 — Welde child baptism (Archion reg 54927 Edenkoben Taufen Bild 28).pdf",                                            # baptism — Maria Margretha 1744
+ "P75 — Welde child baptism 1745-46 (Archion reg 54927 Edenkoben Taufen Bild 32).pdf",                                   # baptism — Johann Nicolaus 1746
+ "P75 — Welde child baptism (Archion reg 54927 Edenkoben Taufen Bild 43).pdf",                                           # baptism — Anna Barbara 1748
 }
 
 def slugify(base):
