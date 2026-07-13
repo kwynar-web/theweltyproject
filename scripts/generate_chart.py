@@ -144,11 +144,15 @@ def _fmt_segment(seg):
         return stash('archive.org ' +
                      _fmt_link(f'https://archive.org/details/{tok}', tok))
     seg = re.sub(r'\barchive\.org\s+([A-Za-z0-9][A-Za-z0-9_.-]*)', _ia_link, seg)
-    seg = re.sub(r'\bbrian-hamman\.com/(\S+)',
-        lambda m: stash(_fmt_link(f'https://brian-hamman.com/{m.group(1)}',
-                                  'brian-hamman.com/' + m.group(1))), seg)
+    # Public-output rule: never surface the FTDNA project admin's name / personal site.
+    # Any brian-hamman.com reference in roster text renders as the neutral FTDNA project
+    # link instead (audit, 12 Jul 2026). His name stays in internal tabs only.
+    seg = re.sub(r'\bbrian-hamman\.com/\S+',
+        lambda m: stash(_fmt_link('https://www.familytreedna.com/groups/welty',
+                                  'Welty Y-DNA project (FTDNA)')), seg)
     seg = re.sub(r'\bbrian-hamman\.com\b',
-        lambda m: stash(_fmt_link('https://brian-hamman.com', 'brian-hamman.com')), seg)
+        lambda m: stash(_fmt_link('https://www.familytreedna.com/groups/welty',
+                                  'Welty Y-DNA project (FTDNA)')), seg)
     seg = re.sub(r'\barchive\.org\b',
         lambda m: stash(_fmt_link('https://archive.org', 'archive.org')), seg)
     seg = re.sub(r'\bArchion\b',
@@ -1498,7 +1502,7 @@ Every card carries the <b>official record</b> that proves the person and <b>wher
     <a href="https://www.familysearch.org" target="_blank" rel="noopener">FamilySearch</a> (church &amp; court records, Full-Text Search, Digital Library; <i>free account</i>) ·
     <a href="https://www.ancestry.com" target="_blank" rel="noopener">Ancestry</a> (PA tax &amp; church collections; <i>subscription</i>) ·
     <a href="https://www.findagrave.com" target="_blank" rel="noopener">FindAGrave</a> ·
-    <a href="https://brian-hamman.com" target="_blank" rel="noopener">Welty Y-DNA project</a> (Brian Hamman, admin) ·
+    <a href="https://www.familytreedna.com/groups/welty" target="_blank" rel="noopener">Welty Y-DNA project</a> (FTDNA; patrilineage evidence) ·
     plus published works (Strassburger &amp; Hinke <i>Pennsylvania German Pioneers</i>; Bowen; Beers), <a href="https://archive.org" target="_blank" rel="noopener">archive.org</a> book scans, and the compiler's family papers.</p>
   </div>
 </details>

@@ -276,7 +276,7 @@ FRAG_STYLE = """<style>
   .pm-name{font-weight:600;}
   .pm-meta{color:#6b6156;font-size:.9em;}
   .pm-emig{color:#6b6156;font-style:italic;font-size:.86em;}
-  .leaflet-popup-content .pm-ph, .leaflet-popup-content .pm-row{font-family:'EB Garamond',Georgia,serif;}
+  .leaflet-popup-content .pm-ph, .leaflet-popup-content .pm-row{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;}
   .leaflet-popup-content{max-height:330px;overflow:auto;}
 </style>"""
 
@@ -401,10 +401,10 @@ STANDALONE = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Welty Family, Everyone in Gen 1&ndash;6 &mdash; a Map</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<!-- body type is Iowan Old Style / Palatino (system serif); no webfont needed -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
-  body{margin:0;background:#f5efe3;color:#2b2620;font-family:'EB Garamond',Georgia,serif;line-height:1.55;}
+  body{margin:0;background:#f5efe3;color:#2b2620;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;line-height:1.55;}
   .wrap{max-width:1000px;margin:0 auto;padding:34px 16px 80px;}
   h1{text-align:center;font-size:1.95em;margin:0 0 4px;letter-spacing:.5px;}
   h2{color:#7a2e2e;font-size:1.1em;}
@@ -412,7 +412,7 @@ STANDALONE = """<!DOCTYPE html>
   .updated{text-align:center;font-size:.82em;color:#7a2e2e;font-weight:bold;margin-bottom:18px;}
   .mapbox{background:#fffdf8;border:1px solid #e3d9c4;border-radius:10px;padding:14px;box-shadow:0 1px 3px rgba(60,45,20,.08);}
   .hint{font-size:.8em;color:#6b6156;font-style:italic;}
-  .wtip{background:rgba(255,253,248,.92);border:1px solid #d8c9a8;border-radius:5px;font-family:Georgia,serif;font-size:11.5px;color:#2b2620;padding:1px 5px;box-shadow:none;}
+  .wtip{background:rgba(255,253,248,.92);border:1px solid #d8c9a8;border-radius:5px;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-size:11.5px;color:#2b2620;padding:1px 5px;box-shadow:none;}
   .wtip:before{display:none;}
 </style>
 __FRAGSTYLE__

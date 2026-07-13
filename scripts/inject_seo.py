@@ -51,7 +51,7 @@ REPO = "https://github.com/kwynar-web/theweltyproject"
 FOOTER_CSS = """
 <style>
 .wsite-ftr{margin-top:42px;padding:26px 20px 30px;border-top:1px solid #cbb98d;text-align:center;
-  font-family:'EB Garamond',Georgia,'Times New Roman',serif;color:#6e6353;background:#faf6ec;
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;color:#6e6353;background:#faf6ec;
   font-size:1rem;line-height:1.6;font-style:normal;letter-spacing:normal}
 .wsite-ftr a{color:#7a1f1f;font-weight:600;text-decoration:none;border-bottom:1px solid #cbb98d}
 .wsite-ftr a:hover{color:#1c1a17}
@@ -80,7 +80,7 @@ def oss_block(maps=False):
         'the full source lives <a href="%s" target="_blank" rel="noopener">on GitHub</a>.<br>'
         'Free to keep, always &mdash; never sold or gated. The research is public domain (CC0) '
         'so anyone can copy, correct, or build on it, and the code stays open (AGPL-3.0).<br>'
-        'Set in EB&nbsp;Garamond &amp; Cormorant&nbsp;SC via Google Fonts (SIL Open Font License).'
+        'Headings in Cormorant&nbsp;SC via Google Fonts (SIL Open Font License); body set in Iowan&nbsp;Old&nbsp;Style / Palatino.'
         '%s'
         ' Municipal arms of Bischheim &amp; Edenkoben and the U.S. state flags are '
         '<a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> '
@@ -117,13 +117,13 @@ def header(current):
 <style>
 .wsite-hdr{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
   padding:11px 22px;background:#faf5e9;border-bottom:2px solid #b8912f;
-  font-family:'EB Garamond',Georgia,'Times New Roman',serif;box-shadow:0 1px 5px rgba(60,45,20,.09);}
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;box-shadow:0 1px 5px rgba(60,45,20,.09);}
 .wsite-hdr *{box-sizing:border-box}
 .wsite-brand{display:flex;align-items:center;gap:11px;text-decoration:none;border:0}
 .wsite-brand img{width:34px;height:40px;display:block}
-.wsite-word{font-family:'Cormorant SC','EB Garamond',Georgia,serif;font-weight:700;font-size:1.3rem;
+.wsite-word{font-family:'Cormorant SC',"Iowan Old Style",Palatino,Georgia,serif;font-weight:700;font-size:1.3rem;
   letter-spacing:.5px;color:#1c1a17;line-height:1.05}
-.wsite-word small{display:block;font-family:'EB Garamond',Georgia,serif;font-weight:400;font-size:.6rem;
+.wsite-word small{display:block;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-weight:400;font-size:.6rem;
   letter-spacing:2.5px;text-transform:uppercase;color:#8a7a52;margin-top:3px}
 .wsite-nav{display:flex;gap:5px;flex-wrap:wrap}
 .wsite-nav a{text-decoration:none;color:#5a4f3c;font-size:1.02rem;padding:6px 14px;border-radius:5px;
@@ -154,7 +154,7 @@ PAGES = {
              '<span class="q">&ldquo;This is a log of the research I am doing while AI is still '
              'cheap. I don&rsquo;t want to poison any waters with what might be inaccurate, so '
              'posting it here and letting people pick through it seems like the best idea.&rdquo;</span>'
-             '<span class="upd">Last updated 4 July 2026, 10:30&nbsp;AM EDT.</span>',
+             '<span class="upd">Last updated 12 July 2026.</span>',
     ),
     "all-families.html": dict(
         nav="all",
@@ -179,12 +179,11 @@ PAGES = {
         maps=True,
         note='<b>Ten generations, two continents, one river valley to another.</b>'
              '<span class="upd">Compiled from the Welty Ancestry Research Log &mdash; '
-             'last updated 4 July 2026.</span>'
+             'last updated 12 July 2026.</span>'
              '<span class="repos">Key repositories: '
              '<a href="https://www.archion.de" target="_blank" rel="noopener">Archion</a> &middot; '
              '<a href="https://www.familysearch.org/search/full-text" target="_blank" rel="noopener">FamilySearch full-text</a> &middot; '
              '<a href="https://www.familytreedna.com/public/Welty" target="_blank" rel="noopener">FTDNA Welty project</a> &middot; '
-             '<a href="http://www.brian-hamman.com/WeltyYDNAprojectResults.htm" target="_blank" rel="noopener">Hamman patrilineages</a> &middot; '
              '<a href="https://www.yorkcountyarchives.org/" target="_blank" rel="noopener">York County Archives</a> &middot; '
              '<a href="https://services.dar.org/Public/DAR_Research/search_adb/" target="_blank" rel="noopener">DAR GRC</a></span>',
     ),
@@ -242,7 +241,7 @@ def block(cfg):
         '',
         '<link rel="preconnect" href="https://fonts.googleapis.com">',
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
-        '<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+SC:wght@500;600;700&display=swap" rel="stylesheet">',
+        '<link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600;700&display=swap" rel="stylesheet">',
         '',
         '<meta property="og:type" content="website">',
         '<meta property="og:site_name" content="The Welty Project">',
@@ -283,6 +282,11 @@ def main():
             print("skip (not found):", fn); continue
         # --- SEO/OG block in <head>, right after </title> ---
         t = re.sub(re.escape(START) + r".*?" + re.escape(END) + r"\n?", "", t, flags=re.S)
+        # Strip any page-template's OWN Google-Fonts preconnect/stylesheet links so the
+        # only font <link> left is the one this script injects (line below in block()).
+        # This keeps every page on one canonical font request and kills the duplicate
+        # <link> that the tree/papers templates carried (audit, 12 Jul 2026).
+        t = re.sub(r'[ \t]*<link[^>]*fonts\.(?:googleapis|gstatic)\.com[^>]*>\n?', "", t, flags=re.I)
         m = re.search(r"</title>", t)
         if not m:
             print("no <title> in", fn); continue
