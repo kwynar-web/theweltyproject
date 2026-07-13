@@ -770,7 +770,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);background-image:radial-gradient(ellipse at 50% -10%,#fdf9ee 0%,#f5efe2 55%,#ede4cf 100%);color:var(--ink);
-    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-family:'EB Garamond',Georgia,serif;
     line-height:1.4;padding:0}
   .wrap{max-width:1500px;margin:0 auto;padding:24px 20px 90px}
   h1{font-size:28px;margin:0 0 4px;letter-spacing:.2px;text-align:center}
@@ -1232,7 +1232,7 @@ GEN_TEMPLATE = r"""<!DOCTYPE html>
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);background-image:radial-gradient(ellipse at 50% -10%,#fdf9ee 0%,#f5efe2 55%,#ede4cf 100%);color:var(--ink);
-    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-family:'EB Garamond',Georgia,serif;
     line-height:1.35;padding:24px 18px 90px}
   .wrap{max-width:1600px;margin:0 auto}
   h1{font-size:27px;margin:0 0 4px;letter-spacing:.2px}
@@ -1403,7 +1403,7 @@ GEN_DE_TEMPLATE = r"""<!DOCTYPE html>
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);background-image:radial-gradient(ellipse at 50% -10%,#fdf9ee 0%,#f5efe2 55%,#ede4cf 100%);color:var(--ink);
-    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-family:'EB Garamond',Georgia,serif;
     line-height:1.35;padding:24px 18px 90px}
   .wrap{max-width:1500px;margin:0 auto}
   h1{font-size:27px;margin:0 0 4px;letter-spacing:.2px}
@@ -1540,7 +1540,7 @@ GRAPH_TEMPLATE = r"""<!DOCTYPE html>
     --direct:#b71c1c;--disputed:#6d4c41;--eden:#b71c1c;--manch:#3a4a5e}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);background-image:radial-gradient(ellipse at 50% -10%,#fdf9ee 0%,#f5efe2 55%,#ede4cf 100%);color:var(--ink);
-    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;line-height:1.35;padding:18px 18px 24px}
+    font-family:'EB Garamond',Georgia,serif;line-height:1.35;padding:18px 18px 24px}
   h1{font-size:24px;margin:0 0 3px}
   .sub{color:var(--muted);font-size:13px;margin:0 0 10px;max-width:1050px}
   .controls{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-bottom:8px}
