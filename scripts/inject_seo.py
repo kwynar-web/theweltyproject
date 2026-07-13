@@ -150,11 +150,7 @@ PAGES = {
              "Edenkoben in the Palatinate — traced by DNA and primary records from "
              "c. 1680 to today.",
         jsonld=True,
-        note='<b>The live research journal of a Welty.</b>'
-             '<span class="q">&ldquo;This is a log of the research I am doing while AI is still '
-             'cheap. I don&rsquo;t want to poison any waters with what might be inaccurate, so '
-             'posting it here and letting people pick through it seems like the best idea.&rdquo;</span>'
-             '<span class="upd">Last updated 12 July 2026.</span>',
+        note='<b>The live research journal of Kwyn Welty.</b>',
     ),
     "all-families.html": dict(
         nav="all",
