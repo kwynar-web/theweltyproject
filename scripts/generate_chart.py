@@ -957,6 +957,27 @@ TEMPLATE = r"""<!DOCTYPE html>
     font-size:32px;line-height:1;cursor:pointer}
   @media(max-width:640px){.recchip{width:46px;height:46px}}
 /*RECORDS-CSS-END*/
+
+  /* ---- mobile & touch refinements (mobile audit, 13 Jul 2026) ---- */
+  /* The shared site header is sticky (welty.css); on this page the controls
+     bar is ALSO sticky at top:0, so the header covered it and hid the
+     search/filter bar once you scrolled. Drop the header out of the sticky
+     context here so the controls bar is what pins to the top. */
+  .wsite-hdr{position:static}
+  /* Long ark:/URL source tokens shouldn't force sideways scroll on a phone. */
+  .person,.meta,.prf,.src,.notes,.linknote,.reclabel{overflow-wrap:break-word}
+  /* Finger-sized expand/collapse toggle on touch devices (was 18px). */
+  @media (pointer:coarse){
+    .tog{width:28px;height:28px;line-height:26px;font-size:15px;margin-top:4px}
+  }
+  @media (max-width:640px){
+    .wrap{padding:16px 12px 80px}
+    .tree{padding:10px 8px 14px}
+    .kids{margin-left:10px;padding-left:9px}   /* shallower indent keeps card width at depth */
+    .controls{gap:8px 12px}
+    .search{min-width:0;flex:1 1 160px}        /* search fills the row instead of forcing 230px */
+  }
+
   @media print{
     body{background:#fff;padding:0}.controls{display:none}
     .kids{display:block !important}.tog{display:none}

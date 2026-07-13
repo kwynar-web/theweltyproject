@@ -119,8 +119,8 @@
     ]
    },
    {
-    "slug": "p126-philip-welty-wife-elisabet-sponsor-1786-citation",
-    "caption": "Philip Welty & his wife Elisabet stand sponsors at Daniel Glaser's baptism, 9 Nov 1786, Strayer's (Salem) Reformed, Dover Twp — the only primary record naming Philip's wife Elisabet. Young/Byrnes transcription (FS-DL 892477, img 29); citation card.",
+    "slug": "p126-philip-welty-wife-elisabet-sponsor-at-daniel-glaser-baptism-9-nov",
+    "caption": "Philip Welty & his wife Elisabet stand as sponsors at Daniel Glaser's baptism (b. 25 Aug 1786, bp. 9 Nov 1786), Strayer's (Salem) Reformed, Dover Twp, York Co. — the only primary record naming Philip Jacob Welty's wife as Elisabet. Page image of the Young/Byrnes register translation (FamilySearch Digital Library, item 892477 / book 219951, image 29).",
     "repo": "FamilySearch",
     "url": "https://www.familysearch.org/library/books/records/item/892477",
     "confidence": "high",
@@ -129,8 +129,8 @@
     ],
     "pages": [
      {
-      "slug": "p126-philip-welty-wife-elisabet-sponsor-1786-citation",
-      "caption": "Philip Welty & his wife Elisabet stand sponsors at Daniel Glaser's baptism, 9 Nov 1786, Strayer's (Salem) Reformed, Dover Twp — the only primary record naming Philip's wife Elisabet. Young/Byrnes transcription (FS-DL 892477, img 29); citation card."
+      "slug": "p126-philip-welty-wife-elisabet-sponsor-at-daniel-glaser-baptism-9-nov",
+      "caption": "Philip Welty & his wife Elisabet stand as sponsors at Daniel Glaser's baptism (b. 25 Aug 1786, bp. 9 Nov 1786), Strayer's (Salem) Reformed, Dover Twp, York Co. — the only primary record naming Philip Jacob Welty's wife as Elisabet. Page image of the Young/Byrnes register translation (FamilySearch Digital Library, item 892477 / book 219951, image 29)."
      }
     ]
    }
@@ -1502,10 +1502,12 @@
   }
  ],
  "_meta": {
-  "total_files": 76,
+  "total_files": 77,
   "chips": 67,
   "images_on_people": 67,
   "evidence_only": 35,
-  "unmapped": []
+  "unmapped": [
+   "P126 — Philip Welty & wife Elisabet sponsor 1786 citation (FS-DL 892477 img29 Strayers).png"
+  ]
  }
 }

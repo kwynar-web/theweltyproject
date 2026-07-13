@@ -188,8 +188,8 @@ M = {
    (["E-michael"], "Marriage of Michael Welty & Christina Ruthrauff (recorded 'Christine Rohtrauf'), 18 May 1784, First Reformed (Trinity) Church, York — the corrected date superseding the pedigree's '10 May'. Register transcription (Ancestry coll. 4946, event 7965); citation card.", "high"),
  "P160 — John Henry Welty burial citation, d 4 Jun 1841 (FindAGrave 32007221 St Clair Cem Greensburg).png":
    (["E-johnhenry1764"], "Burial of Johan Heinrich 'Henry' Welty Sr. (b. 4 Nov 1764, d. 4 Jun 1841), Saint Clair Cemetery, Greensburg, Westmoreland Co. PA; wife Eva Catherine Steiner. Find a Grave memorial 32007221; citation card (contributor headstone photo not reproduced).", "med"),
- "P126 — Philip Welty & wife Elisabet sponsor 1786 citation (FS-DL 892477 img29 Strayers).png":
-   (["E-philipjacob"], "Philip Welty & his wife Elisabet stand sponsors at Daniel Glaser's baptism, 9 Nov 1786, Strayer's (Salem) Reformed, Dover Twp — the only primary record naming Philip's wife Elisabet. Young/Byrnes transcription (FS-DL 892477, img 29); citation card.", "high"),
+ "P126 — Philip Welty & wife Elisabet sponsor at Daniel Glaser baptism 9 Nov 1786, Strayers Reformed Dover (FamilySearch DL 892477 book219951 img29).jpg":
+   (["E-philipjacob"], "Philip Welty & his wife Elisabet stand as sponsors at Daniel Glaser's baptism (b. 25 Aug 1786, bp. 9 Nov 1786), Strayer's (Salem) Reformed, Dover Twp, York Co. — the only primary record naming Philip Jacob Welty's wife as Elisabet. Page image of the Young/Byrnes register translation (FamilySearch Digital Library, item 892477 / book 219951, image 29).", "high"),
  # --- York daughters' marriages, Trinity York (Ancestry coll.4946) ---------
  "M68 — Elizabeth Welty x George Gauf marriage 26 Mar 1775 citation (Ancestry coll4946 ev7751).png":
    (["E-elizabethgauf"], "Marriage of Elizabeth Welty & George Gauf, 26 Mar 1775, First Reformed (Trinity) Church, York — recorded 'Welty Gauf'. Register transcription (Ancestry coll. 4946, event 7751); citation card.", "high"),
@@ -248,7 +248,7 @@ KEEP_ON_TREE = {
  "FB20 — Georg Wolfgang Weldy x Anna Maria Keibel marriage 7 Jan 1750 (Archion reg 54933 Edenkoben4 Bild 89).pdf",       # marriage
  "M4 — Michael Welty x Christina Ruthrauff marriage 18 May 1784 citation (Ancestry coll4946 ev7965).png",                # marriage (citation card)
  "P160 — John Henry Welty burial citation, d 4 Jun 1841 (FindAGrave 32007221 St Clair Cem Greensburg).png",              # burial (citation card)
- "P126 — Philip Welty & wife Elisabet sponsor 1786 citation (FS-DL 892477 img29 Strayers).png",                         # names wife Elisabet (citation card)
+ "P126 — Philip Welty & wife Elisabet sponsor at Daniel Glaser baptism 9 Nov 1786, Strayers Reformed Dover (FamilySearch DL 892477 book219951 img29).jpg",   # names wife Elisabet (page image)
  "M68 — Elizabeth Welty x George Gauf marriage 26 Mar 1775 citation (Ancestry coll4946 ev7751).png",                     # daughter marriage (citation card)
  "M72 — Christina Welty x Peter Messerle marriage 13 Apr 1784 citation (Ancestry coll4946 ev7962).png",                  # daughter marriage (citation card)
  "US16 — Catharine Welty x Jacob Boehm marriage 10 May 1785 citation (Ancestry coll4946 ev7987).png",                    # daughter marriage (citation card)
