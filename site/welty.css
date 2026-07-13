@@ -82,6 +82,25 @@ h1,h2,h3{font-family:var(--font-display);}
 /* Iowan Old Style only inside the tree canvas; everything else stays body. */
 #chart{font-family:var(--font-tree);}
 
+/* ============================================================================
+   CROSS-PAGE MASTHEAD CONSISTENCY (added 13 Jul 2026)
+   Moving between the non-home pages (Family Tree, Timeline, Family Papers, 404)
+   used to feel jumpy: each set a different top gap below the shared 64px header
+   and coloured its title crimson at a slightly different size. Fixed centrally
+   here so it applies everywhere — including the regenerated tree page — instead
+   of drifting per page. Specificity is raised just enough to win over each
+   page's own inline rules; the home page (index) is deliberately untouched.
+
+     • one consistent gap between the header and the first title
+     • sub-page titles are ink-black — crimson stays reserved for the home page
+   ============================================================================ */
+body .wrap        { padding-top: 32px; }   /* all-families + timeline mastheads */
+body main > .intro{ margin-top: 32px; }    /* family-papers archive intro       */
+
+.wrap > h1,
+body .intro h1,
+body > .card > h1 { color: var(--ink); text-align: center; }  /* black + centred */
+
 
 /* ============================================================================
    INDEX / JOURNAL PAGE (theweltyproject.com/index.html)
