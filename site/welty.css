@@ -83,6 +83,31 @@ h1,h2,h3{font-family:var(--font-display);}
 #chart{font-family:var(--font-tree);}
 
 /* ============================================================================
+   SITE-WIDE POLISH (added 13 Jul 2026)
+   Small, purely-additive touches that make every page feel like one site.
+   Nothing here changes page layout — it adds behaviours/states no page had:
+   a brand-tinted text selection, one consistent keyboard-focus ring, and
+   smooth in-page anchor scrolling (disabled for reduced-motion users).
+   ============================================================================ */
+html{scroll-behavior:smooth;}
+
+::selection{background:rgba(184,145,47,.30);color:var(--ink);}   /* gold-tinted highlight */
+
+/* One accessible focus ring everywhere, in the site's gold — replaces the
+   browser's default blue so keyboard focus looks intentional and on-brand. */
+:focus-visible{outline:2px solid var(--gold-bright);outline-offset:2px;border-radius:2px;}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+    scroll-behavior:auto !important;
+  }
+}
+
+/* ============================================================================
    CROSS-PAGE MASTHEAD CONSISTENCY (added 13 Jul 2026)
    Moving between the non-home pages (Family Tree, Timeline, Family Papers, 404)
    used to feel jumpy: each set a different top gap below the shared 64px header
@@ -100,6 +125,10 @@ body main > .intro{ margin-top: 32px; }    /* family-papers archive intro       
 .wrap > h1,
 body .intro h1,
 body > .card > h1 { color: var(--ink); text-align: center; }  /* black + centred */
+
+/* Keep the subtitle line under each masthead title centred too, so all three
+   sub-pages share the same title + subtitle rhythm (not just the title). */
+body .intro > .lede { text-align: center; }
 
 
 /* ============================================================================
