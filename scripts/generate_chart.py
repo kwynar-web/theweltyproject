@@ -195,6 +195,13 @@ def scrub_display(s):
     if not s:
         return s
     s = str(s)
+    # drop internal working-shorthand tails that leak into the display line,
+    # e.g. "…Palatinate — leading id" (an editorial "leading identification" flag,
+    # not a public fact). Only the trailing dash-led shorthand is removed; real
+    # descriptive tails ("— the Weltytown founder") and caveats ("verify",
+    # "unresolved") are left intact.
+    s = re.sub(r'\s*[—–-]\s*(?:leading|working|tentative|provisional)(?:\s+id)?\b\.?\s*$',
+               '', s, flags=re.I)
     s = re.sub(r'\s*\[[^\]]*\]', '', s)                       # [..] codes
     s = re.sub(r',?\s*\bsee\s+' + _DISPLAY_CODE + r'\b', '', s)  # ", see FB39"
     s = re.sub(r'[;,]?\s*\b' + _DISPLAY_CODE + r'\b', '', s)   # standalone codes
@@ -910,9 +917,9 @@ TEMPLATE = r"""<!DOCTYPE html>
   .node.linksoft>.row>.tog{border-style:dashed;border-color:var(--disputed)}
   .linknote{font-size:10.5px;color:var(--disputed);margin-top:4px;font-style:italic;
     border-top:1px dotted var(--line);padding-top:3px;line-height:1.35}
-  .meta{color:var(--muted);font-size:11.5px;margin-top:2px}
-  .meta b{color:#5a4632}
-  .notes{font-size:11px;color:var(--muted);font-style:italic;margin-top:2px}
+  .meta{color:#3a3128;font-size:11.5px;font-weight:600;margin-top:2px}
+  .meta b{color:#2b241d}
+  .notes{font-size:12.5px;color:#463d31;font-style:italic;margin-top:2px}
   .prf{font-size:10.5px;color:#3d3528;margin-top:4px;border-top:1px dotted var(--line);
     padding-top:3px;line-height:1.35}
   .prf.none{color:#b3a98f}
@@ -1115,11 +1122,10 @@ function nodeHTML(id,famKey){
   const g=genLabel(p.gen, p.fam);
   const genchip=g?`<span class="genchip">${g}</span>`:'';
   const meta=metaLine(p);
-  const kc=kids.length?`<span class="kidcount">(${kids.length})</span>`:'';
   let h=`<div class="node${(p.proof||'').toLowerCase()==='disputed'?' disputed':''}${p.linkunproven?' linksoft':''}" data-id="${id}" data-fam="${p.fam}" data-gen="${p.gen===null?'':p.gen}" data-direct="${p.direct||''}">`;
   h+=`<div class="row">`;
   h+=`<div class="tog${kids.length?'':' leaf'}">${kids.length?'▸':''}</div>`;
-  h+=`<div class="${cls}"><div class="top"><span class="name">${esc(p.name)}</span>${genchip}${badges}${kc}</div>`;
+  h+=`<div class="${cls}"><div class="top"><span class="name">${esc(p.name)}</span>${genchip}${badges}</div>`;
   if(meta) h+=`<div class="meta">${meta}</div>`;
   if(p.notes_html) h+=`<div class="notes">${p.notes_html}</div>`;
   else if(p.notes) h+=`<div class="notes">${esc(p.notes)}</div>`;
