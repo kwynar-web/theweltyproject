@@ -776,7 +776,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   /* The tree itself uses Iowan Old Style (more legible for the small card details);
      the page chrome — hero, controls, sourcekey, footer — stays EB Garamond. */
   #chart{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif}
-  h1{font-size:28px;margin:0 0 4px;letter-spacing:.2px;text-align:center}
+  h1{font-family:'Cormorant SC',Georgia,serif;font-size:2.15rem;font-weight:700;margin:0 0 4px;letter-spacing:.5px;text-align:center;color:#7a1f1f}
   .sub{color:var(--muted);margin:0 auto 14px;font-size:14px;max-width:1000px;text-align:center}
 
   /* controls */

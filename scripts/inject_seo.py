@@ -242,6 +242,9 @@ def block(cfg):
         '<link rel="preconnect" href="https://fonts.googleapis.com">',
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
         '<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+SC:wght@500;600;700&display=swap" rel="stylesheet">',
+        # Shared design system — fonts, colours, page background, heading style.
+        # Single source of truth so pages can\'t drift apart. See site/welty.css.
+        '<link rel="stylesheet" href="/welty.css">',
         '',
         '<meta property="og:type" content="website">',
         '<meta property="og:site_name" content="The Welty Project">',

@@ -1,0 +1,63 @@
+/* ============================================================================
+   welty.css — The Welty Project shared design system (single source of truth)
+   ----------------------------------------------------------------------------
+   Linked on EVERY page by scripts/inject_seo.py. Define fonts, colours, the
+   page background, and heading style HERE so the pages can't drift apart.
+
+   Type system (settled 12 Jul 2026):
+     • Body / running text ....... EB Garamond            → var(--font-body)
+     • Headings / page titles .... Cormorant SC (sm-caps) → var(--font-display)
+     • The interactive tree ONLY . Iowan Old Style        → var(--font-tree)
+       (scoped to #chart — more legible for the small card details)
+
+   When a page needs to override something, it can; but the shared defaults
+   below are the canonical values every page should match.
+   ============================================================================ */
+
+:root{
+  /* fonts */
+  --font-body:'EB Garamond',Georgia,serif;
+  --font-display:'Cormorant SC',Georgia,serif;
+  --font-tree:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+
+  /* core palette */
+  --ink:#1c1a17;            /* body text */
+  --muted:#6e6353;          /* secondary text */
+  --crimson:#7a1f1f;        /* accent — links, page titles */
+  --navy:#1e2a4a;           /* section headings */
+  --gold:#b8912f;           /* rules / borders */
+  --gold-bright:#d4af37;
+  --rule:#cbb98d;
+  --line:#c9bfae;
+  --card:#fbf7ec;           /* card / panel background */
+
+  /* page background */
+  --parchment:#f5efe2;
+  --parchment-deep:#ede4cf;
+}
+
+/* ---- base typography + background -------------------------------------- */
+body{
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:var(--parchment);
+  background-image:radial-gradient(ellipse at 50% -10%,#fdf9ee 0%,#f5efe2 55%,#ede4cf 100%);
+}
+
+/* Page titles / headings use the Cormorant SC small-caps display face. */
+h1,h2,h3{font-family:var(--font-display);}
+
+/* Canonical page-title (hero) — crimson Cormorant SC, centred. */
+.page-title,h1.hero{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:2.15rem;
+  letter-spacing:.5px;
+  color:var(--crimson);
+  text-align:center;
+  margin:0 0 4px;
+}
+
+/* ---- the interactive tree is the one deliberate exception -------------- */
+/* Iowan Old Style only inside the tree canvas; everything else stays body. */
+#chart{font-family:var(--font-tree);}
