@@ -755,7 +755,7 @@ TEMPLATE = r"""<!DOCTYPE html>
 <title>The Welty Families — Interactive Tree (All Lines)</title>
 <style>
   :root{
-    --ink:#1c1a17; --muted:#6b6459; --line:#c9bfae; --bg:#f6f1e7; --card:#fffdf8;
+    --ink:#1c1a17; --muted:#6b6459; --line:#c9bfae; --bg:#f5efe2; --card:#fffdf8;
     --proven:#2e7d32; --documented:#1565c0; --hypo:#b26a00; --lore:#8e24aa;
     --living:#00695c; --direct:#b71c1c; --disputed:#6d4c41;
     --eden:#b71c1c; --manch:#3a4a5e; --swiss:#5e3a5e; --md:#2f6f4f; --r1a:#9a6a15;
@@ -769,7 +769,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     --san:#2a4d7a; --san-mid:#7d9bc4; --san-soft:#e4ecf6;
   }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);
+  body{margin:0;background:var(--bg);background-image:radial-gradient(ellipse at 50% -10%,#fdf9ee 0%,#f5efe2 55%,#ede4cf 100%);color:var(--ink);
     font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
     line-height:1.4;padding:0}
   .wrap{max-width:1500px;margin:0 auto;padding:24px 20px 90px}
@@ -1217,7 +1217,7 @@ GEN_TEMPLATE = r"""<!DOCTYPE html>
 <title>The Welty Families — By Generation (all three lines side by side)</title>
 <style>
   :root{
-    --ink:#1c1a17; --muted:#6b6459; --line:#c9bfae; --bg:#f6f1e7; --card:#fffdf8;
+    --ink:#1c1a17; --muted:#6b6459; --line:#c9bfae; --bg:#f5efe2; --card:#fffdf8;
     --proven:#2e7d32; --documented:#1565c0; --hypo:#b26a00; --lore:#8e24aa;
     --living:#00695c; --direct:#b71c1c; --disputed:#6d4c41;
     --eden:#b71c1c; --manch:#3a4a5e; --swiss:#5e3a5e; --md:#2f6f4f; --r1a:#9a6a15;
@@ -1231,7 +1231,7 @@ GEN_TEMPLATE = r"""<!DOCTYPE html>
     --san:#2a4d7a; --san-mid:#7d9bc4; --san-soft:#e4ecf6;
   }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);
+  body{margin:0;background:var(--bg);background-image:radial-gradient(ellipse at 50% -10%,#fdf9ee 0%,#f5efe2 55%,#ede4cf 100%);color:var(--ink);
     font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
     line-height:1.35;padding:24px 18px 90px}
   .wrap{max-width:1600px;margin:0 auto}
@@ -1396,13 +1396,13 @@ GEN_DE_TEMPLATE = r"""<!DOCTYPE html>
 <title>The German Welty Lines — By Generation (with proofs)</title>
 <style>
   :root{
-    --ink:#1c1a17; --muted:#6b6459; --line:#c9bfae; --bg:#f6f1e7; --card:#fffdf8;
+    --ink:#1c1a17; --muted:#6b6459; --line:#c9bfae; --bg:#f5efe2; --card:#fffdf8;
     --proven:#2e7d32; --documented:#1565c0; --hypo:#b26a00; --lore:#8e24aa;
     --living:#00695c; --direct:#b71c1c; --disputed:#6d4c41;
     --eden:#b71c1c; --manch:#3a4a5e;
   }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);
+  body{margin:0;background:var(--bg);background-image:radial-gradient(ellipse at 50% -10%,#fdf9ee 0%,#f5efe2 55%,#ede4cf 100%);color:var(--ink);
     font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
     line-height:1.35;padding:24px 18px 90px}
   .wrap{max-width:1500px;margin:0 auto}
@@ -1535,11 +1535,11 @@ GRAPH_TEMPLATE = r"""<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The German Welty Lines — Graphical Family Tree</title>
 <style>
-  :root{--ink:#1c1a17;--muted:#6b6459;--line:#c9bfae;--bg:#f6f1e7;--card:#fffdf8;
+  :root{--ink:#1c1a17;--muted:#6b6459;--line:#c9bfae;--bg:#f5efe2;--card:#fffdf8;
     --proven:#2e7d32;--documented:#1565c0;--hypo:#b26a00;--lore:#8e24aa;--living:#00695c;
     --direct:#b71c1c;--disputed:#6d4c41;--eden:#b71c1c;--manch:#3a4a5e}
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);
+  body{margin:0;background:var(--bg);background-image:radial-gradient(ellipse at 50% -10%,#fdf9ee 0%,#f5efe2 55%,#ede4cf 100%);color:var(--ink);
     font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;line-height:1.35;padding:18px 18px 24px}
   h1{font-size:24px;margin:0 0 3px}
   .sub{color:var(--muted);font-size:13px;margin:0 0 10px;max-width:1050px}
