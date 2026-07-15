@@ -609,8 +609,8 @@ def main():
     }
     fam_controls = (
         '<div class="grp">'
-        '<label class="chk eden"><input type="checkbox" data-fam="Eden" checked> Edenkoben</label>'
-        '<label class="chk yrk"><input type="checkbox" data-fam="Yrk" checked> York</label>'
+        '<label class="chk eden"><input type="checkbox" data-fam="Eden" checked> York</label>'
+        '<label class="chk yrk"><input type="checkbox" data-fam="Yrk" checked> Conewago</label>'
         '<label class="chk r1a"><input type="checkbox" data-fam="R1a" checked> Greene Co</label>'
         '<label class="chk md"><input type="checkbox" data-fam="Md" checked> Maryland</label>'
         '<label class="chk gva"><input type="checkbox" data-fam="Gva" checked> Goochland</label>'
