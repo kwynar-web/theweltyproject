@@ -202,6 +202,23 @@ M = {
    (["E-hansphilipp1693","E-johanngeorgwaldi"], "Confirmation of Hanß Philipp Wäldi, Easter 1707, Edenkoben Reformed — entered as 'Hanß Philipps Wäldin, 14, des weiland Hanß Görg Wäldins zu Bischheim nachgel. Sohn': a second independent record naming the late Johann Georg Wäldi of Bischheim as father (Bild 127).", "high"),
  "P55 — Johann Jacob Waldy confirmation Ostern 1726 (Archion reg 54930 Edenkoben2 Bild 131).pdf":
    (["E-johnjacob1710"], "Confirmation of Johann Jacob Wäldy, Easter 1726, Edenkoben Reformed — the 6th boy in the Anno-1726 Knaben list; same spelling as his 1710 baptism, a second Edenkoben primary record for him (Bild 131).", "high"),
+ # --- Manchester Gen 4 children-pass censuses (FB73-FB76, 16 Jul 2026) -----
+ "FB73 — Daniel Welty x Elizabeth 1850 census Springgarden p167 hh179-195 lines 3-7 (FamilySearch ark S3HT-6957-MP5).jpg":
+   (["B-daniel1814"], "Daniel Welty's household, 1850 census, Spring Garden Twp, York Co. PA (p. 167, dwelling 179/family 195): Daniel 33 laborer, wife Elizabeth 23, children Mary 8, Catharine 5, Moses 3 — the keystone household record for Daniel × Elizabeth (Smeltzer) and their first three children. US Census 1850 (NARA M432) via FamilySearch.", "high"),
+ "FB73 — Daniel Waldi 1860 census Spring Garden p24 lines 5-9 (FamilySearch ark 33S7-9BSH-4LS).jpg":
+   (["B-daniel1814"], "Daniel Welty's household, 1860 census, Spring Garden Twp, York Co. PA (p. 24, dwelling 126/family 130, surname clerked 'Waldi'): Daniel 40 laborer, Elizabeth 40, Moses 12, Amanda 10, Susanah 5 — adds daughters Amanda and Susannah. US Census 1860 (NARA M653) via FamilySearch.", "high"),
+ "FB74 — Jacob Welty x Margaret 1850 census Springgarden hh163-178 lines 38-40 (FamilySearch ark S3HT-6957-39C).jpg":
+   (["B-jacob1814"], "Jacob Welty's household, 1850 census, Spring Garden Twp, York Co. PA (dwelling 163/family 178, lines 38-40): Jacob 35 laborer, wife Margaret 28 (= Rebecca Margaret Weigel, by middle name), Leah 9. The household continues on the next leaf. US Census 1850 (NARA M432) via FamilySearch.", "high"),
+ "FB74 — Jacob Welty household continuation, Mary-Jacob-George-Maria 1850 p166 lines 1-4 (FamilySearch ark S3HT-6957-SF3).jpg":
+   (["B-jacob1814"], "Continuation of Jacob Welty's 1850 household (p. 166, lines 1-4): children Mary 8, Jacob 6, George 4, Maria 1. US Census 1850 (NARA M432) via FamilySearch.", "high"),
+ "FB74 — Jacob Waldi master shoemaker 1860 census Spring Garden p22 lines 27-32 (FamilySearch ark 33S7-9BSH-4V6).jpg":
+   (["B-jacob1814"], "Jacob Welty's household, 1860 census, Spring Garden Twp, York Co. PA (p. 22, dwelling 113/family 117, surname clerked 'Waldi'): Jacob 46 master shoemaker, Rebecca 37, George 13, Sarah 10, John 5, Harris (Horace) 3 — adds the three youngest sons and names Rebecca outright. US Census 1860 (NARA M653) via FamilySearch.", "high"),
+ "FB75 — Philip Welty x Eliza 1850 census Manchester p237 hh136-143 lines 37-40 (FamilySearch ark S3HT-6957-QMM).jpg":
+   (["B-philip1818"], "Philip Welty's household, 1850 census, Manchester Twp, York Co. PA (p. 237, dwelling 136/family 143): Philip 31 laborer, wife Eliza 30 (Zorger), George 8, Frederick 5. The household continues on the next leaf. US Census 1850 (NARA M432) via FamilySearch.", "high"),
+ "FB75 — Philip Welty household continuation, Lenah-John 1850 Manchester lines 1-2 (FamilySearch ark S3HT-6957-QV2).jpg":
+   (["B-philip1818"], "Continuation of Philip Welty's 1850 household: Lenah 3, John 1. US Census 1850 (NARA M432) via FamilySearch.", "high"),
+ "FB76 — Henry Drayer x Mary (Welty) 1850 census Manchester p234 hh92-96 lines 1-6 (FamilySearch ark S3HT-6957-MFY).jpg":
+   (["B-mary1819"], "Mary (Welty) Drayer's household, 1850 census, Manchester Twp, York Co. PA (p. 234, dwelling 92/family 96): Henry Drayer 35 blacksmith, Mary 31, children Mary 6, Henry 4, Sarah 2, Emma 6/12 — the keystone household record for Mary (Polly) Welty × Henry Drayer. US Census 1850 (NARA M432) via FamilySearch.", "high"),
 }
 
 # ---------------------------------------------------------------------------
@@ -254,6 +271,14 @@ KEEP_ON_TREE = {
  "US16 — Catharine Welty x Jacob Boehm marriage 10 May 1785 citation (Ancestry coll4946 ev7987).png",                    # daughter marriage (citation card)
  "P54 — Hans Philipp Waldi confirmation Ostern 1707 (Archion reg 54930 Edenkoben2 Bild 127).pdf",                        # confirmation (names father Johann Georg)
  "P55 — Johann Jacob Waldy confirmation Ostern 1726 (Archion reg 54930 Edenkoben2 Bild 131).pdf",                        # confirmation
+ "FB73 — Daniel Welty x Elizabeth 1850 census Springgarden p167 hh179-195 lines 3-7 (FamilySearch ark S3HT-6957-MP5).jpg",   # keystone household: names wife + first 3 children
+ "FB73 — Daniel Waldi 1860 census Spring Garden p24 lines 5-9 (FamilySearch ark 33S7-9BSH-4LS).jpg",                          # keystone household: adds Amanda + Susannah
+ "FB74 — Jacob Welty x Margaret 1850 census Springgarden hh163-178 lines 38-40 (FamilySearch ark S3HT-6957-39C).jpg",         # keystone household (page 1 of 2)
+ "FB74 — Jacob Welty household continuation, Mary-Jacob-George-Maria 1850 p166 lines 1-4 (FamilySearch ark S3HT-6957-SF3).jpg", # keystone household (page 2 of 2)
+ "FB74 — Jacob Waldi master shoemaker 1860 census Spring Garden p22 lines 27-32 (FamilySearch ark 33S7-9BSH-4V6).jpg",        # keystone household: adds Sarah, John, Horace; names Rebecca
+ "FB75 — Philip Welty x Eliza 1850 census Manchester p237 hh136-143 lines 37-40 (FamilySearch ark S3HT-6957-QMM).jpg",        # keystone household (page 1 of 2)
+ "FB75 — Philip Welty household continuation, Lenah-John 1850 Manchester lines 1-2 (FamilySearch ark S3HT-6957-QV2).jpg",     # keystone household (page 2 of 2)
+ "FB76 — Henry Drayer x Mary (Welty) 1850 census Manchester p234 hh92-96 lines 1-6 (FamilySearch ark S3HT-6957-MFY).jpg",     # keystone household: Mary's marriage + children
 }
 
 def slugify(base):
