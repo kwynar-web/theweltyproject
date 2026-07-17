@@ -219,6 +219,24 @@ M = {
    (["B-philip1818"], "Continuation of Philip Welty's 1850 household: Lenah 3, John 1. US Census 1850 (NARA M432) via FamilySearch.", "high"),
  "FB76 — Henry Drayer x Mary (Welty) 1850 census Manchester p234 hh92-96 lines 1-6 (FamilySearch ark S3HT-6957-MFY).jpg":
    (["B-mary1819"], "Mary (Welty) Drayer's household, 1850 census, Manchester Twp, York Co. PA (p. 234, dwelling 92/family 96): Henry Drayer 35 blacksmith, Mary 31, children Mary 6, Henry 4, Sarah 2, Emma 6/12 — the keystone household record for Mary (Polly) Welty × Henry Drayer. US Census 1850 (NARA M432) via FamilySearch.", "high"),
+
+ # --- Manchester Gen 4 block 2: George d.1819's sons + Henry's widow + Philip b.1780 + Schramm (16 Jul 2026) -----
+ "FB79 — George d.1819 estate, Philip Welty sale petition OC 1816-1826 pp51-52, 13 May 1823 (FamilySearch ark 3QSQ-G99B-K8BS).jpg":
+   (["B-george1819will"], "George Welty's estate, York Orphans Court 13 May 1823 (OC 1816-1826 vol M-O, pp. 51-52): petition of Philip Welty, 'the Survivor of Henry Welty who was co-executor with him' — proving brother Henry dead by this date — estate indebted $155.54, the real property devised to the widow ordered sold. FamilySearch full-text image.", "high"),
+ "FB81 — 1850 census Manchester Twp, George Welty household 165 (FamilySearch).jpg":
+   (["B-georgeGson"], "George Welty (b. 1810) household, 1850 census, Manchester Twp, York Co. PA (dwelling 155/family 165): George 40, Sarah 37, George 17, Samuel 9, Susan 6, Louisa 1 — the keystone household record; next door (family 164) is John Lichtenberger, his future estate administrator. US Census 1850 (NARA M432) via FamilySearch, ark 3:1:S3HT-6957-7M6.", "high"),
+ "FB81 — 1860 census Fairview Twp, George Welty household 177 (FamilySearch ark 33S7-9BSF-WYM).jpg":
+   (["B-georgeGson"], "George Welty (b. 1810) household, 1860 census, Fairview Twp, York Co. PA (p. 24, family 177, PO Lewisberry): George 50 farmer, Sarah 47, Mary 18, Susan 15, Levesa 12 — the family's move north from Manchester toward Newberry, four years before his death. US Census 1860 (NARA M653) via FamilySearch.", "high"),
+ "FB81 — George Welty of Newberry estate admin petition pp294-295, 26 Aug 1864 (FamilySearch ark 3QS7-89SM-439H).jpg":
+   (["B-georgeGson"], "George Welty's estate, York Orphans Court 26 Aug 1864 (dockets 1864-1865, pp. 294-295): John Lichtenberger of Fairview Twp, administrator, petitions to sell George's 19-acre Newberry Twp tract for debts of $1,098.21 — creditors include his brother Philip Welty ($60) and Saml Welty ($16). FamilySearch full-text image.", "high"),
+ "FB82 — widow Mary Welty allowance for two minors p149, 9 Aug 1827 (FamilySearch ark 3QSQ-G99B-K64P).jpg":
+   (["B-henryd1826"], "Mary Welty, widow of Henry Welty dec'd, York Orphans Court 9 Aug 1827 (OC 1826-1835, p. 149): the Court allows her $20 yearly for keeping each of her two minor children, funded from their share of their grandfather Jacob Welty's estate held by guardian Philip Hoover. FamilySearch full-text image.", "high"),
+ "FB82 — Henry Welty estate New Holland lot sale order p153, 5 Nov 1827 (FamilySearch ark 3QS7-L99B-KDYT).jpg":
+   (["B-henryd1826"], "Henry Welty of Manchester Twp dec'd, York Orphans Court 5 Nov 1827 (OC 1826-1835, p. 153): Adam Wolf Esq., administrator, ordered to sell the estate's residue — 'a log House and lot of Ground, situate in New Holland, fronting York Street' (New Holland = Manchester borough) — debts $150+ unsatisfied. FamilySearch full-text image.", "high"),
+ "FB83 — Catharine Welty widow petition nine children pp520-521, 7 Nov 1837 (FamilySearch ark 3QSQ-G99B-K6QQ).jpg":
+   (["B-philip1780"], "Catharine (Knaub) Welty, 'widow & relict of Philip Welty late of Manchester Township deceased', York Orphans Court 7 Nov 1837 (Court Records 1835-1845, pp. 520-521): she had NINE children at her husband's death about three years earlier, two of them under seven; the Court allows $10 per minor yearly. Primary corroboration of the nine-child family. FamilySearch full-text image.", "high"),
+ "FB84 — Schramm heirs quitclaim, Jacob Welty and Anna Maria his wife, Deeds 1800-1803 (FamilySearch ark 3Q9M-CSXY-1QL8-4).jpg":
+   (["B-johanjacob"], "The heirs of George Shram of Manchester Twp quit-claim the 257-acre 'Long Ridge' tract (Manchester & Dover Twps) to eldest son John Shram, 25 May 1790 — signed by 'Jacob Welty and Anna Maria his Wife' (her mark; his signature copied 'Jacob Walde'), proving Anna Maria (Schramm) Welty a daughter of George Shram. York Deeds 1800-1803, pp. 208-209, via FamilySearch.", "high"),
 }
 
 # ---------------------------------------------------------------------------
@@ -279,6 +297,14 @@ KEEP_ON_TREE = {
  "FB75 — Philip Welty x Eliza 1850 census Manchester p237 hh136-143 lines 37-40 (FamilySearch ark S3HT-6957-QMM).jpg",        # keystone household (page 1 of 2)
  "FB75 — Philip Welty household continuation, Lenah-John 1850 Manchester lines 1-2 (FamilySearch ark S3HT-6957-QV2).jpg",     # keystone household (page 2 of 2)
  "FB76 — Henry Drayer x Mary (Welty) 1850 census Manchester p234 hh92-96 lines 1-6 (FamilySearch ark S3HT-6957-MFY).jpg",     # keystone household: Mary's marriage + children
+ "FB79 — George d.1819 estate, Philip Welty sale petition OC 1816-1826 pp51-52, 13 May 1823 (FamilySearch ark 3QSQ-G99B-K8BS).jpg",  # keystone estate record: brother Henry dead, realty sold
+ "FB81 — 1850 census Manchester Twp, George Welty household 165 (FamilySearch).jpg",                                          # keystone household: wife Sarah + 4 children
+ "FB81 — 1860 census Fairview Twp, George Welty household 177 (FamilySearch ark 33S7-9BSF-WYM).jpg",                          # keystone household: adds Mary; the Fairview move
+ "FB81 — George Welty of Newberry estate admin petition pp294-295, 26 Aug 1864 (FamilySearch ark 3QS7-89SM-439H).jpg",        # keystone death/estate record
+ "FB82 — widow Mary Welty allowance for two minors p149, 9 Aug 1827 (FamilySearch ark 3QSQ-G99B-K64P).jpg",                   # keystone: widow Mary + the two minors
+ "FB82 — Henry Welty estate New Holland lot sale order p153, 5 Nov 1827 (FamilySearch ark 3QS7-L99B-KDYT).jpg",               # keystone estate record: the New Holland lot
+ "FB83 — Catharine Welty widow petition nine children pp520-521, 7 Nov 1837 (FamilySearch ark 3QSQ-G99B-K6QQ).jpg",           # keystone: nine children + death window
+ "FB84 — Schramm heirs quitclaim, Jacob Welty and Anna Maria his wife, Deeds 1800-1803 (FamilySearch ark 3Q9M-CSXY-1QL8-4).jpg",  # keystone: Anna Maria's Schramm parentage
 }
 
 def slugify(base):
