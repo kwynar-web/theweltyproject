@@ -42,6 +42,8 @@ FAMILIES = [
      "The Manchester branch of the German family (Dover / Manchester Twp, York Co PA) — I1 Y-line via a paternity break at/above Georg Wolfgang. Shares the names Philip Jacob / Henry / Catherine — the main source of the old confusion.", False),
     ("Yrk", "Conewago, PA · George Welty", "R1b (R-L151)",
      "A York County Welty line carried by FTDNA kit <b>#19175</b> — a <i>different</i> R1b subclade (R-L151) from our Edenkoben cluster, with no common ancestor in a genealogical timeframe. Just the two Pennsylvania members are shown — <b>George Welty</b> (b.~1797, Conewago) and his son <b>John</b> (b.1827, York Co) — before the family left for Ohio and Michigan. Above George is a brick wall: the record that would name his parents is John's baptism in Quickel's Conewago register, still access-locked. One of the several York Welty families that get tangled together in the county records.", False),
+    ("Cum", "Cumberland Twp, PA · John Welty", "untested",
+     "The Revolutionary-militia patriot <b>John Welty</b> (b. 21 Apr 1760 – d. 30 Dec 1837, <b>DAR Patriot A122777</b>; York Co militia 1780–81) — the “farm near Dover” John of the old lineage applications. He sat on the same 198-acre Cumberland Twp farm for his whole documented life: the 1798 U.S. Direct Tax shows him there (log dwelling, with Henry Weaver on the adjacent line of all three lists), and the census finds him on the same land every decade to 1830 — the township passed from York to the new Adams County (Gettysburg) in 1800. He married <b>Catherine Weaver</b> (1776–1833) in 1789; documented sons are <b>Henry</b> (b.1805, × Eva Wert), <b>Jacob</b> (× Sophia Walter) and <b>Solomon</b> (b.1815), whose Gettysburg home became the storied “Solomon Welty House” of Cemetery Hill. His own parentage is a brick wall: a 1908 application's claimed parents are a disproven graft, and its “born in Switzerland” is a claim, not a record. No Y-DNA sample exists for the line — shown separately from every other York-country Welty family, because the records show him to be none of them.", False),
     ("R1a", "Greene County, TN · John Welty", "R1a",  # already conformant
      "A separate, unrelated York patriline — Y-DNA <b>R1a (R-M198)</b>, which cannot share a paternal ancestor with our R1b Edenkoben line, the Manchester I1 branch, or the Swiss I2b Wälti. Its progenitor, <b>John (Nicolaus) Welty Sr.</b> (b.~1744 in the Palatinate), was a German-born Continental Army soldier — German Regiment, enlisted at Baltimore in 1778 (<b>DAR Patriot A203144</b>, pension S39882). In 1783 he married Margaret Ilgenfritz, a Dover girl and thus one of the Edenkoben family's own neighbours, at First Trinity Reformed in York — the same register and decade as our own Michael — then followed the Great Wagon Road to Shenandoah Co, Virginia and on to Greene Co, Tennessee. His son George (b.1797 VA) and grandson Peter Hughes Welty (b.1827 TN) carry the line down to a living FTDNA tester (kit #43635). He stands here as the clearest case of the wider truth: the colonial York Weltys were <i>several</i> unrelated families who lived door to door, worshipped together, and assumed a shared bloodline the DNA does not confirm.", False),
     ("Md", "Taneytown, MD · John Welty", "untested",
@@ -611,13 +613,14 @@ def main():
         '<div class="grp">'
         '<label class="chk eden"><input type="checkbox" data-fam="Eden" checked> York</label>'
         '<label class="chk yrk"><input type="checkbox" data-fam="Yrk" checked> Conewago</label>'
+        '<label class="chk cum"><input type="checkbox" data-fam="Cum" checked> Cumberland</label>'
         '<label class="chk r1a"><input type="checkbox" data-fam="R1a" checked> Greene Co</label>'
         '<label class="chk md"><input type="checkbox" data-fam="Md" checked> Maryland</label>'
         '<label class="chk gva"><input type="checkbox" data-fam="Gva" checked> Goochland</label>'
         '<label class="chk san"><input type="checkbox" data-fam="San" checked> Sandusky</label>'
         '<label class="chk swiss"><input type="checkbox" data-fam="Swiss" checked> Swiss</label>'
         '</div>')
-    german = total - counts.get('Swiss', 0) - counts.get('Md', 0) - counts.get('R1a', 0) - counts.get('Yrk', 0) - counts.get('Gva', 0) - counts.get('San', 0)
+    german = total - counts.get('Swiss', 0) - counts.get('Md', 0) - counts.get('R1a', 0) - counts.get('Yrk', 0) - counts.get('Cum', 0) - counts.get('Gva', 0) - counts.get('San', 0)
     render(OUT_ALL, payload_all,
            h1="The Welty Families &mdash; interactive tree",
            sub=("Every documented Welty, in one place: the <b>Edenkoben</b> German family &mdash; "
@@ -630,10 +633,11 @@ def main():
                 f"<b>People Roster</b> sheet of the research log. <b>{total}</b> people tracked so far."),
            fam_controls=fam_controls,
            count_label=(f"{total} people · Edenkoben (German) family {german} · "
-                        f"York {counts.get('Yrk',0)} · Greene Co {counts.get('R1a',0)} · "
+                        f"York {counts.get('Yrk',0)} · Cumberland {counts.get('Cum',0)} · "
+                        f"Greene Co {counts.get('R1a',0)} · "
                         f"Maryland {counts.get('Md',0)} · Goochland {counts.get('Gva',0)} · "
                         f"Sandusky {counts.get('San',0)} · Swiss {counts.get('Swiss',0)}"))
-    print(f"wrote {OUT_ALL}  ({total} people: Edenkoben {german}, Swiss {counts.get('Swiss',0)}, Maryland {counts.get('Md',0)}, Greene Co {counts.get('R1a',0)}, York-George {counts.get('Yrk',0)}, Goochland {counts.get('Gva',0)}, Saanen {counts.get('San',0)})")
+    print(f"wrote {OUT_ALL}  ({total} people: Edenkoben {german}, Swiss {counts.get('Swiss',0)}, Maryland {counts.get('Md',0)}, Greene Co {counts.get('R1a',0)}, York-George {counts.get('Yrk',0)}, Cumberland {counts.get('Cum',0)}, Goochland {counts.get('Gva',0)}, Saanen {counts.get('San',0)})")
 
     # ---------- 1b) GERMAN-LINES graphical chart — RETIRED 1 Jul 2026 (Kwyn prefers the
     # By-Generation grid). render_graph()/GRAPH_TEMPLATE kept below but no longer called.
@@ -774,6 +778,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     --md-mid:#67a785; --md-soft:#e6f3ec;
     --r1a-mid:#c9a24e; --r1a-soft:#f5ecd6;
     --yrk:#0f6b6b; --yrk-mid:#4fa3a3; --yrk-soft:#dcefef;
+    --cum:#4a3a8c; --cum-mid:#8c82c4; --cum-soft:#e9e6f5;
     --gva:#a34a2a; --gva-mid:#cf9179; --gva-soft:#f6e7e0;
     --san:#2a4d7a; --san-mid:#7d9bc4; --san-soft:#e4ecf6;
   }
@@ -807,6 +812,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .chk.md{border-color:var(--md-mid);color:var(--md)} .chk.md::before{background:var(--md)} .chk.md input{accent-color:var(--md)}
   .chk.r1a{border-color:var(--r1a-mid);color:var(--r1a)} .chk.r1a::before{background:var(--r1a)} .chk.r1a input{accent-color:var(--r1a)}
   .chk.yrk{border-color:var(--yrk-mid);color:var(--yrk)} .chk.yrk::before{background:var(--yrk)} .chk.yrk input{accent-color:var(--yrk)}
+  .chk.cum{border-color:var(--cum-mid);color:var(--cum)} .chk.cum::before{background:var(--cum)} .chk.cum input{accent-color:var(--cum)}
   .chk.gva{border-color:var(--gva-mid);color:var(--gva)} .chk.gva::before{background:var(--gva)} .chk.gva input{accent-color:var(--gva)}
   .chk.san{border-color:var(--san-mid);color:var(--san)} .chk.san::before{background:var(--san)} .chk.san input{accent-color:var(--san)}
   select.gen{font:inherit;font-size:13px;padding:6px 9px;border:1px solid var(--line);border-radius:8px;background:var(--card)}
@@ -848,6 +854,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .fam.md{border-color:var(--md-mid);border-top-color:var(--md)}
   .fam.r1a{border-color:var(--r1a-mid);border-top-color:var(--r1a)}
   .fam.yrk{border-color:var(--yrk-mid);border-top-color:var(--yrk)}
+  .fam.cum{border-color:var(--cum-mid);border-top-color:var(--cum)}
   .fam.gva{border-color:var(--gva-mid);border-top-color:var(--gva)}
   .fam.san{border-color:var(--san-mid);border-top-color:var(--san)}
   .famhd{padding:13px 16px 12px;border-bottom:2px solid var(--line)}
@@ -857,13 +864,14 @@ TEMPLATE = r"""<!DOCTYPE html>
   .fam.md .famhd{background:linear-gradient(180deg,var(--md-soft),var(--card));border-bottom-color:var(--md-mid)}
   .fam.r1a .famhd{background:linear-gradient(180deg,var(--r1a-soft),var(--card));border-bottom-color:var(--r1a-mid)}
   .fam.yrk .famhd{background:linear-gradient(180deg,var(--yrk-soft),var(--card));border-bottom-color:var(--yrk-mid)}
+  .fam.cum .famhd{background:linear-gradient(180deg,var(--cum-soft),var(--card));border-bottom-color:var(--cum-mid)}
   .fam.gva .famhd{background:linear-gradient(180deg,var(--gva-soft),var(--card));border-bottom-color:var(--gva-mid)}
   .fam.san .famhd{background:linear-gradient(180deg,var(--san-soft),var(--card));border-bottom-color:var(--san-mid)}
   .famhd h2{margin:0;font-size:19px;letter-spacing:.2px}
-  .fam.eden h2{color:var(--eden)} .fam.manch h2{color:var(--manch)} .fam.swiss h2{color:var(--swiss)} .fam.md h2{color:var(--md)} .fam.r1a h2{color:var(--r1a)} .fam.yrk h2{color:var(--yrk)} .fam.gva h2{color:var(--gva)} .fam.san h2{color:var(--san)}
+  .fam.eden h2{color:var(--eden)} .fam.manch h2{color:var(--manch)} .fam.swiss h2{color:var(--swiss)} .fam.md h2{color:var(--md)} .fam.r1a h2{color:var(--r1a)} .fam.yrk h2{color:var(--yrk)} .fam.cum h2{color:var(--cum)} .fam.gva h2{color:var(--gva)} .fam.san h2{color:var(--san)}
   .hap{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
     padding:2px 8px;border-radius:20px;margin-left:8px;vertical-align:middle;color:#fff}
-  .hap.eden{background:var(--eden)} .hap.manch{background:var(--manch)} .hap.swiss{background:var(--swiss)} .hap.md{background:var(--md)} .hap.r1a{background:var(--r1a)} .hap.yrk{background:var(--yrk)} .hap.gva{background:var(--gva)} .hap.san{background:var(--san)}
+  .hap.eden{background:var(--eden)} .hap.manch{background:var(--manch)} .hap.swiss{background:var(--swiss)} .hap.md{background:var(--md)} .hap.r1a{background:var(--r1a)} .hap.yrk{background:var(--yrk)} .hap.cum{background:var(--cum)} .hap.gva{background:var(--gva)} .hap.san{background:var(--san)}
   .famdesc{font-size:12.5px;color:#5a564f;margin-top:5px;max-width:1000px}
   .famct{font-size:11.5px;color:var(--muted);margin-top:3px}
   .tree{padding:10px 16px 16px}
@@ -876,6 +884,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .fam.md .kids{border-left-color:var(--md-mid)}
   .fam.r1a .kids{border-left-color:var(--r1a-mid)}
   .fam.yrk .kids{border-left-color:var(--yrk-mid)}
+  .fam.cum .kids{border-left-color:var(--cum-mid)}
   .fam.gva .kids{border-left-color:var(--gva-mid)}
   .fam.san .kids{border-left-color:var(--san-mid)}
   .fam.eden .tog{border-color:var(--eden-mid);color:var(--eden)}
@@ -884,6 +893,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .fam.md .tog{border-color:var(--md-mid);color:var(--md)}
   .fam.r1a .tog{border-color:var(--r1a-mid);color:var(--r1a)}
   .fam.yrk .tog{border-color:var(--yrk-mid);color:var(--yrk)}
+  .fam.cum .tog{border-color:var(--cum-mid);color:var(--cum)}
   .fam.gva .tog{border-color:var(--gva-mid);color:var(--gva)}
   .fam.san .tog{border-color:var(--san-mid);color:var(--san)}
   .fam.eden .person{box-shadow:inset 3px 0 0 var(--eden-mid)}
@@ -892,6 +902,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .fam.md .person{box-shadow:inset 3px 0 0 var(--md-mid)}
   .fam.r1a .person{box-shadow:inset 3px 0 0 var(--r1a-mid)}
   .fam.yrk .person{box-shadow:inset 3px 0 0 var(--yrk-mid)}
+  .fam.cum .person{box-shadow:inset 3px 0 0 var(--cum-mid)}
   .fam.gva .person{box-shadow:inset 3px 0 0 var(--gva-mid)}
   .fam.san .person{box-shadow:inset 3px 0 0 var(--san-mid)}
 
@@ -1206,7 +1217,7 @@ function applyFilter(){
   let shown=0;
   // family blocks
   DATA.families.forEach(f=>{
-    document.querySelector('.fam.'+f.key).classList.toggle('hidden',!famOn[f.key]);
+    document.querySelector('.fam[data-fam="'+f.key+'"]').classList.toggle('hidden',!famOn[f.key]);
   });
   // recursive visibility: a node is visible if it matches AND (no gen filter or gen matches) etc,
   // OR one of its descendants is visible. Ancestors of matches stay visible for context.
@@ -1226,7 +1237,7 @@ function applyFilter(){
   }
   DATA.families.forEach(f=>{
     if(!famOn[f.key])return;
-    [...document.querySelectorAll('.fam.'+f.key+'>.tree>.node')].forEach(visit);
+    [...document.querySelectorAll('.fam[data-fam="'+f.key+'"]>.tree>.node')].forEach(visit);
   });
   const active = term||genv;
   document.getElementById('count').textContent =
@@ -1259,6 +1270,7 @@ GEN_TEMPLATE = r"""<!DOCTYPE html>
     --md-mid:#67a785; --md-soft:#e6f3ec;
     --r1a-mid:#c9a24e; --r1a-soft:#f5ecd6;
     --yrk:#0f6b6b; --yrk-mid:#4fa3a3; --yrk-soft:#dcefef;
+    --cum:#4a3a8c; --cum-mid:#8c82c4; --cum-soft:#e9e6f5;
     --gva:#a34a2a; --gva-mid:#cf9179; --gva-soft:#f6e7e0;
     --san:#2a4d7a; --san-mid:#7d9bc4; --san-soft:#e4ecf6;
   }

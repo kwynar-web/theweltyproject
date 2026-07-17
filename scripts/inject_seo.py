@@ -167,10 +167,10 @@ PAGES = {
     "timeline.html": dict(
         nav="timeline",
         path="/timeline.html",
-        ogtitle="The Welty Family, Place by Place",
-        desc="A place-by-place history of the Welty family — from Bischheim and "
-             "Edenkoben in the Palatinate across the Atlantic to Pennsylvania, "
-             "Ohio and beyond.",
+        ogtitle="The Welty Families, Place by Place",
+        desc="A place-by-place history of every American Welty family — the German "
+             "Edenkoben line, the Swiss Wälti, the Maryland Weltys, the Virginia "
+             "Weldys and more, from their European villages to Pennsylvania and beyond.",
         jsonld=False,
         maps=True,
         note='<b>Ten generations, two continents, one river valley to another.</b>'

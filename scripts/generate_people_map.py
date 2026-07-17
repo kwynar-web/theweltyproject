@@ -1,22 +1,27 @@
 #!/usr/bin/env python3
-"""Generate the 'Everyone, Gen 1-6' Welty people map (Leaflet, site style).
+"""Generate the 'Everyone we've placed' Welty people map (Leaflet, site style).
 
-Reads the People Roster (chart source) sheet of the master log, plots every
-placed Eden-family person in Gen 1-6 at their primary node, colored by branch
-and styled by proof grade. Household members with a blank Place inherit their
-father's node (flagged 'residence with parent'). Two maps: the Palatinate
-(German stayers) and America (everyone who crossed + their descendants).
+Reads the People Roster (chart source) sheet of the master log and plots EVERY
+family group from the All-Families tree — the German Edenkoben household (its
+trunk / Philip Jacob / John Jacob branches plus the I1 Manchester branch) and
+the six genetically separate Welty/Weldy/Wälti families (Swiss Emmental,
+Maryland-Taneytown, R1a Greene Co TN, Conewago R-L151, Goochland VA, and
+Saanen→Upper Sandusky). Colours match the All-Families tree page; the
+Edenkoben branches render as shades of the tree's red.
+
+Eden rows are capped at Gen 6 (the researched core); every other family's full
+placed spine is shown. Household members with a blank Place inherit their
+father's node. Two maps: Europe (Palatinate · Baden · Bern) and America.
 
 Outputs:
   1. A standalone page:  ../../Welty Gen 1-6 People Map.html
   2. Injected section at the TOP of the timeline (geography) page, between
-     <!-- PEOPLEMAP:START --> ... <!-- PEOPLEMAP:END --> markers, in both
-     the project copy and the Netlify Upload copy.
+     <!-- PEOPLEMAP:START --> ... <!-- PEOPLEMAP:END --> markers, in the
+     project copy and the deployed site copy (theweltyproject-site/site/).
 
-No personal names appear on the page (the direct line is labelled generically).
 Run:  python3 generate_people_map.py
 """
-import openpyxl, json, os, shutil
+import openpyxl, json, os
 import re
 
 # Strip internal lead/source codes (P60, TL-34, M141, FB15 …) from the display
@@ -45,16 +50,41 @@ ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 LOG = os.path.join(ROOT, "Welty Ancestry Research Log.xlsx")
 OUT = os.path.join(ROOT, "Welty Gen 1-6 People Map.html")
 TIMELINE = os.path.join(ROOT, "Welty Family Timeline (Geography).html")
-TIMELINE_NETLIFY = os.path.join(ROOT, "Netlify Upload", "timeline.html")
+TIMELINE_SITE = os.path.join(ROOT, "theweltyproject-site", "site", "timeline.html")
+
+# ---------------------------------------------------------------- families
+# key -> (legend label, colour)  — colours match the All-Families tree page;
+# the Edenkoben branches (trunk/pj/jj) are shades of the tree's red, and the
+# Manchester branch uses the tree's Manch slate.
+FAMS = {
+    "trunk": ("Edenkoben &middot; the Old Country trunk", "#8c1d1d"),
+    "pj":    ("Edenkoben &middot; Philip Jacob line", "#b71c1c"),
+    "jj":    ("Edenkoben &middot; John Jacob &rarr; Weltytown", "#e0705a"),
+    "manch": ("Manchester branch (I1)", "#3a4a5e"),
+    "swiss": ("Swiss Emmental W&auml;lti (I2b)", "#5e3a5e"),
+    "md":    ("Taneytown, MD (Baden, Catholic)", "#2f6f4f"),
+    "r1a":   ("Greene Co TN &middot; John Welty (R1a)", "#9a6a15"),
+    "yrk":   ("Conewago &middot; George Welty (R-L151)", "#0f6b6b"),
+    "gva":   ("Goochland Co VA &middot; Weldy (R1b-DF49)", "#a34a2a"),
+    "san":   ("Saanen &rarr; Upper Sandusky &middot; W&auml;lti (hg G)", "#2a4d7a"),
+}
+FAM_OF_ROSTER = {"Manch":"manch","Swiss":"swiss","Md":"md","R1a":"r1a",
+                 "Yrk":"yrk","Gva":"gva","San":"san"}
 
 # ---------------------------------------------------------------- gazetteer
-# node-key -> (lat, lon, label, continent)  continent: DE or US
+# node-key -> (lat, lon, label, continent)  continent: DE (Europe) or US
 NODES = {
+    # Europe
     "bischheim":   (49.688, 8.046,  "Bischheim (Donnersberg)", "DE"),
     "edenkoben":   (49.283, 8.128,  "Edenkoben", "DE"),
+    "eppingen":    (49.136, 8.911,  "Eppingen, Baden (Kraichgau)", "DE"),
+    "lauperswil":  (46.966, 7.741,  "Lauperswil / Lützelflüh, Emmental, Bern", "DE"),
+    "lenk":        (46.458, 7.443,  "Lenk im Simmental, Bern", "DE"),
+    "saanen":      (46.489, 7.259,  "Saanen, Bern", "DE"),
+    # America — the old Eden set
     "philadelphia":(39.953,-75.165, "Philadelphia — the landings", "US"),
     "chester":     (40.150,-75.650, "Chester Co (East Vincent / Brownback’s)", "US"),
-    "lancaster":   (40.038,-76.305, "Chester–Lancaster border", "US"),
+    "lancaster":   (40.038,-76.305, "Lancaster Co (border & Falmouth)", "US"),
     "dover":       (40.001,-76.850, "Dover Twp, York Co", "US"),
     "manchester":  (40.030,-76.745, "Manchester Twp, York Co", "US"),
     "york":        (39.963,-76.727, "York borough (Trinity Reformed)", "US"),
@@ -66,7 +96,7 @@ NODES = {
     "greensburg":  (40.301,-79.539, "Greensburg, Westmoreland Co", "US"),
     "crosscreek":  (40.325,-80.655, "Cross Creek, Jefferson Co OH", "US"),
     "steubenville":(40.370,-80.633, "Steubenville, Jefferson Co OH", "US"),
-    "crookedrun":  (40.520,-81.474, "Crooked Run, Tuscarawas Co OH", "US"),
+    "crookedrun":  (40.520,-81.474, "Crooked Run / Dover Twp, Tuscarawas Co OH", "US"),
     "waynetusc":   (40.455,-81.470, "Wayne Twp, Tuscarawas Co OH", "US"),
     "sugarcreek":  (40.500,-81.640, "Sugarcreek Twp, Tuscarawas Co OH", "US"),
     "wilmot":      (40.657,-81.634, "Wilmot / Sugar Creek, Stark Co OH", "US"),
@@ -80,15 +110,71 @@ NODES = {
     "crawfordsville":(40.041,-86.874,"Crawfordsville, IN", "US"),
     "escondido":   (33.119,-117.086,"Escondido, San Diego Co CA", "US"),
     "elpaso_co":   (38.831,-104.821,"El Paso Co CO (Monument)", "US"),
+    # America — the other families
+    "taneytown":   (39.658,-77.174, "Taneytown / Piney Creek — Frederick (later Carroll) Co MD", "US"),
+    "emmitsburg":  (39.704,-77.327, "Emmitsburg, Frederick Co MD", "US"),
+    "dillsburg":   (40.111,-77.035, "Dillsburg, York Co PA", "US"),
+    "adamsco":     (39.869,-77.216, "Adams Co PA (Freedom / Gettysburg district)", "US"),
+    "franklinpa":  (39.927,-77.661, "Franklin Co PA", "US"),
+    "manheim_york":(39.762,-76.884, "Manheim Twp, York Co PA", "US"),
+    "shenandoah":  (38.851,-78.552, "Shenandoah Co VA (Forestville)", "US"),
+    "greene_tn":   (36.168,-82.831, "Greene Co TN", "US"),
+    "sullivan_in": (39.095,-87.406, "Sullivan / Clay Co IN", "US"),
+    "goochland":   (37.684,-77.885, "Goochland Co VA", "US"),
+    "georgia_pied":(33.000,-83.500, "Georgia (the Piedmont)", "US"),
+    "washington_al":(31.402,-88.072,"Washington Co AL", "US"),
+    "perry_ms":    (31.172,-89.010, "Perry / Forrest Co MS", "US"),
+    "jackson_ms":  (32.299,-90.185, "Jackson, MS", "US"),
+    "rowan_nc":    (35.683,-80.474, "Rowan Co NC", "US"),
+    "putnam_oh":   (40.948,-83.961, "Pandora, Putnam Co OH", "US"),
+    "fairfield_oh":(39.628,-82.415, "Fairfield / Hocking Co OH (Bremen–Logan)", "US"),
+    "uppersandusky":(40.827,-83.281,"Upper Sandusky, Wyandot Co OH", "US"),
+    "clark_oh":    (39.930,-83.790, "Clark Co OH (Medway / Springfield)", "US"),
+    "steuben_ny":  (42.122,-77.496, "Jasper / Troupsburg, Steuben Co NY", "US"),
+    "bronxville":  (40.938,-73.832, "Bronxville, NY", "US"),
+    "stjoseph_mi": (41.900,-85.530, "St. Joseph Co MI", "US"),
+    "enid_ok":     (36.396,-97.878, "Enid, OK", "US"),
+    "deltona_fl":  (28.900,-81.264, "Deltona, FL", "US"),
+    "andersonville":(32.196,-84.144,"Andersonville, GA", "US"),
+}
+
+# exact-string places (checked before the needle scan)
+EXACT = {
+    "md": "taneytown", "md/pa": "taneytown",
+    "virginia": "goochland",
+    "mississippi → tennessee": "perry_ms",
 }
 
 def node_for(pid, place, father_node):
     if not place:
         return father_node, True
-    p = place.lower()
+    p = str(place).lower().strip()
+    if p in EXACT:
+        return EXACT[p], False
+    # Destination-specific needles first; origins and generic county catches later.
     tests = [
+        # far spreads (all families)
         ("escondido", "escondido"), ("oak hill", "escondido"),
         ("hicksville", "hicksville"),
+        ("deltona", "deltona_fl"),
+        ("andersonville", "andersonville"),
+        ("bronxville", "bronxville"),
+        ("st. joseph co mi", "stjoseph_mi"), ("st joseph co mi", "stjoseph_mi"),
+        ("enid", "enid_ok"),
+        ("jackson, ms", "jackson_ms"),
+        ("rowan co nc", "rowan_nc"),
+        ("washington co, al", "washington_al"), ("washington co al", "washington_al"),
+        ("perry co, ms", "perry_ms"), ("perry / forrest", "perry_ms"),
+        ("georgia", "georgia_pied"),
+        ("goochland", "goochland"),
+        ("sullivan co in", "sullivan_in"), ("clay / sullivan", "sullivan_in"),
+        ("greene co tn", "greene_tn"),
+        ("shenandoah co va", "shenandoah"),
+        ("upper sandusky", "uppersandusky"),
+        ("pandora", "putnam_oh"), ("putnam co oh", "putnam_oh"),
+        ("hocking co oh", "fairfield_oh"), ("fairfield co oh", "fairfield_oh"),
+        ("steuben co", "steuben_ny"), ("troupsburg", "steuben_ny"),
+        ("clark co oh", "clark_oh"),
         ("nevada, wyandot", "wyandot"), ("wyandot", "wyandot"),
         ("bridgeport", "bridgeport"),
         ("fairfield, jefferson co ia", "fairfield_ia"),
@@ -108,32 +194,58 @@ def node_for(pid, place, father_node):
         ("weltytown", "westmoreland"),
         ("stark co oh", "starkco"),
         ("milford, bedford", "bedford"),
+        # Maryland family corridor
+        ("dillsburg", "dillsburg"),
+        ("adams co pa", "adamsco"), ("york / adams", "adamsco"),
+        ("franklin co pa", "franklinpa"),
+        ("emmitsburg", "emmitsburg"),
+        ("taneytown", "taneytown"), ("piney creek", "taneytown"),
+        ("frederick / carroll", "taneytown"), ("frederick co md", "taneytown"),
+        # Swiss York seat
+        ("manheim twp", "manheim_york"),
+        ("america (1727)", "manheim_york"),
+        # York Co townships
+        ("353 e market", "york"),
+        ("spring garden", "york"),
+        ("york/lancaster", "york"),
+        ("fairview", "conewago"),
         ("conewago", "conewago"),
-        ("dover/manchester", "manchester"), ("manchester twp", "manchester"),
-        ("dover twp", "dover"),
+        ("dover/manchester", "manchester"), ("manchester/dover", "manchester"),
+        ("manchester twp", "manchester"), ("manchester", "manchester"),
+        ("dover twp", "dover"), ("dover, york", "dover"),
+        ("falmouth", "lancaster"),
         ("chester/lancaster", "lancaster"), ("lancaster co", "lancaster"),
         ("chester co pa", "chester"),
         ("york co pa", "york"),
+        # Europe
         ("edenkoben", "edenkoben"),
         ("bischheim", "bischheim"),
+        ("eppingen", "eppingen"),
+        ("lauperswil", "lauperswil"), ("rüderswil", "lauperswil"),
+        ("ruegsau", "lauperswil"), ("lützelflüh", "lauperswil"),
+        ("lenk im", "lenk"),
+        ("saanen", "saanen"),
     ]
     for needle, node in tests:
         if needle in p:
             return node, False
     return None, False
 
-# ---------------------------------------------------------------- branches
-BRANCHES = {
-    "trunk":  ("Old Country trunk (apex → the three brothers)", "#a07a35"),
-    "pj":     ("Philip Jacob → Michael, Cross Creek, Dover", "#8a5a2b"),
-    "jj":     ("John Jacob → Weltytown (Westmoreland)", "#5b6e3a"),
-    "gw":     ("Georg Wolfgang → Manchester", "#46618a"),
-}
+# a US-placed person whose place string carries one of these origin needles
+# also gets an "emigrated" echo on the Europe map at that origin node
+ECHO_ORIGINS = [
+    ("edenkoben", "edenkoben"),
+    ("eppingen", "eppingen"),
+    ("lauperswil", "lauperswil"), ("bagischwand", "lauperswil"),
+    ("saanen", "saanen"),
+]
+
 DIRECT_IDS = set()
 
 # node-key -> chapter anchor id in the timeline page (for the "read the chapter" link)
 CHAPTER = {
     "bischheim":"pfalz", "edenkoben":"pfalz",
+    "eppingen":"fam-md", "lauperswil":"fam-swiss", "lenk":"fam-san", "saanen":"fam-san",
     "philadelphia":"crossing",
     "chester":"chester", "lancaster":"chester",
     "dover":"york", "manchester":"york", "york":"york", "conewago":"york",
@@ -145,6 +257,17 @@ CHAPTER = {
     "bridgeport":"ohio",
     "fairfield_ia":"offshoots", "crawfordsville":"offshoots",
     "escondido":"offshoots", "elpaso_co":"offshoots",
+    "steuben_ny":"offshoots", "clark_oh":"offshoots", "bronxville":"offshoots",
+    "deltona_fl":"offshoots", "andersonville":"york",
+    "taneytown":"fam-md", "emmitsburg":"fam-md", "dillsburg":"fam-md",
+    "adamsco":"fam-md", "franklinpa":"fam-md",
+    "manheim_york":"fam-swiss", "rowan_nc":"fam-swiss", "putnam_oh":"fam-swiss",
+    "fairfield_oh":"fam-swiss", "jackson_ms":"fam-swiss", "enid_ok":"fam-swiss",
+    "shenandoah":"fam-r1a", "greene_tn":"fam-r1a", "sullivan_in":"fam-r1a",
+    "stjoseph_mi":"fam-yrk",
+    "goochland":"fam-gva", "georgia_pied":"fam-gva",
+    "washington_al":"fam-gva", "perry_ms":"fam-gva",
+    "uppersandusky":"fam-san",
 }
 
 def load():
@@ -156,12 +279,15 @@ def load():
     for r in rows[2:]:
         if not r[0]:
             continue
+        fam = r[idx["Family"]]
         try: g = int(r[idx["Gen"]])
         except (TypeError, ValueError): continue
-        if g > 6 or r[idx["Family"]] != "Eden":
+        if fam == "Eden" and g > 6:
+            continue   # Eden shows the researched Gen 1-6 core; other families full spine
+        if fam != "Eden" and fam not in FAM_OF_ROSTER:
             continue
         people[r[idx["PersonID"]]] = {
-            "id": r[idx["PersonID"]], "gen": g, "name": r[idx["Name"]],
+            "id": r[idx["PersonID"]], "fam": fam, "gen": g, "name": r[idx["Name"]],
             "sex": r[idx["Sex"]], "birth": r[idx["Birth"]], "death": r[idx["Death"]],
             "place": r[idx["Place"]], "spouse": r[idx["Spouse"]],
             "father": r[idx["FatherID"]], "proof": (r[idx["Proof"]] or "").strip(),
@@ -170,6 +296,9 @@ def load():
     return people
 
 def branch_of(pid, people):
+    p = people[pid]
+    if p["fam"] != "Eden":
+        return FAM_OF_ROSTER[p["fam"]]
     seen = set(); cur = pid; chain = []
     while cur and cur in people and cur not in seen:
         seen.add(cur); chain.append(cur)
@@ -180,7 +309,7 @@ def branch_of(pid, people):
     if "E-johnjacob1710" in chain:
         return "jj"
     if "E-georgwolfgang-disp" in chain:
-        return "gw"
+        return "manch"   # the I1 Manchester branch — tree colours
     if "E-philipjacob" in chain:
         return "pj"
     return "trunk"
@@ -220,9 +349,13 @@ def build():
         cont = NODES[n][3]
         (de_nodes if cont == "DE" else us_nodes).setdefault(n, []).append(entry)
         placed.append(pid)
-        if cont == "US" and p["place"] and "edenkoben" in p["place"].lower():
-            echo = dict(entry); echo["emig"] = True
-            de_nodes.setdefault("edenkoben", []).append(echo)
+        if cont == "US" and p["place"]:
+            pl = str(p["place"]).lower()
+            for needle, orig in ECHO_ORIGINS:
+                if needle in pl:
+                    echo = dict(entry); echo["emig"] = True
+                    de_nodes.setdefault(orig, []).append(echo)
+                    break
 
     def pack(nodedict):
         out = {}
@@ -247,30 +380,35 @@ def counts(data):
 
 DATA, PLACED, SKIPPED = build()
 
+COL_JS = json.dumps({k:v[1] for k,v in FAMS.items()})
+LBL_JS = json.dumps({k:v[0] for k,v in FAMS.items()})
+
 # ---------------------------------------------------------------- fragment
 FRAG_STYLE = """<style>
   /* guard Leaflet's vector overlay from any global `svg{width:100%}` on the host page */
   .leaflet-container svg, .leaflet-pane svg, .leaflet-overlay-pane svg{width:auto;height:auto;max-width:none;display:block;}
-  .pm-wrap{--pm-trunk:#a07a35;--pm-pj:#8a5a2b;--pm-jj:#5b6e3a;--pm-gw:#46618a;--pm-star:#c69b3a;}
-  .pm-intro{max-width:760px;margin:0 auto 12px;color:#6b6156;text-align:center;font-size:.82em;line-height:1.45;}
+  .pm-wrap{--pm-trunk:#8c1d1d;--pm-pj:#b71c1c;--pm-jj:#e0705a;--pm-manch:#3a4a5e;--pm-swiss:#5e3a5e;--pm-md:#2f6f4f;--pm-r1a:#9a6a15;--pm-yrk:#0f6b6b;--pm-gva:#a34a2a;--pm-san:#2a4d7a;--pm-star:#c69b3a;}
+  .pm-intro{max-width:800px;margin:0 auto 12px;color:#6b6156;text-align:center;font-size:.82em;line-height:1.45;}
   .pm-intro b{color:var(--pm-pj);}
   .pm-chlink{display:block;margin-top:7px;font-size:.9em;}
-  .pm-stats{display:flex;flex-wrap:wrap;justify-content:center;gap:7px 9px;margin:0 auto 14px;max-width:860px;}
+  .pm-stats{display:flex;flex-wrap:wrap;justify-content:center;gap:7px 9px;margin:0 auto 14px;max-width:900px;}
   .pm-stat{background:#fffdf8;border:1px solid #e3d9c4;border-radius:20px;padding:4px 13px;font-size:.83em;}
   .pm-stat b{font-size:1.12em;}
-  .pm-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;font-size:.84em;margin:0 auto 6px;max-width:920px;}
+  .pm-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;font-size:.84em;margin:0 auto 6px;max-width:960px;}
   .pm-legend span{display:inline-flex;align-items:center;gap:6px;}
   .pm-dot{width:13px;height:13px;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 0 0 1px #bbb;}
-  .pm-legend2{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;font-size:.78em;color:#6b6156;margin:0 auto 16px;max-width:920px;}
-  .pm-lmap{height:500px;border-radius:8px;}
-  .pm-lmap.de{height:360px;}
+  .pm-legend2{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;font-size:.78em;color:#6b6156;margin:0 auto 16px;max-width:960px;}
+  .pm-lmap{height:520px;border-radius:8px;}
+  .pm-lmap.de{height:430px;}
   .pm-badge{font-size:.7em;padding:1px 6px;border-radius:9px;border:1px solid;margin-left:3px;white-space:nowrap;}
   .pm-proven{color:#3d6b3d;border-color:#3d6b3d;background:#eef5ee;}
   .pm-documented{color:#4a5c8a;border-color:#4a5c8a;background:#eef0f7;}
+  .pm-index{color:#7a6a4a;border-color:#7a6a4a;background:#f4efe4;}
   .pm-hypo{color:#9a6a1e;border-color:#9a6a1e;background:#f7f0e2;}
   .pm-lore{color:#9a4a4a;border-color:#9a4a4a;background:#f7ecec;}
   .pm-star{color:var(--pm-star);}
-  .pm-ph{font-weight:bold;color:#7a2e2e;font-size:1.05em;border-bottom:1px solid #c9b99a;padding-bottom:4px;margin-bottom:6px;}
+  .pm-ph{font-weight:bold;color:#7a2e2e;font-size:1.05em;border-bottom:1px solid #c9b99a;padding-bottom:4px;margin-bottom:2px;}
+  .pm-fam{font-size:.82em;font-weight:bold;letter-spacing:.3px;margin:0 0 6px;}
   .pm-row{display:flex;align-items:baseline;gap:7px;margin:3px 0;font-size:.93em;line-height:1.35;}
   .pm-pdot{flex:0 0 auto;width:10px;height:10px;border-radius:50%;margin-top:4px;border:1.5px solid #fff;box-shadow:0 0 0 1px #ccc;}
   .pm-name{font-weight:600;}
@@ -282,25 +420,20 @@ FRAG_STYLE = """<style>
 
 FRAG_MARKUP = """<div class="pm-wrap">
   <div class="mapbox" style="padding:16px 18px 6px;background:#fbf5e8;">
-    <h2 style="margin-top:0;">Everyone we&rsquo;ve placed &mdash; the first six generations</h2>
+    <h2 style="margin-top:0;">Everyone we&rsquo;ve placed &mdash; every family</h2>
     <div class="pm-intro">
-      Every person <b>placed</b> in generations 1&ndash;6 of the Edenkoben line. Click a place for everyone who lived there. Marker <b>colour</b> = branch &middot; <b>style</b> = proof &middot; <span class="pm-star">&#9733;</span> = the direct line.
+      Every person <b>placed</b> from every family on the <a href="all-families.html">All-Families tree</a> &mdash; the German Edenkoben household (Gen 1&ndash;6, in shades of red, plus its slate Manchester branch) and the six genetically separate Welty&nbsp;/ Weldy&nbsp;/ W&auml;lti families, each in its own colour. Click a place for everyone who lived there; where families share one place their dots sit side by side &mdash; zoom in and they separate. Marker <b>colour</b> = family &middot; badge = proof &middot; <span class="pm-star">&#9733;</span> = the compiler&rsquo;s direct line. <b>If south-central Pennsylvania looks like a pile-up, that is the point</b> &mdash; several unrelated Welty families lived door to door there, and that crowding is why 250 years of family trees are tangled.
     </div>
     <div class="pm-stats">__STATS__</div>
-    <div class="pm-legend">
-      <span><i class="pm-dot" style="background:var(--pm-trunk)"></i> Old Country trunk</span>
-      <span><i class="pm-dot" style="background:var(--pm-pj)"></i> Philip Jacob &rarr; Michael</span>
-      <span><i class="pm-dot" style="background:var(--pm-jj)"></i> John Jacob &rarr; Weltytown</span>
-      <span><i class="pm-dot" style="background:var(--pm-gw)"></i> Georg Wolfgang &rarr; Manchester</span>
-      <span><span class="pm-star" style="font-size:1.2em">&#9733;</span> the direct line</span>
-    </div>
+    <div class="pm-legend">__LEGEND__</div>
     <div class="pm-legend2">
-      <span>Proof: <span class="pm-badge pm-proven">proven</span> <span class="pm-badge pm-documented">documented</span> <span class="pm-badge pm-hypo">hypothesis</span> <span class="pm-badge pm-lore">family lore</span></span>
+      <span>The reds are <b>one</b> German family (its slate Manchester branch carries an I1 Y-line); every other colour is a genetically separate family.</span>
+      <span>Proof: <span class="pm-badge pm-proven">proven</span> <span class="pm-badge pm-documented">documented</span> <span class="pm-badge pm-index">index</span> <span class="pm-badge pm-hypo">hypothesis</span> <span class="pm-badge pm-lore">family lore</span></span>
       <span>&mdash; larger circle = more people at that place</span>
     </div>
-    <p class="hint" style="margin-left:2px;">The Old Country &mdash; Bischheim &amp; the Edenkoben household (names marked &ldquo;emigrated&rdquo; sailed and reappear on the American map):</p>
+    <p class="hint" style="margin-left:2px;">Europe &mdash; the Palatinate (Edenkoben), Baden (Eppingen) and the Bernese valleys (Emmental, Simmental, Saanen). Names marked &ldquo;emigrated&rdquo; sailed and reappear on the American map:</p>
     <div id="pmMapDe" class="pm-lmap de"></div>
-    <p class="hint" style="margin:8px 0 0 2px;">America &mdash; Philadelphia landings &rarr; York County &rarr; the westward push. Faint lines trace each brother&rsquo;s branch:</p>
+    <p class="hint" style="margin:8px 0 0 2px;">America &mdash; the landings, the York County pile-up, and each family&rsquo;s own spread. Faint lines trace the migrations:</p>
     <div id="pmMapUs" class="pm-lmap"></div>
     <p class="tilenote" style="font-size:.72em;color:#6b6156;margin:6px 2px 2px;">Map data &copy; OpenStreetMap contributors.</p>
   </div>
@@ -310,20 +443,23 @@ FRAG_SCRIPT = """<script>
 (function(){
   var DATA = __DATA__;
   var CHLINKS = __CHLINKS__;
-  var COL = {trunk:'#a07a35', pj:'#8a5a2b', jj:'#5b6e3a', gw:'#46618a'};
+  var COL = __COL__;
+  var LBL = __LBL__;
   var OSM='https://tile.openstreetmap.org/{z}/{x}/{y}.png';
   var ATTR='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
   function esc(s){return (s==null?'':String(s)).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
   function mkMap(id,bounds){var m=L.map(id,{scrollWheelZoom:false});
     L.tileLayer(OSM,{maxZoom:17,attribution:ATTR}).addTo(m);m.fitBounds(bounds);return m;}
   function route(m,pts,color,dash,w){L.polyline(pts,{color:color,weight:w||2.5,opacity:.5,dashArray:dash||null}).addTo(m);}
-  function popupHtml(node){
+  function popupHtml(node,fam,list){
     var h='<div class="pm-ph">'+esc(node.label)+'</div>';
-    node.people.forEach(function(p){
+    h+='<div class="pm-fam" style="color:'+(COL[fam]||'#555')+'">'+(LBL[fam]||fam)+'</div>';
+    list.forEach(function(p){
       var c=COL[p.branch]||'#888';
-      var star=p.direct?'<span class="pm-star" title="the direct line">&#9733;</span> ':'';
+      var star=p.direct?'<span class="pm-star" title="the compiler\\u2019s direct line">&#9733;</span> ':'';
       var dates=[p.birth,p.death].filter(Boolean).join(' &ndash; ');
-      var badge='<span class="pm-badge pm-'+esc(p.proof||'living')+'">'+esc(p.proof||'?')+'</span>';
+      var pc=(p.proof||'living').toLowerCase().split(/[^a-z]+/)[0];
+      var badge='<span class="pm-badge pm-'+esc(pc)+'">'+esc(p.proof||'?')+'</span>';
       var emig=p.emig?' <span class="pm-emig">&#8599; emigrated to America</span>':'';
       var withp=(p.inherited&&!p.emig)?' <span class="pm-emig">(with parent)</span>':'';
       h+='<div class="pm-row"><span class="pm-pdot" style="background:'+c+'"></span><span>'
@@ -333,64 +469,117 @@ FRAG_SCRIPT = """<script>
     if(CHLINKS && node.chapter){h+='<a class="pm-chlink" href="#'+node.chapter+'">Read the chapter &darr;</a>';}
     return h;
   }
-  function dominant(node){var c={},best=null,bn=-1;
-    node.people.forEach(function(p){if(!p.emig)c[p.branch]=(c[p.branch]||0)+1;});
-    for(var k in c){if(c[k]>bn){bn=c[k];best=k;}} return best||node.people[0].branch;}
-  function addNodes(m,nodes){
+  function addNodes(m,nodes,ring){
     for(var key in nodes){
       var nd=nodes[key];
-      var real=nd.people.filter(function(p){return !p.emig;});
       if(nd.people.length===0) continue;
-      var col=COL[dominant(nd)]||'#888';
-      var r=Math.min(9+Math.sqrt(real.length||1)*3.4,26);
-      if(real.some(function(p){return p.direct;})){
-        L.circleMarker([nd.lat,nd.lon],{radius:r+4,color:'#c69b3a',weight:2.5,opacity:.9,fill:false}).addTo(m);
-      }
-      var mk=L.circleMarker([nd.lat,nd.lon],{radius:r,color:'#fff',weight:2.2,fillColor:col,fillOpacity:.92}).addTo(m);
-      mk.bindPopup(popupHtml(nd),{maxWidth:360,minWidth:250});
-      var short=nd.label.split(/[,\\u2014(]/)[0].trim();
-      mk.bindTooltip(short+' &middot; '+(real.length||nd.people.length),
-        {permanent:true,direction:'right',className:'wtip',offset:[r-2,0]});
+      var groups={};
+      nd.people.forEach(function(p){(groups[p.branch]=groups[p.branch]||[]).push(p);});
+      var fams=Object.keys(groups).sort(function(a,b){
+        var ra=groups[a].filter(function(p){return !p.emig;}).length,
+            rb=groups[b].filter(function(p){return !p.emig;}).length;
+        return rb-ra;});
+      var n=fams.length;
+      fams.forEach(function(f,i){
+        var list=groups[f];
+        var real=list.filter(function(p){return !p.emig;});
+        var r=Math.min(7+Math.sqrt(real.length||1)*3.2,24);
+        var lat=nd.lat, lon=nd.lon;
+        if(n>1&&i>0){var a=2*Math.PI*(i-1)/Math.max(n-1,1);
+          lat+=ring*Math.cos(a); lon+=ring*Math.sin(a)*1.35;}
+        if(real.some(function(p){return p.direct;})){
+          L.circleMarker([lat,lon],{radius:r+4,color:'#c69b3a',weight:2.5,opacity:.9,fill:false}).addTo(m);
+        }
+        var mk=L.circleMarker([lat,lon],{radius:r,color:'#fff',weight:2.2,fillColor:COL[f]||'#888',fillOpacity:.92}).addTo(m);
+        mk.bindPopup(popupHtml(nd,f,list),{maxWidth:360,minWidth:250});
+        if(i===0){
+          var short=nd.label.split(/[,\\u2014(]/)[0].trim();
+          mk.bindTooltip(short+' &middot; '+nd.people.filter(function(p){return !p.emig;}).length,
+            {permanent:true,direction:'right',className:'wtip',offset:[r-2,0]});
+        }
+      });
     }
   }
   function boot(){
     if(typeof L==='undefined'){return setTimeout(boot,120);}
     if(document.getElementById('pmMapDe')._leaflet_id) return;
-    var md=mkMap('pmMapDe',[[49.15,7.85],[49.80,8.30]]);
+    var md=mkMap('pmMapDe',[[46.15,6.85],[49.95,9.45]]);
     route(md,[[49.688,8.046],[49.283,8.128]],COL.trunk,'6 6',3);
-    addNodes(md,DATA.de);
-    var mu=mkMap('pmMapUs',[[32.4,-118.5],[42.4,-79.0]]);
+    addNodes(md,DATA.de,0.02);
+    var mu=mkMap('pmMapUs',[[28.5,-118.5],[43.5,-73.5]]);
+    /* Edenkoben — Philip Jacob line */
     route(mu,[[39.953,-75.165],[40.001,-76.85],[40.018,-78.503],[39.97,-79.10],[40.017,-79.59],[40.52,-81.474],[40.657,-81.634],[41.293,-84.762]],COL.pj,null,3);
     route(mu,[[40.52,-81.474],[38.831,-104.821]],COL.pj,'2 8',1.8);
     route(mu,[[40.657,-81.634],[33.119,-117.086]],COL.pj,'2 8',1.8);
     route(mu,[[40.325,-80.655],[40.041,-86.874]],COL.pj,'2 8',1.6);
     route(mu,[[40.657,-81.634],[41.007,-91.962]],COL.pj,'2 8',1.6);
     route(mu,[[40.001,-76.85],[40.325,-80.655]],COL.pj,'5 6',2);
+    /* Edenkoben — John Jacob → Weltytown */
     route(mu,[[40.038,-76.305],[40.175,-79.545],[40.301,-79.539]],COL.jj,null,2.6);
-    route(mu,[[39.953,-75.165],[40.030,-76.745]],COL.gw,null,2.6);
+    /* Edenkoben trunk: the landings → Chester → York */
     route(mu,[[39.953,-75.165],[40.150,-75.650],[40.001,-76.85]],COL.trunk,'6 6',2.4);
-    addNodes(mu,DATA.us);
+    /* Manchester branch (I1) */
+    route(mu,[[39.953,-75.165],[40.030,-76.745]],COL.manch,null,2.6);
+    route(mu,[[40.030,-76.745],[42.122,-77.496]],COL.manch,'2 8',1.8);
+    route(mu,[[40.030,-76.745],[39.930,-83.790]],COL.manch,'2 8',1.8);
+    /* Maryland family: ship Neptune 1751 → York Co → Taneytown → Dillsburg / Adams */
+    route(mu,[[39.953,-75.165],[39.963,-76.727],[39.658,-77.174]],COL.md,null,2.6);
+    route(mu,[[39.658,-77.174],[40.111,-77.035]],COL.md,'2 8',1.8);
+    route(mu,[[39.658,-77.174],[39.704,-77.327]],COL.md,'2 8',1.8);
+    /* R1a: York → Shenandoah → Greene TN → Indiana */
+    route(mu,[[39.963,-76.727],[38.851,-78.552],[36.168,-82.831]],COL.r1a,null,2.4);
+    route(mu,[[36.168,-82.831],[39.095,-87.406]],COL.r1a,'2 8',1.8);
+    /* Conewago R-L151: → Sandusky OH → St. Joseph MI */
+    route(mu,[[40.052,-76.87],[41.45,-82.71],[41.90,-85.53]],COL.yrk,'2 8',1.8);
+    /* Goochland Weldy: Goochland → the deep south */
+    route(mu,[[37.684,-77.885],[33.0,-83.5],[31.402,-88.072]],COL.gva,'2 8',1.8);
+    route(mu,[[37.684,-77.885],[31.172,-89.010]],COL.gva,'2 8',1.8);
+    /* Swiss Emmental: 1727 landing → Manheim Twp → the spreads */
+    route(mu,[[39.953,-75.165],[39.762,-76.884]],COL.swiss,null,2.6);
+    route(mu,[[39.762,-76.884],[35.683,-80.474]],COL.swiss,'2 8',1.8);
+    route(mu,[[39.762,-76.884],[40.52,-81.474]],COL.swiss,'2 8',1.8);
+    route(mu,[[39.762,-76.884],[39.628,-82.415],[32.299,-90.185]],COL.swiss,'2 8',1.8);
+    addNodes(mu,DATA.us,0.045);
   }
   if(document.readyState==='complete'){boot();}
   else{window.addEventListener('load',boot);}
 })();
 </script>"""
 
+STAT_LABELS = [
+    ("trunk","Eden trunk"),("pj","Philip Jacob"),("jj","John Jacob"),
+    ("manch","Manchester"),("swiss","Swiss Emmental"),("md","Maryland"),
+    ("r1a","R1a York&rarr;TN"),("yrk","Conewago R-L151"),("gva","Goochland"),
+    ("san","Saanen&rarr;Sandusky"),
+]
+
 def stats_html():
     total, br, pr = counts(DATA)
     s = [f'<span class="pm-stat"><b>{total}</b> people</span>']
-    for k,lbl in [("trunk","trunk"),("pj","Philip Jacob"),("jj","John Jacob"),("gw","Georg Wolfgang")]:
+    for k,lbl in STAT_LABELS:
         if br.get(k): s.append(f'<span class="pm-stat"><b>{br[k]}</b> {lbl}</span>')
-    for k in ("proven","documented","hypo","lore"):
+    for k in ("proven","documented","index","hypo","lore"):
         if pr.get(k): s.append(f'<span class="pm-stat">{pr[k]} {k}</span>')
     return "\n      ".join(s), total
 
+def legend_html():
+    s = []
+    for k in ("trunk","pj","jj","manch","swiss","md","r1a","yrk","gva","san"):
+        lbl, col = FAMS[k]
+        s.append(f'<span><i class="pm-dot" style="background:{col}"></i> {lbl}</span>')
+    s.append('<span><span class="pm-star" style="font-size:1.2em">&#9733;</span> the compiler&rsquo;s direct line</span>')
+    return "\n      ".join(s)
+
 def fragment(chlinks):
     stats, total = stats_html()
-    markup = FRAG_MARKUP.replace("__STATS__", stats)
+    markup = (FRAG_MARKUP
+        .replace("__STATS__", stats)
+        .replace("__LEGEND__", legend_html()))
     script = (FRAG_SCRIPT
         .replace("__DATA__", json.dumps(DATA, ensure_ascii=False))
-        .replace("__CHLINKS__", "true" if chlinks else "false"))
+        .replace("__CHLINKS__", "true" if chlinks else "false")
+        .replace("__COL__", COL_JS)
+        .replace("__LBL__", LBL_JS))
     return FRAG_STYLE + "\n" + markup + "\n" + script, total
 
 # ---------------------------------------------------------------- outputs
@@ -399,7 +588,7 @@ STANDALONE = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Welty Family, Everyone in Gen 1&ndash;6 &mdash; a Map</title>
+<title>Every Welty Family We&rsquo;ve Placed &mdash; a Map</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -419,9 +608,9 @@ __FRAGSTYLE__
 </head>
 <body>
 <div class="wrap">
-  <h1>Everyone in the First Six Generations</h1>
-  <p class="subtitle">The proven Edenkoben Welty line, person by person, placed on the ground.</p>
-  <p class="updated">__TOTAL__ people mapped &middot; updated 4 Jul 2026</p>
+  <h1>Every Welty Family We&rsquo;ve Placed</h1>
+  <p class="subtitle">All the Welty / Weldy / W&auml;lti families of the All-Families tree, person by person, placed on the ground.</p>
+  <p class="updated">__TOTAL__ people mapped &middot; updated 17 Jul 2026</p>
 __FRAGBODY__
 </div>
 </body>
@@ -456,12 +645,13 @@ def inject(path, frag):
     else:
         print("  (no anchor in", os.path.basename(path), "- not injected)"); return
     with open(path, "w") as f: f.write(html)
-    print("  injected ->", os.path.basename(path))
+    print("  injected ->", path)
 
-frag_solo, total = fragment(chlinks=False)   # standalone: no chapters to link
-frag_embed, _   = fragment(chlinks=True)     # timeline: link into chapters
-write_standalone(frag_solo, total)
-inject(TIMELINE, frag_embed)
-inject(TIMELINE_NETLIFY, frag_embed)
-print(f"placed={len(PLACED)}  skipped={len(SKIPPED)} -> {SKIPPED}")
-print(f"standalone -> {OUT}  ({total} people)")
+if __name__ == "__main__":
+    frag_solo, total = fragment(chlinks=False)   # standalone: no chapters to link
+    frag_embed, _   = fragment(chlinks=True)     # timeline: link into chapters
+    write_standalone(frag_solo, total)
+    inject(TIMELINE, frag_embed)
+    inject(TIMELINE_SITE, frag_embed)
+    print(f"placed={len(PLACED)}  skipped={len(SKIPPED)} -> {SKIPPED}")
+    print(f"standalone -> {OUT}  ({total} people)")
