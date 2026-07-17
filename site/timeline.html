@@ -251,7 +251,7 @@
   <div class="mapbox" style="padding:16px 18px 6px;background:#fbf5e8;">
     <h2 style="margin-top:0;">Everyone we&rsquo;ve placed &mdash; every family</h2>
     <div class="pm-intro">
-      Every person <b>placed</b> from every family on the <a href="all-families.html">All-Families tree</a> &mdash; the German Edenkoben household (Gen 1&ndash;6, in shades of red, plus its slate Manchester branch) and the six genetically separate Welty&nbsp;/ Weldy&nbsp;/ W&auml;lti families, each in its own colour. Click a place for everyone who lived there; where families share one place their dots sit side by side &mdash; zoom in and they separate. Marker <b>colour</b> = family &middot; badge = proof &middot; <span class="pm-star">&#9733;</span> = the compiler&rsquo;s direct line. <b>If south-central Pennsylvania looks like a pile-up, that is the point</b> &mdash; several unrelated Welty families lived door to door there, and that crowding is why 250 years of family trees are tangled.
+      Every person <b>placed</b> from every family on the <a href="all-families.html">All-Families tree</a> &mdash; the German Edenkoben household (Gen 1&ndash;6, in shades of red, plus its slate Manchester branch) and the six genetically separate Welty&nbsp;/ Weldy&nbsp;/ W&auml;lti families, each in its own colour. Click a place for everyone who lived there; where families share one place their dots sit side by side &mdash; zoom in and they separate. Marker <b>colour</b> = family &middot; badge = proof. The American map opens on the crowded corridor itself &mdash; zoom out to follow each family&rsquo;s spread. <b>If south-central Pennsylvania looks like a pile-up, that is the point</b> &mdash; several unrelated Welty families lived door to door there, and that crowding is why 250 years of family trees are tangled.
     </div>
     <div class="pm-stats"><span class="pm-stat"><b>374</b> people</span>
       <span class="pm-stat"><b>5</b> Eden trunk</span>
@@ -278,8 +278,7 @@
       <span><i class="pm-dot" style="background:#9a6a15"></i> Greene Co TN &middot; John Welty (R1a)</span>
       <span><i class="pm-dot" style="background:#0f6b6b"></i> Conewago &middot; George Welty (R-L151)</span>
       <span><i class="pm-dot" style="background:#a34a2a"></i> Goochland Co VA &middot; Weldy (R1b-DF49)</span>
-      <span><i class="pm-dot" style="background:#2a4d7a"></i> Saanen &rarr; Upper Sandusky &middot; W&auml;lti (hg G)</span>
-      <span><span class="pm-star" style="font-size:1.2em">&#9733;</span> the compiler&rsquo;s direct line</span></div>
+      <span><i class="pm-dot" style="background:#2a4d7a"></i> Saanen &rarr; Upper Sandusky &middot; W&auml;lti (hg G)</span></div>
     <div class="pm-legend2">
       <span>The reds are <b>one</b> German family (its slate Manchester branch carries an I1 Y-line); every other colour is a genetically separate family.</span>
       <span>Proof: <span class="pm-badge pm-proven">proven</span> <span class="pm-badge pm-documented">documented</span> <span class="pm-badge pm-index">index</span> <span class="pm-badge pm-hypo">hypothesis</span> <span class="pm-badge pm-lore">family lore</span></span>
@@ -287,7 +286,7 @@
     </div>
     <p class="hint" style="margin-left:2px;">Europe &mdash; the Palatinate (Edenkoben), Baden (Eppingen) and the Bernese valleys (Emmental, Simmental, Saanen). Names marked &ldquo;emigrated&rdquo; sailed and reappear on the American map:</p>
     <div id="pmMapDe" class="pm-lmap de"></div>
-    <p class="hint" style="margin:8px 0 0 2px;">America &mdash; the landings, the York County pile-up, and each family&rsquo;s own spread. Faint lines trace the migrations:</p>
+    <p class="hint" style="margin:8px 0 0 2px;">America &mdash; opening on the York County pile-up itself; zoom out to follow each family&rsquo;s spread. Faint lines trace the migrations:</p>
     <div id="pmMapUs" class="pm-lmap"></div>
     <p class="tilenote" style="font-size:.72em;color:#6b6156;margin:6px 2px 2px;">Map data &copy; OpenStreetMap contributors.</p>
   </div>
@@ -309,14 +308,13 @@
     h+='<div class="pm-fam" style="color:'+(COL[fam]||'#555')+'">'+(LBL[fam]||fam)+'</div>';
     list.forEach(function(p){
       var c=COL[p.branch]||'#888';
-      var star=p.direct?'<span class="pm-star" title="the compiler\u2019s direct line">&#9733;</span> ':'';
       var dates=[p.birth,p.death].filter(Boolean).join(' &ndash; ');
       var pc=(p.proof||'living').toLowerCase().split(/[^a-z]+/)[0];
       var badge='<span class="pm-badge pm-'+esc(pc)+'">'+esc(p.proof||'?')+'</span>';
       var emig=p.emig?' <span class="pm-emig">&#8599; emigrated to America</span>':'';
       var withp=(p.inherited&&!p.emig)?' <span class="pm-emig">(with parent)</span>':'';
       h+='<div class="pm-row"><span class="pm-pdot" style="background:'+c+'"></span><span>'
-        +star+'<span class="pm-name">'+esc(p.name)+'</span> '+badge
+        +'<span class="pm-name">'+esc(p.name)+'</span> '+badge
         +'<span class="pm-meta"> &middot; Gen '+p.gen+(dates?' &middot; '+dates:'')+'</span>'+emig+withp+'</span></div>';
     });
     if(CHLINKS && node.chapter){h+='<a class="pm-chlink" href="#'+node.chapter+'">Read the chapter &darr;</a>';}
@@ -340,9 +338,6 @@
         var lat=nd.lat, lon=nd.lon;
         if(n>1&&i>0){var a=2*Math.PI*(i-1)/Math.max(n-1,1);
           lat+=ring*Math.cos(a); lon+=ring*Math.sin(a)*1.35;}
-        if(real.some(function(p){return p.direct;})){
-          L.circleMarker([lat,lon],{radius:r+4,color:'#c69b3a',weight:2.5,opacity:.9,fill:false}).addTo(m);
-        }
         var mk=L.circleMarker([lat,lon],{radius:r,color:'#fff',weight:2.2,fillColor:COL[f]||'#888',fillOpacity:.92}).addTo(m);
         mk.bindPopup(popupHtml(nd,f,list),{maxWidth:360,minWidth:250});
         if(i===0){
@@ -359,7 +354,8 @@
     var md=mkMap('pmMapDe',[[46.15,6.85],[49.95,9.45]]);
     route(md,[[49.688,8.046],[49.283,8.128]],COL.trunk,'6 6',3);
     addNodes(md,DATA.de,0.02);
-    var mu=mkMap('pmMapUs',[[28.5,-118.5],[43.5,-73.5]]);
+    /* default view: the crowded PA/MD corridor — the pile-up IS the story; zoom out for the spreads */
+    var mu=mkMap('pmMapUs',[[39.30,-77.80],[40.60,-74.90]]);
     /* Edenkoben — Philip Jacob line */
     route(mu,[[39.953,-75.165],[40.001,-76.85],[40.018,-78.503],[39.97,-79.10],[40.017,-79.59],[40.52,-81.474],[40.657,-81.634],[41.293,-84.762]],COL.pj,null,3);
     route(mu,[[40.52,-81.474],[38.831,-104.821]],COL.pj,'2 8',1.8);
