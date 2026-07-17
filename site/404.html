@@ -24,11 +24,12 @@
   }
   *{box-sizing:border-box}
   body{
-    margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    margin:0; min-height:100vh; display:flex; flex-direction:column;
     background:linear-gradient(180deg,var(--parchment),var(--parchment-deep));
-    color:var(--ink); font-family:'EB Garamond',Georgia,serif; text-align:center;
-    padding:40px 20px;
+    color:var(--ink); font-family:'EB Garamond',Georgia,serif;
   }
+  main.center{flex:1; display:flex; align-items:center; justify-content:center;
+    text-align:center; padding:40px 20px;}
   .card{max-width:560px}
   img.crest{width:150px; height:auto; filter:drop-shadow(0 4px 10px rgba(60,45,20,.25)); margin-bottom:18px}
   .code{
@@ -50,6 +51,32 @@
 </style>
 </head>
 <body>
+<style>
+.wsite-hdr{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  padding:11px 22px;background:#faf5e9;border-bottom:2px solid #b8912f;
+  font-family:'EB Garamond',Georgia,serif;box-shadow:0 1px 5px rgba(60,45,20,.09);}
+.wsite-hdr *{box-sizing:border-box}
+.wsite-brand{display:flex;align-items:center;gap:11px;text-decoration:none;border:0}
+.wsite-brand img{width:34px;height:40px;display:block}
+.wsite-word{font-family:'Cormorant SC','EB Garamond',Georgia,serif;font-weight:700;font-size:1.3rem;
+  letter-spacing:.5px;color:#1c1a17;line-height:1.05}
+.wsite-word small{display:block;font-family:'EB Garamond',Georgia,serif;font-weight:400;font-size:.6rem;
+  letter-spacing:2.5px;text-transform:uppercase;color:#8a7a52;margin-top:3px}
+.wsite-nav{display:flex;gap:5px;flex-wrap:wrap}
+.wsite-nav a{text-decoration:none;color:#5a4f3c;font-size:1.02rem;padding:6px 14px;border-radius:5px;
+  border:1px solid transparent;transition:.15s}
+.wsite-nav a:hover{background:#f0e6cf;color:#1c1a17}
+.wsite-nav a[aria-current=page]{color:#7a1f1f;border-color:#cbb98d;background:#fffdf6;font-weight:600}
+@media(max-width:520px){.wsite-word{font-size:1.1rem}.wsite-nav a{padding:5px 10px;font-size:.94rem}}
+</style>
+<header class="wsite-hdr">
+  <a class="wsite-brand" href="/">
+    <img src="/favicon.svg" alt="Welty family crest">
+    <span class="wsite-word">The Welty Family<small>Research Journal</small></span>
+  </a>
+  <nav class="wsite-nav"><a href="/">Journal</a><a href="/all-families.html">Family Tree</a><a href="/timeline.html">Timeline</a><a href="/family-papers.html">Family Papers</a></nav>
+</header>
+<main class="center">
   <div class="card">
     <img class="crest" src="/favicon.svg" alt="The Welty family crest">
     <div class="code">ERROR 404</div>
@@ -62,5 +89,6 @@
       <a class="btn" href="/timeline.html">The timeline</a>
     </div>
   </div>
+</main>
 </body>
 </html>

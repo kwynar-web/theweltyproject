@@ -65,11 +65,12 @@ FAMS = {
     "md":    ("Taneytown, MD (Baden, Catholic)", "#2f6f4f"),
     "r1a":   ("Greene Co TN &middot; John Welty (R1a)", "#9a6a15"),
     "yrk":   ("Conewago &middot; George Welty (R-L151)", "#0f6b6b"),
+    "cum":   ("Cumberland Twp / Gettysburg &middot; John Welty (untested)", "#4a3a8c"),
     "gva":   ("Goochland Co VA &middot; Weldy (R1b-DF49)", "#a34a2a"),
     "san":   ("Saanen &rarr; Upper Sandusky &middot; W&auml;lti (hg G)", "#2a4d7a"),
 }
 FAM_OF_ROSTER = {"Manch":"manch","Swiss":"swiss","Md":"md","R1a":"r1a",
-                 "Yrk":"yrk","Gva":"gva","San":"san"}
+                 "Yrk":"yrk","Cum":"cum","Gva":"gva","San":"san"}
 
 # ---------------------------------------------------------------- gazetteer
 # node-key -> (lat, lon, label, continent)  continent: DE (Europe) or US
@@ -115,6 +116,7 @@ NODES = {
     "emmitsburg":  (39.704,-77.327, "Emmitsburg, Frederick Co MD", "US"),
     "dillsburg":   (40.111,-77.035, "Dillsburg, York Co PA", "US"),
     "adamsco":     (39.869,-77.216, "Adams Co PA (Freedom / Gettysburg district)", "US"),
+    "cumberland_adams":(39.797,-77.241,"Cumberland Twp / Gettysburg, Adams Co PA", "US"),
     "franklinpa":  (39.927,-77.661, "Franklin Co PA", "US"),
     "manheim_york":(39.762,-76.884, "Manheim Twp, York Co PA", "US"),
     "shenandoah":  (38.851,-78.552, "Shenandoah Co VA (Forestville)", "US"),
@@ -149,6 +151,8 @@ def node_for(pid, place, father_node):
     if not place:
         return father_node, True
     p = str(place).lower().strip()
+    if str(pid).startswith("Cum-"):
+        return "cumberland_adams", False   # the whole Cum family: Cumberland Twp / Gettysburg
     if p in EXACT:
         return EXACT[p], False
     # Destination-specific needles first; origins and generic county catches later.
@@ -261,6 +265,7 @@ CHAPTER = {
     "deltona_fl":"offshoots", "andersonville":"york",
     "taneytown":"fam-md", "emmitsburg":"fam-md", "dillsburg":"fam-md",
     "adamsco":"fam-md", "franklinpa":"fam-md",
+    "cumberland_adams":"fam-cum",
     "manheim_york":"fam-swiss", "rowan_nc":"fam-swiss", "putnam_oh":"fam-swiss",
     "fairfield_oh":"fam-swiss", "jackson_ms":"fam-swiss", "enid_ok":"fam-swiss",
     "shenandoah":"fam-r1a", "greene_tn":"fam-r1a", "sullivan_in":"fam-r1a",
@@ -422,12 +427,12 @@ FRAG_MARKUP = """<div class="pm-wrap">
   <div class="mapbox" style="padding:16px 18px 6px;background:#fbf5e8;">
     <h2 style="margin-top:0;">Everyone we&rsquo;ve placed &mdash; every family</h2>
     <div class="pm-intro">
-      Every person <b>placed</b> from every family on the <a href="all-families.html">All-Families tree</a> &mdash; the German Edenkoben household (Gen 1&ndash;6, in shades of red, plus its slate Manchester branch) and the six genetically separate Welty&nbsp;/ Weldy&nbsp;/ W&auml;lti families, each in its own colour. Click a place for everyone who lived there; where families share one place their dots sit side by side &mdash; zoom in and they separate. Marker <b>colour</b> = family &middot; badge = proof. The American map opens on the crowded corridor itself &mdash; zoom out to follow each family&rsquo;s spread. <b>If south-central Pennsylvania looks like a pile-up, that is the point</b> &mdash; several unrelated Welty families lived door to door there, and that crowding is why 250 years of family trees are tangled.
+      Every person <b>placed</b> from every family on the <a href="all-families.html">All-Families tree</a> &mdash; the German Edenkoben household (Gen 1&ndash;6, in shades of red, plus its slate Manchester branch) and the seven other Welty&nbsp;/ Weldy&nbsp;/ W&auml;lti families, each in its own colour. Click a place for everyone who lived there; where families share one place their dots sit side by side &mdash; zoom in and they separate. Marker <b>colour</b> = family &middot; badge = proof. The American map opens on the crowded corridor itself &mdash; zoom out to follow each family&rsquo;s spread. <b>If south-central Pennsylvania looks like a pile-up, that is the point</b> &mdash; several unrelated Welty families lived door to door there, and that crowding is why 250 years of family trees are tangled.
     </div>
     <div class="pm-stats">__STATS__</div>
     <div class="pm-legend">__LEGEND__</div>
     <div class="pm-legend2">
-      <span>The reds are <b>one</b> German family (its slate Manchester branch carries an I1 Y-line); every other colour is a genetically separate family.</span>
+      <span>The reds are <b>one</b> German family (its slate Manchester branch carries an I1 Y-line); every other colour is a separate family &mdash; six proven so by Y-DNA; the Cumberland Twp line is separated by the paper record (no tester yet).</span>
       <span>Proof: <span class="pm-badge pm-proven">proven</span> <span class="pm-badge pm-documented">documented</span> <span class="pm-badge pm-index">index</span> <span class="pm-badge pm-hypo">hypothesis</span> <span class="pm-badge pm-lore">family lore</span></span>
       <span>&mdash; larger circle = more people at that place</span>
     </div>
@@ -546,7 +551,7 @@ FRAG_SCRIPT = """<script>
 STAT_LABELS = [
     ("trunk","Eden trunk"),("pj","Philip Jacob"),("jj","John Jacob"),
     ("manch","Manchester"),("swiss","Swiss Emmental"),("md","Maryland"),
-    ("r1a","R1a York&rarr;TN"),("yrk","Conewago R-L151"),("gva","Goochland"),
+    ("r1a","R1a York&rarr;TN"),("yrk","Conewago R-L151"),("cum","Cumberland Twp"),("gva","Goochland"),
     ("san","Saanen&rarr;Sandusky"),
 ]
 
@@ -561,7 +566,7 @@ def stats_html():
 
 def legend_html():
     s = []
-    for k in ("trunk","pj","jj","manch","swiss","md","r1a","yrk","gva","san"):
+    for k in ("trunk","pj","jj","manch","swiss","md","r1a","yrk","cum","gva","san"):
         lbl, col = FAMS[k]
         s.append(f'<span><i class="pm-dot" style="background:{col}"></i> {lbl}</span>')
     return "\n      ".join(s)

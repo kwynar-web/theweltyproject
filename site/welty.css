@@ -124,7 +124,10 @@ body main > .intro{ margin-top: 32px; }    /* family-papers archive intro       
 
 .wrap > h1,
 body .intro h1,
-body > .card > h1 { color: var(--ink); text-align: center; }  /* black + centred */
+body > .card > h1 {
+  color: var(--ink); text-align: center;          /* black + centred */
+  font-size: 2.15rem; letter-spacing: .5px;       /* ONE title size on every sub-page */
+}
 
 /* Keep the subtitle line under each masthead title centred too, so all three
    sub-pages share the same title + subtitle rhythm (not just the title). */
