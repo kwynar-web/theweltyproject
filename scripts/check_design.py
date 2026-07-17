@@ -101,6 +101,12 @@ for fam in sorted(tree_fams):
     if f'id="fam-{key}"' not in tline:
         fails.append(f"family '{fam}': no profile card id=\"fam-{key}\" in the timeline #others chapter")
 
+# Leaflet stacking guard: map panes must never paint over the sticky header
+if "isolation:isolate" not in tline:
+    fails.append("timeline: .pm-lmap stacking guard (isolation:isolate) missing — re-run generate_people_map.py")
+if "font-size: .93rem" not in tline:
+    fails.append("timeline: .card reading-size rule (.93rem) missing — chapter text will render at full 19px")
+
 # people-map fragment freshness: legend must mention every FAMS colour
 for key, col in map_colors.items():
     if col not in tline:

@@ -48,6 +48,16 @@ Adding a group to the roster / `generate_chart.py` is **not finished** until:
 3. `python3 scripts/generate_people_map.py` has been re-run.
 4. `python3 scripts/check_design.py` passes.
 
+## Two timeline-specific rules (learned 17 Jul 2026, both gated)
+
+- **Leaflet stacking guard.** Leaflet's internal panes use z-index 200–1000, which beats
+  the sticky masthead (z-index 50) unless the map container is its own stacking context.
+  `.pm-lmap` therefore carries `position:relative; z-index:0; isolation:isolate` — this
+  lives in `generate_people_map.py`'s fragment style. Never remove it; any embedded
+  widget with internal z-indexes needs the same treatment.
+- **Reading size.** Timeline chapter cards are `.93rem`, not the full 19px body size —
+  matching the intro panels and the journal's card density.
+
 ## Publishing
 
 Edit files in the repo `site/` folder (never only the root copies), then Kwyn pushes

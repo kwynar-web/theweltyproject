@@ -403,7 +403,7 @@ FRAG_STYLE = """<style>
   .pm-legend span{display:inline-flex;align-items:center;gap:6px;}
   .pm-dot{width:13px;height:13px;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 0 0 1px #bbb;}
   .pm-legend2{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 16px;font-size:.78em;color:#6b6156;margin:0 auto 16px;max-width:960px;}
-  .pm-lmap{height:520px;border-radius:8px;}
+  .pm-lmap{height:520px;border-radius:8px;position:relative;z-index:0;isolation:isolate;overflow:hidden;} /* stacking guard: Leaflet panes (z 200-1000) must never paint over the sticky site header */
   .pm-lmap.de{height:430px;}
   .pm-badge{font-size:.7em;padding:1px 6px;border-radius:9px;border:1px solid;margin-left:3px;white-space:nowrap;}
   .pm-proven{color:#3d6b3d;border-color:#3d6b3d;background:#eef5ee;}
