@@ -37,9 +37,9 @@ COLS = ["PersonID","Family","Gen","Name","Sex","Birth","Death","Place",
 
 FAMILIES = [
     ("Eden",  "York County, PA · Edenkoben Welty", "R1b (R-M269)",
-     "One German family: the Wäldi/Welty household of Edenkoben (Palatinate). Immigrant brothers Philip Jacob (1750, our R1b spine), John Jacob (Weltytown line) and Georg Wolfgang — whose Manchester branch carries an I1 Y-line (a paternity break inside the family, not a separate clan) and appears under his node below.", True),
+     "One German family: the Wäldi/Welty household of Edenkoben (Palatinate). Immigrant brothers Philip Jacob (1750, the R1b spine), John Jacob (Weltytown line) and Georg Wolfgang — whose Manchester branch carries an I1 Y-line. That break sits inside the family rather than marking a separate clan, but which rung it sits on — Georg Wolfgang&rsquo;s 1716 baptism or his son Johan Jacob&rsquo;s in 1750 — is undetermined; he appears under his node below.", True),
     ("Manch", "York County, PA · Manchester branch", "I1",
-     "The Manchester branch of the German family (Dover / Manchester Twp, York Co PA) — I1 Y-line via a paternity break at/above Georg Wolfgang. Shares the names Philip Jacob / Henry / Catherine — the main source of the old confusion.", False),
+     "The Manchester branch of the German family (Dover / Manchester Twp, York Co PA) — I1 Y-line via a break at one of two rungs: Georg Wolfgang (bp. 1716) or his son Johan Jacob (bp. 1750). Shares the names Philip Jacob / Henry / Catherine — the main source of the old confusion.", False),
     ("Yrk", "Conewago, PA · George Welty", "R1b (R-L151)",
      "A York County Welty line carried by FTDNA kit <b>#19175</b> — a <i>different</i> R1b subclade (R-L151) from our Edenkoben cluster, with no common ancestor in a genealogical timeframe. Just the two Pennsylvania members are shown — <b>George Welty</b> (b.~1797, Conewago) and his son <b>John</b> (b.1827, York Co) — before the family left for Ohio and Michigan. Above George is a brick wall: the record that would name his parents is John's baptism in Quickel's Conewago register, still access-locked. One of the several York Welty families that get tangled together in the county records.", False),
     ("Cum", "Cumberland Twp, PA · John Welty", "untested",
@@ -394,6 +394,12 @@ KNOWN_LIVING = set()   # (was {"B-merleSMGF"}) Merle William Welty PROVEN DECEAS
 LINK_UNPROVEN = {"E-michael", "E-jacobsr", "E-johndover",
                  "E-elizabethgauf", "E-christinamesserle", "E-catharinaboehm"}
 
+# Y-line break whose RUNG is undetermined. Paper filiation is primary at BOTH candidate
+# rungs; the I1/R1b conflict proves a break at one of them but cannot say which.
+# Distinct from LINK_UNPROVEN (there the descent itself is unproven) and from the Proof
+# grade (the person stays "documented" - Kwyn upgrade 1 Jul 2026).
+Y_BREAK = {"E-georgwolfgang-disp"}
+
 def _year_in(s):
     m = re.search(r'\b(1[5-9]\d\d|20\d\d)\b', s or '')
     return int(m.group(1)) if m else None
@@ -576,6 +582,7 @@ def main():
             "place": p["Place"], "spouse": p["Spouse"], "proof": p["Proof"],
             "dna": pub_dna_label(p["DNAkit"]), "direct": p["Direct"],
             "linkunproven": (p["PersonID"] in LINK_UNPROVEN),
+            "ybreak": (p["PersonID"] in Y_BREAK),
             "notes": notes_to_plain(p["Notes"]),          # plain text -> search index
             "notes_html": notes_to_html(p["Notes"]),      # organized, linked -> display
             "proof_html": format_source_html(p["ProofRec"]),
@@ -1032,7 +1039,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   <span><span class="tag t-lore">Lore</span></span>
   <span><span class="tag t-living">Living</span></span>
   <span><span class="tag t-dna">DNA</span> Y-line tester</span>
-  <span><span class="tag t-disputed">Disputed link ⁉</span> same household, different Y-DNA (non-paternity)</span>
+  <span><span class="tag t-disputed">Break: 1716 or 1750 ⁉</span> paper names the father; Y-DNA says the line breaks at this rung or the next</span>
   <span><span class="tag t-linksoft">Father link unproven ⁉</span> the person is proven; their descent from the parent above is not</span>
 </div>
 
@@ -1127,13 +1134,15 @@ function nodeHTML(id,famKey){
   let cls='person';
   if((p.proof||'').toLowerCase()==='disputed') cls+=' disputed';
   if(p.linkunproven) cls+=' linksoft';
+  if(p.ybreak) cls+=' disputed';
   let badges=proofTag(p.proof);
   if(p.dna) badges+=`<span class="tag t-dna">${esc(p.dna)}</span>`;
   if(p.linkunproven) badges+='<span class="tag t-linksoft">Father link unproven ⁉</span>';
+  if(p.ybreak) badges+='<span class="tag t-disputed">Break: 1716 or 1750 ⁉</span>';
   const g=genLabel(p.gen, p.fam);
   const genchip=g?`<span class="genchip">${g}</span>`:'';
   const meta=metaLine(p);
-  let h=`<div class="node${(p.proof||'').toLowerCase()==='disputed'?' disputed':''}${p.linkunproven?' linksoft':''}" data-id="${id}" data-fam="${p.fam}" data-gen="${p.gen===null?'':p.gen}" data-direct="${p.direct||''}">`;
+  let h=`<div class="node${((p.proof||'').toLowerCase()==='disputed'||p.ybreak)?' disputed':''}${p.linkunproven?' linksoft':''}" data-id="${id}" data-fam="${p.fam}" data-gen="${p.gen===null?'':p.gen}" data-direct="${p.direct||''}">`;
   h+=`<div class="row">`;
   h+=`<div class="tog${kids.length?'':' leaf'}">${kids.length?'▸':''}</div>`;
   h+=`<div class="${cls}"><div class="top"><span class="name">${esc(p.name)}</span>${genchip}${badges}</div>`;
@@ -1144,6 +1153,7 @@ function nodeHTML(id,famKey){
   if(p.source_html) h+=`<div class="src"><b>Source:</b> ${p.source_html}</div>`;
   if(p.records&&p.records.length) h+=recStrip(p.records); /*RECORDS-RENDER*/
   if(p.linkunproven) h+=`<div class="linknote">&#8265; Descent from the father above is not yet proven by a primary record naming the parent &mdash; it rests on indirect evidence (Y-DNA and/or circumstantial records). A baptism or record naming the father would confirm it.</div>`;
+  if(p.ybreak) h+=`<div class="linknote">&#8265; Y-DNA break, rung undetermined &mdash; the Manchester line tests <b>I1</b> while the Edenkoben household tests <b>R1b</b>, so either this rung (his 1716 baptism) or the next (his son Johan Jacob, bp. 1750) is not biological. Both baptisms name the father on the page; nothing yet tells the two apart.</div>`;
   h+=`</div></div>`;
   if(kids.length){ h+=`<div class="kids">`+kids.map(k=>nodeHTML(k,famKey)).join('')+`</div>`; }
   h+=`</div>`;
@@ -1532,7 +1542,7 @@ Every card carries the <b>official record</b> that proves the person and <b>wher
   <span><span class="tag t-dna">DNA</span></span>
   <span style="color:var(--direct);font-weight:600">Red = the proven direct paternal Welty line</span>
   <span><span class="tag t-kit">Kit</span> Y-DNA kit owner</span>
-  <span><span class="tag t-disputed">Disp.&#8265;</span> dashed = non-paternity</span>
+  <span><span class="tag t-disputed">Disp.&#8265;</span> dashed = Y-line break, rung undetermined</span>
 </div>
 
 <details class="sourcekey">
@@ -1555,7 +1565,7 @@ __HEAD__
 __ROWS__
 
 <div class="foot">
-  <p><b>Why two families here:</b> both lines trace to the Palatinate (Edenkoben) but carry different Y-DNA &mdash; <b>R1b</b> = the Edenkoben line, <b>I1</b> = the Manchester line (raised in the same W&auml;lti household; non-paternity event). Same name, different fathers.</p>
+  <p><b>Why two families here:</b> both lines trace to the Palatinate (Edenkoben) but carry different Y-DNA &mdash; <b>R1b</b> = the Edenkoben line, <b>I1</b> = the Manchester line. The two part company at one of two rungs &mdash; Georg Wolfgang (bp.&nbsp;1716) or his son Johan Jacob (bp.&nbsp;1750) &mdash; and which one is still open.</p>
   <p style="margin-top:8px;color:#9a9384">Auto-generated from Welty Ancestry Research Log.xlsx &rarr; &ldquo;People Roster (chart source)&rdquo; (Proof record + Source columns) via generate_chart.py. Edit the roster and re-run to update.</p>
 </div>
 </div>
@@ -1645,7 +1655,7 @@ GRAPH_TEMPLATE = r"""<!DOCTYPE html>
 <p class="sub">Node-and-branch chart of the two Palatinate-connected Welty families &mdash;
 <b style="color:var(--eden)">Edenkoben (R1b)</b> and <b style="color:var(--manch)">Manchester (I1)</b>.
 The Swiss Emmental line is deliberately excluded. <b>Drag</b> to pan, <b>scroll</b> to zoom, <b>click</b> any person for full details.
-Solid lines = proven/documented parentage; long dashes = hypothesized; short dashes = disputed (non-paternity).</p>
+Solid lines = proven/documented parentage; long dashes = hypothesized; short dashes = a Y-line break whose rung is undetermined.</p>
 <div class="controls">
   <input id="q" class="search" type="search" placeholder="Find a person… (Enter = next match)" autocomplete="off">
   <label class="chk eden"><input type="checkbox" data-fam="Eden" checked> Edenkoben</label>
@@ -1663,7 +1673,7 @@ Solid lines = proven/documented parentage; long dashes = hypothesized; short das
   <span><span class="tag t-living">Living</span></span><span><span class="tag t-dna">DNA</span> Y-tester</span>
   <span style="color:var(--direct);font-weight:600">Red = the proven direct paternal Welty line</span>
   <span><span class="tag t-kit">Kit</span> living kit owner</span>
-  <span><span class="tag t-disputed">Disputed &#8265;</span> dashed border = non-paternity</span>
+  <span><span class="tag t-disputed">Disputed &#8265;</span> dashed border = Y-line break, rung undetermined</span>
 </div>
 <div id="viewport"><div id="world"><svg id="edges" xmlns="http://www.w3.org/2000/svg"></svg><div id="nodes"></div></div></div>
 <div id="panel" class="hidden"><button id="pclose">&times;</button><div id="pbody"></div></div>

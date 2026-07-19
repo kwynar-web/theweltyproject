@@ -237,6 +237,21 @@ M = {
    (["B-philip1780"], "Catharine (Knaub) Welty, 'widow & relict of Philip Welty late of Manchester Township deceased', York Orphans Court 7 Nov 1837 (Court Records 1835-1845, pp. 520-521): she had NINE children at her husband's death about three years earlier, two of them under seven; the Court allows $10 per minor yearly. Primary corroboration of the nine-child family. FamilySearch full-text image.", "high"),
  "FB84 — Schramm heirs quitclaim, Jacob Welty and Anna Maria his wife, Deeds 1800-1803 (FamilySearch ark 3Q9M-CSXY-1QL8-4).jpg":
    (["B-johanjacob"], "The heirs of George Shram of Manchester Twp quit-claim the 257-acre 'Long Ridge' tract (Manchester & Dover Twps) to eldest son John Shram, 25 May 1790 — signed by 'Jacob Welty and Anna Maria his Wife' (her mark; his signature copied 'Jacob Walde'), proving Anna Maria (Schramm) Welty a daughter of George Shram. York Deeds 1800-1803, pp. 208-209, via FamilySearch.", "high"),
+ # --- Tuscarawas marriage book 1808-1844 vol 1 (18 Jul 2026 marriage pass) ---
+ "M295 — John Wallick x Susanna Witty 27 May 1828 Tuscarawas marr bk1 p132 n1052 (FamilySearch ark 33S7-95BW-VLC).jpg":
+   (["E-susanna1802"], "Susanna's marriage: 'John Wallick and Susanna Witty' (Witty = Welty garble), 27 May 1828, Tuscarawas marriage book 1 p. 132 n. 1052 — Wm Butt, Minister. Resolves the family-chart 'daughter m. Wallick': she is Susan Welty Wallick (1801-1860) of Fourth Street Cemetery, Dover.", "high"),
+ "M296 — David Weldy x Ann Ballman 9 Jul 1826 Tuscarawas marr bk1 p104 n826 (FamilySearch ark 33SQ-G5BW-J1P).jpg":
+   (["E-david1803"], "David's marriage: 'David Weldy and Ann Bollman', 9 Jul 1826, Tuscarawas marriage book 1 p. 104 n. 826 — Abraham Snyder, Minister. First record naming David's wife.", "high"),
+ "M297 — Philip Weldy x Sarah Overholt 13 May 1816 Tuscarawas marr bk1 p20 n157 (FamilySearch ark 33SQ-G5BW-NF3).jpg":
+   (["E-philip1789"], "Philip's marriage: 'Philip Weldy and Sarah Overholt', 13 May 1816, Tuscarawas marriage book 1 p. 20 n. 157 — Isaac Deardorff, J.P.", "high"),
+ "M298 — John Weldy x Hannah Allman 22 Jul 1812 Tuscarawas marr bk1 p10 n76 (FamilySearch ark 33S7-95BW-JNN).jpg":
+   (["E-johnft1786"], "John's marriage: 'John Weldy and Hannah Allman' (Aultman), 22 Jul 1812, Tuscarawas marriage book 1 p. 10 n. 76 — Christian Espich, Minister.", "high"),
+ "M299 — Jacob Weldy x Elizabeth Butt 7 Nov 1810 Tuscarawas marr bk1 p5 n39 (FamilySearch ark 33SQ-G5BW-NYS).jpg":
+   (["E-jacobft1788"], "Jacob's marriage: 'Jacob Weldy and Elizabeth Butt', 7 Nov 1810, Tuscarawas marriage book 1 p. 5 n. 39 — Conrad Roth, J.P. The earliest documented Welty marriage in Tuscarawas County.", "high"),
+ "M300 M301 — George Weldy x Sarah Altman 24 Dec 1816 + Christian Blauch x Elizabeth Weldy 2 Nov 1817 Tuscarawas marr bk1 p28-29 (FamilySearch ark 33SQ-G5BW-NV1).jpg":
+   (["E-georgeft1792","E-elizabethw"], "One register spread, two marriages: 'George Weldy and Sarah Altman', 24 Dec 1816 (p. 29 n. 225) — correcting the family chart's 'Hannah Aultman' for George — and 'Christian Blauch [Plough] and Elizabeth Weldy', 2 Nov 1817 (p. 28 n. 219). Both by Abraham Snyder, Minister.", "high"),
+ "M302 — Jacob Fisher x Sarah Weldy 26 Mar 1826 Tuscarawas marr bk1 p101 n802 (FamilySearch ark 33S7-95BW-VR8).jpg":
+   (["E-sally1804"], "Sally's marriage: 'Jacob Fisher and Sarah Weldy', 26 Mar 1826, Tuscarawas marriage book 1 p. 101 n. 802 — Geo. Bugher, J.P.", "high"),
 }
 
 # ---------------------------------------------------------------------------
@@ -287,6 +302,13 @@ KEEP_ON_TREE = {
  "M68 — Elizabeth Welty x George Gauf marriage 26 Mar 1775 citation (Ancestry coll4946 ev7751).png",                     # daughter marriage (citation card)
  "M72 — Christina Welty x Peter Messerle marriage 13 Apr 1784 citation (Ancestry coll4946 ev7962).png",                  # daughter marriage (citation card)
  "US16 — Catharine Welty x Jacob Boehm marriage 10 May 1785 citation (Ancestry coll4946 ev7987).png",                    # daughter marriage (citation card)
+ "M295 — John Wallick x Susanna Witty 27 May 1828 Tuscarawas marr bk1 p132 n1052 (FamilySearch ark 33S7-95BW-VLC).jpg",   # marriage — Susanna, resolves lore daughter-m.-Wallick
+ "M296 — David Weldy x Ann Ballman 9 Jul 1826 Tuscarawas marr bk1 p104 n826 (FamilySearch ark 33SQ-G5BW-J1P).jpg",        # marriage — David's wife found
+ "M297 — Philip Weldy x Sarah Overholt 13 May 1816 Tuscarawas marr bk1 p20 n157 (FamilySearch ark 33SQ-G5BW-NF3).jpg",    # marriage — Philip b.1789
+ "M298 — John Weldy x Hannah Allman 22 Jul 1812 Tuscarawas marr bk1 p10 n76 (FamilySearch ark 33S7-95BW-JNN).jpg",        # marriage — John b.1786
+ "M299 — Jacob Weldy x Elizabeth Butt 7 Nov 1810 Tuscarawas marr bk1 p5 n39 (FamilySearch ark 33SQ-G5BW-NYS).jpg",        # marriage — Jacob b.1788, primary record
+ "M300 M301 — George Weldy x Sarah Altman 24 Dec 1816 + Christian Blauch x Elizabeth Weldy 2 Nov 1817 Tuscarawas marr bk1 p28-29 (FamilySearch ark 33SQ-G5BW-NV1).jpg",  # marriages — George (FT wife corrected) + Elizabeth × Plough/Blauch
+ "M302 — Jacob Fisher x Sarah Weldy 26 Mar 1826 Tuscarawas marr bk1 p101 n802 (FamilySearch ark 33S7-95BW-VR8).jpg",      # marriage — Sally
  "P54 — Hans Philipp Waldi confirmation Ostern 1707 (Archion reg 54930 Edenkoben2 Bild 127).pdf",                        # confirmation (names father Johann Georg)
  "P55 — Johann Jacob Waldy confirmation Ostern 1726 (Archion reg 54930 Edenkoben2 Bild 131).pdf",                        # confirmation
  "FB73 — Daniel Welty x Elizabeth 1850 census Springgarden p167 hh179-195 lines 3-7 (FamilySearch ark S3HT-6957-MP5).jpg",   # keystone household: names wife + first 3 children
