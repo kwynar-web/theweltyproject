@@ -32,6 +32,9 @@ def scrub_display(s):
     if not s:
         return s
     s = str(s)
+    # Public-output rule (12 Jul 2026): no FTDNA-project-admin name on public output.
+    s = re.sub(r'\bBrian\s+Hamman\b|\bHamman\b|\bBrian\b',
+               'the FTDNA-project compiler', s)
     s = re.sub(r'\s*\[[^\]]*\]', '', s)                                   # [..] codes
     s = re.sub(r',?\s*\b(?:see|verify|recheck|confirm|check|cf\.?|per)\s+' + _DISPLAY_CODE + r'\b', '', s, flags=re.I)
     s = re.sub(r'[;,]?\s*(?:—\s*)?\b' + _DISPLAY_CODE + r'\b', '', s)  # standalone codes (incl leading em-dash)

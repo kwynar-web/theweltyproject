@@ -197,6 +197,11 @@ def scrub_display(s):
     if not s:
         return s
     s = str(s)
+    # Public-output rule (12 Jul 2026): the FTDNA project admin's name never
+    # surfaces on public output — cite his compiled data neutrally. The URL
+    # scrub above catches links; this catches the bare name in roster text.
+    s = re.sub(r'\bBrian\s+Hamman\b|\bHamman\b|\bBrian\b',
+               'the FTDNA-project compiler', s)
     # drop internal working-shorthand tails that leak into the display line,
     # e.g. "…Palatinate — leading id" (an editorial "leading identification" flag,
     # not a public fact). Only the trailing dash-led shorthand is removed; real
