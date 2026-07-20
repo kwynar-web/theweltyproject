@@ -55,8 +55,32 @@ FAMILIES = [
     # Swiss Emmental kept last: the Wälti who never emigrated — the most clearly
     # distinct from the German Edenkoben Weltys, so it anchors the bottom of the tree.
     ("Swiss", "Emmental, Switzerland · Wälti", "I2b",
-     "The Swiss Emmental line — the Rüderswil / Emmental Wälti of the “Welty Family Chronicle” (Bacon 2002); source of the “Weltys are Swiss” story.", False),
+     "The Swiss Emmental line — the Rüderswil / Emmental Wälti of the “Welty Family Chronicle” (Bacon 2002); source of the “Weltys are Swiss” story. Unlike every other family here, this one's documented trunk sits in Europe across four generations, with <b>three separate emigrations</b> hanging off it a century apart — so it is anchored on its Bernese origin rather than on any one American settling place. The American branches are marked in place below.", False),
 ]
+
+# ============================ BRANCH SUB-HEADERS ============================
+# Some families do not reduce to a single settling place. The Emmental Wälti in
+# particular is a Swiss trunk with three independent American entry points — a
+# 1727 emigration to Manheim Twp, its Ohio offshoot carrying the line down to
+# Eudora Welty, and a wholly separate 1846 emigration out of Lauperswil that
+# never touched Pennsylvania. Naming the group for any one of them would be a
+# claim the records don't support, so instead each branch gets a labelled band
+# at the rung where it actually begins.
+#
+# PersonID -> (label, note). The band renders immediately above that person's
+# card, inside their node (so it hides/filters with them).
+BRANCHES = {
+    "A-peter1691": ("Manheim Twp, York Co PA",
+                    "Emigrated 1727 — <i>Friendship of Bristol</i>, Philadelphia 16 Oct. "
+                    "Land warrants 1733 &amp; 1745; will proved Manheim Twp 22 Aug 1755."),
+    "A-john1765":  ("Fairfield &amp; Hocking Co, OH",
+                    "The Ohio offshoot of the Manheim branch — Heidelberg Twp, York Co PA "
+                    "to Rush Creek Twp, and on down to the novelist <b>Eudora Welty</b>."),
+    "A-john1817":  ("Putnam Co, OH",
+                    "A <b>separate</b> emigration, 1846 — straight from Bagischwand, "
+                    "Lauperswil to Ohio, 119 years after Peter's and by way of no "
+                    "Pennsylvania settlement at all."),
+}
 
 # ============================ CITATION FORMATTER ============================
 # Turns the roster's terse internal source shorthand into reference-quality,
@@ -588,6 +612,8 @@ def main():
             "dna": pub_dna_label(p["DNAkit"]), "direct": p["Direct"],
             "linkunproven": (p["PersonID"] in LINK_UNPROVEN),
             "ybreak": (p["PersonID"] in Y_BREAK),
+            "branch": (list(BRANCHES[p["PersonID"]])
+                       if p["PersonID"] in BRANCHES else None),
             "notes": notes_to_plain(p["Notes"]),          # plain text -> search index
             "notes_html": notes_to_html(p["Notes"]),      # organized, linked -> display
             "proof_html": format_source_html(p["ProofRec"]),
@@ -885,6 +911,23 @@ TEMPLATE = r"""<!DOCTYPE html>
     padding:2px 8px;border-radius:20px;margin-left:8px;vertical-align:middle;color:#fff}
   .hap.eden{background:var(--eden)} .hap.manch{background:var(--manch)} .hap.swiss{background:var(--swiss)} .hap.md{background:var(--md)} .hap.r1a{background:var(--r1a)} .hap.yrk{background:var(--yrk)} .hap.cum{background:var(--cum)} .hap.gva{background:var(--gva)} .hap.san{background:var(--san)}
   .famdesc{font-size:12.5px;color:#5a564f;margin-top:5px;max-width:1000px}
+  /* branch band — marks where an American branch begins inside a family whose
+     group header names an origin rather than a settling place (see BRANCHES) */
+  .branchhd{margin:14px 0 6px;padding:5px 0 5px 11px;border-left:3px solid var(--line);max-width:760px}
+  .branchhd .blabel{display:block;font-family:'Cormorant SC',Georgia,serif;font-size:14px;
+    font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--muted)}
+  .branchhd .bnote{display:block;font-family:'EB Garamond',Georgia,serif;font-size:12px;
+    color:#5a564f;margin-top:2px;line-height:1.45}
+  .fam.eden .branchhd{border-left-color:var(--eden-mid)} .fam.eden .blabel{color:var(--eden)}
+  .fam.manch .branchhd{border-left-color:var(--manch-mid)} .fam.manch .blabel{color:var(--manch)}
+  .fam.swiss .branchhd{border-left-color:var(--swiss-mid)} .fam.swiss .blabel{color:var(--swiss)}
+  .fam.md .branchhd{border-left-color:var(--md-mid)} .fam.md .blabel{color:var(--md)}
+  .fam.r1a .branchhd{border-left-color:var(--r1a-mid)} .fam.r1a .blabel{color:var(--r1a)}
+  .fam.yrk .branchhd{border-left-color:var(--yrk-mid)} .fam.yrk .blabel{color:var(--yrk)}
+  .fam.cum .branchhd{border-left-color:var(--cum-mid)} .fam.cum .blabel{color:var(--cum)}
+  .fam.gva .branchhd{border-left-color:var(--gva-mid)} .fam.gva .blabel{color:var(--gva)}
+  .fam.san .branchhd{border-left-color:var(--san-mid)} .fam.san .blabel{color:var(--san)}
+  @media(max-width:700px){ .branchhd{margin:11px 0 5px;padding-left:9px} .branchhd .bnote{font-size:11.5px} }
   .famct{font-size:11.5px;color:var(--muted);margin-top:3px}
   .tree{padding:10px 16px 16px}
   /* family-colored tree structure: connector lines, toggles, and a soft left
@@ -1148,6 +1191,7 @@ function nodeHTML(id,famKey){
   const genchip=g?`<span class="genchip">${g}</span>`:'';
   const meta=metaLine(p);
   let h=`<div class="node${((p.proof||'').toLowerCase()==='disputed'||p.ybreak)?' disputed':''}${p.linkunproven?' linksoft':''}" data-id="${id}" data-fam="${p.fam}" data-gen="${p.gen===null?'':p.gen}" data-direct="${p.direct||''}">`;
+  if(p.branch){ h+=`<div class="branchhd"><span class="blabel">${p.branch[0]}</span><span class="bnote">${p.branch[1]}</span></div>`; }
   h+=`<div class="row">`;
   h+=`<div class="tog${kids.length?'':' leaf'}">${kids.length?'▸':''}</div>`;
   h+=`<div class="${cls}"><div class="top"><span class="name">${esc(p.name)}</span>${genchip}${badges}</div>`;
