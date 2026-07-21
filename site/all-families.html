@@ -131,7 +131,11 @@
   .fam.cum{border-color:var(--cum-mid);border-top-color:var(--cum)}
   .fam.gva{border-color:var(--gva-mid);border-top-color:var(--gva)}
   .fam.san{border-color:var(--san-mid);border-top-color:var(--san)}
-  .famhd{padding:13px 16px 12px;border-bottom:2px solid var(--line)}
+  .famhd{padding:13px 16px 12px;border-bottom:2px solid var(--line);display:flex;gap:9px;align-items:flex-start;cursor:pointer}
+  .famtog{flex:0 0 auto;width:18px;height:18px;margin-top:1px;border:1px solid var(--line);border-radius:5px;background:var(--card);font-size:12px;line-height:16px;text-align:center;color:#6b6459;user-select:none;transition:border-color .12s,color .12s}
+  .famhd:hover .famtog{border-color:#b8912f;color:#8a6a1f}
+  .famhd:focus-visible{outline:2px solid #b8912f;outline-offset:2px}
+  .famhd-body{flex:1 1 auto;min-width:0}
   .fam.eden .famhd{background:linear-gradient(180deg,var(--eden-soft),var(--card));border-bottom-color:var(--eden-mid)}
   .fam.manch .famhd{background:linear-gradient(180deg,var(--manch-soft),var(--card));border-bottom-color:var(--manch-mid)}
   .fam.swiss .famhd{background:linear-gradient(180deg,var(--swiss-soft),var(--card));border-bottom-color:var(--swiss-mid)}
@@ -165,7 +169,8 @@
   .fam.san .branchhd{border-left-color:var(--san-mid)} .fam.san .blabel{color:var(--san)}
   @media(max-width:700px){ .branchhd{margin:11px 0 5px;padding-left:9px} .branchhd .bnote{font-size:11.5px} }
   .famct{font-size:11.5px;color:var(--muted);margin-top:3px}
-  .tree{padding:10px 16px 16px}
+  .tree{padding:10px 16px 16px;display:none}
+  .fam.open>.tree{display:block}
   /* family-colored tree structure: connector lines, toggles, and a soft left
      accent stripe on each person card (inset shadow so it never fights the
      disputed / unproven-link border states) */
@@ -259,6 +264,7 @@
   @media print{
     body{background:#fff;padding:0}.controls{display:none}
     .kids{display:block !important}.tog{display:none}
+    .tree{display:block !important}.famtog{display:none}
     .person{box-shadow:none}.node{break-inside:avoid}
   }
 /*RECORDS-CSS-START*/
@@ -325,7 +331,7 @@
 
 <div class="wrap">
 <h1>The Welty Families &mdash; interactive tree</h1>
-<p class="sub">A cluster of <b>Welty</b> families &mdash; Welty, Weldy, Wälti, Welde &mdash; crossed to America in the eighteenth century and came to rest in the same corner of colonial York County, worshipping side by side though Y&#8209;DNA shows they were never one bloodline. This tree pulls them apart again, each immigrant family on its own branch. Click a &#9656; to expand a person's children; use the search and filters to move among the families and find anyone. Built automatically from the <b>People Roster</b> sheet of the research log. <b>486</b> people tracked so far.</p>
+<p class="sub">A cluster of <b>Welty</b> families &mdash; Welty, Weldy, Wälti, Welde &mdash; crossed to America in the eighteenth century and came to rest in the same corner of colonial York County, worshipping side by side though Y&#8209;DNA shows they were never one bloodline. This tree pulls them apart again, each immigrant family on its own branch. Click a family header to open it, then a &#9656; to expand a person's children; use the search and filters to move among the families and find anyone. Built automatically from the <b>People Roster</b> sheet of the research log. <b>486</b> people tracked so far.</p>
 
 <div class="controls">
   <div class="grp">
@@ -478,8 +484,8 @@ DATA.families.forEach(f=>{
   const div=document.createElement('div');
   div.className='fam '+f.key.toLowerCase(); div.dataset.fam=f.key;
   const ct=(f.roots||[]).length;
-  div.innerHTML=`<div class="famhd"><h2>${f.title}<span class="hap ${f.key.toLowerCase()}">Y-DNA ${f.hap}</span></h2>`+
-                `<div class="famdesc">${f.desc}</div></div>`+
+  div.innerHTML=`<div class="famhd" role="button" tabindex="0" aria-expanded="false"><span class="famtog">▸</span><div class="famhd-body"><h2>${f.title}<span class="hap ${f.key.toLowerCase()}">Y-DNA ${f.hap}</span></h2>`+
+                `<div class="famdesc">${f.desc}</div></div></div>`+
                 `<div class="tree">`+ (f.roots||[]).map(r=>nodeHTML(r,f.key)).join('') +`</div>`;
   chart.appendChild(div);
 });
@@ -491,21 +497,33 @@ gens.forEach(g=>{const o=document.createElement('option');o.value=g;o.textConten
 
 // toggle behaviour
 function setOpen(node,open){ node.classList.toggle('open',open); const t=node.querySelector(':scope>.row>.tog'); if(t&&!t.classList.contains('leaf')) t.textContent=open?'▾':'▸'; }
+// family-level collapse: a whole family folds down to just its name + description
+function setFamOpen(fam,open){ fam.classList.toggle('open',open); const t=fam.querySelector(':scope>.famhd>.famtog'); if(t) t.textContent=open?'▾':'▸'; const hd=fam.querySelector(':scope>.famhd'); if(hd) hd.setAttribute('aria-expanded',open?'true':'false'); }
 document.addEventListener('click',e=>{
   const tog=e.target.closest('.tog'); if(!tog||tog.classList.contains('leaf'))return;
   const node=tog.closest('.node'); setOpen(node,!node.classList.contains('open'));
 });
+// click / keyboard on a family header toggles that whole family open or closed
+document.addEventListener('click',e=>{
+  if(e.target.closest('a'))return;
+  const hd=e.target.closest('.famhd'); if(!hd)return;
+  const fam=hd.closest('.fam'); setFamOpen(fam,!fam.classList.contains('open'));
+});
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Enter'&&e.key!==' ')return;
+  const hd=e.target.closest('.famhd'); if(!hd)return;
+  e.preventDefault(); const fam=hd.closest('.fam'); setFamOpen(fam,!fam.classList.contains('open'));
+});
 function allNodes(){return [...document.querySelectorAll('.node')];}
 function openAll(v){allNodes().forEach(n=>{ if(n.querySelector(':scope>.kids')) setOpen(n,v); });}
-document.getElementById('expandAll').onclick=()=>openAll(true);
-document.getElementById('collapseAll').onclick=()=>openAll(false);
+function openAllFams(v){document.querySelectorAll('.fam').forEach(f=>setFamOpen(f,v));}
+document.getElementById('expandAll').onclick=()=>{openAllFams(true);openAll(true);};
+document.getElementById('collapseAll').onclick=()=>{openAll(false);openAllFams(false);};
 
-// default: open the top two generations of every family (neutral overview)
+// default view: everything collapsed — only each family's name + description show
 function openDefault(){
-  document.querySelectorAll('.fam>.tree>.node').forEach(root=>{
-    setOpen(root,true);
-    root.querySelectorAll(':scope>.kids>.node').forEach(n=>setOpen(n,true));
-  });
+  document.querySelectorAll('.fam').forEach(f=>setFamOpen(f,false));
+  allNodes().forEach(n=>{ if(n.querySelector(':scope>.kids')) setOpen(n,false); });
 }
 openDefault();
 
@@ -557,11 +575,14 @@ function applyFilter(){
     }
     return visible;
   }
+  const active = term||genv;
   DATA.families.forEach(f=>{
     if(!famOn[f.key])return;
-    [...document.querySelectorAll('.fam[data-fam="'+f.key+'"]>.tree>.node')].forEach(visit);
+    const famEl=document.querySelector('.fam[data-fam="'+f.key+'"]');
+    const before=shown;
+    [...famEl.querySelectorAll(':scope>.tree>.node')].forEach(visit);
+    if(active) setFamOpen(famEl, shown>before);
   });
-  const active = term||genv;
   document.getElementById('count').textContent =
     active ? (shown+' shown') : ('486 people · Edenkoben (German) family 370 · York 2 · Cumberland 4 · Greene Co 3 · Maryland 61 · Goochland 11 · Sandusky 11 · Manheim/Ohio 24');
   if(!active) openDefault();
