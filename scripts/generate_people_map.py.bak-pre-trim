@@ -429,8 +429,13 @@ FRAG_STYLE = """<style>
 FRAG_MARKUP = """<div class="pm-wrap">
   <div class="mapbox" style="padding:16px 18px 6px;background:#fbf5e8;">
     <h2 style="margin-top:0;">Everyone we&rsquo;ve placed &mdash; every family</h2>
+    <div class="pm-intro">
+      Every person <b>placed</b> from every family on the <a href="all-families.html">All-Families tree</a> &mdash; the German Edenkoben household (Gen 1&ndash;6, in shades of red, plus its slate Manchester branch) and the seven other Welty&nbsp;/ Weldy&nbsp;/ W&auml;lti families, each in its own colour. Click a place for everyone who lived there; where families share one place their dots sit side by side &mdash; zoom in and they separate. Marker <b>colour</b> = family &middot; badge = proof. The American map opens on the crowded corridor itself &mdash; zoom out to follow each family&rsquo;s spread. <b>If south-central Pennsylvania looks like a pile-up, that is the point</b> &mdash; several unrelated Welty families lived door to door there, and that crowding is why 250 years of family trees are tangled.
+    </div>
+    <div class="pm-stats">__STATS__</div>
     <div class="pm-legend">__LEGEND__</div>
     <div class="pm-legend2">
+      <span>The reds are <b>one</b> German family (its slate Manchester branch carries an I1 Y-line); every other colour is a separate family &mdash; six proven so by Y-DNA; the Cumberland Twp line is separated by the paper record (no tester yet).</span>
       <span>Proof: <span class="pm-badge pm-proven">proven</span> <span class="pm-badge pm-documented">documented</span> <span class="pm-badge pm-index">index</span> <span class="pm-badge pm-hypo">hypothesis</span> <span class="pm-badge pm-lore">family lore</span></span>
       <span>&mdash; larger circle = more people at that place</span>
     </div>
