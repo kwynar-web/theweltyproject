@@ -661,13 +661,15 @@ def main():
     german = total - counts.get('Swiss', 0) - counts.get('Md', 0) - counts.get('R1a', 0) - counts.get('Yrk', 0) - counts.get('Cum', 0) - counts.get('Gva', 0) - counts.get('San', 0)
     render(OUT_ALL, payload_all,
            h1="The Welty Families &mdash; interactive tree",
-           sub=("Every documented Welty, in one place: the <b>Edenkoben</b> German family &mdash; "
-                "the Wäldi household of the Palatinate, including the branch whose I1 Y-line marks a "
-                "paternity break inside the family (shown under Georg Wolfgang) &mdash; and the "
-                "genuinely separate <b>Swiss Emmental</b> family, and the separate Roman-Catholic "
-                "<b>Maryland</b> family of Taneytown / Emmitsburg (the real-world seed of the "
-                "“Gettysburg brother” lore). Click a &#9656; to expand a person's "
-                "children; use the search and filters to find anyone. Built automatically from the "
+           sub=("Eight <b>Welty</b> families &mdash; Welty, Weldy, Wälti, Welde &mdash; settled the same "
+                "corner of colonial York County, worshipping side by side though Y&#8209;DNA shows they "
+                "were never one bloodline. Here they are pulled apart again, each on its own branch: the "
+                "<b>Edenkoben</b> German family (the Wäldi household of the Palatinate, including the "
+                "branch whose I1 Y&#8209;line marks a paternity break, shown under Georg Wolfgang), the "
+                "genuinely separate <b>Swiss Emmental</b> family, and the Roman&#8209;Catholic "
+                "<b>Maryland</b> family of Taneytown / Emmitsburg (the real&#8209;world seed of the "
+                "“Gettysburg brother” lore). Click a &#9656; to expand a person's children; use the "
+                "search and filters to find anyone. Built automatically from the "
                 f"<b>People Roster</b> sheet of the research log. <b>{total}</b> people tracked so far."),
            fam_controls=fam_controls,
            count_label=(f"{total} people · Edenkoben (German) family {german} · "
