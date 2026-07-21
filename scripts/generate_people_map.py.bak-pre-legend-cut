@@ -428,6 +428,12 @@ FRAG_STYLE = """<style>
 
 FRAG_MARKUP = """<div class="pm-wrap">
   <div class="mapbox" style="padding:16px 18px 6px;background:#fbf5e8;">
+    <h2 style="margin-top:0;">Everyone we&rsquo;ve placed &mdash; every family</h2>
+    <div class="pm-legend">__LEGEND__</div>
+    <div class="pm-legend2">
+      <span>Proof: <span class="pm-badge pm-proven">proven</span> <span class="pm-badge pm-documented">documented</span> <span class="pm-badge pm-index">index</span> <span class="pm-badge pm-hypo">hypothesis</span> <span class="pm-badge pm-lore">family lore</span></span>
+      <span>&mdash; larger circle = more people at that place</span>
+    </div>
     <p class="hint" style="margin-left:2px;">Europe &mdash; the Palatinate (Edenkoben), Baden (Eppingen) and the Bernese valleys (Emmental, Simmental, Saanen). Names marked &ldquo;emigrated&rdquo; sailed and reappear on the American map:</p>
     <div id="pmMapDe" class="pm-lmap de"></div>
     <p class="hint" style="margin:8px 0 0 2px;">America &mdash; opening on the York County pile-up itself; zoom out to follow each family&rsquo;s spread. Faint lines trace the migrations:</p>
