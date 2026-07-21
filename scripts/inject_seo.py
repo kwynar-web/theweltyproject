@@ -146,7 +146,7 @@ PAGES = {
         nav="index",
         path="/",
         ogtitle="The Welty Project — A Living Genealogy Journal",
-        desc="Eight unrelated Welty / Weldy / Wälti / Welde families crossed to America in "
+        desc="A cluster of unrelated Welty / Weldy / Wälti / Welde families crossed to America in "
              "the eighteenth century and settled the same corridor of south-central "
              "Pennsylvania. This is an openly-sourced genealogy of all of them, built from "
              "primary records and Y-DNA.",
