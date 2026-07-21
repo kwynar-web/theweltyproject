@@ -649,7 +649,12 @@ def main():
         "people": {p["PersonID"]: person_dict(p, p["children"]) for p in people},
     }
     fam_controls = (
-        '<div class="grp">'
+        '<div class="grp famdd">'
+        '<button type="button" id="famBtn" class="btn fambtn" aria-haspopup="true" aria-expanded="false">'
+        'Families<span class="fcount"></span> <span class="caret">&#9662;</span></button>'
+        '<div class="fampanel" id="famPanel" hidden>'
+        '<div class="famacts"><button type="button" class="btn mini" id="famAll">All</button>'
+        '<button type="button" class="btn mini" id="famNone">None</button></div>'
         '<label class="chk eden"><input type="checkbox" data-fam="Eden" checked> York</label>'
         '<label class="chk yrk"><input type="checkbox" data-fam="Yrk" checked> Conewago</label>'
         '<label class="chk cum"><input type="checkbox" data-fam="Cum" checked> Cumberland</label>'
@@ -658,23 +663,23 @@ def main():
         '<label class="chk gva"><input type="checkbox" data-fam="Gva" checked> Goochland</label>'
         '<label class="chk san"><input type="checkbox" data-fam="San" checked> Sandusky</label>'
         '<label class="chk swiss"><input type="checkbox" data-fam="Swiss" checked> Manheim/Ohio</label>'
+        '</div>'
         '</div>')
     german = total - counts.get('Swiss', 0) - counts.get('Md', 0) - counts.get('R1a', 0) - counts.get('Yrk', 0) - counts.get('Cum', 0) - counts.get('Gva', 0) - counts.get('San', 0)
+    count_label = (f"{total} people · Edenkoben (German) family {german} · "
+                   f"York {counts.get('Yrk',0)} · Cumberland {counts.get('Cum',0)} · "
+                   f"Greene Co {counts.get('R1a',0)} · "
+                   f"Maryland {counts.get('Md',0)} · Goochland {counts.get('Gva',0)} · "
+                   f"Sandusky {counts.get('San',0)} · Manheim/Ohio {counts.get('Swiss',0)}")
     render(OUT_ALL, payload_all,
            h1="The Welty Families &mdash; interactive tree",
            sub=("A cluster of <b>Welty</b> families &mdash; Welty, Weldy, Wälti, Welde &mdash; crossed to "
                 "America in the eighteenth century and came to rest in the same corner of colonial York "
                 "County, worshipping side by side though Y&#8209;DNA shows they were never one bloodline. "
-                "This tree pulls them apart again, each immigrant family on its own branch. Click a family "
-                "header to open it, then a &#9656; to expand a person's children; use the search and filters to move among the families and "
-                "find anyone. Built automatically from the "
-                f"<b>People Roster</b> sheet of the research log. <b>{total}</b> people tracked so far."),
+                "This tree pulls them apart again, each immigrant family on its own branch."
+                f'<span class="herocount">{count_label}</span>'),
            fam_controls=fam_controls,
-           count_label=(f"{total} people · Edenkoben (German) family {german} · "
-                        f"York {counts.get('Yrk',0)} · Cumberland {counts.get('Cum',0)} · "
-                        f"Greene Co {counts.get('R1a',0)} · "
-                        f"Maryland {counts.get('Md',0)} · Goochland {counts.get('Gva',0)} · "
-                        f"Sandusky {counts.get('San',0)} · Manheim/Ohio {counts.get('Swiss',0)}"))
+           count_label=count_label)
     print(f"wrote {OUT_ALL}  ({total} people: Edenkoben {german}, Manheim/Ohio {counts.get('Swiss',0)}, Maryland {counts.get('Md',0)}, Greene Co {counts.get('R1a',0)}, York-George {counts.get('Yrk',0)}, Cumberland {counts.get('Cum',0)}, Goochland {counts.get('Gva',0)}, Saanen {counts.get('San',0)})")
 
     # ---------- 1b) GERMAN-LINES graphical chart — RETIRED 1 Jul 2026 (Kwyn prefers the
@@ -859,6 +864,19 @@ TEMPLATE = r"""<!DOCTYPE html>
   .btn:hover{background:#efe8db}
   .btn.on{background:#4a4238;color:#fff;border-color:#4a4238}
   .count{font-size:12.5px;color:var(--muted)}
+  /* family dropdown — a compact, space-saving stand-in for the old row of chips */
+  .famdd{position:relative}
+  .fambtn{display:inline-flex;align-items:center;gap:3px}
+  .fambtn .caret{font-size:11px}
+  .fampanel{position:absolute;top:calc(100% + 6px);left:0;z-index:40;background:var(--card);
+    border:1px solid var(--line);border-radius:10px;padding:10px;
+    box-shadow:0 6px 22px rgba(90,70,30,.18);display:flex;flex-direction:column;gap:6px;min-width:184px}
+  .fampanel[hidden]{display:none}
+  .fampanel .chk{width:100%}
+  .famacts{display:flex;gap:6px;margin-bottom:2px}
+  .btn.mini{font-size:11px;padding:3px 10px}
+  /* the per-family tally now rides as the last line of the hero */
+  .herocount{display:block;margin-top:8px;font-size:13px;color:var(--muted)}
 
   .legend{background:var(--card);border:1px solid var(--line);border-radius:10px;
     padding:9px 14px;margin:8px 0 18px;font-size:12.5px;display:flex;flex-wrap:wrap;gap:6px 15px;align-items:center}
@@ -1074,10 +1092,10 @@ TEMPLATE = r"""<!DOCTYPE html>
   <div class="grp">
     <input id="q" class="search" type="search" placeholder="Search name, place, spouse, notes…" autocomplete="off">
   </div>
-  __FAMCONTROLS__
   <div class="grp">
     <select id="gen" class="gen"><option value="">All generations</option></select>
   </div>
+  __FAMCONTROLS__
   <div class="grp">
     <button id="expandAll" class="btn">Expand all</button>
     <button id="collapseAll" class="btn">Collapse all</button>
@@ -1238,6 +1256,26 @@ openDefault();
 const q=document.getElementById('q');
 const famChecks=[...document.querySelectorAll('.chk input')];
 famChecks.forEach(c=>c.addEventListener('change',applyFilter));
+
+// family dropdown: open/close, outside-click dismiss, All/None, live count
+(function(){
+  const btn=document.getElementById('famBtn'), panel=document.getElementById('famPanel');
+  if(!btn||!panel) return;
+  const fcount=btn.querySelector('.fcount');
+  function updCount(){ const on=famChecks.filter(c=>c.checked).length;
+    fcount.textContent = on===famChecks.length ? '' : (' '+on+'/'+famChecks.length); }
+  function setOpenDD(open){ if(open){panel.removeAttribute('hidden');btn.setAttribute('aria-expanded','true');}
+    else {panel.setAttribute('hidden','');btn.setAttribute('aria-expanded','false');} }
+  btn.addEventListener('click',e=>{ e.stopPropagation(); setOpenDD(panel.hasAttribute('hidden')); });
+  panel.addEventListener('click',e=>e.stopPropagation());
+  document.addEventListener('click',()=>setOpenDD(false));
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') setOpenDD(false); });
+  const all=document.getElementById('famAll'), none=document.getElementById('famNone');
+  if(all) all.addEventListener('click',()=>{ famChecks.forEach(c=>c.checked=true); updCount(); applyFilter(); });
+  if(none) none.addEventListener('click',()=>{ famChecks.forEach(c=>c.checked=false); updCount(); applyFilter(); });
+  famChecks.forEach(c=>c.addEventListener('change',updCount));
+  updCount();
+})();
 genSel.addEventListener('change',applyFilter);
 q.addEventListener('input',applyFilter);
 
@@ -1291,7 +1329,7 @@ function applyFilter(){
     if(active) setFamOpen(famEl, shown>before);
   });
   document.getElementById('count').textContent =
-    active ? (shown+' shown') : ('__COUNTLABEL__');
+    active ? (shown+' shown') : ('');
   if(!active) openDefault();
 }
 applyFilter();
