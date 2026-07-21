@@ -60,7 +60,7 @@ pmap  = read(os.path.join(ROOT, "scripts", "generate_people_map.py"))
 tline = read(os.path.join(SITE, "timeline.html"))
 tree_html = read(os.path.join(SITE, "all-families.html"))
 
-tree_colors = dict(re.findall(r"--(eden|manch|swiss|md|r1a|yrk|cum|gva|san):\s*(#[0-9a-fA-F]{6})", tree_html))
+tree_colors = dict(re.findall(r"--(eden|manch|swiss|md|r1a|yrk|cum|gva|san|dov):\s*(#[0-9a-fA-F]{6})", tree_html))
 fams_block = pmap[pmap.index("FAMS = {"):pmap.index("FAM_OF_ROSTER")]
 map_colors = dict(re.findall(r'"(\w+)":\s*\("[^"]*",\s*"(#[0-9a-fA-F]{6})"\)', fams_block))
 chip_colors = dict(re.findall(r"\.chip\.c-(\w+)\s*\{\s*background:\s*(#[0-9a-fA-F]{6})", tline))
@@ -69,6 +69,7 @@ card_colors = dict(re.findall(r"\.card\.b-(\w+)\s*\{\s*border-left:\s*5px solid\
 PAIRS = {  # tree var -> people-map/chip key
     "eden": "pj", "manch": "manch", "swiss": "swiss", "md": "md",
     "r1a": "r1a", "yrk": "yrk", "cum": "cum", "gva": "gva", "san": "san",
+    "dov": "dov",
 }
 for tvar, key in PAIRS.items():
     tc = tree_colors.get(tvar)
