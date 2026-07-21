@@ -33,7 +33,7 @@ they never disagree:
 3. `site/timeline.html` → the hand-written `.chip.c-*` / `.card.b-*` rules
 
 Current palette: Eden `#b71c1c` (trunk `#8c1d1d`, John Jacob `#e0705a`) · Manchester
-`#3a4a5e` · Swiss `#5e3a5e` · Maryland `#2f6f4f` · R1a `#9a6a15` · Conewago `#0f6b6b` ·
+`#3a4a5e` · Manheim/Ohio (code `swiss`) `#5e3a5e` · Maryland `#2f6f4f` · R1a `#9a6a15` · Conewago `#0f6b6b` ·
 **Cumberland `#4a3a8c`** · Goochland `#a34a2a` · Saanen `#2a4d7a`.
 
 ## When a family group is added to the tree (this is what broke on 17 Jul)

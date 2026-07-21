@@ -47,27 +47,28 @@ FAMILIES = [
     ("Cum", "Cumberland Twp, PA · John Welty", "untested",
      "The Revolutionary-militia patriot <b>John Welty</b> (b. 21 Apr 1760 – d. 30 Dec 1837, <b>DAR Patriot A122777</b>; York Co militia 1780–81) — the “farm near Dover” John of the old lineage applications. He sat on the same 198-acre Cumberland Twp farm for his whole documented life: the 1798 U.S. Direct Tax shows him there (log dwelling, with Henry Weaver on the adjacent line of all three lists), and the census finds him on the same land every decade to 1830 — the township passed from York to the new Adams County (Gettysburg) in 1800. He married <b>Catherine Weaver</b> (1776–1833) in 1789; documented sons are <b>Henry</b> (b.1805, × Eva Wert), <b>Jacob</b> (× Sophia Walter) and <b>Solomon</b> (b.1815), whose Gettysburg home became the storied “Solomon Welty House” of Cemetery Hill. His own parentage is a brick wall: a 1908 application's claimed parents are a disproven graft, and its “born in Switzerland” is a claim, not a record. No Y-DNA sample exists for the line — shown separately from every other York-country Welty family, because the records show him to be none of them.", False),
     ("R1a", "Greene County, TN · John Welty", "R1a",  # already conformant
-     "A separate, unrelated York patriline — Y-DNA <b>R1a (R-M198)</b>, which cannot share a paternal ancestor with the R1b Edenkoben line, the Manchester I1 branch, or the Swiss I2b Wälti. Its progenitor, <b>John (Nicolaus) Welty Sr.</b> (b.~1744 in the Palatinate), was a German-born Continental Army soldier — German Regiment, enlisted at Baltimore in 1778 (<b>DAR Patriot A203144</b>, pension S39882). In 1783 he married Margaret Ilgenfritz, a Dover girl and thus one of the Edenkoben family's own neighbours, at First Trinity Reformed in York — the same register and decade as the Edenkoben Michael — then followed the Great Wagon Road to Shenandoah Co, Virginia and on to Greene Co, Tennessee. His son George (b.1797 VA) and grandson Peter Hughes Welty (b.1827 TN) carry the line down to a living FTDNA tester (kit #43635). He stands here as the clearest case of the wider truth: the colonial York Weltys were <i>several</i> unrelated families who lived door to door, worshipped together, and assumed a shared bloodline the DNA does not confirm.", False),
+     "A separate, unrelated York patriline — Y-DNA <b>R1a (R-M198)</b>, which cannot share a paternal ancestor with the R1b Edenkoben line, the Manchester I1 branch, or the I2b Emmental Wälti. Its progenitor, <b>John (Nicolaus) Welty Sr.</b> (b.~1744 in the Palatinate), was a German-born Continental Army soldier — German Regiment, enlisted at Baltimore in 1778 (<b>DAR Patriot A203144</b>, pension S39882). In 1783 he married Margaret Ilgenfritz, a Dover girl and thus one of the Edenkoben family's own neighbours, at First Trinity Reformed in York — the same register and decade as the Edenkoben Michael — then followed the Great Wagon Road to Shenandoah Co, Virginia and on to Greene Co, Tennessee. His son George (b.1797 VA) and grandson Peter Hughes Welty (b.1827 TN) carry the line down to a living FTDNA tester (kit #43635). He stands here as the clearest case of the wider truth: the colonial York Weltys were <i>several</i> unrelated families who lived door to door, worshipped together, and assumed a shared bloodline the DNA does not confirm.", False),
     ("Md", "Taneytown, MD · John Welty", "untested",
      "A genuinely separate, Roman-Catholic Welty family from Eppingen in Baden (Kraichgau) — <b>not</b> the Edenkoben line. The immigrant John Welty (b.1722) crossed on the ship <i>Neptune</i> in 1751, lived in York Co PA, then settled the Piney Creek / Taneytown district of Maryland and died near Emmitsburg at 94. Because Emmitsburg sits ~10 miles south of Gettysburg, this well-documented clan is the best real-world seed of the family lore's “Gettysburg / Maryland brother.” No Y-DNA sample exists for the line.", False),
     ("Gva", "Goochland County, VA · George Weldy", "R1b (R-DF49)",
      "A Virginia Weldy line — Y-DNA <b>R1b (R-DF49)</b> — of 18th-century Goochland County, sharing no ancestor with the Palatinate Edenkoben or any other Welty line in a genealogical timeframe. Its documented anchor is <b>George Weldy</b> (b.~1752, d.1821 Goochland), a Revolutionary War soldier of the Virginia line (pension S39883) whose 1821 will survives. Two FTDNA participants — kits <b>SMGF#1</b> and <b>#367336</b> — both trace on paper to George through two of his sons, Henry (b.1790) and William (b.1791), yet their Y-DNA diverges by a genetic distance of about 8 at 25 markers — far more than true brothers' paternal lines could. A <b>non-paternity event</b> therefore sits in one of the two branches: at most one is George Weldy's biological male line. Shown as one documented Goochland family with that discrepancy flagged, not silently merged.", False),
     ("San", "Upper Sandusky, OH · Wälti", "G2a3b",
-     "A wholly separate Wälti clan — Y-DNA <b>haplogroup G (G2a3b)</b> — with <b>no</b> kinship to the R1b Edenkoben or Goochland lines, the I1 Manchester branch, or the I2b Swiss-Emmental Wälti; haplogroup G split from all of them in deep prehistory, an independent adoption of the Wälti surname. Traced by FTDNA kit <b>#161609</b> (Big Y) up an unbroken Simmental parish pedigree to <b>Anthoni Wälti</b> (christened 1568, Lenk im Simmental, Bern). The American immigrant is <b>Johann Gottlieb Wälti</b> (b.1861 Saanen), who settled at Upper Sandusky, Wyandot Co, Ohio. The deep Swiss rungs are graded as compiled parish lore; Gottlieb's American children await a census pass.", False),
-    # Swiss Emmental kept last: the Wälti who never emigrated — the most clearly
-    # distinct from the German Edenkoben Weltys, so it anchors the bottom of the tree.
-    ("Swiss", "Emmental, Switzerland · Wälti", "I2b",
-     "The Swiss Emmental line — the Rüderswil / Emmental Wälti of the “Welty Family Chronicle” (Bacon 2002); source of the “Weltys are Swiss” story. Unlike every other family here, this one's documented trunk sits in Europe across four generations, with <b>three separate emigrations</b> hanging off it a century apart — so it is anchored on its Bernese origin rather than on any one American settling place. The American branches are marked in place below.", False),
+     "A wholly separate Wälti clan — Y-DNA <b>haplogroup G (G2a3b)</b> — with <b>no</b> kinship to the R1b Edenkoben or Goochland lines, the I1 Manchester branch, or the I2b Emmental Wälti; haplogroup G split from all of them in deep prehistory, an independent adoption of the Wälti surname. Traced by FTDNA kit <b>#161609</b> (Big Y) up an unbroken Simmental parish pedigree to <b>Anthoni Wälti</b> (christened 1568, Lenk im Simmental, Bern). The American immigrant is <b>Johann Gottlieb Wälti</b> (b.1861 Saanen), who settled at Upper Sandusky, Wyandot Co, Ohio. The deep Swiss rungs are graded as compiled parish lore; Gottlieb's American children await a census pass.", False),
+    # The Manheim/Ohio Welty family kept last: an American Welty line of Emmental-Swiss
+    # origin (I2b), the most clearly distinct from the German Edenkoben Weltys, so it anchors
+    # the bottom of the tree. Renamed from "Swiss Emmental Wälti" per Kwyn, 21 Jul 2026.
+    ("Swiss", "Manheim PA · Fairfield/Putnam OH · Welty", "I2b",
+     "The American Welty family of Manheim Township and the Ohio country — three immigrant lines that put down roots at <b>Manheim Twp, York Co PA</b> (Peter, 1727), across <b>Fairfield &amp; Hocking Co, OH</b> (the offshoot that runs down to the novelist <b>Eudora Welty</b>), and in <b>Putnam Co, OH</b> (a separate 1846 arrival). All three trace back to the Emmental Wälti of Rüderswil — the Welty Family Chronicle (Bacon 2002) and the old &ldquo;Weltys are Swiss&rdquo; story — and carry the <b>I2b</b> Y-line, but they belong here as the American Weltys they became, anchored on where they settled rather than on the Bernese trunk they left. Each branch is marked in place below.", False),
 ]
 
 # ============================ BRANCH SUB-HEADERS ============================
 # Some families do not reduce to a single settling place. The Emmental Wälti in
-# particular is a Swiss trunk with three independent American entry points — a
-# 1727 emigration to Manheim Twp, its Ohio offshoot carrying the line down to
-# Eudora Welty, and a wholly separate 1846 emigration out of Lauperswil that
-# never touched Pennsylvania. Naming the group for any one of them would be a
-# claim the records don't support, so instead each branch gets a labelled band
-# at the rung where it actually begins.
+# particular has three independent American entry points — a 1727 emigration to
+# Manheim Twp, its Ohio offshoot carrying the line down to Eudora Welty, and a
+# wholly separate 1846 emigration out of Lauperswil to Putnam Co OH. The group is
+# named for those three American settling places (Manheim / Fairfield / Putnam OH,
+# per Kwyn 21 Jul 2026), its Emmental origin kept as ancestry; each branch still
+# gets a labelled band at the rung where it actually begins.
 #
 # PersonID -> (label, note). The band renders immediately above that person's
 # card, inside their node (so it hides/filters with them).
@@ -313,7 +314,7 @@ def _n_strip_internal(s):
     s = str(s)
     s = re.sub(r'\(\s*Family\s*[AB]\s+head\s*\)', '', s, flags=re.I)   # "(Family B head)"
     s = re.sub(r'\bFamily\s*B\b', 'the Manchester branch', s)
-    s = re.sub(r'\bFamily\s*A\b', 'the Swiss line', s)
+    s = re.sub(r'\bFamily\s*A\b', 'the Manheim/Ohio line', s)
     s = re.sub(r'\bFamily\s*C\b', '', s)
     s = re.sub(r'[,;]?\s*\(?\s*(?:see|cf\.?|per|retired dup|dup|under|vs\.?)\s+' + _N_NODE + r'\)?', '', s, flags=re.I)
     s = re.sub(r'\(\s*' + _N_NODE + r'\s*\)', '', s)
@@ -659,7 +660,7 @@ def main():
         '<label class="chk md"><input type="checkbox" data-fam="Md" checked> Maryland</label>'
         '<label class="chk gva"><input type="checkbox" data-fam="Gva" checked> Goochland</label>'
         '<label class="chk san"><input type="checkbox" data-fam="San" checked> Sandusky</label>'
-        '<label class="chk swiss"><input type="checkbox" data-fam="Swiss" checked> Swiss</label>'
+        '<label class="chk swiss"><input type="checkbox" data-fam="Swiss" checked> Manheim/Ohio</label>'
         '</div>')
     german = total - counts.get('Swiss', 0) - counts.get('Md', 0) - counts.get('R1a', 0) - counts.get('Yrk', 0) - counts.get('Cum', 0) - counts.get('Gva', 0) - counts.get('San', 0) - counts.get('Dov', 0)
     render(OUT_ALL, payload_all,
@@ -669,7 +670,7 @@ def main():
                 "were never one bloodline. Here they are pulled apart again, each on its own branch: the "
                 "<b>Edenkoben</b> German family (the Wäldi household of the Palatinate, including the "
                 "branch whose I1 Y&#8209;line marks a paternity break, shown under Georg Wolfgang), the "
-                "genuinely separate <b>Swiss Emmental</b> family, and the Roman&#8209;Catholic "
+                "American <b>Manheim / Ohio</b> Welty family (Emmental&#8209;Swiss by origin), and the Roman&#8209;Catholic "
                 "<b>Maryland</b> family of Taneytown / Emmitsburg (the real&#8209;world seed of the "
                 "“Gettysburg brother” lore). Click a &#9656; to expand a person's children; use the "
                 "search and filters to find anyone. Built automatically from the "
@@ -679,8 +680,8 @@ def main():
                         f"York {counts.get('Yrk',0)} · Dover {counts.get('Dov',0)} · Cumberland {counts.get('Cum',0)} · "
                         f"Greene Co {counts.get('R1a',0)} · "
                         f"Maryland {counts.get('Md',0)} · Goochland {counts.get('Gva',0)} · "
-                        f"Sandusky {counts.get('San',0)} · Swiss {counts.get('Swiss',0)}"))
-    print(f"wrote {OUT_ALL}  ({total} people: Edenkoben {german}, Dover {counts.get('Dov',0)}, Swiss {counts.get('Swiss',0)}, Maryland {counts.get('Md',0)}, Greene Co {counts.get('R1a',0)}, York-George {counts.get('Yrk',0)}, Cumberland {counts.get('Cum',0)}, Goochland {counts.get('Gva',0)}, Saanen {counts.get('San',0)})")
+                        f"Sandusky {counts.get('San',0)} · Manheim/Ohio {counts.get('Swiss',0)}"))
+    print(f"wrote {OUT_ALL}  ({total} people: Edenkoben {german}, Dover {counts.get('Dov',0)}, Manheim/Ohio {counts.get('Swiss',0)}, Maryland {counts.get('Md',0)}, Greene Co {counts.get('R1a',0)}, York-George {counts.get('Yrk',0)}, Cumberland {counts.get('Cum',0)}, Goochland {counts.get('Gva',0)}, Saanen {counts.get('San',0)})")
 
     # ---------- 1b) GERMAN-LINES graphical chart — RETIRED 1 Jul 2026 (Kwyn prefers the
     # By-Generation grid). render_graph()/GRAPH_TEMPLATE kept below but no longer called.
@@ -1140,7 +1141,7 @@ function proofTag(pr){
   const t=m[(pr||'').toLowerCase()]; return t?`<span class="tag ${t[0]}">${t[1]}</span>`:'';
 }
 function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
-function genLabel(g,fam){ if(g===null||g===undefined||g==='') return ''; if(g<1) return fam==='Swiss'?'Swiss origin':'Ancestor'; return 'Gen '+g; }
+function genLabel(g,fam){ if(g===null||g===undefined||g==='') return ''; if(g<1) return fam==='Swiss'?'Emmental origin':'Ancestor'; return 'Gen '+g; }
 
 function metaLine(p){
   const bits=[];
@@ -1237,7 +1238,7 @@ DATA.families.forEach(f=>{
 // generation dropdown options
 const gens=[...new Set(Object.values(P).map(p=>p.gen).filter(g=>g!==null))].sort((a,b)=>a-b);
 const genSel=document.getElementById('gen');
-gens.forEach(g=>{const o=document.createElement('option');o.value=g;o.textContent=(g<1?('Swiss origin ('+g+')'):('Generation '+g));genSel.appendChild(o);});
+gens.forEach(g=>{const o=document.createElement('option');o.value=g;o.textContent=(g<1?('Emmental origin ('+g+')'):('Generation '+g));genSel.appendChild(o);});
 
 // toggle behaviour
 function setOpen(node,open){ node.classList.toggle('open',open); const t=node.querySelector(':scope>.row>.tog'); if(t&&!t.classList.contains('leaf')) t.textContent=open?'▾':'▸'; }
@@ -1590,7 +1591,7 @@ GEN_DE_TEMPLATE = r"""<!DOCTYPE html>
 <p class="sub">One large German family, two Y-lines, side by side and aligned by generation &mdash;
 the <b style="color:var(--eden)">Edenkoben R1b spine</b> and the <b style="color:var(--manch)">Manchester branch (I1)</b>,
 whose Y-line marks a paternity break inside the family at/above Georg Wolfgang (bapt. ~1716 in the same household), not a separate clan.
-The genuinely unrelated Swiss family is excluded. Read <b>down</b> a column to follow one line; read <b>across</b> to compare generations.
+The genuinely unrelated Manheim/Ohio Welty family (Emmental-Swiss origin) is excluded. Read <b>down</b> a column to follow one line; read <b>across</b> to compare generations.
 Every card carries the <b>official record</b> that proves the person and <b>where that record lives</b>.
 <b>__TOTAL__</b> people &mdash; Edenkoben __CEDEN__ · Manchester branch __CMANCH__.</p>
 

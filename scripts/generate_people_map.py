@@ -4,7 +4,7 @@
 Reads the People Roster (chart source) sheet of the master log and plots EVERY
 family group from the All-Families tree — the German Edenkoben household (its
 trunk / Philip Jacob / John Jacob branches plus the I1 Manchester branch) and
-the six genetically separate Welty/Weldy/Wälti families (Swiss Emmental,
+the six genetically separate Welty/Weldy/Wälti families (Manheim/Ohio,
 Maryland-Taneytown, R1a Greene Co TN, Conewago R-L151, Goochland VA, and
 Saanen→Upper Sandusky). Colours match the All-Families tree page; the
 Edenkoben branches render as shades of the tree's red.
@@ -64,7 +64,7 @@ FAMS = {
     "pj":    ("Edenkoben &middot; Philip Jacob line", "#b71c1c"),
     "jj":    ("Edenkoben &middot; John Jacob &rarr; Weltytown", "#e0705a"),
     "manch": ("Manchester branch (I1)", "#3a4a5e"),
-    "swiss": ("Swiss Emmental W&auml;lti (I2b)", "#5e3a5e"),
+    "swiss": ("Manheim/Ohio Welty (I2b, Emmental origin)", "#5e3a5e"),
     "md":    ("Taneytown, MD (Baden, Catholic)", "#2f6f4f"),
     "r1a":   ("Greene Co TN &middot; John Welty (R1a)", "#9a6a15"),
     "yrk":   ("Conewago &middot; George Welty (R-L151)", "#0f6b6b"),
@@ -540,7 +540,7 @@ FRAG_SCRIPT = """<script>
     /* Goochland Weldy: Goochland → the deep south */
     route(mu,[[37.684,-77.885],[33.0,-83.5],[31.402,-88.072]],COL.gva,'2 8',1.8);
     route(mu,[[37.684,-77.885],[31.172,-89.010]],COL.gva,'2 8',1.8);
-    /* Swiss Emmental: 1727 landing → Manheim Twp → the spreads */
+    /* Manheim/Ohio Welty (Emmental origin): 1727 landing → Manheim Twp → the spreads */
     route(mu,[[39.953,-75.165],[39.762,-76.884]],COL.swiss,null,2.6);
     route(mu,[[39.762,-76.884],[35.683,-80.474]],COL.swiss,'2 8',1.8);
     route(mu,[[39.762,-76.884],[40.52,-81.474]],COL.swiss,'2 8',1.8);
@@ -554,7 +554,7 @@ FRAG_SCRIPT = """<script>
 
 STAT_LABELS = [
     ("trunk","Eden trunk"),("pj","Philip Jacob"),("jj","John Jacob"),
-    ("manch","Manchester"),("swiss","Swiss Emmental"),("md","Maryland"),
+    ("manch","Manchester"),("swiss","Manheim/Ohio"),("md","Maryland"),
     ("r1a","R1a York&rarr;TN"),("yrk","Conewago R-L151"),("cum","Cumberland Twp"),("gva","Goochland"),
     ("san","Saanen&rarr;Sandusky"),
 ]
