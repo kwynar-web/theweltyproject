@@ -1085,36 +1085,6 @@ TEMPLATE = r"""<!DOCTYPE html>
   <span id="count" class="count"></span>
 </div>
 
-<div class="legend">
-  <span style="font-weight:600">Key:</span>
-  <span><span class="tag t-proven">Proven</span> primary records</span>
-  <span><span class="tag t-documented">Documented</span></span>
-  <span><span class="tag t-hypo">Hypothesized</span> unproven rung</span>
-  <span><span class="tag t-lore">Lore</span></span>
-  <span><span class="tag t-living">Living</span></span>
-  <span><span class="tag t-dna">DNA</span> Y-line tester</span>
-  <span><span class="tag t-disputed">Break: 1716 or 1750 ⁉</span> paper names the father; Y-DNA says the line breaks at this rung or the next</span>
-  <span><span class="tag t-linksoft">Father link unproven ⁉</span> the person is proven; their descent from the parent above is not</span>
-</div>
-
-<details class="sourcekey">
-  <summary>How to read the sources &amp; citations</summary>
-  <div class="skbody">
-    <p>Every documented person carries two lines: <b>Proof</b> &mdash; the specific record that
-    establishes them (a baptism, will, tax entry, census, gravestone) &mdash; and <b>Source</b> &mdash;
-    exactly where that record can be found. Blue links open the record or repository in a new tab.
-    Where no primary record has been located yet, the person is tagged <span class="tag t-hypo">Hypothesized</span>
-    or <span class="tag t-lore">Lore</span> and the proof line is left open.</p>
-    <p class="repos"><b>Repositories used:</b>
-    <a href="https://www.archion.de" target="_blank" rel="noopener">Archion</a> (German Protestant church registers &mdash; the Edenkoben Reformed books; <i>subscription</i>) ·
-    <a href="https://www.familysearch.org" target="_blank" rel="noopener">FamilySearch</a> (church &amp; court records, Full-Text Search, Digital Library; <i>free account</i>) ·
-    <a href="https://www.ancestry.com" target="_blank" rel="noopener">Ancestry</a> (PA tax, exoneration &amp; church collections; <i>subscription</i>) ·
-    <a href="https://www.findagrave.com" target="_blank" rel="noopener">FindAGrave</a> (memorials &amp; cemeteries) ·
-    <a href="https://www.familytreedna.com/groups/welty" target="_blank" rel="noopener">Welty Y-DNA project</a> (FTDNA; patrilineage evidence) ·
-    plus published works (Strassburger &amp; Hinke <i>Pennsylvania German Pioneers</i>; Bowen; Beers), <a href="https://archive.org" target="_blank" rel="noopener">archive.org</a> book scans, <a href="https://gameo.org" target="_blank" rel="noopener">GAMEO</a>, <a href="https://www.wikitree.com" target="_blank" rel="noopener">WikiTree</a>, and the compiler's family papers.</p>
-  </div>
-</details>
-
 <div id="chart"></div>
 
 <div class="foot">
