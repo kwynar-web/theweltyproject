@@ -40,8 +40,6 @@ FAMILIES = [
      "One German family: the Wäldi/Welty household of Edenkoben (Palatinate). Immigrant brothers Philip Jacob (1750, the R1b spine), John Jacob (Weltytown line) and Georg Wolfgang — whose Manchester branch carries an I1 Y-line. That break sits inside the family rather than marking a separate clan, but which rung it sits on — Georg Wolfgang&rsquo;s 1716 baptism or his son Johan Jacob&rsquo;s in 1750 — is undetermined; he appears under his node below.", True),
     ("Manch", "York County, PA · Manchester branch", "I1",
      "The Manchester branch of the German family (Dover / Manchester Twp, York Co PA) — I1 Y-line via a break at one of two rungs: Georg Wolfgang (bp. 1716) or his son Johan Jacob (bp. 1750). Shares the names Philip Jacob / Henry / Catherine — the main source of the old confusion.", False),
-    ("Dov", "Dover Twp, PA · John Welty", "untested",
-     "A single York Welty the records cannot place: the ~80&#8209;acre <b>Dover Twp</b> taxpayer of the 1786&ndash;87 lists, and nothing more. He was long carried as a hypothesized third son of <b>Philip Jacob</b> of the Edenkoben family, but that rested only on his turning up on the same Dover tax rolls. With the 1783 Ilgenfritz marriage reassigned to the separate R1a line and the DAR &ldquo;farm near Dover&rdquo; John (b.1760) resolved to his own Cumberland Twp family, nothing remains to tie this taxpayer to the Edenkoben household &mdash; and no wife, child, or Y&#8209;DNA sample is known for him. Shown on his own, unattached, rather than under a family the records do not support.", False),
     ("Yrk", "Conewago, PA · George Welty", "R1b (R-L151)",
      "A York County Welty line carried by FTDNA kit <b>#19175</b> — a <i>different</i> R1b subclade (R-L151) from the Edenkoben cluster, with no common ancestor in a genealogical timeframe. Just the two Pennsylvania members are shown — <b>George Welty</b> (b.~1797, Conewago) and his son <b>John</b> (b.1827, York Co) — before the family left for Ohio and Michigan. Above George is a brick wall: the record that would name his parents is John's baptism in Quickel's Conewago register, still access-locked. One of the several York Welty families that get tangled together in the county records.", False),
     ("Cum", "Cumberland Twp, PA · John Welty", "untested",
@@ -423,7 +421,7 @@ KNOWN_LIVING = set()   # (was {"B-merleSMGF"}) Merle William Welty PROVEN DECEAS
 #   pedigree + an unlocated ~1757 baptism; the others (Jacob Sr., John of Dover,
 #   and the three Trinity-York daughters) on circumstantial/naming evidence. Add
 #   any newly-found child of Philip Jacob here until their parentage is proven.
-LINK_UNPROVEN = {"E-michael", "E-jacobsr",
+LINK_UNPROVEN = {"E-michael", "E-jacobsr", "E-johndover",
                  "E-elizabethgauf", "E-christinamesserle", "E-catharinaboehm"}
 
 # Y-line break whose RUNG is undetermined. Paper filiation is primary at BOTH candidate
@@ -653,7 +651,6 @@ def main():
     fam_controls = (
         '<div class="grp">'
         '<label class="chk eden"><input type="checkbox" data-fam="Eden" checked> York</label>'
-        '<label class="chk dov"><input type="checkbox" data-fam="Dov" checked> Dover</label>'
         '<label class="chk yrk"><input type="checkbox" data-fam="Yrk" checked> Conewago</label>'
         '<label class="chk cum"><input type="checkbox" data-fam="Cum" checked> Cumberland</label>'
         '<label class="chk r1a"><input type="checkbox" data-fam="R1a" checked> Greene Co</label>'
@@ -662,7 +659,7 @@ def main():
         '<label class="chk san"><input type="checkbox" data-fam="San" checked> Sandusky</label>'
         '<label class="chk swiss"><input type="checkbox" data-fam="Swiss" checked> Manheim/Ohio</label>'
         '</div>')
-    german = total - counts.get('Swiss', 0) - counts.get('Md', 0) - counts.get('R1a', 0) - counts.get('Yrk', 0) - counts.get('Cum', 0) - counts.get('Gva', 0) - counts.get('San', 0) - counts.get('Dov', 0)
+    german = total - counts.get('Swiss', 0) - counts.get('Md', 0) - counts.get('R1a', 0) - counts.get('Yrk', 0) - counts.get('Cum', 0) - counts.get('Gva', 0) - counts.get('San', 0)
     render(OUT_ALL, payload_all,
            h1="The Welty Families &mdash; interactive tree",
            sub=("A cluster of <b>Welty</b> families &mdash; Welty, Weldy, Wälti, Welde &mdash; crossed to "
@@ -674,11 +671,11 @@ def main():
                 f"<b>People Roster</b> sheet of the research log. <b>{total}</b> people tracked so far."),
            fam_controls=fam_controls,
            count_label=(f"{total} people · Edenkoben (German) family {german} · "
-                        f"York {counts.get('Yrk',0)} · Dover {counts.get('Dov',0)} · Cumberland {counts.get('Cum',0)} · "
+                        f"York {counts.get('Yrk',0)} · Cumberland {counts.get('Cum',0)} · "
                         f"Greene Co {counts.get('R1a',0)} · "
                         f"Maryland {counts.get('Md',0)} · Goochland {counts.get('Gva',0)} · "
                         f"Sandusky {counts.get('San',0)} · Manheim/Ohio {counts.get('Swiss',0)}"))
-    print(f"wrote {OUT_ALL}  ({total} people: Edenkoben {german}, Dover {counts.get('Dov',0)}, Manheim/Ohio {counts.get('Swiss',0)}, Maryland {counts.get('Md',0)}, Greene Co {counts.get('R1a',0)}, York-George {counts.get('Yrk',0)}, Cumberland {counts.get('Cum',0)}, Goochland {counts.get('Gva',0)}, Saanen {counts.get('San',0)})")
+    print(f"wrote {OUT_ALL}  ({total} people: Edenkoben {german}, Manheim/Ohio {counts.get('Swiss',0)}, Maryland {counts.get('Md',0)}, Greene Co {counts.get('R1a',0)}, York-George {counts.get('Yrk',0)}, Cumberland {counts.get('Cum',0)}, Goochland {counts.get('Gva',0)}, Saanen {counts.get('San',0)})")
 
     # ---------- 1b) GERMAN-LINES graphical chart — RETIRED 1 Jul 2026 (Kwyn prefers the
     # By-Generation grid). render_graph()/GRAPH_TEMPLATE kept below but no longer called.
@@ -822,7 +819,6 @@ TEMPLATE = r"""<!DOCTYPE html>
     --cum:#4a3a8c; --cum-mid:#8c82c4; --cum-soft:#e9e6f5;
     --gva:#a34a2a; --gva-mid:#cf9179; --gva-soft:#f6e7e0;
     --san:#2a4d7a; --san-mid:#7d9bc4; --san-soft:#e4ecf6;
-    --dov:#7d4f2c; --dov-mid:#b58e6a; --dov-soft:#f0e6d9;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);background-image:radial-gradient(ellipse at 50% -10%,#fdf9ee 0%,#f5efe2 55%,#ede4cf 100%);color:var(--ink);
@@ -857,7 +853,6 @@ TEMPLATE = r"""<!DOCTYPE html>
   .chk.cum{border-color:var(--cum-mid);color:var(--cum)} .chk.cum::before{background:var(--cum)} .chk.cum input{accent-color:var(--cum)}
   .chk.gva{border-color:var(--gva-mid);color:var(--gva)} .chk.gva::before{background:var(--gva)} .chk.gva input{accent-color:var(--gva)}
   .chk.san{border-color:var(--san-mid);color:var(--san)} .chk.san::before{background:var(--san)} .chk.san input{accent-color:var(--san)}
-  .chk.dov{border-color:var(--dov-mid);color:var(--dov)} .chk.dov::before{background:var(--dov)} .chk.dov input{accent-color:var(--dov)}
   select.gen{font:inherit;font-size:13px;padding:6px 9px;border:1px solid var(--line);border-radius:8px;background:var(--card)}
   .btn{font:inherit;font-size:13px;padding:6px 12px;border:1px solid var(--line);
     border-radius:8px;background:var(--card);cursor:pointer;color:#4a4238}
@@ -900,7 +895,6 @@ TEMPLATE = r"""<!DOCTYPE html>
   .fam.cum{border-color:var(--cum-mid);border-top-color:var(--cum)}
   .fam.gva{border-color:var(--gva-mid);border-top-color:var(--gva)}
   .fam.san{border-color:var(--san-mid);border-top-color:var(--san)}
-  .fam.dov{border-color:var(--dov-mid);border-top-color:var(--dov)}
   .famhd{padding:13px 16px 12px;border-bottom:2px solid var(--line)}
   .fam.eden .famhd{background:linear-gradient(180deg,var(--eden-soft),var(--card));border-bottom-color:var(--eden-mid)}
   .fam.manch .famhd{background:linear-gradient(180deg,var(--manch-soft),var(--card));border-bottom-color:var(--manch-mid)}
@@ -911,12 +905,11 @@ TEMPLATE = r"""<!DOCTYPE html>
   .fam.cum .famhd{background:linear-gradient(180deg,var(--cum-soft),var(--card));border-bottom-color:var(--cum-mid)}
   .fam.gva .famhd{background:linear-gradient(180deg,var(--gva-soft),var(--card));border-bottom-color:var(--gva-mid)}
   .fam.san .famhd{background:linear-gradient(180deg,var(--san-soft),var(--card));border-bottom-color:var(--san-mid)}
-  .fam.dov .famhd{background:linear-gradient(180deg,var(--dov-soft),var(--card));border-bottom-color:var(--dov-mid)}
   .famhd h2{margin:0;font-size:19px;letter-spacing:.2px}
-  .fam.eden h2{color:var(--eden)} .fam.manch h2{color:var(--manch)} .fam.swiss h2{color:var(--swiss)} .fam.md h2{color:var(--md)} .fam.r1a h2{color:var(--r1a)} .fam.yrk h2{color:var(--yrk)} .fam.cum h2{color:var(--cum)} .fam.gva h2{color:var(--gva)} .fam.san h2{color:var(--san)} .fam.dov h2{color:var(--dov)}
+  .fam.eden h2{color:var(--eden)} .fam.manch h2{color:var(--manch)} .fam.swiss h2{color:var(--swiss)} .fam.md h2{color:var(--md)} .fam.r1a h2{color:var(--r1a)} .fam.yrk h2{color:var(--yrk)} .fam.cum h2{color:var(--cum)} .fam.gva h2{color:var(--gva)} .fam.san h2{color:var(--san)}
   .hap{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
     padding:2px 8px;border-radius:20px;margin-left:8px;vertical-align:middle;color:#fff}
-  .hap.eden{background:var(--eden)} .hap.manch{background:var(--manch)} .hap.swiss{background:var(--swiss)} .hap.md{background:var(--md)} .hap.r1a{background:var(--r1a)} .hap.yrk{background:var(--yrk)} .hap.cum{background:var(--cum)} .hap.gva{background:var(--gva)} .hap.san{background:var(--san)} .hap.dov{background:var(--dov)}
+  .hap.eden{background:var(--eden)} .hap.manch{background:var(--manch)} .hap.swiss{background:var(--swiss)} .hap.md{background:var(--md)} .hap.r1a{background:var(--r1a)} .hap.yrk{background:var(--yrk)} .hap.cum{background:var(--cum)} .hap.gva{background:var(--gva)} .hap.san{background:var(--san)}
   .famdesc{font-size:12.5px;color:#5a564f;margin-top:5px;max-width:1000px}
   /* branch band — marks where an American branch begins inside a family whose
      group header names an origin rather than a settling place (see BRANCHES) */
@@ -934,7 +927,6 @@ TEMPLATE = r"""<!DOCTYPE html>
   .fam.cum .branchhd{border-left-color:var(--cum-mid)} .fam.cum .blabel{color:var(--cum)}
   .fam.gva .branchhd{border-left-color:var(--gva-mid)} .fam.gva .blabel{color:var(--gva)}
   .fam.san .branchhd{border-left-color:var(--san-mid)} .fam.san .blabel{color:var(--san)}
-  .fam.dov .branchhd{border-left-color:var(--dov-mid)} .fam.dov .blabel{color:var(--dov)}
   @media(max-width:700px){ .branchhd{margin:11px 0 5px;padding-left:9px} .branchhd .bnote{font-size:11.5px} }
   .famct{font-size:11.5px;color:var(--muted);margin-top:3px}
   .tree{padding:10px 16px 16px}
@@ -950,7 +942,6 @@ TEMPLATE = r"""<!DOCTYPE html>
   .fam.cum .kids{border-left-color:var(--cum-mid)}
   .fam.gva .kids{border-left-color:var(--gva-mid)}
   .fam.san .kids{border-left-color:var(--san-mid)}
-  .fam.dov .kids{border-left-color:var(--dov-mid)}
   .fam.eden .tog{border-color:var(--eden-mid);color:var(--eden)}
   .fam.manch .tog{border-color:var(--manch-mid);color:var(--manch)}
   .fam.swiss .tog{border-color:var(--swiss-mid);color:var(--swiss)}
@@ -960,7 +951,6 @@ TEMPLATE = r"""<!DOCTYPE html>
   .fam.cum .tog{border-color:var(--cum-mid);color:var(--cum)}
   .fam.gva .tog{border-color:var(--gva-mid);color:var(--gva)}
   .fam.san .tog{border-color:var(--san-mid);color:var(--san)}
-  .fam.dov .tog{border-color:var(--dov-mid);color:var(--dov)}
   .fam.eden .person{box-shadow:inset 3px 0 0 var(--eden-mid)}
   .fam.manch .person{box-shadow:inset 3px 0 0 var(--manch-mid)}
   .fam.swiss .person{box-shadow:inset 3px 0 0 var(--swiss-mid)}
@@ -970,7 +960,6 @@ TEMPLATE = r"""<!DOCTYPE html>
   .fam.cum .person{box-shadow:inset 3px 0 0 var(--cum-mid)}
   .fam.gva .person{box-shadow:inset 3px 0 0 var(--gva-mid)}
   .fam.san .person{box-shadow:inset 3px 0 0 var(--san-mid)}
-  .fam.dov .person{box-shadow:inset 3px 0 0 var(--dov-mid)}
 
   /* nodes */
   .node{margin:4px 0}

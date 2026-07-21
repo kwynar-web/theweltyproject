@@ -71,10 +71,9 @@ FAMS = {
     "cum":   ("Cumberland Twp / Gettysburg &middot; John Welty (untested)", "#4a3a8c"),
     "gva":   ("Goochland Co VA &middot; Weldy (R1b-DF49)", "#a34a2a"),
     "san":   ("Saanen &rarr; Upper Sandusky &middot; W&auml;lti (hg G)", "#2a4d7a"),
-    "dov":   ("Dover Twp, York Co PA &middot; John Welty (untested)", "#7d4f2c"),
 }
 FAM_OF_ROSTER = {"Manch":"manch","Swiss":"swiss","Md":"md","R1a":"r1a",
-                 "Yrk":"yrk","Cum":"cum","Gva":"gva","San":"san","Dov":"dov"}
+                 "Yrk":"yrk","Cum":"cum","Gva":"gva","San":"san"}
 
 # ---------------------------------------------------------------- gazetteer
 # node-key -> (lat, lon, label, continent)  continent: DE (Europe) or US
