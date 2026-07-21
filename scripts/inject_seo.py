@@ -146,9 +146,10 @@ PAGES = {
         nav="index",
         path="/",
         ogtitle="The Welty Project — A Living Genealogy Journal",
-        desc="A living, openly-sourced genealogy of the Welty (Wäldi/Welde) family of "
-             "Edenkoben in the Palatinate — traced by DNA and primary records from "
-             "c. 1680 to today.",
+        desc="Eight unrelated Welty / Weldy / Wälti / Welde families crossed to America in "
+             "the eighteenth century and settled the same corridor of south-central "
+             "Pennsylvania. This is an openly-sourced genealogy of all of them, built from "
+             "primary records and Y-DNA.",
         jsonld=True,
         note='<b>The live research journal of Kwyn Welty.</b>',
     ),
@@ -175,7 +176,7 @@ PAGES = {
         maps=True,
         note='<b>Ten generations, two continents, one river valley to another.</b>'
              '<span class="upd">Compiled from the Welty Ancestry Research Log &mdash; '
-             'last updated 12 July 2026.</span>'
+             'last updated 19 July 2026.</span>'
              '<span class="repos">Key repositories: '
              '<a href="https://www.archion.de" target="_blank" rel="noopener">Archion</a> &middot; '
              '<a href="https://www.familysearch.org/search/full-text" target="_blank" rel="noopener">FamilySearch full-text</a> &middot; '
