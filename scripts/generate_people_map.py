@@ -644,7 +644,11 @@ if __name__ == "__main__":
     frag_solo, total = fragment(chlinks=False)   # standalone: no chapters to link
     frag_embed, _   = fragment(chlinks=True)     # timeline: link into chapters
     write_standalone(frag_solo, total)
-    inject(TIMELINE, frag_embed)
+    # RETIRED 25 Jul 2026 — the root mirror "Welty Family Timeline (Geography).html"
+    # only ever received the map fragment, so it drifted behind site/timeline.html
+    # (which is hand-edited: braided chapters 21 Jul, journal copy 23 Jul). Two
+    # divergent timelines is a trap; site/timeline.html is the single master now.
+    # inject(TIMELINE, frag_embed)
     inject(TIMELINE_SITE, frag_embed)
     print(f"placed={len(PLACED)}  skipped={len(SKIPPED)} -> {SKIPPED}")
     print(f"standalone -> {OUT}  ({total} people)")

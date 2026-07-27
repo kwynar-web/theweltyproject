@@ -686,11 +686,15 @@ def main():
     # By-Generation grid). render_graph()/GRAPH_TEMPLATE kept below but no longer called.
     german_fams = ("Eden", "Manch")
 
-    # ---------- 1c) GERMAN-LINES by-generation grid (with proof record + source per person) ----------
-    OUT_GEN_DE = "Welty Family Tree - By Generation (German).html"
-    gpeople = [p for p in people if p["Family"] in german_fams]
-    render_gen_german(OUT_GEN_DE, gpeople, by_id, counts)
-    print(f"wrote {OUT_GEN_DE}  ({len(gpeople)} people, generation grid with proofs)")
+    # ---------- 1c) GERMAN-LINES by-generation grid — RETIRED 25 Jul 2026 ----------
+    # The page was never linked from any site page (deploy_clean_trees.py has touched
+    # English pages only since 6 Jul) so every regen wrote a 179 KB orphan that could
+    # drift out of sync with the real tree. render_gen_german() is kept below in case
+    # it is ever wanted again; it is simply no longer called.
+    # OUT_GEN_DE = "Welty Family Tree - By Generation (German).html"
+    # gpeople = [p for p in people if p["Family"] in german_fams]
+    # render_gen_german(OUT_GEN_DE, gpeople, by_id, counts)
+    # print(f"wrote {OUT_GEN_DE}  ({len(gpeople)} people, generation grid with proofs)")
 
     # ---------- 2) BY-GENERATION grid — RETIRED 1 Jul 2026 (single-tree policy) ----------
     # render_gen_grid(OUT_GEN, people, by_id, counts, total)
