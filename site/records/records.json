@@ -502,6 +502,38 @@
     ]
    },
    {
+    "slug": "assignment-michael-welty-to-jacob-sittler-22-apr-1786-csvm-item-187-m3",
+    "caption": "The 22 April 1786 assignment, written on the back of the Camp Security discharge strip: ‘For a valuable Consideration to me in hand paid by Jacob Sittler I do hereby Assign, transfer and make over … all my Right and Title of in & to the within Discharge and all Monies due & to become due thereon.’ Witnessed by Conrad Laub and [J?] Forsyth. The body is a scribe’s hand; the signature at right is a heavier, German-influenced hand — the earliest handwriting this project holds for the Michael of Camp Security. Never printed in the Pennsylvania Archives. Original: PA State Archives, RG-4 (Comptroller General), microfilm RG4-R297-98-Film189.",
+    "repo": "Camp Security Virtual Museum (scan of PA State Archives RG-4, Comptroller General, microfilm RG4-R297-98-Film189)",
+    "url": "https://www.campsecurity.org/virtual-museum",
+    "confidence": "high",
+    "logids": [
+     "M352"
+    ],
+    "pages": [
+     {
+      "slug": "assignment-michael-welty-to-jacob-sittler-22-apr-1786-csvm-item-187-m3",
+      "caption": "The 22 April 1786 assignment, written on the back of the Camp Security discharge strip: ‘For a valuable Consideration to me in hand paid by Jacob Sittler I do hereby Assign, transfer and make over … all my Right and Title of in & to the within Discharge and all Monies due & to become due thereon.’ Witnessed by Conrad Laub and [J?] Forsyth. The body is a scribe’s hand; the signature at right is a heavier, German-influenced hand — the earliest handwriting this project holds for the Michael of Camp Security. Never printed in the Pennsylvania Archives. Original: PA State Archives, RG-4 (Comptroller General), microfilm RG4-R297-98-Film189."
+     }
+    ]
+   },
+   {
+    "slug": "discharge-michael-weltty-camp-security-20-sep-1781-csvm-item-200-m328",
+    "caption": "The original discharge, in Lieut. John Mappin’s hand: ‘Camp Security September 20th 1781. I Do Certify that Michael Weltty is Discharged from this Camp having Performed his Tower [tour] in the Militia. John Mappen, Lieut.’ The manuscript surname carries a plain double t, so the 1906 printed edition’s ‘Willty’ is the editor’s normalisation rather than the clerk’s spelling. Original: PA State Archives, RG-4 (Comptroller General), microfilm RG4-R297-98-Film189.",
+    "repo": "Camp Security Virtual Museum (scan of PA State Archives RG-4, Comptroller General, microfilm RG4-R297-98-Film189)",
+    "url": "https://www.campsecurity.org/virtual-museum",
+    "confidence": "high",
+    "logids": [
+     "M328"
+    ],
+    "pages": [
+     {
+      "slug": "discharge-michael-weltty-camp-security-20-sep-1781-csvm-item-200-m328",
+      "caption": "The original discharge, in Lieut. John Mappin’s hand: ‘Camp Security September 20th 1781. I Do Certify that Michael Weltty is Discharged from this Camp having Performed his Tower [tour] in the Militia. John Mappen, Lieut.’ The manuscript surname carries a plain double t, so the 1906 printed edition’s ‘Willty’ is the editor’s normalisation rather than the clerk’s spelling. Original: PA State Archives, RG-4 (Comptroller General), microfilm RG4-R297-98-Film189."
+     }
+    ]
+   },
+   {
     "slug": "m18-michael-weldy-estate-inventory-deceased-sept-1815",
     "caption": "Estate inventory of Michael Weldy, deceased Sept 1815, Tuscarawas Co. OH — the appraisement of his goods and property; a death-bracketing record (FamilySearch, Administration Records 1810–39, img 19).",
     "repo": "FamilySearch",
@@ -1830,9 +1862,9 @@
   }
  ],
  "_meta": {
-  "total_files": 233,
-  "chips": 84,
-  "images_on_people": 91,
+  "total_files": 279,
+  "chips": 86,
+  "images_on_people": 93,
   "evidence_only": 35,
   "unmapped": [
    "H-SAR93340 - Howard Otis Welty SAR application lineage page (1965) - Henry1845-WilliamBierly1816-Marilla Otis-Edward Hackett Otis patriot - Ancestry coll 2204 img 32596_242384-00470.jpg",
@@ -1841,6 +1873,8 @@
    "M-1798DirectTax - Weldy Jacob occupant - US Direct Tax 1798 PA Huntingdon-Somerset 3rd Dist 8th Div General List E - Ancestry coll 2060 img 32643_B036833-00370 (341 of 491).jpg",
    "P-1798DirectTax - WITTY John Cumberland Twp York List A - 26x28 old logs val 250 - HENRY WEAVER adjacent line - coll 2060 img 32643_B036828-00014 (8 of 611).jpg",
    "P-1798DirectTax - WITTY John row 131 Cumberland Twp York General List D - val 250 - Weaver Henry row 132 adjacent - coll 2060 img 32643_B036828-00036 (28 of 611).jpg",
+   "P198a — Dr F H Welty death index card 30 Jul 1919 Dubois drowning cert 1413 (Ancestry coll 61831 img 61830_i599177-05337).jpg",
+   "P198b — Karl Fairfax Welty 1943 WY death cert - father Francis H Welty mother Alice Amoss b Maryland - b 9 Nov 1880 Fairfax Va (Ancestry coll 61831 img 61831_302022005620_0225-04497).jpg",
    "SAR-49972 Judisch 1930 - cover - Louis N Judisch Iowa Society app - descendant of George Lose Loose - approved Mar 17 1930 - coll 2204 img 32596_242475-00363.jpg",
    "SAR-49972 Judisch 1930 - lineage - John Welty b1793 d1871 x Rebecca Lose b1795 d1854 - dau Susan Welty Hunter b1820 m Wm S Hunter 1835 - patriot George Lose Ensign Berks d Westmoreland 1834 - coll 2204 img 32596_242475-00364.jpg",
    "SAR34750 - David Schick Calif Society app 1921 cover - DESCENDANT OF JOHN WELTY - approved Jul 1921 - coll 2204 img 32596_242191-00357.jpg",
@@ -1852,6 +1886,35 @@
    "SAR96564 - Alexander app 1968 lineage - Henry Harrison Welty b1852 d1929 x May Day - dau Helen Welty Alexander b1896 Downs KS - patriot Joseph Bunker NH via Day-James-Bunker - coll 2204 img 32596_242394-00527.jpg",
    "SAR97443 - Pirtle app 1968 lineage - Judith Welty b GERMANY d 1854 Sullivan Co Ind x Peter J Wilson b1792 Green Co Tenn - patriot John Wilson - coll 2204 img 32596_242397-00390.jpg",
    "US-SAR16975 - Howard Van Wert Welty SAR app 1908 - patriot John Welty b1760 Dover-York m Catherine Weaver - father John Jacob Welty x Christian BRAIFF (P150 graft origin) - coll 2204 img 32596_242102-00457.jpg",
+   "Archion-55557-Boebingen-Bild76-marriages-1736-1739.jpg",
+   "Archion-55557-Boebingen-Bild77-marriages-1740-1744.jpg",
+   "Archion-55557-Boebingen-Bild78-marriages-1746-1750.jpg",
+   "P202 - Hassloch Reformed marriages 1750 (Catalogus, Bild139) - reg 409384 - NEGATIVE calibration.pdf",
+   "P207 - Meckenheim Reformed marriages 1742-1744 (reg 56166 Seiten 262-263, Bild135) - NEGATIVE calibration.pdf",
+   "P215 — Bischheim war-evacuation note, pastor fled with congregation, no pastor to 1697 (Archion reg 47031 Bild 18).pdf",
+   "P216 — Bischheim marriage register opens 'Copulirte Zu Bischheim' 1681-1682 (Archion reg 47031 Bild 132).pdf",
+   "P216 — Bischheim marriages 1684-1686 + 1688-1689, last before the war gap (Archion reg 47031 Bild 133).pdf",
+   "P216 — Bischheim marriages 1701-1710 (Archion reg 47031 Bild 135).pdf",
+   "P216 — Bischheim marriages 1710-1713, incl. Grafschaft Waldeck decoy (Archion reg 47031 Bild 136).pdf",
+   "P216 — Bischheim marriages resume 1699-1700 after the war gap; left leaf bound inverted (Archion reg 47031 Bild 134).pdf",
+   "P217 — Bischheim second-vacancy note naming Rebecker, Pfarrer zu Gauersheim (Archion reg 47031 Bild 20).pdf",
+   "D41 Jacob Welty x Barbara Miller 1839 reg p356 no2847.jpg",
+   "M324 partition p477 caption - Jacob Welty d 3 Jun 1861.jpg",
+   "M324 partition p478 top - stems fractions Finley guardian.jpg",
+   "P198c — Eliza A Welty obituary Baltimore Sun 20 Oct 1906 p11 - widow of Rev Elias Welty d 1900 - nee Herriter Frederick Co Md - son Dr F H Welty - burial Gettysburg (Newspapers.com img 371485952).pdf",
+   "P193 Edenkoben Luth 55440 Bild20 NATIVE (Trauungen band ~1744).pdf",
+   "P194 Neustadt Ref 55785 Bild9 NATIVE (Copulirte 1739-1740).pdf",
+   "P195 Neustadt Luth 55812 Bild110 NATIVE (marriages 1743-1745, pp324-325).pdf",
+   "P209 Weidenthal 55521 Bild86 NATIVE (marriages Okt1724+1737-1740).pdf",
+   "P209 Weidenthal 55521 marriages 1737-1740 (Bild 86).jpg",
+   "P209 Weidenthal 55521 marriages 1743-1756 (Bild 87).jpg",
+   "P209 Weidenthal 55521 marriages 1753-1757 + memorandum (Bild 88).jpg",
+   "P213 Welday Jacob 1812 pension jacket - widow Mary Price.jpg",
+   "P213 Welday Jacob 1850 BLW declaration - aged 62 Cross Creek - substitute for John Long.jpg",
+   "P213 Welday Jacob 1855 BLW application - aged 68 - 1st Regt OM.jpg",
+   "P213 Welday Jacob widows brief - m 20 Dec 1842 d 9 Dec 1866.jpg",
+   "P213 Welday widow declaration 1878 - route Steubenville-Canton-Sandusky.jpg",
+   "P214 Duvall file p59 - comrade letter naming Jacob Weldy among last five living.jpg",
    "York134.pdf",
    "York135.pdf",
    "York136.pdf",
@@ -1865,6 +1928,19 @@
    "C-234-228-reverse.pdf",
    "D-2-180-front.pdf",
    "D-2-180-reverse.pdf",
+   "PA-Arch-6ser-v2-p628 Capt Peter Ford pay roll heading 8 Jul-8 Sep 1781 [M327].jpg",
+   "PA-Arch-6ser-v2-p629 Capt Peter Ford pay roll 1781 - MICHAEL WELLTY [M327].jpg",
+   "Prowell 1907 York Co v1 p274 - Trine 5th Co 3rd Bn 1783-4 Michael and Jacob Welty [M326].jpg",
+   "PS20 - Patriot Harrisburg 6 Apr 1813 p3 - Rees Hill Greene Co Erie detachment.png",
+   "PS21a - Harrisburg Chronicle 9 Aug 1813 p3 - Hills regt Buffalo NW army.png",
+   "PS21b - The Record West Chester 15 Sep 1813 p1 - Erie Militia Adjutant list.png",
+   "PS24 Phillip Welty graves registration card - Welty Cem Lot21 Grave3.jpg",
+   "PS25 Welty Philip - Hills Regiment PA Militia - M602 index card.jpg",
+   "PS25 firewall - Welty Philip NY survivor pension M313 card - Capt Alex NY Mil.jpg",
+   "US43a - Star and Sentinel 11 Oct 1815 p3 - Stephen Wible plantation Straban Twp.png",
+   "US43b - Star and Sentinel 5 Feb 1817 p3 - John Welty and Henry Hoke exrs of Stephen Wible.png",
+   "US44 Ohio Repository 17 Apr 1817 p1 - John Christmas store lately at Weltys Mill.jpg",
+   "US44 Ohio Repository 27 Aug 1819 p5 - Jacob Welty vendue wind-up notice.jpg",
    "13989370-10.jpg",
    "13989370-100.jpg",
    "13989370-11.jpg",
