@@ -257,6 +257,18 @@ M = {
    (["E-georgeft1792","E-elizabethw"], "One register spread, two marriages: 'George Weldy and Sarah Altman', 24 Dec 1816 (p. 29 n. 225) — correcting the family chart's 'Hannah Aultman' for George — and 'Christian Blauch [Plough] and Elizabeth Weldy', 2 Nov 1817 (p. 28 n. 219). Both by Abraham Snyder, Minister.", "high"),
  "M302 — Jacob Fisher x Sarah Weldy 26 Mar 1826 Tuscarawas marr bk1 p101 n802 (FamilySearch ark 33S7-95BW-VR8).jpg":
    (["E-sally1804"], "Sally's marriage: 'Jacob Fisher and Sarah Weldy', 26 Mar 1826, Tuscarawas marriage book 1 p. 101 n. 802 — Geo. Bugher, J.P.", "high"),
+ # --- M358 Dover 1781 class-assessment packet (1 Aug 2026, film 008350826) —
+ #     identity UNASSIGNED (decoy rule): evidence-only, never pinned ---------
+ "York 1781 class list Welte block Dover-Manchester packet - film 008350826 img362 [M358].jpg":
+   ([], "The 1781 Dover Township class-assessment leaf (film 008350826 img 362): five Weltes consecutive under the 'Class No 3' heading — Philip Welte 666, Philip Welte Jun 016, Michel Welte 082, Jacob Welte, George Welte — bracketed by Rothrauff and Rutherauf. Identity unassigned; the leaf is the record, not a pedigree claim.", "high"),
+ "York 1781 class list Dover-Manchester packet - film 008350826 img361 [M358].jpg":
+   ([], "The companion leaf of the 1781 Dover class list (img 361): sheriff's return and the Class No 1 column of the same Dover packet.", "high"),
+ "York 1781 warrant Peter Fried third class - film 008350826 img360 [M358].jpg":
+   ([], "The misfiled Heidelberg warrant (img 360) — a delinquent-collector warrant against Peter Fried of Heidelberg, interfiled in the Dover packet; kept as the calibration page that once mis-suggested 'Heidelberg' for the Welte leaf.", "high"),
+ "York 1781 Dover Twp notice to Schettel with 1st class names - film 008350826 img365 [M358].jpg":
+   ([], "The Dover Township recruiting-class notice (img 365) with its numbered 1st-class list (Quickel, Miller, Fincke, Finck, Wilt, Leininger, Ramsey) — one of the four proofs that fixed the packet to Dover.", "high"),
+ "York Dover valuation two Philip Weltys 110 and 100 acres - film 008350826 img160 [M358].jpg":
+   ([], "The Dover property-valuation leaf (img 160): two landed Philip Weltys (110 and 100 acres) in the main list, and — in the 'Single Men' foot section — Wilty Jacob (4.10) and Welty Michael (2.5) among the P143 Dover community. Identity unassigned.", "high"),
 }
 
 # ---------------------------------------------------------------------------

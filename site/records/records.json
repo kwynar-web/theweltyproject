@@ -1859,14 +1859,72 @@
    "url": "https://www.familysearch.org/ark:/61903/3:1:3QHV-V382-WS76-1?view=fullText",
    "confidence": "high",
    "file": "US19 — Obediah Weldy decoy, Chester tax 1768-71 (FamilySearch img109).png"
+  },
+  {
+   "slug": "york-1781-dover-twp-notice-to-schettel-with-1st-class-names-film-00835",
+   "caption": "The Dover Township recruiting-class notice (img 365) with its numbered 1st-class list (Quickel, Miller, Fincke, Finck, Wilt, Leininger, Ramsey) — one of the four proofs that fixed the packet to Dover.",
+   "logids": [
+    "M358"
+   ],
+   "repo": "FamilySearch (PHMC, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7T1-S",
+   "confidence": "high",
+   "file": "York 1781 Dover Twp notice to Schettel with 1st class names - film 008350826 img365 [M358].jpg"
+  },
+  {
+   "slug": "york-1781-class-list-dover-manchester-packet-film-008350826-img361-m35",
+   "caption": "The companion leaf of the 1781 Dover class list (img 361): sheriff's return and the Class No 1 column of the same Dover packet.",
+   "logids": [
+    "M358"
+   ],
+   "repo": "FamilySearch (PHMC, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7T1-S",
+   "confidence": "high",
+   "file": "York 1781 class list Dover-Manchester packet - film 008350826 img361 [M358].jpg"
+  },
+  {
+   "slug": "york-1781-class-list-welte-block-dover-manchester-packet-film-00835082",
+   "caption": "The 1781 Dover Township class-assessment leaf (film 008350826 img 362): five Weltes consecutive under the 'Class No 3' heading — Philip Welte 666, Philip Welte Jun 016, Michel Welte 082, Jacob Welte, George Welte — bracketed by Rothrauff and Rutherauf. Identity unassigned; the leaf is the record, not a pedigree claim.",
+   "logids": [
+    "M358"
+   ],
+   "repo": "FamilySearch (PHMC, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7T1-S",
+   "confidence": "high",
+   "file": "York 1781 class list Welte block Dover-Manchester packet - film 008350826 img362 [M358].jpg"
+  },
+  {
+   "slug": "york-1781-warrant-peter-fried-third-class-film-008350826-img360-m358",
+   "caption": "The misfiled Heidelberg warrant (img 360) — a delinquent-collector warrant against Peter Fried of Heidelberg, interfiled in the Dover packet; kept as the calibration page that once mis-suggested 'Heidelberg' for the Welte leaf.",
+   "logids": [
+    "M358"
+   ],
+   "repo": "FamilySearch (PHMC, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7T1-S",
+   "confidence": "high",
+   "file": "York 1781 warrant Peter Fried third class - film 008350826 img360 [M358].jpg"
+  },
+  {
+   "slug": "york-dover-valuation-two-philip-weltys-110-and-100-acres-film-00835082",
+   "caption": "The Dover property-valuation leaf (img 160): two landed Philip Weltys (110 and 100 acres) in the main list, and — in the 'Single Men' foot section — Wilty Jacob (4.10) and Welty Michael (2.5) among the P143 Dover community. Identity unassigned.",
+   "logids": [
+    "M358"
+   ],
+   "repo": "FamilySearch (PHMC, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7T1-S",
+   "confidence": "high",
+   "file": "York Dover valuation two Philip Weltys 110 and 100 acres - film 008350826 img160 [M358].jpg"
   }
  ],
  "_meta": {
-  "total_files": 279,
+  "total_files": 287,
   "chips": 86,
   "images_on_people": 93,
-  "evidence_only": 35,
+  "evidence_only": 40,
   "unmapped": [
+   "1800 census Donegal Westmoreland p1056 - Witty Micheal FULL PAGE [M286].jpg",
+   "1800 census Donegal Westmoreland p1056 - Witty Micheal head 45plus DETAIL [M286].jpg",
+   "Gaertringen-Gueltstein marriage register pp446-447 - Michael Welthe x Catharina Bernhard 29 Jul 1732 [M356].jpg",
    "H-SAR93340 - Howard Otis Welty SAR application lineage page (1965) - Henry1845-WilliamBierly1816-Marilla Otis-Edward Hackett Otis patriot - Ancestry coll 2204 img 32596_242384-00470.jpg",
    "M-1798DirectTax - WETTY Michael row 212 Donegal Twp Westmoreland - Particular List A dwellings - 1 cabin 12x15 owner-occupant adj St Clair and John Brant val 160 - coll 2060 img 32643_B036834-00163 (154 of 516).jpg",
    "M-1798DirectTax - WITTY Michael row 199 Donegal Twp Westmoreland - General List - 1 dwelling 4 acres val 160 equalized 164 - coll 2060 img 32643_B036834-00408 (395 of 516).jpg",
