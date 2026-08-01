@@ -269,6 +269,30 @@ M = {
    ([], "The Dover Township recruiting-class notice (img 365) with its numbered 1st-class list (Quickel, Miller, Fincke, Finck, Wilt, Leininger, Ramsey) — one of the four proofs that fixed the packet to Dover.", "high"),
  "York Dover valuation two Philip Weltys 110 and 100 acres - film 008350826 img160 [M358].jpg":
    ([], "The Dover property-valuation leaf (img 160): two landed Philip Weltys (110 and 100 acres) in the main list, and — in the 'Single Men' foot section — Wilty Jacob (4.10) and Welty Michael (2.5) among the P143 Dover community. Identity unassigned.", "high"),
+ # --- M358/M359/M360 Dover run + US48 Manchester Jacob (1 Aug 2026, film 008350826) —
+ #     all identity-unassigned, evidence-only ---------------------------------
+ "York Dover 1781 third Class Duplicate Welty block - film 008350826 img369 [M358].jpg":
+   ([], "The Dover 1781 3rd-class collection duplicate (img 369): the Welte block (Philip 64 / Philip [struck] 57 / Jacob 42 / George [struck]) with NO Michel line — he stands on the class list but is absent from the collection duplicate.", "high"),
+ "York Dover 1782 list Wilty Michael occupant 44 + Wilty Philip 80 - film 008350826 img447 [M359].jpg":
+   ([], "Dover 1782 (M359, img 447): Wilty Michael as an occupant/tenant on 44 acres, and Wilty Philip on 80 — the only two Weltes left of 1781's five. Identity unassigned.", "high"),
+ "York Dover 1784 list Welty Michael 8.5 + Wilty Jacob 15.3 + Wilty Phillips 13.9 - film 008350826 img649 [M360].jpg":
+   ([], "Dover 1784 (M360, img 649): Welty Michael (8.5) in the main run; Wilty Jacob (15.3) and Wilty Phillips (13.9) in the supplement. Year fixed by the section wrapper. Identity unassigned.", "high"),
+ "York 1784 Township Assessments section wrapper Manchester Dover etc - film 008350826 img640 [M360].jpg":
+   ([], "The 1784 section cover (imgs 640-641): '1784 Township Assessments: Manchester, Dover, Warrington, Newberry, Monaghan, Paradise, Heidelberg, Codorus' — the wrapper that dates the Dover 1784 Welte leaf.", "high"),
+ "York Dover 1785 list Welty-or-Holly trio Jacob-Philip-John + Wilhelm block - film 008350826 img765 [M360].jpg":
+   ([], "Dover 1785 (img 765): the 'Welty' cluster resolved at full res to the HOLLY family — Holly Jacob, Holly Philip, landholding Holly John — plus Willhelm Michael and Walter John. NO Welty; kept as the calibration leaf for the Holly OCR-lookalike.", "high"),
+ "York Manchester 1781 book Welty Jacob 130 land - film 008350826 img16 [US48].jpg":
+   ([], "Manchester 1781 (US48, img 16): Welty Jacob, 130 acres — the earliest of the continuous Manchester Jacob run. Family-B-territory; identity unassigned.", "high"),
+ "York Manchester Jan 1781 packet tax list Welly Jacob + Manchester docket - film 008350826 img378 [US48].jpg":
+   ([], "Manchester Jan-1781 recruiting packet (US48, img 378): the tax list with Welly Jacob under the federal-quota broadside, 'Manchester' docketed across the leaf.", "high"),
+ "York Manchester Jan 1781 recruit class list No20 Wilty Jacob - film 008350826 img388 [US48].jpg":
+   ([], "Manchester Jan-1781 recruit class list (US48, img 388): Wilty Jacob stands as man No. 20 in the numbered Continental-quota class.", "high"),
+ "York Manchester 1782 list Willy Jacob 100 land val 280 - film 008350826 img480 [US48].jpg":
+   ([], "Manchester 1782 (US48, img 480): Willy Jacob, 100 acres, valuation 280. Identity unassigned.", "high"),
+ "York Manchester 1784 list Welty Jacob 15sh - film 008350826 img644 [US48].jpg":
+   ([], "Manchester 1784 (US48, img 644): Welty Jacob among the Manchester community, tax 15/. Identity unassigned.", "high"),
+ "York Manchester 1785 list Wilty Jacob 12.0 + Botts Town section - film 008350826 img754 [US48].jpg":
+   ([], "Manchester 1785 (US48, img 754): Wilty Jacob, tax 12/, on the leaf that also carries the 'Botts Town' hamlet section. Identity unassigned.", "high"),
 }
 
 # ---------------------------------------------------------------------------

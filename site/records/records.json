@@ -1866,8 +1866,8 @@
    "logids": [
     "M358"
    ],
-   "repo": "FamilySearch (PHMC, film 008350826)",
-   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7T1-S",
+   "repo": "FamilySearch (PHMC township assessment lists, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7TD-7?view=fullText",
    "confidence": "high",
    "file": "York 1781 Dover Twp notice to Schettel with 1st class names - film 008350826 img365 [M358].jpg"
   },
@@ -1877,8 +1877,8 @@
    "logids": [
     "M358"
    ],
-   "repo": "FamilySearch (PHMC, film 008350826)",
-   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7T1-S",
+   "repo": "FamilySearch (PHMC township assessment lists, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7TD-7?view=fullText",
    "confidence": "high",
    "file": "York 1781 class list Dover-Manchester packet - film 008350826 img361 [M358].jpg"
   },
@@ -1888,8 +1888,8 @@
    "logids": [
     "M358"
    ],
-   "repo": "FamilySearch (PHMC, film 008350826)",
-   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7T1-S",
+   "repo": "FamilySearch (PHMC township assessment lists, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7TD-7?view=fullText",
    "confidence": "high",
    "file": "York 1781 class list Welte block Dover-Manchester packet - film 008350826 img362 [M358].jpg"
   },
@@ -1899,10 +1899,65 @@
    "logids": [
     "M358"
    ],
-   "repo": "FamilySearch (PHMC, film 008350826)",
-   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7T1-S",
+   "repo": "FamilySearch (PHMC township assessment lists, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7TD-7?view=fullText",
    "confidence": "high",
    "file": "York 1781 warrant Peter Fried third class - film 008350826 img360 [M358].jpg"
+  },
+  {
+   "slug": "york-1784-township-assessments-section-wrapper-manchester-dover-etc-fi",
+   "caption": "The 1784 section cover (imgs 640-641): '1784 Township Assessments: Manchester, Dover, Warrington, Newberry, Monaghan, Paradise, Heidelberg, Codorus' — the wrapper that dates the Dover 1784 Welte leaf.",
+   "logids": [
+    "M360"
+   ],
+   "repo": "FamilySearch (PHMC township assessment lists, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7Y1-2?view=fullText",
+   "confidence": "high",
+   "file": "York 1784 Township Assessments section wrapper Manchester Dover etc - film 008350826 img640 [M360].jpg"
+  },
+  {
+   "slug": "york-dover-1781-third-class-duplicate-welty-block-film-008350826-img36",
+   "caption": "The Dover 1781 3rd-class collection duplicate (img 369): the Welte block (Philip 64 / Philip [struck] 57 / Jacob 42 / George [struck]) with NO Michel line — he stands on the class list but is absent from the collection duplicate.",
+   "logids": [
+    "M358"
+   ],
+   "repo": "FamilySearch (PHMC township assessment lists, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7TD-7?view=fullText",
+   "confidence": "high",
+   "file": "York Dover 1781 third Class Duplicate Welty block - film 008350826 img369 [M358].jpg"
+  },
+  {
+   "slug": "york-dover-1782-list-wilty-michael-occupant-44-wilty-philip-80-film-00",
+   "caption": "Dover 1782 (M359, img 447): Wilty Michael as an occupant/tenant on 44 acres, and Wilty Philip on 80 — the only two Weltes left of 1781's five. Identity unassigned.",
+   "logids": [
+    "M359"
+   ],
+   "repo": "FamilySearch (PHMC township assessment lists, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7T3-L?view=fullText",
+   "confidence": "high",
+   "file": "York Dover 1782 list Wilty Michael occupant 44 + Wilty Philip 80 - film 008350826 img447 [M359].jpg"
+  },
+  {
+   "slug": "york-dover-1784-list-welty-michael-8-5-wilty-jacob-15-3-wilty-phillips",
+   "caption": "Dover 1784 (M360, img 649): Welty Michael (8.5) in the main run; Wilty Jacob (15.3) and Wilty Phillips (13.9) in the supplement. Year fixed by the section wrapper. Identity unassigned.",
+   "logids": [
+    "M360"
+   ],
+   "repo": "FamilySearch (PHMC township assessment lists, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7Y1-2?view=fullText",
+   "confidence": "high",
+   "file": "York Dover 1784 list Welty Michael 8.5 + Wilty Jacob 15.3 + Wilty Phillips 13.9 - film 008350826 img649 [M360].jpg"
+  },
+  {
+   "slug": "york-dover-1785-list-welty-or-holly-trio-jacob-philip-john-wilhelm-blo",
+   "caption": "Dover 1785 (img 765): the 'Welty' cluster resolved at full res to the HOLLY family — Holly Jacob, Holly Philip, landholding Holly John — plus Willhelm Michael and Walter John. NO Welty; kept as the calibration leaf for the Holly OCR-lookalike.",
+   "logids": [
+    "M360"
+   ],
+   "repo": "FamilySearch (PHMC township assessment lists, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7Y1-2?view=fullText",
+   "confidence": "high",
+   "file": "York Dover 1785 list Welty-or-Holly trio Jacob-Philip-John + Wilhelm block - film 008350826 img765 [M360].jpg"
   },
   {
    "slug": "york-dover-valuation-two-philip-weltys-110-and-100-acres-film-00835082",
@@ -1910,17 +1965,83 @@
    "logids": [
     "M358"
    ],
-   "repo": "FamilySearch (PHMC, film 008350826)",
-   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7T1-S",
+   "repo": "FamilySearch (PHMC township assessment lists, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7TD-7?view=fullText",
    "confidence": "high",
    "file": "York Dover valuation two Philip Weltys 110 and 100 acres - film 008350826 img160 [M358].jpg"
+  },
+  {
+   "slug": "york-manchester-1781-book-welty-jacob-130-land-film-008350826-img16-us",
+   "caption": "Manchester 1781 (US48, img 16): Welty Jacob, 130 acres — the earliest of the continuous Manchester Jacob run. Family-B-territory; identity unassigned.",
+   "logids": [
+    "US48"
+   ],
+   "repo": "FamilySearch (PHMC township assessment lists, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7YJ-T?view=fullText",
+   "confidence": "high",
+   "file": "York Manchester 1781 book Welty Jacob 130 land - film 008350826 img16 [US48].jpg"
+  },
+  {
+   "slug": "york-manchester-1782-list-willy-jacob-100-land-val-280-film-008350826",
+   "caption": "Manchester 1782 (US48, img 480): Willy Jacob, 100 acres, valuation 280. Identity unassigned.",
+   "logids": [
+    "US48"
+   ],
+   "repo": "FamilySearch (PHMC township assessment lists, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7YJ-T?view=fullText",
+   "confidence": "high",
+   "file": "York Manchester 1782 list Willy Jacob 100 land val 280 - film 008350826 img480 [US48].jpg"
+  },
+  {
+   "slug": "york-manchester-1784-list-welty-jacob-15sh-film-008350826-img644-us48",
+   "caption": "Manchester 1784 (US48, img 644): Welty Jacob among the Manchester community, tax 15/. Identity unassigned.",
+   "logids": [
+    "US48"
+   ],
+   "repo": "FamilySearch (PHMC township assessment lists, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7YJ-T?view=fullText",
+   "confidence": "high",
+   "file": "York Manchester 1784 list Welty Jacob 15sh - film 008350826 img644 [US48].jpg"
+  },
+  {
+   "slug": "york-manchester-1785-list-wilty-jacob-12-0-botts-town-section-film-008",
+   "caption": "Manchester 1785 (US48, img 754): Wilty Jacob, tax 12/, on the leaf that also carries the 'Botts Town' hamlet section. Identity unassigned.",
+   "logids": [
+    "US48"
+   ],
+   "repo": "FamilySearch (PHMC township assessment lists, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7YJ-T?view=fullText",
+   "confidence": "high",
+   "file": "York Manchester 1785 list Wilty Jacob 12.0 + Botts Town section - film 008350826 img754 [US48].jpg"
+  },
+  {
+   "slug": "york-manchester-jan-1781-packet-tax-list-welly-jacob-manchester-docket",
+   "caption": "Manchester Jan-1781 recruiting packet (US48, img 378): the tax list with Welly Jacob under the federal-quota broadside, 'Manchester' docketed across the leaf.",
+   "logids": [
+    "US48"
+   ],
+   "repo": "FamilySearch (PHMC township assessment lists, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7YJ-T?view=fullText",
+   "confidence": "high",
+   "file": "York Manchester Jan 1781 packet tax list Welly Jacob + Manchester docket - film 008350826 img378 [US48].jpg"
+  },
+  {
+   "slug": "york-manchester-jan-1781-recruit-class-list-no20-wilty-jacob-film-0083",
+   "caption": "Manchester Jan-1781 recruit class list (US48, img 388): Wilty Jacob stands as man No. 20 in the numbered Continental-quota class.",
+   "logids": [
+    "US48"
+   ],
+   "repo": "FamilySearch (PHMC township assessment lists, film 008350826)",
+   "url": "https://www.familysearch.org/ark:/61903/3:1:3Q9M-CSYH-H7YJ-T?view=fullText",
+   "confidence": "high",
+   "file": "York Manchester Jan 1781 recruit class list No20 Wilty Jacob - film 008350826 img388 [US48].jpg"
   }
  ],
  "_meta": {
-  "total_files": 287,
+  "total_files": 298,
   "chips": 86,
   "images_on_people": 93,
-  "evidence_only": 40,
+  "evidence_only": 51,
   "unmapped": [
    "1800 census Donegal Westmoreland p1056 - Witty Micheal FULL PAGE [M286].jpg",
    "1800 census Donegal Westmoreland p1056 - Witty Micheal head 45plus DETAIL [M286].jpg",
