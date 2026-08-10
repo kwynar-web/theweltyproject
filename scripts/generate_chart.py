@@ -620,8 +620,11 @@ def main():
             "proof_html": format_source_html(p["ProofRec"]),
             "source_html": format_source_html(p["Source"]),
             # record-image chips, but never for living people (privacy)
+            # captions are free text and can name a living person: scrub them
+            # the same way Notes/Source are scrubbed in pass 2 below.
             "records": ([] if str(p.get("Proof","")).lower()=="living"
-                        else RECORDS_BY_PERSON.get(p["PersonID"], [])),
+                        else [dict(_r, caption=scrub_living_notes(_r.get("caption","")))
+                              for _r in RECORDS_BY_PERSON.get(p["PersonID"], [])]),
             "kids": kids,
         }
 
