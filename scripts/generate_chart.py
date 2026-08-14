@@ -41,9 +41,9 @@ FAMILIES = [
     ("Manch", "York County, PA · Manchester branch", "I1",
      "The Manchester branch of the German family (Dover / Manchester Twp, York Co PA) — I1 Y-line via a break at one of two rungs: Georg Wolfgang (bp. 1716) or his son Johan Jacob (bp. 1750). Shares the names Philip Jacob / Henry / Catherine — the main source of the old confusion.", False),
     ("Yrk", "Conewago, PA · George Welty", "R1b (R-L151)",
-     "A York County Welty line carried by FTDNA kit <b>#19175</b> — a <i>different</i> R1b subclade (R-L151) from the Edenkoben cluster, with no common ancestor in a genealogical timeframe. Just the two Pennsylvania members are shown — <b>George Welty</b> (b.~1797, Conewago) and his son <b>John</b> (b.1827, York Co) — before the family left for Ohio and Michigan. Above George is a brick wall: the record that would name his parents is John's baptism in Quickel's Conewago register, still access-locked. One of the several York Welty families that get tangled together in the county records.", False),
+     "A York County Welty line carried by FTDNA kit <b>#19175</b> — a <i>different</i> R1b subclade (R-L151) from the Edenkoben cluster, with no common ancestor in a genealogical timeframe. Just the two Pennsylvania members are shown — <b>George Welty</b> (b.~1797, Conewago) and his son <b>John</b> (b.1827, York Co) — before the family left for Ohio and Michigan. Above George is a brick wall: the record that would name his parents is John's baptism in Quickel's Conewago register, which as of August 2026 is viewable only from a FamilySearch affiliate library. One of the several York Welty families that get tangled together in the county records.", False),
     ("Cum", "Cumberland Twp, PA · John Welty", "untested",
-     "The Revolutionary-militia patriot <b>John Welty</b> (b. 21 Apr 1760 – d. 30 Dec 1837, <b>DAR Patriot A122777</b>; York Co militia 1780–81) — the “farm near Dover” John of the old lineage applications. He sat on the same 198-acre Cumberland Twp farm for his whole documented life: the 1798 U.S. Direct Tax shows him there (log dwelling, with Henry Weaver on the adjacent line of all three lists), and the census finds him on the same land every decade to 1830 — the township passed from York to the new Adams County (Gettysburg) in 1800. He married <b>Catherine Weaver</b> (1776–1833) in 1789; documented sons are <b>Henry</b> (b.1805, × Eva Wert), <b>Jacob</b> (× Sophia Walter) and <b>Solomon</b> (b.1815), whose Gettysburg home became the storied “Solomon Welty House” of Cemetery Hill. His own parentage is a brick wall: a 1908 application's claimed parents are a disproven graft, and its “born in Switzerland” is a claim, not a record. No Y-DNA sample exists for the line — shown separately from every other York-country Welty family, because the records show him to be none of them.", False),
+     "The Revolutionary-militia patriot <b>John Welty</b> (b. 21 Apr 1760 – d. 30 Dec 1837, <b>DAR Patriot A122777</b>; York Co militia 1780–81) — the “farm near Dover” John of the old lineage applications. He sat on the same 198-acre Cumberland Twp farm for his whole documented life: the 1798 U.S. Direct Tax shows him there (log dwelling, with Henry Weaver on the adjacent line of all three lists), and the census finds him on the same land every decade to 1830 — the township passed from York to the new Adams County (Gettysburg) in 1800. He married <b>Catherine Weaver</b> (1776–1833) in 1789; documented sons are <b>Henry</b> (b.1805, × Eva Wert), <b>Jacob</b> (× Sophia Walter) and <b>Solomon</b> (b.1815), whose Gettysburg home became the storied “Solomon Welty House” of Cemetery Hill. His own parentage is a brick wall: a 1908 application's claimed parents are a disproven graft, and its “born in Switzerland” is a claim, not a record. No Y-DNA sample exists for the line — he is shown separately from the other York-country Welty families because no record has yet tied him to any of them, and the one identification that was tried, with the Dover-Twp taxpayer John, is refuted by his own documented arc on the Cumberland farm. That is an absence of evidence, not a tested exclusion: a Y-DNA sample from a descendant would settle it.", False),
     ("R1a", "Greene County, TN · John Welty", "R1a",  # already conformant
      "A separate, unrelated York patriline — Y-DNA <b>R1a (R-M198)</b>, which cannot share a paternal ancestor with the R1b Edenkoben line, the Manchester I1 branch, or the I2b Emmental Wälti. Its progenitor, <b>John (Nicolaus) Welty Sr.</b> (b.~1744 in the Palatinate), was a German-born Continental Army soldier — German Regiment, enlisted at Baltimore in 1778 (<b>DAR Patriot A203144</b>, pension S39882). In 1783 he married Margaret Ilgenfritz, a Dover girl and thus one of the Edenkoben family's own neighbours, at First Trinity Reformed in York — the same register and decade as the Edenkoben Michael — then followed the Great Wagon Road to Shenandoah Co, Virginia and on to Greene Co, Tennessee. His son George (b.1797 VA) and grandson Peter Hughes Welty (b.1827 TN) carry the line down to a living FTDNA tester (kit #43635). He stands here as the clearest case of the wider truth: the colonial York Weltys were <i>several</i> unrelated families who lived door to door, worshipped together, and assumed a shared bloodline the DNA does not confirm.", False),
     ("Md", "Taneytown, MD · John Welty", "untested",
@@ -93,7 +93,7 @@ def _fmt_link(url, text):
 
 def _fmt_segment(seg):
     # 1) drop internal lead codes like [P40], [M10/M18], [FB3/FB9], [SR1-SR3/FB21]
-    seg = re.sub(r'\s*\[[^\]]*\]', '', seg).strip(' ;,')
+    seg = _strip_bracket_codes(seg).strip(' ;,')
     # 1a) drop internal event references ("ev.7965", "(ev.7965)") — the roster's
     #     private event-row pointers that were leaking into Proof/Source lines.
     seg = re.sub(r'\(\s*ev\.?\s*\d+\s*\)', '', seg)
@@ -217,6 +217,63 @@ def format_source_html(raw):
 
 # Strip private lead codes (P60, TL-34, FB15 …) that leak into the compact display
 # fields (Birth/Death/Place/Spouse) while preserving the surrounding meaningful text.
+# ---------------------------------------------------------------------------
+# BRACKET HANDLING — narrowed 14 Aug 2026.
+#
+# The old rule was  re.sub(r'\s*\[[^\]]*\]', '', s)  — it deleted EVERY square
+# bracket. Measured against the live roster that is 541 lead codes (which SHOULD
+# go) and 57 other spans (which should NOT): editorial insertions inside quoted
+# manuscript text. It was publishing ALTERED TRANSCRIPTIONS of the very records
+# this project cites — "'Philip Welty [&] Elisabet'" shipped as "'Philip Welty
+# Elisabet'", and the Georg Wolfgang baptism lost "[ang]", "[Sept]" and "[en]".
+# Square brackets are the scholarly convention for an editorial insertion, so on
+# a public genealogy page they are exactly what a reader needs to see.
+#
+# Now: a bracket is dropped only when its ENTIRE contents are internal apparatus
+# (lead codes, "log SR3", LOC-AUDIT / PHASE-n / RECONSTRUCTED working stamps).
+# Any other bracket survives, minus a trailing "; M123" citation tail.
+_GC_CODE  = r'(?:P|M|D|FB|FA|SR|US|H|FT|PS|DL|TL)-?\d+[a-z]?'
+_GC_LEAD  = r'(?:M|P|H|PS|PL|SR|DL|FB|FA|US|D|FT|FL|R|TL)[-\s]?\d+[a-z]?'
+_GC_RUN   = r'(?:log\s+)?' + _GC_LEAD + r'(?:\s*(?:[/,;+&]|-|and)\s*(?:log\s+)?' + _GC_LEAD + r')*'
+# a research-session date, e.g. "4 Jul 2026" — apparatus, not evidence
+_GC_DATE = r'\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+20\d\d'
+_BRACKET_INTERNAL_ONLY = re.compile(
+    r'^\s*(?:' + _GC_RUN + r'(?:\s*[,;-]\s*' + _GC_DATE + r')?'
+    r'|LOC-AUDIT\b.*|PHASE-\d.*|RECONSTRUCTED\b.*)\s*$', re.I | re.S)
+_BRACKET_CODE_TAIL = re.compile(r'\s*[;,]\s*' + _GC_RUN + r'\s*$', re.I)
+# "[P219 - image-verified 30 Jul 2026, superseding …]" — a leading code on an
+# otherwise publishable editorial note: drop the code, keep the note.
+_BRACKET_CODE_HEAD = re.compile(r'^\s*' + _GC_RUN + r'\s*[-–—:;,]\s+', re.I)
+
+def _strip_bracket_codes(s):
+    """Drop internal-apparatus brackets; keep editorial ones (transcription marks)."""
+    def repl(m):
+        lead, inner = m.group(1), m.group(2)
+        if _BRACKET_INTERNAL_ONLY.match(inner):
+            return ''                      # code: take the preceding space with it
+        # editorial bracket: keep it AND the whitespace that preceded it
+        kept = _BRACKET_CODE_HEAD.sub('', _BRACKET_CODE_TAIL.sub('', inner))
+        return lead + '[' + kept + ']' if kept.strip() else ''
+    return re.sub(r'(\s*)\[([^\]]*)\]', repl, s)
+
+# Lead codes also appear BARE in the prose, and stripping them naked is what left
+# the published notes reading "corrects's swapped columns", "—'s arc shows him"
+# and "full-register sweep =." (fixed 14 Aug 2026). Two shapes need the code and
+# its grammar removed together:
+#   "SR8's swapped columns"        -> "the swapped columns"      (possessive)
+#   "full-register sweep = TL-67"  -> "full-register sweep"      (operator+operand)
+_CODE_POSSESSIVE = re.compile(r'\b' + _GC_CODE + r"(?:'s|’s)\b")
+_CODE_OPERATOR   = re.compile(r'\s*(?:[;,]\s*)?(?:\bcf\.|!=|≠|=)\s*' + _GC_CODE + r'\b')
+
+def _fix_code_grammar(s):
+    s = _CODE_OPERATOR.sub('', s)
+    s = _CODE_POSSESSIVE.sub('the', s)
+    s = re.sub(r'\bthe\s+the\b', 'the', s, flags=re.I)
+    # a citation that opened a sentence leaves a lowercase "the" after the stop
+    s = re.sub(r'([.!?]\s+)the\b', lambda m: m.group(1) + 'The', s)
+    return s
+
+
 _DISPLAY_CODE = r'(?:P|M|D|FB|FA|SR|US|H|FT|PS|DL|TL)-?\d+[a-z]?'
 def scrub_display(s):
     if not s:
@@ -234,7 +291,8 @@ def scrub_display(s):
     # "unresolved") are left intact.
     s = re.sub(r'\s*[—–-]\s*(?:leading|working|tentative|provisional)(?:\s+id)?\b\.?\s*$',
                '', s, flags=re.I)
-    s = re.sub(r'\s*\[[^\]]*\]', '', s)                       # [..] codes
+    s = _strip_bracket_codes(s)                               # [..] codes (narrowed)
+    s = _fix_code_grammar(s)                                  # "SR8's x" / "= TL-67"
     s = re.sub(r',?\s*\bsee\s+' + _DISPLAY_CODE + r'\b', '', s)  # ", see FB39"
     s = re.sub(r'[;,]?\s*\b' + _DISPLAY_CODE + r'\b', '', s)   # standalone codes
     s = re.sub(r'\(\s*[;:,]\s*', '(', s)
@@ -262,8 +320,10 @@ def scrub_notes_public(s):
     s = re.sub(r'\bcoll\.?\s*(\d+)', r'collection \1', s)  # "coll 4940" -> "collection 4940"
     s = re.sub(r'\bDEATH FORK\b\s*', '', s)            # internal all-caps working label
     s = re.sub(r'\s*/\s*\)', ')', s)                  # leftover slash from stripped "P60/M73"
+    s = re.sub(r'[;:,]\s*\)', ')', s)      # "(… ; )" left by a stripped code
+    s = re.sub(r'\s+([;,.:)])', r'\1', s)   # "LOCKED ." -> "LOCKED."
+    s = re.sub(r'\(\s*\)', '', s)
     s = re.sub(r'\s{2,}', ' ', s)
-    s = re.sub(r'\s+([;,.)])', r'\1', s)
     return s.strip().strip(' ,;—')
 
 
@@ -899,6 +959,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .t-proven{background:var(--proven)} .t-documented{background:var(--documented)}
   .t-hypo{background:var(--hypo)} .t-lore{background:var(--lore)}
   .t-living{background:var(--living)} .t-dna{background:#37474f} .t-dnaped{background:#5d4037}
+  .t-index{background:#78909c}
   .t-disputed{background:var(--disputed)}
   .genchip{display:inline-block;font-size:10px;font-weight:700;color:#4a4238;background:#eae2d2;
     border-radius:20px;padding:1px 7px;letter-spacing:.3px}
@@ -1131,8 +1192,20 @@ const P = DATA.people;
 function proofTag(pr){
   const m={proven:['t-proven','Proven'],documented:['t-documented','Documented'],
            hypo:['t-hypo','Hypothesized'],lore:['t-lore','Lore'],living:['t-living','Living'],
-           disputed:['t-disputed','Disputed link ⁉']};
-  const t=m[(pr||'').toLowerCase()]; return t?`<span class="tag ${t[0]}">${t[1]}</span>`:'';
+           disputed:['t-disputed','Disputed link ⁉'],
+           index:['t-index','Index-derived'],
+           'dna pedigree':['t-dnaped','DNA pedigree']};
+  // 14 Aug 2026: 51 of 486 nodes rendered with NO badge at all, because their
+  // roster grade sits outside this map - 'index' (34, and it is the WEAKEST tier,
+  // so an unbadged node was indistinguishable from a proven one), 'DNA pedigree'
+  // (12) and three compound grades. Compounds now fall back to their base grade's
+  // colour and show their FULL text, so the hedge stays visible.
+  const k=(pr||'').toLowerCase().trim();
+  let t=m[k];
+  if(t) return `<span class="tag ${t[0]}">${t[1]}</span>`;
+  const base=k.replace(/\s*[(+].*$/,'').replace(/-ish$/,'').trim();
+  t=m[base];
+  return t?`<span class="tag ${t[0]}">${esc(pr)}</span>`:'';
 }
 function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function genLabel(g,fam){ if(g===null||g===undefined||g==='') return ''; if(g<1) return fam==='Swiss'?'Emmental origin':'Ancestor'; return 'Gen '+g; }
@@ -1390,6 +1463,7 @@ GEN_TEMPLATE = r"""<!DOCTYPE html>
   .t-proven{background:var(--proven)} .t-documented{background:var(--documented)}
   .t-hypo{background:var(--hypo)} .t-lore{background:var(--lore)}
   .t-living{background:var(--living)} .t-dna{background:#37474f} .t-dnaped{background:#5d4037}
+  .t-index{background:#78909c}
   .t-direct{background:var(--direct)} .t-kit{background:#b8860b} .t-disputed{background:var(--disputed)}
 
   /* grid: axis + 3 equal family columns; every row shares the template so columns line up */
@@ -1561,6 +1635,7 @@ GEN_DE_TEMPLATE = r"""<!DOCTYPE html>
   .t-proven{background:var(--proven)} .t-documented{background:var(--documented)}
   .t-hypo{background:var(--hypo)} .t-lore{background:var(--lore)}
   .t-living{background:var(--living)} .t-dna{background:#37474f} .t-dnaped{background:#5d4037}
+  .t-index{background:#78909c}
   .t-direct{background:var(--direct)} .t-kit{background:#b8860b} .t-disputed{background:var(--disputed)}
 
   .ghead,.genrow{display:grid;grid-template-columns:78px 1.25fr 1fr;gap:10px;align-items:stretch}
