@@ -476,7 +476,13 @@ def scrub_living_notes(s):
         return s
     s = re.sub(r'\bliving descendant\s+Aaron\s+Welty\b', 'a living descendant', s)
     s = re.sub(r'\bAaron\s+Welty\b', 'a living descendant', s)
-    s = re.sub(r"\bKwyn(?:'s|’s)?\b", 'the compiler', s)
+    # CASE-INSENSITIVE (fixed 14 Aug 2026): the roster writes "KWYN CONFIRMS" and
+    # "KWYN'S CALL" in caps, and the case-sensitive form let both publish verbatim.
+    # Possessive is preserved so "KWYN'S CALL" -> "the compiler's call", not
+    # "the compiler CALL". \bkwyn\b does not touch the kwynar-web GitHub URL.
+    s = re.sub(r"\bKwyn(?:'s|’s)?\b",
+              lambda m: "the compiler's" if len(m.group(0)) > 4 else 'the compiler',
+              s, flags=re.I)
     # living DNA testers named in evidence text. The negative lookahead protects
     # "Merle Ilgenfritz" (a FindAGrave source — a *different*, non-target person)
     # while still catching the tester "Merle [William] [Welty]" and bare "Merle".
