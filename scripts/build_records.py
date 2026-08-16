@@ -260,7 +260,7 @@ M = {
  # --- M358 Dover 1781 class-assessment packet (1 Aug 2026, film 008350826) —
  #     identity UNASSIGNED (decoy rule): evidence-only, never pinned ---------
  "York 1781 class list Welte block Dover-Manchester packet - film 008350826 img362 [M358].jpg":
-   ([], "The 1781 Dover Township class-assessment leaf (film 008350826 img 362): five Weltes consecutive under the 'Class No 3' heading — Philip Welte 666, Philip Welte Jun 016, Michel Welte 082, Jacob Welte, George Welte — bracketed by Rothrauff and Rutherauf. Identity unassigned; the leaf is the record, not a pedigree claim.", "high"),
+   ([], "The 1781 Dover Township class-assessment leaf (film 008350826 img 362): five Weltes consecutive under the 'Class No 3' heading — Philip Welte 066, Philip Welte Jun 016, Michel Welte 082, Jacob Welte, George Welte — bracketed by Rothrauff and Rutherauf. Identity unassigned; the leaf is the record, not a pedigree claim.", "high"),
  "York 1781 class list Dover-Manchester packet - film 008350826 img361 [M358].jpg":
    ([], "The companion leaf of the 1781 Dover class list (img 361): sheriff's return and the Class No 1 column of the same Dover packet.", "high"),
  "York 1781 warrant Peter Fried third class - film 008350826 img360 [M358].jpg":
