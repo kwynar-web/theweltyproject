@@ -237,10 +237,22 @@ _GC_LEAD  = r'(?:M|P|H|PS|PL|SR|DL|FB|FA|US|D|FT|FL|R|TL)[-\s]?\d+[a-z]?'
 _GC_RUN   = r'(?:log\s+)?' + _GC_LEAD + r'(?:\s*(?:[/,;+&]|-|and)\s*(?:log\s+)?' + _GC_LEAD + r')*'
 # a research-session date, e.g. "4 Jul 2026" — apparatus, not evidence
 _GC_DATE = r'\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+20\d\d'
+# "Key Conclusions r32" — an internal CROSS-TAB row reference. Added 18 Aug 2026.
+# P254's citation repair repointed a dozen roster cells from [P38] to
+# [Key Conclusions r32]; _GC_LEAD knows lead codes (M123, P38, TL-49) but not
+# this form, so every one of them SURVIVED the stripper and shipped. Measured on
+# the live page before this line existed: THIRTEEN occurrences of
+# "[Key Conclusions r32]" in all-families.html, in cells a reader sees, e.g.
+# "...ark:/61903/3:1:3Q9M-C3QQ-GKQM img 1327 [Key Conclusions r32]". It is
+# internal apparatus, exactly like a lead code, and it is stripped as one.
+_GC_KCROW = r'Key\s+Conclusions?\s+r\.?\s?\d+[a-z]?'
+_GC_RUN_X = r'(?:' + _GC_RUN + r'|' + _GC_KCROW + r')'
 _BRACKET_INTERNAL_ONLY = re.compile(
-    r'^\s*(?:' + _GC_RUN + r'(?:\s*[,;-]\s*' + _GC_DATE + r')?'
+    r'^\s*(?:' + _GC_RUN_X + r'(?:\s*[,;/&-]\s*' + _GC_RUN_X + r')*'
+    r'(?:\s*[,;-]\s*' + _GC_DATE + r')?'
     r'|LOC-AUDIT\b.*|PHASE-\d.*|RECONSTRUCTED\b.*)\s*$', re.I | re.S)
-_BRACKET_CODE_TAIL = re.compile(r'\s*[;,]\s*' + _GC_RUN + r'\s*$', re.I)
+_BRACKET_CODE_TAIL = re.compile(
+    r'\s*[;,]\s*' + _GC_RUN_X + r'(?:\s*[,;/&-]\s*' + _GC_RUN_X + r')*\s*$', re.I)
 # "[P219 - image-verified 30 Jul 2026, superseding …]" — a leading code on an
 # otherwise publishable editorial note: drop the code, keep the note.
 _BRACKET_CODE_HEAD = re.compile(r'^\s*' + _GC_RUN + r'\s*[-–—:;,]\s+', re.I)
