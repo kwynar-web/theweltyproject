@@ -532,7 +532,7 @@ KNOWN_LIVING = set()   # (was {"B-merleSMGF"}) Merle William Welty PROVEN DECEAS
 # Philip Jacob rests on a Y-DNA pedigree alone.
 LINK_UNPROVEN_SEED = {"E-michael", "E-jacobsr", "E-johndover",
                       "E-elizabethgauf", "E-christinamesserle", "E-catharinaboehm"}
-LINK_UNPROVEN = set(LINK_UNPROVEN_SEED)   # widened from the roster in main()
+LINK_UNPROVEN = set(LINK_UNPROVEN_SEED)   # the whole set; the roster derivation was withdrawn - see main()
 
 # Y-line break whose RUNG is undetermined. Paper filiation is primary at BOTH candidate
 # rungs; the I1/R1b conflict proves a break at one of them but cannot say which.
@@ -648,16 +648,26 @@ def read_people():
 def main():
     people = read_people()
 
-    # ---------- LINK_UNPROVEN, derived from the roster (2026-08-22-1312) ----------
-    # See the note at LINK_UNPROVEN_SEED. Report the delta on every run so that a change
-    # to the roster's grades can never move the tree's markings silently.
-    _derived = {p["PersonID"] for p in people
-                if p["FatherID"] and str(p["Proof"]).strip().lower().startswith("hypo")}
-    _added = sorted(_derived - LINK_UNPROVEN_SEED)
-    LINK_UNPROVEN.update(_derived)
-    print("LINK_UNPROVEN: %d seeded + %d derived from roster Proof=hypo%s"
-          % (len(LINK_UNPROVEN_SEED), len(_added),
-             (" -> " + ", ".join(_added)) if _added else ""))
+    # ---------- LINK_UNPROVEN: the roster derivation was TRIED AND WITHDRAWN (22 Aug 2026 14:44 EDT) ----------
+    # A derived rule was added earlier today - mark anyone with a FatherID whose own roster
+    # Proof grade is `hypo` - and then audited against the eight nodes it would newly mark.
+    # IT FAILED ITS OWN AUDIT, 5 of 8, and the reason is worth keeping so nobody re-derives it:
+    #
+    #   1. `Proof` grades the PERSON. The badge claims something about the LINK. They are not the
+    #      same question: E-gauf-christineeliz, E-messerle-magdalena, E-messerle-john and
+    #      E-johnft-jacob each have a zoom-verified baptism or an image-read court record NAMING
+    #      the parent, and are graded `hypo` for a different reason - their identity, their dates,
+    #      or an unresolved fusion. The badge on them would be false.
+    #   2. `FatherID` is a generic parent pointer: 71 roster rows aim it at a WOMAN, so
+    #      "descent from the father above" is already the wrong sentence on those cards.
+    #   3. The rule UNDER-reaches worse than it over-reaches. It cannot see the 12 rows graded
+    #      `DNA pedigree`, the `index` rows resting on a descendant list, or the `lore` rows -
+    #      which is the very class the hand-typed seed exists for (E-michael is graded `proven`
+    #      and his descent rests on a Y-DNA pedigree alone).
+    #
+    # So the set stays hand-typed and the six below are the whole of it. If this is ever made
+    # roster-driven, drive it off an EXPLICIT column that says what the badge says - not off a
+    # grade that answers a different question.
 
     # ---------- LIVING-PERSON PRIVACY, pass 1: anonymise IDs ----------
     # PersonIDs like "E-kris"/"E-kwyn" embed a living person's given name and would
