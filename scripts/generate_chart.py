@@ -11,11 +11,26 @@ RETIRED (kept in code, not called): the old 3-family 'By Generation' grid
 (render_gen_grid) and the German-Lines graphical node-and-line chart
 (render_graph) — Kwyn prefers the proof-annotated By-Generation grid (1 Jul 2026).
 """
-import json, html, re, os, openpyxl
+import json, html, re, os, sys, openpyxl
 
 XLSX    = "Welty Ancestry Research Log.xlsx"
 SHEET   = "People Roster (chart source)"
 OUT_ALL = "Welty Family Tree - All Families.html"
+
+# ---------------------------- INTERNAL-ONLY GROUPS (2026-08-22-1312) ----------------------------
+# `Un` = standalone Weltys: individuals attested in the log's `Unsorted Weltys (to sort)`
+# and `Decoys & Dead Ends` tabs and attached to NO family. They are an INTERNAL working
+# index - one card per person, every card a root, no father links, nothing merged - so
+# that a Welty already found in a record is distinguishable from one never found.
+#
+# THEY MUST NEVER PUBLISH. read_people() drops every INTERNAL_FAMS person unless
+# --internal is passed, so the DEFAULT build - which is the file deploy_clean_trees.py
+# copies into site/all-families.html - cannot carry them, and a session that forgets
+# this cannot leak them by accident. With --internal the output goes to its own
+# filename, which is not in the repo and is not deployed by anything.
+INTERNAL      = ("--internal" in sys.argv)
+INTERNAL_FAMS = {"Un"}
+OUT_INTERNAL  = "Welty Family Tree - All Families (INTERNAL).html"
 OUT_GEN = "Welty Family Tree - By Generation.html"
 
 # Record-image chips: built by build_records.py -> site/records/records.json.
@@ -58,6 +73,20 @@ FAMILIES = [
     ("Swiss", "Manheim PA · Fairfield/Putnam OH · Welty", "I2b",
      "The American Welty family of Manheim Township and the Ohio country — three immigrant lines that put down roots at <b>Manheim Twp, York Co PA</b> (Peter, 1727), across <b>Fairfield &amp; Hocking Co, OH</b> (the offshoot that runs down to the novelist <b>Eudora Welty</b>), and in <b>Putnam Co, OH</b> (a separate 1846 arrival). All three trace back to the Emmental Wälti of Rüderswil — the Welty Family Chronicle (Bacon 2002) and the old &ldquo;Weltys are Swiss&rdquo; story — and carry the <b>I2b</b> Y-line, but they belong here as the American Weltys they became, anchored on where they settled rather than on the Bernese trunk they left. Each branch is marked in place below.", False),
 ]
+
+# ---- the internal `Un` group (2026-08-22-1312). Appended only under --internal, so the
+# public FAMILIES tuple - and therefore the public payload, the checkbox row and the
+# count arithmetic - is byte-identical to what it was without the flag.
+UN_FAMILY = ("Un", "Unplaced &middot; standalone Weltys", "untested",
+    "<b>Internal working index &mdash; not a family.</b> Every card here is a Welty attested in "
+    "a record, an index or a compiled source that this project has read, and attached to <i>no</i> "
+    "line. Each one is a root: there are no descent links in this block and nothing here is merged "
+    "with anything. Cards carry the grade the evidence actually holds, the log row they came from, "
+    "and - where the log names one - the test that would attach the person to a family. They are "
+    "drawn from the <i>Unsorted Weltys</i> and <i>Decoys &amp; Dead Ends</i> tabs of the research log.",
+    False)
+if INTERNAL:
+    FAMILIES.append(UN_FAMILY)
 
 # ============================ BRANCH SUB-HEADERS ============================
 # Some families do not reduce to a single settling place. The Emmental Wälti in
@@ -493,8 +522,17 @@ KNOWN_LIVING = set()   # (was {"B-merleSMGF"}) Merle William Welty PROVEN DECEAS
 #   pedigree + an unlocated ~1757 baptism; the others (Jacob Sr., John of Dover,
 #   and the three Trinity-York daughters) on circumstantial/naming evidence. Add
 #   any newly-found child of Philip Jacob here until their parentage is proven.
-LINK_UNPROVEN = {"E-michael", "E-jacobsr", "E-johndover",
-                 "E-elizabethgauf", "E-christinamesserle", "E-catharinaboehm"}
+# ---- ROSTER-DRIVEN (2026-08-22-1312) ----
+# This set used to be typed by hand, so it went stale the moment a hypothesised child
+# was rostered and nobody remembered to edit this file. It is now DERIVED: any person
+# whose own roster `Proof` grade is `hypo` AND who has a FatherID has, by definition, a
+# descent that no primary record establishes. LINK_UNPROVEN_SEED below is only the SEED -
+# the people whose father-link is unproven even though their own grade is higher.
+# E-michael is the standing example: he is `proven` as a person and his descent from
+# Philip Jacob rests on a Y-DNA pedigree alone.
+LINK_UNPROVEN_SEED = {"E-michael", "E-jacobsr", "E-johndover",
+                      "E-elizabethgauf", "E-christinamesserle", "E-catharinaboehm"}
+LINK_UNPROVEN = set(LINK_UNPROVEN_SEED)   # widened from the roster in main()
 
 # Y-line break whose RUNG is undetermined. Paper filiation is primary at BOTH candidate
 # rungs; the I1/R1b conflict proves a break at one of them but cannot say which.
@@ -587,6 +625,10 @@ def read_people():
         for _f in ("Birth", "Death", "Place", "Spouse"):
             rec[_f] = scrub_display(rec[_f])
         people.append(rec)
+    # INTERNAL-ONLY GROUPS: dropped unless --internal was passed. This is the gate that
+    # keeps the `Un` index off the public tree - see the note at the head of this file.
+    if not INTERNAL:
+        people = [p for p in people if p["Family"] not in INTERNAL_FAMS]
     # Generation is COMPUTED from FatherID depth, not read from the typed "Gen"
     # column: the oldest known ancestor of each line (no/absent FatherID) is Gen 1,
     # each child one deeper. Push the lineage back = add a row with its FatherID and
@@ -605,6 +647,17 @@ def read_people():
 
 def main():
     people = read_people()
+
+    # ---------- LINK_UNPROVEN, derived from the roster (2026-08-22-1312) ----------
+    # See the note at LINK_UNPROVEN_SEED. Report the delta on every run so that a change
+    # to the roster's grades can never move the tree's markings silently.
+    _derived = {p["PersonID"] for p in people
+                if p["FatherID"] and str(p["Proof"]).strip().lower().startswith("hypo")}
+    _added = sorted(_derived - LINK_UNPROVEN_SEED)
+    LINK_UNPROVEN.update(_derived)
+    print("LINK_UNPROVEN: %d seeded + %d derived from roster Proof=hypo%s"
+          % (len(LINK_UNPROVEN_SEED), len(_added),
+             (" -> " + ", ".join(_added)) if _added else ""))
 
     # ---------- LIVING-PERSON PRIVACY, pass 1: anonymise IDs ----------
     # PersonIDs like "E-kris"/"E-kwyn" embed a living person's given name and would
@@ -744,15 +797,18 @@ def main():
         '<label class="chk gva"><input type="checkbox" data-fam="Gva" checked> Goochland</label>'
         '<label class="chk san"><input type="checkbox" data-fam="San" checked> Sandusky</label>'
         '<label class="chk swiss"><input type="checkbox" data-fam="Swiss" checked> Manheim/Ohio</label>'
-        '</div>'
+        + ('<label class="chk un"><input type="checkbox" data-fam="Un" checked> Unplaced</label>'
+           if INTERNAL else '')
+        + '</div>'
         '</div>')
-    german = total - counts.get('Swiss', 0) - counts.get('Md', 0) - counts.get('R1a', 0) - counts.get('Yrk', 0) - counts.get('Cum', 0) - counts.get('Gva', 0) - counts.get('San', 0)
+    german = total - counts.get('Swiss', 0) - counts.get('Md', 0) - counts.get('R1a', 0) - counts.get('Yrk', 0) - counts.get('Cum', 0) - counts.get('Gva', 0) - counts.get('San', 0) - counts.get('Un', 0)
     count_label = (f"{total} people · Edenkoben (German) family {german} · "
                    f"York {counts.get('Yrk',0)} · Cumberland {counts.get('Cum',0)} · "
                    f"Greene Co {counts.get('R1a',0)} · "
                    f"Maryland {counts.get('Md',0)} · Goochland {counts.get('Gva',0)} · "
-                   f"Sandusky {counts.get('San',0)} · Manheim/Ohio {counts.get('Swiss',0)}")
-    render(OUT_ALL, payload_all,
+                   f"Sandusky {counts.get('San',0)} · Manheim/Ohio {counts.get('Swiss',0)}"
+                   + (f" · Unplaced {counts.get('Un',0)}" if INTERNAL else ""))
+    render(OUT_INTERNAL if INTERNAL else OUT_ALL, payload_all,
            h1="The Welty Families &mdash; interactive tree",
            sub=("A cluster of <b>Welty</b> families &mdash; Welty, Weldy, Wälti, Welde &mdash; crossed to "
                 "America in the eighteenth century and came to rest in the same corner of colonial York "
@@ -761,7 +817,7 @@ def main():
                 f'<span class="herocount">{count_label}</span>'),
            fam_controls=fam_controls,
            count_label=count_label)
-    print(f"wrote {OUT_ALL}  ({total} people: Edenkoben {german}, Manheim/Ohio {counts.get('Swiss',0)}, Maryland {counts.get('Md',0)}, Greene Co {counts.get('R1a',0)}, York-George {counts.get('Yrk',0)}, Cumberland {counts.get('Cum',0)}, Goochland {counts.get('Gva',0)}, Saanen {counts.get('San',0)})")
+    print(f"wrote {OUT_INTERNAL if INTERNAL else OUT_ALL}  ({total} people: Edenkoben {german}, Manheim/Ohio {counts.get('Swiss',0)}, Maryland {counts.get('Md',0)}, Greene Co {counts.get('R1a',0)}, York-George {counts.get('Yrk',0)}, Cumberland {counts.get('Cum',0)}, Goochland {counts.get('Gva',0)}, Saanen {counts.get('San',0)})")
 
     # ---------- 1b) GERMAN-LINES graphical chart — RETIRED 1 Jul 2026 (Kwyn prefers the
     # By-Generation grid). render_graph()/GRAPH_TEMPLATE kept below but no longer called.
@@ -909,6 +965,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     --cum:#4a3a8c; --cum-mid:#8c82c4; --cum-soft:#e9e6f5;
     --gva:#a34a2a; --gva-mid:#cf9179; --gva-soft:#f6e7e0;
     --san:#2a4d7a; --san-mid:#7d9bc4; --san-soft:#e4ecf6;
+    --un:#5d5d5d; --un-mid:#a6a6a6; --un-soft:#ededed;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);background-image:radial-gradient(ellipse at 50% -10%,#fdf9ee 0%,#f5efe2 55%,#ede4cf 100%);color:var(--ink);
@@ -943,6 +1000,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .chk.cum{border-color:var(--cum-mid);color:var(--cum)} .chk.cum::before{background:var(--cum)} .chk.cum input{accent-color:var(--cum)}
   .chk.gva{border-color:var(--gva-mid);color:var(--gva)} .chk.gva::before{background:var(--gva)} .chk.gva input{accent-color:var(--gva)}
   .chk.san{border-color:var(--san-mid);color:var(--san)} .chk.san::before{background:var(--san)} .chk.san input{accent-color:var(--san)}
+  .chk.un{border-color:var(--un-mid);color:var(--un)} .chk.un::before{background:var(--un)} .chk.un input{accent-color:var(--un)}
   select.gen{font:inherit;font-size:13px;padding:6px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);cursor:pointer;color:#4a4238}
   select.gen:hover{background:#efe8db}
   .btn{font:inherit;font-size:13px;padding:6px 12px;border:1px solid var(--line);
@@ -1000,6 +1058,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .fam.cum{border-color:var(--cum-mid);border-top-color:var(--cum)}
   .fam.gva{border-color:var(--gva-mid);border-top-color:var(--gva)}
   .fam.san{border-color:var(--san-mid);border-top-color:var(--san)}
+  .fam.un{border-color:var(--un-mid);border-top-color:var(--un)}
   .famhd{padding:13px 16px 12px;border-bottom:2px solid var(--line);display:flex;gap:9px;align-items:flex-start;cursor:pointer}
   .famtog{flex:0 0 auto;width:18px;height:18px;margin-top:1px;border:1px solid var(--line);border-radius:5px;background:var(--card);font-size:12px;line-height:16px;text-align:center;color:#6b6459;user-select:none;transition:border-color .12s,color .12s}
   .famhd:hover .famtog{border-color:#b8912f;color:#8a6a1f}
@@ -1014,11 +1073,12 @@ TEMPLATE = r"""<!DOCTYPE html>
   .fam.cum .famhd{background:linear-gradient(180deg,var(--cum-soft),var(--card));border-bottom-color:var(--cum-mid)}
   .fam.gva .famhd{background:linear-gradient(180deg,var(--gva-soft),var(--card));border-bottom-color:var(--gva-mid)}
   .fam.san .famhd{background:linear-gradient(180deg,var(--san-soft),var(--card));border-bottom-color:var(--san-mid)}
+  .fam.un .famhd{background:linear-gradient(180deg,var(--un-soft),var(--card));border-bottom-color:var(--un-mid)}
   .famhd h2{margin:0;font-size:19px;letter-spacing:.2px}
-  .fam.eden h2{color:var(--eden)} .fam.manch h2{color:var(--manch)} .fam.swiss h2{color:var(--swiss)} .fam.md h2{color:var(--md)} .fam.r1a h2{color:var(--r1a)} .fam.yrk h2{color:var(--yrk)} .fam.cum h2{color:var(--cum)} .fam.gva h2{color:var(--gva)} .fam.san h2{color:var(--san)}
+  .fam.eden h2{color:var(--eden)} .fam.manch h2{color:var(--manch)} .fam.swiss h2{color:var(--swiss)} .fam.md h2{color:var(--md)} .fam.r1a h2{color:var(--r1a)} .fam.yrk h2{color:var(--yrk)} .fam.cum h2{color:var(--cum)} .fam.gva h2{color:var(--gva)} .fam.san h2{color:var(--san)} .fam.un h2{color:var(--un)}
   .hap{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
     padding:2px 8px;border-radius:20px;margin-left:8px;vertical-align:middle;color:#fff}
-  .hap.eden{background:var(--eden)} .hap.manch{background:var(--manch)} .hap.swiss{background:var(--swiss)} .hap.md{background:var(--md)} .hap.r1a{background:var(--r1a)} .hap.yrk{background:var(--yrk)} .hap.cum{background:var(--cum)} .hap.gva{background:var(--gva)} .hap.san{background:var(--san)}
+  .hap.eden{background:var(--eden)} .hap.manch{background:var(--manch)} .hap.swiss{background:var(--swiss)} .hap.md{background:var(--md)} .hap.r1a{background:var(--r1a)} .hap.yrk{background:var(--yrk)} .hap.cum{background:var(--cum)} .hap.gva{background:var(--gva)} .hap.san{background:var(--san)} .hap.un{background:var(--un)}
   .famdesc{font-size:12.5px;color:#5a564f;margin-top:5px;max-width:1000px}
   /* branch band — marks where an American branch begins inside a family whose
      group header names an origin rather than a settling place (see BRANCHES) */
